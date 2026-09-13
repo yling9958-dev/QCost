@@ -1,0 +1,53 @@
+{
+  "elapsed_seconds": 1798.65,
+  "peak_rss_kib": 193276.0,
+  "guard_aggregate_peak_rss_kib": 460024.0,
+  "VmPeak_bytes": 269185024,
+  "major_faults": 93,
+  "shared_ceiling_bytes": 25769803776,
+  "parent_peak_sampled_bytes": 23622582272,
+  "parent_memory_peak_bytes": 23622733824,
+  "experiment_swap_peak_bytes": 0,
+  "parent_cgroup": {
+    "unit": "qmf-paper.slice",
+    "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "23435268096",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 23435268096,
+      "memory.peak": 23622733824,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 5542,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 5542,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=79.18 avg60=42.78 avg300=18.97 total=453133393\nfull avg10=79.18 avg60=42.78 avg300=18.97 total=453114114"
+    }
+  },
+  "phase": "timing",
+  "timestamp": 1789134018.3525026,
+  "reason": "exit-code: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request.\n\n",
+  "swap_pages_in": 157,
+  "swap_pages_out": 228336,
+  "status": "BUILD_FAILED"
+}

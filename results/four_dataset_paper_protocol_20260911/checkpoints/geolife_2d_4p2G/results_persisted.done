@@ -1,0 +1,42 @@
+{
+  "completed_at": 1789270580.6007068,
+  "payload": {
+    "printed": true,
+    "methods_attempted": 8,
+    "methods_valid": 5,
+    "attempted": true,
+    "scientifically_complete": false
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/geolife/GEOLIFE_8_METHODS_7_METRICS.csv",
+      "bytes": 1021,
+      "sha256": "0cb098774ea0e2b41cf42940e0f33a145980167a6f676be91960a06c9981866c"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/geolife/GEOLIFE_8_METHODS_7_METRICS.md",
+      "bytes": 2140,
+      "sha256": "7c9ebf32a23889fcb8b6893d11ab62bb75fc914b547b52f6eeace22659b87024"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/geolife/GEOLIFE_QMF_RANKING.csv",
+      "bytes": 119,
+      "sha256": "299d8f481a9b829e1f26c5d00f6e2870bb2f548441815e7ef026a5e8562b27bc"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/query_manifest.json",
+      "bytes": 774,
+      "sha256": "43e1e66aa1f11cbe778d6cfe44f0c5af5234cf93db67e1430f0f997af5f4d219"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/01_dataset_inventory/geolife_2d_4p2G.json",
+      "bytes": 672,
+      "sha256": "66827fc8c310c0b81dc90e969a83c5978d569c3cb89a64be6f282e35c1c13de1"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/geolife/GEOLIFE_RESULT_MANIFEST.sha256",
+      "bytes": 915,
+      "sha256": "a4d9910f9cc1cbc2e289e78961996ce041bf48b18aff9a3a6056d648ab074403"
+    }
+  ]
+}

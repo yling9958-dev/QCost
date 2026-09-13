@@ -1,0 +1,112 @@
+{
+  "parent": {
+    "unit": "qmf-paper.slice",
+    "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "20922982400",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 20922982400,
+      "memory.peak": 22286303232,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=4.00 avg60=1.20 avg300=0.38 total=168853400\nfull avg10=4.00 avg60=1.20 avg300=0.38 total=168837049"
+    }
+  },
+  "children": [
+    {
+      "unit": "qmf-paper-worker-709593-7",
+      "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-worker-709593-7.service",
+      "systemd": {
+        "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-worker-709593-7.service",
+        "MemoryCurrent": "856064",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "infinity",
+        "MemorySwapMax": "infinity"
+      },
+      "kernel": {
+        "memory.current": 1458176,
+        "memory.peak": 1634304,
+        "memory.high": "max",
+        "memory.max": "max",
+        "memory.swap.current": 0,
+        "memory.swap.max": "max",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.events.local": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0"
+      }
+    },
+    {
+      "unit": "qmf-paper-postgres",
+      "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-postgres.service",
+      "systemd": {
+        "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-postgres.service",
+        "MemoryCurrent": "20922351616",
+        "MemoryHigh": "infinity",
+        "MemoryMax": "infinity",
+        "MemorySwapMax": "infinity"
+      },
+      "kernel": {
+        "memory.current": 20922351616,
+        "memory.peak": 22281809920,
+        "memory.high": "max",
+        "memory.max": "max",
+        "memory.swap.current": 0,
+        "memory.swap.max": "max",
+        "memory.events": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.events.local": {
+          "low": 0,
+          "high": 0,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.pressure": "some avg10=3.12 avg60=0.95 avg300=0.27 total=81749236\nfull avg10=3.12 avg60=0.95 avg300=0.27 total=81746209"
+      }
+    }
+  ]
+}

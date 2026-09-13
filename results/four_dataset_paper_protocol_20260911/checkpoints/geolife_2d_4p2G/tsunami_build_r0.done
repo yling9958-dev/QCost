@@ -1,0 +1,18 @@
+{
+  "completed_at": 1789139912.5280592,
+  "payload": {
+    "build_seconds": 34.366907484,
+    "serialized_bytes": 4344000792,
+    "peak_rss_kib": 7904004.0,
+    "index_path": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/tsunami/rep0/tsunami.idx",
+    "index_sha256": "67c4f2a39b75f24a024902d016f598a7d994f325b07eba706ce6f9d1d901ac4e",
+    "repetition": 0
+  },
+  "files": [
+    {
+      "path": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/tsunami/rep0/tsunami.idx",
+      "bytes": 4344000792,
+      "sha256": "67c4f2a39b75f24a024902d016f598a7d994f325b07eba706ce6f9d1d901ac4e"
+    }
+  ]
+}

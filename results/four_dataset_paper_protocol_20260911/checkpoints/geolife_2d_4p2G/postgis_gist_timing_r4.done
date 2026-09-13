@@ -1,0 +1,16 @@
+{
+  "completed_at": 1789191851.2429984,
+  "payload": {
+    "repetition": 3,
+    "backend_peak_rss_kib": 182140,
+    "client_peak_rss_kib": 11064,
+    "fairness": "NATIVE_POSTGIS"
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/postgis_gist/query_latency_raw.csv.zst",
+      "bytes": 111632,
+      "sha256": "7f8ddaafb77f19553cd462bac10106ff95ae8cc3efff9f984d952279b13c6be5"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "date": "2026-09-10",
+  "source_commit": "8b16e5ec9d1c59596c72a2bb19b37c4e3ae8aae8",
+  "qmf_algorithm_changed": false,
+  "isolated_quick": {
+    "status": "PASS",
+    "manifest": "PASS",
+    "dataset": "PASS",
+    "queries": "PASS",
+    "stage_a": "37/37 PASS",
+    "tests": "24 passed",
+    "qmf_build_seconds": 275.9656321700022,
+    "qmf_index_size_mib": 80.0669059753418,
+    "qmf_correctness": 5000,
+    "missing": 0,
+    "extra": 0,
+    "logical_tree_sha256": "a7c540d4d5f8e1b34e7508d2be921741203cc13667403fa8b7df587e03696230",
+    "serialized_index_sha256": "12bbd47ef650888b67e042002d794e75de64ec5d91c0c2476eded5d85e577282",
+    "online_quantum_execution": false
+  },
+  "latest_independent_full_eight_method_run": {
+    "status": "PASS",
+    "correctness": 40000,
+    "missing": 0,
+    "extra": 0,
+    "qmf_top1_count": "5/7",
+    "qualitative_ranking_pass": true,
+    "results": "results_reference/reproduction_20260910.csv"
+  }
+}

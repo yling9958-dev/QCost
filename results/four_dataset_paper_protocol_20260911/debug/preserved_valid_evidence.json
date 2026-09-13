@@ -1,0 +1,487 @@
+[
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/correctness_normalized.csv",
+    "bytes": 110579,
+    "sha256": "213c3a4bc78174a339f789f00503fa994e9f4fadfda81808a60231d2a7514d5f"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/geolife_2d_4p2G_queries.csv",
+    "bytes": 669520,
+    "sha256": "258664e07c4774ee129dcfb1c350cf1b8388fd54cd8e2ac0a509baf32aa4453b"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/performance_normalized.csv",
+    "bytes": 331431,
+    "sha256": "cefc9122b53ce63be7f4123e9f7b8595ca0889662246d216aa30c6616ef6470e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/query_manifest.json",
+    "bytes": 774,
+    "sha256": "43e1e66aa1f11cbe778d6cfe44f0c5af5234cf93db67e1430f0f997af5f4d219"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/train_normalized.csv",
+    "bytes": 98644,
+    "sha256": "966806d8fdfb7ed604b51bf89e53cd0cff1521c60ca7944b70b85a596c2886cc"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/validation_normalized.csv",
+    "bytes": 108881,
+    "sha256": "08ea23b3bda61f8ea1d9cd1b7228419bf542d08fdc2cddbc4a9675b76f5bacfd"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/warmup_normalized.csv",
+    "bytes": 30060,
+    "sha256": "5767312b0b7e0eba9a50ab5dd2556c6bfce5894f30a12d87d44758c36e07dc87"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/correctness_normalized.csv",
+    "bytes": 110548,
+    "sha256": "1c96e91272dc75825d1699efd5f265fbcfe026274a542b4188c082b2e7f00330"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/gowalla_2d_4p2G_queries.csv",
+    "bytes": 672010,
+    "sha256": "218851930c1cad352f99fd0c3d68fae0cc860bf4a07541c7247c1ace927c3f1a"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/performance_normalized.csv",
+    "bytes": 331426,
+    "sha256": "c8db624e23c4570b0ae944053de7ce850f7aedbb07a1b012625eb175ac6fd463"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/query_manifest.json",
+    "bytes": 774,
+    "sha256": "896b7a2a4bcf97af8786146e8bc08d55417e120ad1aaa2ed5e27c4fd65249beb"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/train_normalized.csv",
+    "bytes": 98647,
+    "sha256": "8812543046258bfa1e5ba41ff834682e63d2915a9c3447243e358985735f9ed1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/validation_normalized.csv",
+    "bytes": 108908,
+    "sha256": "637be0650a898b645df709d90761760607d9cc88080a8b74fbccfccd9da8d9b1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/warmup_normalized.csv",
+    "bytes": 30069,
+    "sha256": "4ddd0baf789fc883b268df311ed44eeabffb18b1de04270e12e1605d6262c0e1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/correctness_normalized.csv",
+    "bytes": 110519,
+    "sha256": "321aeb94bd78b45c06a10c587cb27d095146a7b2f107a83a54dc6a9fbbf1aa51"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/nyc_taxi_2d_4p2G_queries.csv",
+    "bytes": 666649,
+    "sha256": "edab3387e270d2b05ea59a55a317abb416e459b2506ea6553d7c3df722f3325e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/performance_normalized.csv",
+    "bytes": 331326,
+    "sha256": "f9b15b506acbe63d3437bca156815c86655c733cc5eea4b5eb6e9027076cf614"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/query_manifest.json",
+    "bytes": 775,
+    "sha256": "248fd1f2cbcffde91ec1be8d8d7db7cba5739b3e5929bdb292888f8039c78315"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/train_normalized.csv",
+    "bytes": 98663,
+    "sha256": "512e2ae9f12ba8e7890bf96b32c51b65314c6e43405551d073c87e88175adacd"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/validation_normalized.csv",
+    "bytes": 108906,
+    "sha256": "3593578a65abaddea5a1fc27ffc45eeb87b4bbf9c167a1af6201847e2df5d9ca"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/warmup_normalized.csv",
+    "bytes": 30124,
+    "sha256": "c293d56ed1ce638eca4a8df4fefe84536e9fd937c536edbd199a6bead51d9a19"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/correctness_normalized.csv",
+    "bytes": 110579,
+    "sha256": "0ed61de27668228e6280ac2eff3260f412c86da2be82506b24a853842ebd43c6"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/performance_normalized.csv",
+    "bytes": 331396,
+    "sha256": "487732548cd434d991ba57a00fd29809f3035205ce3e640e8926786101e0eeb3"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/query_manifest.json",
+    "bytes": 768,
+    "sha256": "f8b7646aa5473241d4f7c2472a254c17e65f2cf3d3bee672cb0e3b2e210e6a1d"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/skewed_2d_queries.csv",
+    "bytes": 681557,
+    "sha256": "66fc69a347738af95f89f800f5894c9356b79ff8b036a840c7e280966b8d58dd"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/train_normalized.csv",
+    "bytes": 98650,
+    "sha256": "55258b9c4eb61a52046ce7611582b73549a16a94721defe87c3fbfcc7bba6d80"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/validation_normalized.csv",
+    "bytes": 108891,
+    "sha256": "a0074df001e0dfcc3b4c49dd784a95942171bf71cc8ec38e75eb66ffe6f5aad6"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/warmup_normalized.csv",
+    "bytes": 30060,
+    "sha256": "194ed04bd9d2bc2557eee508844f3c7ea1d90e0be0bbcf96770eeefa387d5ec1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/03_build/geolife_2d_4p2G/bmtree.json",
+    "bytes": 341,
+    "sha256": "b63cc66d254c046c42e1a013dafdcd35048253407fbc7161c55e813d9f15b096"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/03_build/geolife_2d_4p2G/lisa.json",
+    "bytes": 330,
+    "sha256": "ed1125978d6375564c4939dfe72876baf5449777bd6333e9072ef65bde77ba70"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/03_build/geolife_2d_4p2G/lmsfc.json",
+    "bytes": 332,
+    "sha256": "1a8612c6c228b99ac8ceff7cc209c55454dd6551557db88f82306faa15d532d0"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/03_build/geolife_2d_4p2G/tsunami.json",
+    "bytes": 336,
+    "sha256": "82a3e8ae1d414119ce20511d83d1f2eba19726df9a98afed6bfcfb4250dbc11d"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/bmtree.csv",
+    "bytes": 44159,
+    "sha256": "0179b9c21d836076ccc4df3e8a59bf39c618e37e7df2d74f8d5824ad337624ca"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/bmtree_summary.json",
+    "bytes": 294,
+    "sha256": "aecd2bdb46d86193482d36280a855b61acb9266aabb233a8c34d0fd82cbeb8fe"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lisa.csv",
+    "bytes": 42159,
+    "sha256": "96d3da72dcc5081e75f57a8f091f16d9cc2c0e2bc342f96c3643defb114f45a3"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lisa_summary.json",
+    "bytes": 292,
+    "sha256": "ee3271c0225f30790abc13d234d83199c1581012068a0a78c27b5d7575f49daf"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lmsfc.csv",
+    "bytes": 43159,
+    "sha256": "29a25d04aa9a1f176880ec6e63677e662612794b127e6c0a1aba1c6ea6a22b7e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lmsfc_summary.json",
+    "bytes": 293,
+    "sha256": "3a6a382dbfff638b479d75654344ab8e9a2df79f42dddaa74aadb6f43ab23361"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/postgis_gist.csv",
+    "bytes": 50159,
+    "sha256": "1d5d160608a7e5715c582b0229597fe8d23819ab70962220baae860dda3762de"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/postgis_gist_summary.json",
+    "bytes": 104,
+    "sha256": "0da89f61b2f227058b0548a39cc0ea076fb1a49c4fc8f9d2f65ece1d7879f253"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/tsunami.csv",
+    "bytes": 45159,
+    "sha256": "e63b7492d59b53735460d888173b94bd448b82acae3c7590435e3eacf8a02c0e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/tsunami_summary.json",
+    "bytes": 295,
+    "sha256": "e9f7735984ad5ccdfad89ae83562619a9ce5b72bf5b23105324d11287ff2ed7e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/bmtree/query_latency_raw.csv.zst",
+    "bytes": 120926,
+    "sha256": "797369fdf152d1cbbc1fa80421204a6742473e94788cbf85742098f2ec1213c2"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/lisa/query_latency_raw.csv.zst",
+    "bytes": 109565,
+    "sha256": "e219a752f3d769b5e31a7019454086d066bfa18fc7b1cef4e25160d6219bd5e8"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/lmsfc/query_latency_raw.csv.zst",
+    "bytes": 122891,
+    "sha256": "d4e5e18be6f21c901776f11df1ea66738af03adf3adaf967b124ea2bdb2999bb"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/tsunami/query_latency_raw.csv.zst",
+    "bytes": 112754,
+    "sha256": "19c42abc865bce4c4f409f69a95c328092dfb6d7fe7bd2431e53b0bdde7d73a6"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r0.csv",
+    "bytes": 152905,
+    "sha256": "53ff1fbc0fd59b773bd45f5667063389108f4f17291e39de661607e157897a81"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r0.csv.ready",
+    "bytes": 103,
+    "sha256": "e1599d1b1f63da54b07e7c03fdf8a2c998e02bbcb429375ec861a1daa0a13489"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r1.csv",
+    "bytes": 152932,
+    "sha256": "5e414798ec990dc9e6ac1dcdd381a64a2cba5adcbbf4ed1bd29ac6ce8675f242"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r1.csv.ready",
+    "bytes": 103,
+    "sha256": "bf9a87168ceae3ac485b580fa03a0b76adf64560c56a056cbcfa3f1520d477c1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r2.csv",
+    "bytes": 152910,
+    "sha256": "4fc9c9338d2daa5816586f65501f454445b851b799b680cd5fbb1bcd68d0295f"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r2.csv.ready",
+    "bytes": 103,
+    "sha256": "930b604ffca2b13a17e922b81bbbd90a617034ccd3aafe08f6a22e53fa906520"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r3.csv.part",
+    "bytes": 56012,
+    "sha256": "34c7cc76982863af06b64c153fdfcebec3cad83d3c79e6d6be51457f11e0445f"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_build_r0.done",
+    "bytes": 638,
+    "sha256": "9844426307efe6e34749edd362acd3025e17346134a1f860e26014ea4f2335c0"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_correctness.done",
+    "bytes": 645,
+    "sha256": "1100bbeb6024e929560124f5e3d6e5fbef0e08897754a05784d15b815b9219df"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_method.done",
+    "bytes": 446,
+    "sha256": "dccaaf0edd48baa89d524ec6f72e23e7f0a6b95506ef7bc65efbe95852f2ac7f"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_timing_r1.done",
+    "bytes": 746,
+    "sha256": "a255192b3e72517da31d59c651a02dd948c8d134ecab12fc2f434bdc9b5a847a"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_timing_r2.done",
+    "bytes": 746,
+    "sha256": "99bc509b19c1a234cb084ef47f3ef137cb1a294e78f8a37e33b5f25d45621d86"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_timing_r3.done",
+    "bytes": 746,
+    "sha256": "c9c82edd70bb56bc8219bec8fe4e8f3e92b52aa0945315d5ed10ad6f0d5a085a"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_timing_r4.done",
+    "bytes": 747,
+    "sha256": "db3a318d60fda9ccc29ddeb54b3ace378ecbe97b040e46355af459c9be617cf7"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/bmtree_timing_r5.done",
+    "bytes": 746,
+    "sha256": "75f9878955dd32eed4ce7b1fb7bf50650b395f102c1544b7d524e9fc88b22043"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_build_r0.done",
+    "bytes": 622,
+    "sha256": "f6dbfb709b997253c96ce513c11370e36eadbd46d0c5af683dec2153f09ff2d0"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_correctness.done",
+    "bytes": 640,
+    "sha256": "e2ec76a2424c1d6cab6a5b8c0d9bf7133ed8ee21f7f2f29470dc5e97cf007250"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_method.done",
+    "bytes": 419,
+    "sha256": "b6b827f7cc98cccec6642cbcbdf848afe2595046359b850710fbfe11d9a1f874"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_timing_r1.done",
+    "bytes": 742,
+    "sha256": "5472f657f2f7a97a3f92afc01c23cf6b7d330d953c69e63318d46d7f62d71fa1"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_timing_r2.done",
+    "bytes": 742,
+    "sha256": "3f42587fb3530797db43a7acea90b8856bb4c0d98195e8284d42746724e8e216"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_timing_r3.done",
+    "bytes": 741,
+    "sha256": "1324ea1aa894dae40b6edd9c3d751dd80a3384180be8166ffc52e60ce1fd8c10"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_timing_r4.done",
+    "bytes": 742,
+    "sha256": "725c135d501eafbd5b032ec861344961980dd94b6761aa04dfcc11d8c96d5837"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lisa_timing_r5.done",
+    "bytes": 743,
+    "sha256": "febb4e3063a3dfc25bca7007edf5c85d2c14aab89f2b08eccae2fceb13f15d6f"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_build_r0.done",
+    "bytes": 627,
+    "sha256": "c2255dd66226369a7980f8f5f45a32337aa5fa80674d3b677d151c88f4b654bc"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_correctness.done",
+    "bytes": 642,
+    "sha256": "ab7c78896483fee7f64780cbcdc1980fbe60c647c11c642be7add78e6cf8c546"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_method.done",
+    "bytes": 438,
+    "sha256": "9920ebcca4165b631e4335f22e2716eb468e4f11c3a37b52a203352d81ccea17"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_timing_r1.done",
+    "bytes": 744,
+    "sha256": "cd0f4cc516a265d579544735fcc642cfc4eb82547f89497c990b8ffc7e9c075c"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_timing_r2.done",
+    "bytes": 744,
+    "sha256": "a30591043ba74751cb5a635d131e07441c5fe8ceb3ea2013fdd618b041b44c20"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_timing_r3.done",
+    "bytes": 744,
+    "sha256": "6fa795b87f3b1d6e4c69e2f83ab87a684f47b6a082851ba3576d1e9e76aa8ffe"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_timing_r4.done",
+    "bytes": 745,
+    "sha256": "a53ad0d8fa33f67bcd09f87481d3fc6fdaca148a61aa1a42f4663eaaaccfe7b9"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/lmsfc_timing_r5.done",
+    "bytes": 745,
+    "sha256": "aa1b27d2e5cde0609c9dfd62f8b1f8966246c37a4413746fddc3ae4c50ee02c3"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/postgis_gist_build_r0.done",
+    "bytes": 193,
+    "sha256": "82b752bc25a0d883883587f843353d7d4b0d94523976c29efb9fe45a63045c16"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/postgis_gist_correctness.done",
+    "bytes": 657,
+    "sha256": "29d0e73be96d0365a9202c176b35e8bf1d52577ce180847d09903780c949b931"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_build_r0.done",
+    "bytes": 635,
+    "sha256": "cbe4881f819dede5572af803a73b88a57f45f08fee354934137f050f9b3ca9f3"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_correctness.done",
+    "bytes": 647,
+    "sha256": "9464895274ed43223d9f73d78e6ba6af91f684996bb8f6a7a2b2f248406b6c31"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_method.done",
+    "bytes": 436,
+    "sha256": "e773c4e235977c5589204a902470ce24b9f7a1eebac0f1b40a843514db436730"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_timing_r1.done",
+    "bytes": 748,
+    "sha256": "7408c867ba9263e976038e5ed1b4ddc973ff22d896284b56fafa9f8dfc8003ee"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_timing_r2.done",
+    "bytes": 748,
+    "sha256": "f6f7b775836b14e00bbf8130d8511f65e99404bb14aeac0f8616d927a35bee39"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_timing_r3.done",
+    "bytes": 747,
+    "sha256": "e0b30c76327606a8a7fdd834f0dbb754c6e270ae6f1bd6d7a6a6169db3609ca3"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_timing_r4.done",
+    "bytes": 749,
+    "sha256": "e5d3ad3518983be074eba7a3a8563b54f7caa3fef49678528deac4fe083270f8"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/tsunami_timing_r5.done",
+    "bytes": 749,
+    "sha256": "cdeed79be8acb2f0c7cb80c62bc4ecc29946b28b6f2cb2e1e00924de248cec0b"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/load.done",
+    "bytes": 158,
+    "sha256": "cd3290c7f8ba16ad857119e1091ff9913e9a0fa8135ef09437f1176b27b59726"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/normalize.done",
+    "bytes": 1101,
+    "sha256": "1fb9b8e704fb0db66060d54abe39f875644ff299d8cf6a541c145ddcfce91a15"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_gist_build_r0.done",
+    "bytes": 193,
+    "sha256": "98755c12fc8bc1caf7892e15b65e5346b6063e574c720aaf3f968ee8d1bc2d8e"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_gist_correctness.done",
+    "bytes": 657,
+    "sha256": "40fc061307c40fe2e6f027d9d8bb4a64315163a6420be6d46d953917a9d6fe07"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_gist_timing_r1.done",
+    "bytes": 748,
+    "sha256": "996b76967ec0fa9ed2aa93579b11292bcfd36101777b1e34ec5f33ceae2cd545"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_gist_timing_r2.done",
+    "bytes": 749,
+    "sha256": "968f1bd19224bcebd538a48cfdf586900e15d528005a0de67cc188cbab09ce37"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_gist_timing_r3.done",
+    "bytes": 749,
+    "sha256": "91db705fe750c57a3bb9ed900dcc7accea3ea4192a48b9c4551310306d0de105"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/postgis_reference.done",
+    "bytes": 1753,
+    "sha256": "fb89351728c499ea168b47857801b552fc54a171fd257d5bcc12af806a0eda37"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/qmap_uniform_qmf_method.done",
+    "bytes": 373,
+    "sha256": "66ca6f8c2720c2a5843ee74cdd22bd0677dacdf702dd7e8e0c14b90c59d23c04"
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/gowalla_2d_4p2G/queries.done",
+    "bytes": 2475,
+    "sha256": "6e7cf6b780cb5b60eb73071d06918a9f568f8675417f1f9db425f8cf87e3afe1"
+  }
+]

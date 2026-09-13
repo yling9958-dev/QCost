@@ -1,0 +1,62 @@
+{
+  "elapsed_seconds": 0.02,
+  "peak_rss_kib": 9820.0,
+  "guard_aggregate_peak_rss_kib": 9820.0,
+  "VmPeak_bytes": 19718144,
+  "major_faults": 0,
+  "shared_ceiling_bytes": 25769803776,
+  "parent_peak_sampled_bytes": 743505920,
+  "parent_memory_peak_bytes": 24207384576,
+  "experiment_swap_peak_bytes": 0,
+  "parent_cgroup": {
+    "unit": "qmf-paper.slice",
+    "path": "/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "739782656",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 739782656,
+      "memory.peak": 24207384576,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 268638,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 268638,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=10563654401\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=10563609480"
+    }
+  },
+  "phase": "baseline_verification",
+  "timestamp": 1789265388.393499,
+  "reason": null,
+  "trigger_receipt": null,
+  "systemd_exit": {
+    "Result": "success",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": "",
+    "ActiveState": "inactive"
+  },
+  "user_journal": "",
+  "swap_pages_in": 0,
+  "swap_pages_out": 0,
+  "status": "PASS"
+}

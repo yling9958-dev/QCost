@@ -1,0 +1,126 @@
+[
+  {
+    "path": "/var/tmp/qmf_analyze_failure_20260911.log",
+    "allocated_bytes": 4096
+  },
+  {
+    "path": "/var/tmp/qmf-four-dataset-final-20260911",
+    "allocated_bytes": 8192
+  },
+  {
+    "path": "/var/tmp/qmf-standalone-unit-20260910",
+    "allocated_bytes": 20480
+  },
+  {
+    "path": "/var/tmp/qmf-memory-equivalence-20260911",
+    "allocated_bytes": 28672
+  },
+  {
+    "path": "/var/tmp/qmf-standalone-generated-cache-20260910",
+    "allocated_bytes": 57344
+  },
+  {
+    "path": "/var/tmp/qmf_before_paper_protocol_reset_20260911",
+    "allocated_bytes": 409600
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/archive/cleanup_20260912",
+    "allocated_bytes": 1835008
+  },
+  {
+    "path": "/var/tmp/qmf-public-zip-test",
+    "allocated_bytes": 6881280
+  },
+  {
+    "path": "/var/tmp/qmf-public-zip-test-prepackage-script-fix",
+    "allocated_bytes": 6881280
+  },
+  {
+    "path": "/var/tmp/qmf_repro_clean_test",
+    "allocated_bytes": 24436736
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_full_20260910",
+    "allocated_bytes": 44302336
+  },
+  {
+    "path": "/var/tmp/qmf-repro-native",
+    "allocated_bytes": 50167808
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/geolife_full_memfix_20260911",
+    "allocated_bytes": 53215232
+  },
+  {
+    "path": "/var/tmp/qmf-recovery-validation.LZX8yw",
+    "allocated_bytes": 104861696
+  },
+  {
+    "path": "/var/tmp/qmf-recovery-clean-test-20260910-U1ofRK",
+    "allocated_bytes": 104865792
+  },
+  {
+    "path": "/var/tmp/qmf-repro-input",
+    "allocated_bytes": 104865792
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911",
+    "allocated_bytes": 111673344
+  },
+  {
+    "path": "/var/tmp/qmf-standalone-isolated-test",
+    "allocated_bytes": 111730688
+  },
+  {
+    "path": "/var/tmp/qmf-final-zip-test",
+    "allocated_bytes": 111738880
+  },
+  {
+    "path": "/var/tmp/qmf-final-zip-test-prepackage-script-fix",
+    "allocated_bytes": 111738880
+  },
+  {
+    "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_final_20260911",
+    "allocated_bytes": 185335808
+  },
+  {
+    "path": "/var/tmp/qmf-four-dataset-full-20260910",
+    "allocated_bytes": 1186455552
+  },
+  {
+    "path": "/var/tmp/qmf-repro-clean-runtime",
+    "allocated_bytes": 1990799360
+  },
+  {
+    "path": "/var/tmp/qmf-final-zip-runtime-prepackage-script-fix",
+    "allocated_bytes": 2103066624
+  },
+  {
+    "path": "/var/tmp/qmf-standalone-runtime-20260910",
+    "allocated_bytes": 2103136256
+  },
+  {
+    "path": "/var/tmp/qmf-repro-final-runtime",
+    "allocated_bytes": 2103631872
+  },
+  {
+    "path": "/var/tmp/qmf-final-zip-runtime-20260910",
+    "allocated_bytes": 2104508416
+  },
+  {
+    "path": "/var/tmp/qmf-repro-accepted-runtime",
+    "allocated_bytes": 2123427840
+  },
+  {
+    "path": "/var/tmp/qmf-geolife-full-memfix-20260911",
+    "allocated_bytes": 2240684032
+  },
+  {
+    "path": "/var/tmp/qmf-repro-20260910",
+    "allocated_bytes": 5004324864
+  },
+  {
+    "path": "/var/tmp/qmf-paper-protocol-20260911",
+    "allocated_bytes": 64492474368
+  }
+]

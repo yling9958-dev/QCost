@@ -1,0 +1,21 @@
+{
+  "dataset": "skewed_2d",
+  "query_count": 6300,
+  "S1_count": 1000,
+  "S2_count": 1000,
+  "S3_count": 1000,
+  "correctness_count": 1000,
+  "warmup_count": 300,
+  "train_count": 1000,
+  "validation_count": 1000,
+  "seed": 20260910,
+  "query_sha256": "66fc69a347738af95f89f800f5894c9356b79ff8b036a840c7e280966b8d58dd",
+  "target_selectivities": {
+    "S1": 0.0001,
+    "S2": 0.001,
+    "S3": 0.01
+  },
+  "expected_count_policy": "exact ID/reference evidence only for correctness; performance result counts are observations, not independent truth",
+  "selectivity_policy": "target rectangle area fraction; actual point selectivity may differ, including zero",
+  "generator": "PCG64 uniform bounds centers; aspects .5/1/2; clipped edges; float32 midpoint boundaries"
+}

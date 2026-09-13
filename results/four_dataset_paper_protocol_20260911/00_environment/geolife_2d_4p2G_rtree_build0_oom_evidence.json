@@ -1,0 +1,13 @@
+{
+  "parent_memory_events": {
+    "low": 0,
+    "high": 268576,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "kernel_lines": [],
+  "journal_access_error": "",
+  "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion"
+}

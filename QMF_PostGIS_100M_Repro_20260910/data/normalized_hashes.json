@@ -1,0 +1,22 @@
+{
+  "dataset_id": "geolife_100m",
+  "id_mapping": "zero_based_source_data_row_ordinal",
+  "interpretation": "approximately_100_MiB_raw_prefix",
+  "latitude_max": 64.751993,
+  "latitude_min": 1.2724579,
+  "longitude_max": 175.61915,
+  "longitude_min": -179.461837,
+  "normalization": "shared_minmax_affine_to_unit_square",
+  "normalized_points_sha256": "6d7978b6703e74e2896dbefe0080540f50325a1e7db047faaf43a50cde2cf22a",
+  "point_count": 4197223,
+  "raw_points_sha256": "31f7d4ebbb1392ff6b72c16e7d095b1ca00464e7baa6bcb8b08836d55037b799",
+  "selected_coordinate_lines_sha256": "9f665ba6d5b5c057b1e1319ab728fc4569d7acc2c9053af00c602b05eff557fc",
+  "selected_prefix_sha256": "56a07a638db478485ba5e78ff45bc7300987ef45d7d4a319666a5dabbcaa555e",
+  "selected_raw_bytes": 104857576,
+  "selection_procedure": "complete_records_in_source_order_prefix",
+  "source_file_bytes": 4521210875,
+  "source_file_sha256": "98619de96d873e54587ee8cdec9b20162e077b33305b420075494992abbe5c1a",
+  "target_raw_bytes": 104857600,
+  "unique_coordinate_count": 3956264,
+  "unique_point_id_count": 4197223
+}

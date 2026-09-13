@@ -1,0 +1,93 @@
+schema_version: 1
+experiment: postgis_100m_pilot_20260902
+base_commit: e9db726b8b352c4d9de6c028ede73845f21cfef9
+stage_a_manifest: expected/stage_a_original.sha256
+qmf:
+  runtime_method: qmap_uniform_qmf
+  display_name: QMF-Index
+  search_mode: uniform_qmf
+  lookahead_depth: 3
+  top_k: 4
+  maximum_configurations: 16384
+  receding_horizon_root_commit: true
+  online_quantum_execution: false
+  minimum_lookahead_points: 4096
+  max_depth: 8
+  min_leaf_size: 256
+  max_leaves: 128
+  budget_sqrt_factor: 2.0
+  beta_leaf: 1.2779084295340111e-09
+  beta_point: 3.428255707467659
+  r4_checkpoint: config/r4.pt
+  r4_checkpoint_sha256: 0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d
+dataset:
+  interpretation: approximately_100_MiB_raw_prefix
+  source: data/geolife_100m.csv
+  target_raw_bytes: 104857600
+  selection: complete_records_in_source_order_prefix
+  id_mapping: zero_based_source_data_row_ordinal
+  learned_index_preprocessing: shared_minmax_affine_to_unit_square
+  table: geolife_100m
+  srid: 4326
+queries:
+  generator_seed: 20260902
+  center_selection: deterministic_sampled_data_points
+  selectivity_definition: target_point_fraction_via_exact_kth_neighbor_rectangle
+  boundary_policy: midpoint_between_adjacent_float32_coordinate_levels
+  train_queries: 1200
+  validation_queries: 1200
+  correctness_queries: 5000
+  warmup_queries: 1000
+  performance_queries_per_selectivity: 5000
+  selectivity_groups:
+    S1: 0.0001
+    S2: 0.001
+    S3: 0.01
+  aspect_ratios:
+  - 0.5
+  - 1.0
+  - 2.0
+benchmark:
+  methods:
+  - display: QMF-Index
+    runtime: qmap_uniform_qmf
+  - display: PostGIS-GiST
+    runtime: postgis_gist
+  - display: LISA
+    runtime: lisa
+  - display: Flood
+    runtime: flood
+  - display: Tsunami
+    runtime: tsunami
+  - display: LMSFC
+    runtime: lmsfc
+  - display: BMTree
+    runtime: bmtree
+  - display: Boost-R*-tree
+    runtime: rtree
+  build_repetitions: 3
+  query_repetitions: 5
+  correctness_queries: 5000
+  warmup_queries: 1000
+  measured_queries: 15000
+  bootstrap_samples: 10000
+  bootstrap_seed: 20260902
+  tied_best_max_relative_gap: 0.05
+  single_client: true
+  single_worker: true
+  warm_cache: true
+  prepared_statements: true
+  fixed_affinity: true
+  build_timeout_seconds: 14400
+  rsmi_build_timeout_seconds: 1800
+  query_timeout_seconds: 43200
+postgresql:
+  database: qmf_repro
+  table: geolife_100m
+  extension: qmap_benchmark
+  jit: false
+  max_parallel_workers_per_gather: 0
+paths:
+  work_root: runtime
+  output: results/current
+  query_csv: queries/geolife_100m_queries.csv

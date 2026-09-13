@@ -1,0 +1,20 @@
+{
+  "completed_at": 1789143503.5545259,
+  "payload": {
+    "exact": 1000,
+    "missing": 0,
+    "extra": 0
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/tsunami.csv",
+      "bytes": 45159,
+      "sha256": "e63b7492d59b53735460d888173b94bd448b82acae3c7590435e3eacf8a02c0e"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/tsunami_summary.json",
+      "bytes": 295,
+      "sha256": "e9f7735984ad5ccdfad89ae83562619a9ce5b72bf5b23105324d11287ff2ed7e"
+    }
+  ]
+}

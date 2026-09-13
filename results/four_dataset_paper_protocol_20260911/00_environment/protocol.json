@@ -1,0 +1,30 @@
+{
+  "train": 1000,
+  "validation": 1000,
+  "correctness": 1000,
+  "warmup": 300,
+  "performance": 3000,
+  "total": 6300,
+  "performance_repetitions": 5,
+  "build_repetitions": 1,
+  "seed": 20260910,
+  "reference_precomputation": false,
+  "reference_query_denominator": 1000,
+  "MemoryHigh": 23622320128,
+  "MemoryMax": 25769803776,
+  "MemorySwapMax": 0,
+  "host_reserve": 3758096384,
+  "qmf_memory_engineering_production_change": false,
+  "qmf_algorithm_changed": false,
+  "stage_a": "historical 37/37 attestation plus current packaged R4 and production/config SHA",
+  "performance_reference_counts": "not precomputed; observed counts remain in raw timings",
+  "correctness_semantics": "exact SQL truth/candidate counts and bidirectional EXCEPT IDs; count kernel checked too",
+  "correctness_infrastructure": "enable_hashagg=off only in correctness session to bound SetOp memory",
+  "timing_policy": "single persistent connection/worker; prepared statements; all five repetitions; no Linux cache flush",
+  "peak_memory_definition": "same original process estimator: maximum build worker RSS or query client RSS plus backend peak; shared cgroup peak is diagnostic",
+  "timeouts_s": {
+    "build": 14400,
+    "correctness": 43200,
+    "timing": 43200
+  }
+}

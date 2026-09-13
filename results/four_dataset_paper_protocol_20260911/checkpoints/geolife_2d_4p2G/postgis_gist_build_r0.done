@@ -1,0 +1,10 @@
+{
+  "completed_at": 1789125692.5104396,
+  "payload": {
+    "build_seconds": 1389.09,
+    "serialized_bytes": 10347552768,
+    "peak_rss_kib": 182512.0,
+    "repetition": 0
+  },
+  "files": []
+}

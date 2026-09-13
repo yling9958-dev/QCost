@@ -1,0 +1,9 @@
+{
+  "completed_at": 1789181771.5705132,
+  "payload": {
+    "points": 181000000,
+    "id_mapping": "source ordinal from identity START 0",
+    "adopted_restore_worker": "qmf-paper-worker-2850541-6"
+  },
+  "files": []
+}

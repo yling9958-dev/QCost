@@ -1,0 +1,18 @@
+{
+  "completed_at": 1789150389.6175175,
+  "payload": {
+    "Build_s": 60.945422118,
+    "IndexSize_MiB": 4833.221706390381,
+    "Mean_ms": 124.11348303893334,
+    "P95_ms": 1163.3157391999719,
+    "P99_ms": 1938.14333328,
+    "QPS": 8.057142346785229,
+    "PeakMemory_MiB": 8322.87890625,
+    "Method": "LMSFC",
+    "Correctness": "1000/1000 exact",
+    "Status": "PASS",
+    "reason": "",
+    "BUILD_REPETITIONS": 1
+  },
+  "files": []
+}

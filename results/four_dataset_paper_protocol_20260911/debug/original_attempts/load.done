@@ -1,0 +1,16 @@
+{
+  "completed_at": 1789123927.9303193,
+  "payload": {
+    "points": 181000000,
+    "reused_load": true,
+    "original_checkpoint": {
+      "completed_at": 1789092955.6232193,
+      "payload": {
+        "points": 181000000,
+        "id_mapping": "source ordinal from identity START 0"
+      },
+      "files": []
+    }
+  },
+  "files": []
+}

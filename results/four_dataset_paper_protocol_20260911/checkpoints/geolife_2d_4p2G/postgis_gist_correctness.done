@@ -1,0 +1,20 @@
+{
+  "completed_at": 1789132219.5497992,
+  "payload": {
+    "exact": 1000,
+    "missing": 0,
+    "extra": 0
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/postgis_gist.csv",
+      "bytes": 50159,
+      "sha256": "1d5d160608a7e5715c582b0229597fe8d23819ab70962220baae860dda3762de"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/postgis_gist_summary.json",
+      "bytes": 104,
+      "sha256": "0da89f61b2f227058b0548a39cc0ea076fb1a49c4fc8f9d2f65ece1d7879f253"
+    }
+  ]
+}

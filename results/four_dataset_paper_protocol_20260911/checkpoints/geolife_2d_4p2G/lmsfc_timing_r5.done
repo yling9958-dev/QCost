@@ -1,0 +1,26 @@
+{
+  "completed_at": 1789150389.5825021,
+  "payload": {
+    "repetition": 4,
+    "backend_peak_rss_kib": 7098992,
+    "client_peak_rss_kib": 10936,
+    "fairness": {
+      "method": "lmsfc",
+      "load_count": 1,
+      "query_count": 15300,
+      "query_rebuild_count": 0,
+      "query_reload_count": 0,
+      "query_training_count": 0,
+      "query_external_process_count": 0,
+      "query_python_count": 0,
+      "query_quantum_count": 0
+    }
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/geolife_2d_4p2G/lmsfc/query_latency_raw.csv.zst",
+      "bytes": 122891,
+      "sha256": "d4e5e18be6f21c901776f11df1ea66738af03adf3adaf967b124ea2bdb2999bb"
+    }
+  ]
+}

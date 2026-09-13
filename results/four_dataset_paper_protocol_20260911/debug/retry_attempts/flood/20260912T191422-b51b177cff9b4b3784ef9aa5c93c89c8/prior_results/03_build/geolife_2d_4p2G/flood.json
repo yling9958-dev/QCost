@@ -1,0 +1,10 @@
+[
+  {
+    "build_seconds": 101.508898069,
+    "serialized_bytes": 2172000009,
+    "peak_rss_kib": 14280252.0,
+    "index_path": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/flood/rep0/flood.idx",
+    "index_sha256": "267339f602a0f9a81ab507868d75b0d51a32877edaee3c44d71ef073f89cddb0",
+    "repetition": 0
+  }
+]

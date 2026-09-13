@@ -1,0 +1,6 @@
+.pytest_cache/**
+data_cache/**/*.csv
+dataest/**
+dist/**
+archive/**
+QMF_PostGIS_100M_Repro_20260910/**/*.csv

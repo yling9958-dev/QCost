@@ -1,0 +1,18 @@
+{
+  "completed_at": 1789158518.8690605,
+  "payload": {
+    "Build_s": 3965.2997938999997,
+    "IndexSize_MiB": 4865.586860656738,
+    "Mean_ms": 29.4108838396,
+    "P95_ms": 15.534094699999995,
+    "P99_ms": 162.4415463300083,
+    "QPS": 34.001018311920284,
+    "PeakMemory_MiB": 17012.62890625,
+    "Method": "BMTree",
+    "Correctness": "1000/1000 exact",
+    "Status": "PASS",
+    "reason": "",
+    "BUILD_REPETITIONS": 1
+  },
+  "files": []
+}

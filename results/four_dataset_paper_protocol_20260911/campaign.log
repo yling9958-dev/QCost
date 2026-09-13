@@ -1,0 +1,92 @@
+ARCHIVE_MANIFEST_PASS=YES; files=153
+geolife_2d_4p2G QMF: RESOURCE_BLOCKED_MEMORY HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion
+geolife_2d_4p2G PostGIS-GiST: BUILD_FAILED exit-code: server closed the connection unexpectedly
+	This probably means the server terminated abnormally
+	before or while processing the request.
+
+
+geolife_2d_4p2G LISA: PASS 
+geolife_2d_4p2G Flood: RESOURCE_BLOCKED_MEMORY HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion
+geolife_2d_4p2G Tsunami: PASS 
+geolife_2d_4p2G LMSFC: PASS 
+geolife_2d_4p2G BMTree: PASS 
+geolife_2d_4p2G Boost-Rstar: BUILD_FAILED signal: 
+GEOLIFE FINAL RESULT
+181,000,000 POINTS
+
+| Method | Build(s) | Size(MiB) | Mean(ms) | P95(ms) | P99(ms) | QPS | PeakMem(MiB) | Correctness | Status |
+|---|---:|---:|---:|---:|---:|---:|---:|---|---|
+| QMF-Index | N/A | N/A | N/A | N/A | N/A | N/A | 11340.3 | NOT_RUN | RESOURCE_BLOCKED_MEMORY |
+| PostGIS GiST | 1389.09 | 9868.2 | N/A | N/A | N/A | N/A | 216.93 | 1000/1000 exact | BUILD_FAILED |
+| LISA | 83.774 | N/A | 54.144 | 21.886 | 348.321 | 18.4693 | 7903.09 | 1000/1000 exact | PASS |
+| Flood | 99.7026 | N/A | N/A | N/A | N/A | N/A | 20343.9 | NOT_RUN | RESOURCE_BLOCKED_MEMORY |
+| Tsunami | 34.3669 | 4142.76 | 59.9498 | 95.8028 | 639.179 | 16.6806 | 7718.75 | 1000/1000 exact | PASS |
+| LMSFC | 60.9454 | 4833.22 | 124.113 | 1163.32 | 1938.14 | 8.05714 | 8322.88 | 1000/1000 exact | PASS |
+| BMTree | 3965.3 | 4865.59 | 29.4109 | 15.5341 | 162.442 | 34.001 | 17012.6 | 1000/1000 exact | PASS |
+| Boost R*-tree | N/A | N/A | N/A | N/A | N/A | N/A | 22616.2 | NOT_RUN | BUILD_FAILED |
+
+QMF-INDEX — GeoLife
+
+Build_s = N/A
+
+IndexSize_MiB = N/A
+
+Mean_ms = N/A
+
+P95_ms = N/A
+
+P99_ms = N/A
+
+QPS = N/A
+
+PeakMemory_MiB = 11340.3
+
+Correctness = NOT_RUN
+
+Missing = N/A
+
+Extra = N/A
+
+Ranks:
+
+Build_s = N/A/4
+
+IndexSize_MiB = N/A/3
+
+Mean_ms = N/A/4
+
+P95_ms = N/A/4
+
+P99_ms = N/A/4
+
+QPS = N/A/4
+
+PeakMemory_MiB = N/A/4
+
+QMF TOP-1 COUNT = 0 / 7
+
+Best competing method for Mean_ms = BMTree
+
+Best competing method for P95_ms = BMTree
+
+Best competing method for P99_ms = BMTree
+
+Best competing method for QPS = BMTree
+
+Build repetitions = 1. Only correctness-valid methods enter rankings. Missing measurements are N/A.
+
+QMF_ALGORITHM_CHANGED = NO
+
+gowalla_2d_4p2G QMF: BUILD_FAILED signal: 
+Traceback (most recent call last):
+  File "/media/lingyaqi/Lenovo F510/QMF/scripts/paper_eval/run.py", line 314, in <module>
+    elif args.foreground: foreground()
+  File "/media/lingyaqi/Lenovo F510/QMF/scripts/paper_eval/run.py", line 241, in foreground
+    o.run_method(row,display,runtime)
+  File "/media/lingyaqi/Lenovo F510/QMF/scripts/paper_eval/orchestrate.py", line 459, in run_method
+    monitor(query_command(row,runtime,'timing',corr,perf/'latency',summary,first),
+  File "/media/lingyaqi/Lenovo F510/QMF/scripts/paper_eval/orchestrate.py", line 157, in monitor
+    time.sleep(.1)
+  File "/media/lingyaqi/Lenovo F510/QMF/scripts/paper_eval/run.py", line 221, in interrupted
+    def interrupted(signum,frame): raise KeyboardInterrupt('Signal '+str(signum))
+KeyboardInterrupt: Signal 15

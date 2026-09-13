@@ -1,0 +1,12 @@
+262144 bytes	0.000244 GiB	/media/lingyaqi/Lenovo F510/QMF/archive/README.md
+23855104 bytes	0.022217 GiB	/media/lingyaqi/Lenovo F510/QMF/archive/code_history_20260912
+50167808 bytes	0.046722 GiB	/var/tmp/qmf-repro-native
+104865792 bytes	0.097664 GiB	/var/tmp/qmf-repro-input
+114556928 bytes	0.106689 GiB	/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911
+2240684032 bytes	2.086800 GiB	/var/tmp/qmf-geolife-full-memfix-20260911
+5708447744 bytes	5.316406 GiB	/media/lingyaqi/Lenovo F510/QMF/archive/cleanup_20260912
+64492474368 bytes	60.063297 GiB	/var/tmp/qmf-paper-protocol-20260911
+
+文件系统              1B的块         已用         可用 已用% 挂载点
+/dev/sda1      1000185266176 181563555840 818621710336   19% /media/lingyaqi/Lenovo F510
+/dev/nvme0n1p2  502392610816 398308290560  78488948736   84% /

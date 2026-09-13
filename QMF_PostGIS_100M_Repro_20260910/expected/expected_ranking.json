@@ -1,0 +1,87 @@
+{
+  "QMF_Top1": 5,
+  "total_metrics": 7,
+  "size_comparable_methods": 5,
+  "rankings": [
+    {
+      "Method": "QMF-Index",
+      "Rank_Build": "8.0",
+      "Rank_Size": "1.0",
+      "Rank_Mean": "1.0",
+      "Rank_P95": "1.0",
+      "Rank_P99": "1.0",
+      "Rank_QPS": "1.0",
+      "Rank_Memory": "5.0"
+    },
+    {
+      "Method": "PostGIS-GiST",
+      "Rank_Build": "6.0",
+      "Rank_Size": "5.0",
+      "Rank_Mean": "7.0",
+      "Rank_P95": "7.0",
+      "Rank_P99": "7.0",
+      "Rank_QPS": "7.0",
+      "Rank_Memory": "1.0"
+    },
+    {
+      "Method": "LISA",
+      "Rank_Build": "4.0",
+      "Rank_Size": "",
+      "Rank_Mean": "6.0",
+      "Rank_P95": "6.0",
+      "Rank_P99": "6.0",
+      "Rank_QPS": "6.0",
+      "Rank_Memory": "7.0"
+    },
+    {
+      "Method": "Flood",
+      "Rank_Build": "3.0",
+      "Rank_Size": "",
+      "Rank_Mean": "8.0",
+      "Rank_P95": "8.0",
+      "Rank_P99": "8.0",
+      "Rank_QPS": "8.0",
+      "Rank_Memory": "8.0"
+    },
+    {
+      "Method": "Tsunami",
+      "Rank_Build": "1.0",
+      "Rank_Size": "2.0",
+      "Rank_Mean": "5.0",
+      "Rank_P95": "5.0",
+      "Rank_P99": "4.0",
+      "Rank_QPS": "5.0",
+      "Rank_Memory": "3.0"
+    },
+    {
+      "Method": "LMSFC",
+      "Rank_Build": "2.0",
+      "Rank_Size": "3.0",
+      "Rank_Mean": "4.0",
+      "Rank_P95": "4.0",
+      "Rank_P99": "5.0",
+      "Rank_QPS": "4.0",
+      "Rank_Memory": "4.0"
+    },
+    {
+      "Method": "BMTree",
+      "Rank_Build": "7.0",
+      "Rank_Size": "4.0",
+      "Rank_Mean": "2.0",
+      "Rank_P95": "2.0",
+      "Rank_P99": "2.0",
+      "Rank_QPS": "2.0",
+      "Rank_Memory": "2.0"
+    },
+    {
+      "Method": "Boost-R*-tree",
+      "Rank_Build": "5.0",
+      "Rank_Size": "",
+      "Rank_Mean": "3.0",
+      "Rank_P95": "3.0",
+      "Rank_P99": "3.0",
+      "Rank_QPS": "3.0",
+      "Rank_Memory": "6.0"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "Cite the QMap-LI project and the baseline/data papers identified in third_party/provenance.csv. No unpublished paper title or authorship is invented here."
+title: "QMF-Index PostgreSQL/PostGIS 100 MiB Reproducibility Package"
+type: software
+authors:
+  - name: "QMap-LI project"
+version: "20260910"
+date-released: "2026-09-10"
+commit: "8b16e5ec9d1c59596c72a2bb19b37c4e3ae8aae8"

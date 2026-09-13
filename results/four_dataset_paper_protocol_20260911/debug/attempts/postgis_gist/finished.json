@@ -1,0 +1,19 @@
+{
+  "at": 1789191851.278416,
+  "result": {
+    "Build_s": 1389.09,
+    "IndexSize_MiB": 9765.796875,
+    "Mean_ms": 464.3073127646667,
+    "P95_ms": 123.71012044999988,
+    "P99_ms": 1773.4364806600024,
+    "QPS": 2.153745962012983,
+    "PeakMemory_MiB": 215.71484375,
+    "Method": "PostGIS-GiST",
+    "Correctness": "1000/1000 exact",
+    "Status": "PASS",
+    "reason": "",
+    "BUILD_REPETITIONS": 1,
+    "original_build_index_bytes": 10347552768,
+    "index_size_basis": "Actual query-ready PostgreSQL relation; original build receipt retained"
+  }
+}

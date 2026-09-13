@@ -1,0 +1,7 @@
+{
+  "at": 1789265388.9234228,
+  "attempt_id": "20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f",
+  "formal_build_timeout_s": 43200,
+  "runtime": "qmap_uniform_qmf",
+  "previous_evidence_preserved": true
+}

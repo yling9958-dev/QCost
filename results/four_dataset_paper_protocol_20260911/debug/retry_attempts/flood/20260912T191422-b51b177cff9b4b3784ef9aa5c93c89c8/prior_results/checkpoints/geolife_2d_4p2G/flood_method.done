@@ -1,0 +1,19 @@
+{
+  "completed_at": 1789193652.4989629,
+  "payload": {
+    "Build_s": 101.508898069,
+    "IndexSize_MiB": null,
+    "Mean_ms": null,
+    "P95_ms": null,
+    "P99_ms": null,
+    "QPS": null,
+    "PeakMemory_MiB": 19372.7265625,
+    "Method": "Flood",
+    "Correctness": "NOT_RUN",
+    "Status": "HOST_SAFETY_STOP",
+    "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+    "BUILD_REPETITIONS": 1,
+    "failed_phase": "correctness"
+  },
+  "files": []
+}

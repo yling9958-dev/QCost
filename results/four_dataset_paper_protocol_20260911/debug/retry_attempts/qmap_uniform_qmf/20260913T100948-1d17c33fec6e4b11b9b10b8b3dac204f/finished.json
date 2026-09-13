@@ -1,0 +1,19 @@
+{
+  "at": 1789266823.9284375,
+  "result": {
+    "Build_s": null,
+    "IndexSize_MiB": null,
+    "Mean_ms": null,
+    "P95_ms": null,
+    "P99_ms": null,
+    "QPS": null,
+    "PeakMemory_MiB": 21579.59375,
+    "Method": "QMF",
+    "Correctness": "NOT_RUN",
+    "Status": "HOST_SAFETY_STOP",
+    "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+    "BUILD_REPETITIONS": 1,
+    "failed_phase": "build"
+  },
+  "scientifically_valid": false
+}

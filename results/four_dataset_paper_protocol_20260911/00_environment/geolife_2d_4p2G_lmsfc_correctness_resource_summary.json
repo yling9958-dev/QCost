@@ -1,0 +1,53 @@
+{
+  "elapsed_seconds": 3741.62,
+  "peak_rss_kib": 7247620.0,
+  "guard_aggregate_peak_rss_kib": 7332312.0,
+  "VmPeak_bytes": 8594079744,
+  "major_faults": 63,
+  "shared_ceiling_bytes": 25769803776,
+  "parent_peak_sampled_bytes": 23622578176,
+  "parent_memory_peak_bytes": 24201502720,
+  "experiment_swap_peak_bytes": 0,
+  "parent_cgroup": {
+    "unit": "qmf-paper.slice",
+    "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "8210337792",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 8189448192,
+      "memory.peak": 24201502720,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 165676,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 165676,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.08 avg300=0.28 total=576645466\nfull avg10=0.00 avg60=0.08 avg300=0.28 total=576624506"
+    }
+  },
+  "phase": "correctness",
+  "timestamp": 1789148469.0134547,
+  "reason": null,
+  "swap_pages_in": 44,
+  "swap_pages_out": 0,
+  "status": "PASS"
+}

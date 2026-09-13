@@ -1,0 +1,109 @@
+{
+  "train": 1000,
+  "validation": 1000,
+  "correctness": 1000,
+  "warmup": 300,
+  "performance": 3000,
+  "total": 6300,
+  "performance_repetitions": 5,
+  "build_repetitions": 1,
+  "seed": 20260910,
+  "reference_precomputation": false,
+  "reference_query_denominator": 1000,
+  "MemoryHigh": 23622320128,
+  "MemoryMax": 25769803776,
+  "MemorySwapMax": 0,
+  "host_reserve": 3758096384,
+  "qmf_memory_engineering_production_change": false,
+  "qmf_algorithm_changed": false,
+  "stage_a": "historical 37/37 attestation plus current packaged R4 and production/config SHA",
+  "performance_reference_counts": "not precomputed; observed counts remain in raw timings",
+  "correctness_semantics": "exact SQL truth/candidate counts and bidirectional EXCEPT IDs; count kernel checked too",
+  "correctness_infrastructure": "enable_hashagg=off only in correctness session to bound SetOp memory",
+  "timing_policy": "single persistent connection/worker; prepared statements; all five repetitions; no Linux cache flush",
+  "peak_memory_definition": "same original process estimator: maximum build worker RSS or query client RSS plus backend peak; shared cgroup peak is diagnostic",
+  "timeouts_s": {
+    "build": 14400,
+    "correctness": 43200,
+    "timing": 43200
+  },
+  "old_heavy_campaign_active": false,
+  "goal_guardian_active": false,
+  "normalized_geolife_sha": "PASS",
+  "normalized_sha256": "ac4d4843820c5bee637b7e2bb8dc84b039477387fa79e5edb61ba1fb5a8be589",
+  "effective_parent": {
+    "unit": "qmf-paper.slice",
+    "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "30306304",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 30306304,
+      "memory.peak": 150421504,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0"
+    }
+  },
+  "postgres_child": {
+    "unit": "qmf-paper-postgres",
+    "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-postgres.service",
+    "systemd": {
+      "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice/qmf-paper-postgres.service",
+      "MemoryCurrent": "28647424",
+      "MemoryHigh": "infinity",
+      "MemoryMax": "infinity",
+      "MemorySwapMax": "infinity"
+    },
+    "kernel": {
+      "memory.current": 28647424,
+      "memory.peak": 31158272,
+      "memory.high": "max",
+      "memory.max": "max",
+      "memory.swap.current": 0,
+      "memory.swap.max": "max",
+      "memory.events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=0\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=0"
+    }
+  },
+  "worker_child_evidence": "00_environment/compile_harness_cgroup.json and every method phase cgroup record",
+  "postgres_version": "14.24 (Ubuntu 14.24-0ubuntu0.22.04.1)",
+  "postgis_version": "3.2.0"
+}

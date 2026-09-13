@@ -1,0 +1,9 @@
+{
+  "at": 1789194023.8084319,
+  "status": "HELD",
+  "methods_attempted": 8,
+  "methods_valid": 5,
+  "attempted": true,
+  "scientifically_complete": false,
+  "reason": "Repair must finish successfully with eight scientifically valid methods"
+}

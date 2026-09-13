@@ -1,0 +1,21 @@
+{
+  "completed_at": 1789173398.490758,
+  "payload": {
+    "repetition": 0,
+    "backend_peak_rss_kib": 181040,
+    "client_peak_rss_kib": 11196,
+    "fairness": "NATIVE_POSTGIS"
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r0.csv",
+      "bytes": 152905,
+      "sha256": "53ff1fbc0fd59b773bd45f5667063389108f4f17291e39de661607e157897a81"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency.r0.csv.ready",
+      "bytes": 103,
+      "sha256": "e1599d1b1f63da54b07e7c03fdf8a2c998e02bbcb429375ec861a1daa0a13489"
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+  "classification": "HOST_SAFETY_STOP",
+  "QMF_24G_EXHAUSTION_PROVEN": false,
+  "QMF_HOST_PRESSURE_OBSERVED": true,
+  "timestamp": 1789125692.1789117,
+  "timestamp_scope": "summary written after stop; journal stop at 19:21:31\u201332 +0800",
+  "phase": "build",
+  "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+  "trigger_condition": "now['available'] < 7*GIB//2; available is /proc/meminfo MemAvailable",
+  "MemAvailable_at_exact_trigger_bytes": null,
+  "MemAvailable_proven_upper_bound_exclusive_bytes": 3758096384,
+  "MemTotal_at_exact_trigger_bytes": null,
+  "memory_current_final_poll_bytes": 13134249984,
+  "memory_peak_bytes": 13996240896,
+  "memory_high_bytes": 23622320128,
+  "memory_max_bytes": 25769803776,
+  "memory_events": {
+    "low": 0,
+    "high": 0,
+    "max": 0,
+    "oom": 0,
+    "oom_kill": 0,
+    "oom_group_kill": 0
+  },
+  "MemorySwapCurrent_bytes": 0,
+  "QMF_RSS_peak_observed_bytes": 11891126272.0,
+  "QMF_RSS_exact_trigger_bytes": null,
+  "PostgreSQL_RSS_exact_trigger_bytes": null,
+  "PostgreSQL_PSS_exact_trigger_bytes": null,
+  "outside_experiment_memory_exact_trigger_bytes": null,
+  "last_periodic_sample": {
+    "elapsed_s": "356.501",
+    "rss_bytes": "10362159104",
+    "VmPeak_bytes": "13910814720",
+    "VmSwap_bytes": "0",
+    "major_faults": "1412",
+    "available_bytes": "5209817088",
+    "pswpin": "76020",
+    "pswpout": "773890",
+    "parent_memory_current": "11643150336",
+    "parent_memory_peak": "13996240896",
+    "parent_swap_current": "0"
+  },
+  "missing_evidence": "Original monitor sampled CSV approximately every 5 seconds and did not persist the triggering MemAvailable or ownership snapshot. No exact number is fabricated from an earlier sample.",
+  "source_receipt": {
+    "resource_summary": {
+      "elapsed_seconds": 357.9959939910332,
+      "peak_rss_kib": 11612428.0,
+      "guard_aggregate_peak_rss_kib": 11612428.0,
+      "VmPeak_bytes": 16806817792,
+      "major_faults": 1412,
+      "shared_ceiling_bytes": 25769803776,
+      "parent_peak_sampled_bytes": 13985484800,
+      "parent_memory_peak_bytes": 13996240896,
+      "experiment_swap_peak_bytes": 0,
+      "parent_cgroup": {
+        "unit": "qmf-paper.slice",
+        "path": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+        "systemd": {
+          "ControlGroup": "/user.slice/user-1000.slice/user@1000.service/qmf.slice/qmf-paper.slice",
+          "MemoryCurrent": "13132161024",
+          "MemoryHigh": "23622320128",
+          "MemoryMax": "25769803776",
+          "MemorySwapMax": "0"
+        },
+        "kernel": {
+          "memory.current": 13134249984,
+          "memory.peak": 13996240896,
+          "memory.high": 23622320128,
+          "memory.max": 25769803776,
+          "memory.swap.current": 0,
+          "memory.swap.max": 0,
+          "memory.events": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "memory.events.local": {
+            "low": 0,
+            "high": 0,
+            "max": 0,
+            "oom": 0,
+            "oom_kill": 0,
+            "oom_group_kill": 0
+          },
+          "memory.pressure": "some avg10=22.10 avg60=31.95 avg300=11.93 total=57191948\nfull avg10=22.10 avg60=31.95 avg300=11.93 total=57188976"
+        }
+      },
+      "phase": "build",
+      "timestamp": 1789125692.1789117,
+      "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+      "swap_pages_in": 191,
+      "swap_pages_out": 689,
+      "status": "RESOURCE_BLOCKED_MEMORY"
+    },
+    "resource_summary_sha256": "8c4385a68ee66e6d7d8113062a47cb1d6f019dda3d0ebd3a7c58f96e96080172",
+    "last_periodic_sample": {
+      "elapsed_s": "356.501",
+      "rss_bytes": "10362159104",
+      "VmPeak_bytes": "13910814720",
+      "VmSwap_bytes": "0",
+      "major_faults": "1412",
+      "available_bytes": "5209817088",
+      "pswpin": "76020",
+      "pswpout": "773890",
+      "parent_memory_current": "11643150336",
+      "parent_memory_peak": "13996240896",
+      "parent_swap_current": "0"
+    },
+    "timestamp_local": "2026-09-11T19:21:32.178912+08:00"
+  },
+  "OLD_11_3G_PRODUCTION_LIMIT_FOUND": false
+}

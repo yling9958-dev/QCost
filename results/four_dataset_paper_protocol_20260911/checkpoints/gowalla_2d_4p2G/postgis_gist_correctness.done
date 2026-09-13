@@ -1,0 +1,20 @@
+{
+  "completed_at": 1789169896.9280398,
+  "payload": {
+    "exact": 1000,
+    "missing": 0,
+    "extra": 0
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/gowalla_2d_4p2G/postgis_gist.csv",
+      "bytes": 51659,
+      "sha256": "ca182461f04db9f18a60e226a25d220dd614f74a08bfe932eea240c254c2bcbe"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/gowalla_2d_4p2G/postgis_gist_summary.json",
+      "bytes": 104,
+      "sha256": "425903c8084a1ca0f64b117760ec0fc550caef70fdd0278426db543702c74cb5"
+    }
+  ]
+}

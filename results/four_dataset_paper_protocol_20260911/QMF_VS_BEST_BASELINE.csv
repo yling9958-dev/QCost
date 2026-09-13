@@ -1,0 +1,5 @@
+Dataset,Metric,QMF,BestBaselineMethod,BestBaselineValue,QMFRelativeImprovementPercent,QMFRank
+GeoLife,Mean_ms,,BMTree,29.4108838396,,
+GeoLife,P95_ms,,BMTree,15.534094699999995,,
+GeoLife,P99_ms,,BMTree,162.4415463300083,,
+GeoLife,QPS,,BMTree,34.001018311920284,,

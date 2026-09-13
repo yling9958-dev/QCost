@@ -1,0 +1,56 @@
+{
+  "completed_at": 1789123702.1312695,
+  "payload": {
+    "dataset": "gowalla_2d_4p2G",
+    "query_count": 6300,
+    "S1_count": 1000,
+    "S2_count": 1000,
+    "S3_count": 1000,
+    "correctness_count": 1000,
+    "warmup_count": 300,
+    "train_count": 1000,
+    "validation_count": 1000,
+    "seed": 20260910,
+    "query_sha256": "218851930c1cad352f99fd0c3d68fae0cc860bf4a07541c7247c1ace927c3f1a",
+    "target_selectivities": {
+      "S1": 0.0001,
+      "S2": 0.001,
+      "S3": 0.01
+    },
+    "expected_count_policy": "exact ID/reference evidence only for correctness; performance result counts are observations, not independent truth",
+    "selectivity_policy": "target rectangle area fraction; actual point selectivity may differ, including zero",
+    "generator": "PCG64 uniform bounds centers; aspects .5/1/2; clipped edges; float32 midpoint boundaries"
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/train_normalized.csv",
+      "bytes": 98647,
+      "sha256": "8812543046258bfa1e5ba41ff834682e63d2915a9c3447243e358985735f9ed1"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/validation_normalized.csv",
+      "bytes": 108908,
+      "sha256": "637be0650a898b645df709d90761760607d9cc88080a8b74fbccfccd9da8d9b1"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/correctness_normalized.csv",
+      "bytes": 110548,
+      "sha256": "1c96e91272dc75825d1699efd5f265fbcfe026274a542b4188c082b2e7f00330"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/warmup_normalized.csv",
+      "bytes": 30069,
+      "sha256": "4ddd0baf789fc883b268df311ed44eeabffb18b1de04270e12e1605d6262c0e1"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/performance_normalized.csv",
+      "bytes": 331426,
+      "sha256": "c8db624e23c4570b0ae944053de7ce850f7aedbb07a1b012625eb175ac6fd463"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/gowalla_2d_4p2G_queries.csv",
+      "bytes": 672010,
+      "sha256": "218851930c1cad352f99fd0c3d68fae0cc860bf4a07541c7247c1ace927c3f1a"
+    }
+  ]
+}

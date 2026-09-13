@@ -1,0 +1,21 @@
+{
+  "completed_at": 1789134018.4931827,
+  "payload": {
+    "Build_s": 1389.09,
+    "IndexSize_MiB": 9868.1953125,
+    "Mean_ms": null,
+    "P95_ms": null,
+    "P99_ms": null,
+    "QPS": null,
+    "PeakMemory_MiB": 216.9296875,
+    "Method": "PostGIS-GiST",
+    "Correctness": "1000/1000 exact",
+    "Status": "OOM_KILLED",
+    "reason": "exit-code: server closed the connection unexpectedly\n\tThis probably means the server terminated abnormally\n\tbefore or while processing the request.\n\n",
+    "BUILD_REPETITIONS": 1,
+    "failed_phase": "timing",
+    "original_status": "BUILD_FAILED",
+    "classification_evidence": "debug/FOUR_METHOD_FAILURE_FORENSICS.json"
+  },
+  "files": []
+}

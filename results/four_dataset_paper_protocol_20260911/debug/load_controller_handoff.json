@@ -1,0 +1,68 @@
+{
+  "dataset": "geolife_2d_4p2G",
+  "method": "shared",
+  "phase": "load",
+  "status": "RUNNING",
+  "current_rss_GiB": 0.3115730285644531,
+  "current_vm_peak_GiB": 0.227020263671875,
+  "active_unit": "qmf-paper-worker-2850541-6",
+  "shared_ceiling_GiB": 24.0,
+  "parent_cgroup": {
+    "unit": "qmf-paper.slice",
+    "path": "/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "1694044160",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 1694044160,
+      "memory.peak": 1709641728,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 0,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=0.00 total=466\nfull avg10=0.00 avg60=0.00 avg300=0.00 total=466"
+    }
+  },
+  "parent_memory_current": 1694044160,
+  "parent_memory_peak": 1709641728,
+  "experiment_swap_peak": 0,
+  "next_phase": "complete current phase, checkpoint, advance sequentially",
+  "pid": 2850541,
+  "started_at": 1789180625.5735495,
+  "elapsed_seconds": 385.2772727012634,
+  "updated_at": 1789181010.8508224,
+  "completed_methods": [
+    "geolife_2d_4p2G:LISA",
+    "geolife_2d_4p2G:Tsunami",
+    "geolife_2d_4p2G:LMSFC",
+    "geolife_2d_4p2G:BMTree"
+  ],
+  "failed_methods": [
+    "geolife_2d_4p2G:Flood",
+    "geolife_2d_4p2G:Boost-Rstar",
+    "geolife_2d_4p2G:PostGIS-GiST",
+    "geolife_2d_4p2G:QMF",
+    "gowalla_2d_4p2G:QMF"
+  ],
+  "available_ram_GiB": 24.486042022705078
+}

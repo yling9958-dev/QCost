@@ -1,0 +1,189 @@
+{
+  "at": 1789195454.736476,
+  "processes": [
+    {
+      "pid": 951,
+      "cmd": "/usr/lib/postgresql/14/bin/postgres -D /var/lib/postgresql/14/main -c config_file=/etc/postgresql/14/main/postgresql.conf ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 964,
+      "cmd": "postgres: 14/main: checkpointer                                                                                           ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 965,
+      "cmd": "postgres: 14/main: background writer                                                                                      ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 966,
+      "cmd": "postgres: 14/main: walwriter                                                                                              ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 967,
+      "cmd": "postgres: 14/main: autovacuum launcher                                                                                    ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 968,
+      "cmd": "postgres: 14/main: stats collector                                                                                        ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 969,
+      "cmd": "postgres: 14/main: logical replication launcher                                                                           ",
+      "cgroup": "0::/system.slice/system-postgresql.slice/postgresql@14-main.service",
+      "paths": []
+    },
+    {
+      "pid": 465166,
+      "cmd": "/usr/share/code/code /home/lingyaqi/.vscode/extensions/streetsidesoftware.code-spell-checker-4.7.3/packages/_server/dist/main.cjs --node-ipc --clientProcessId=464960 ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 584365,
+      "cmd": "/usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 596382,
+      "cmd": "/usr/share/code/code /home/lingyaqi/.vscode/extensions/dbaeumer.vscode-eslint-3.0.34/server/out/eslintServer.js --node-ipc --clientProcessId=464960 ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 596406,
+      "cmd": "/usr/share/code/code /usr/share/code/resources/app/extensions/markdown-language-features/dist/serverWorkerMain --node-ipc --clientProcessId=464960 ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 622016,
+      "cmd": "/usr/share/code/code /usr/share/code/resources/app/extensions/json-language-features/server/dist/node/jsonServerMain --node-ipc --clientProcessId=464960 ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 2976622,
+      "cmd": "/usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 2980815,
+      "cmd": "/usr/bin/bash --init-file /usr/share/code/resources/app/out/vs/workbench/contrib/terminal/common/scripts/shellIntegration-bash.sh ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 3201252,
+      "cmd": "watch -n 20 \necho \"================ REPAIR SERVICE ================\"\nsystemctl --user is-active qmf-paper-geolife-repair-r2-20260912.service\nsystemctl --user show qmf-paper-geolife-repair-r2-20260912.service \\\n-p MainPID -p ActiveState -p SubState -p MemoryCurrent 2>/dev/null\n\necho\necho \"================ BENCHMARK STATUS ===============\"\nbash \"/media/lingyaqi/Lenovo F510/QMF/scripts/run_paper_benchmark.sh\" --status | head -35\n\necho\necho \"================ HOST MEMORY ====================\"\nawk \"/MemAvailable/ {\n printf \\\"MemAvailable = %.2f GiB\\n\\\", \\$2/1024/1024\n}\" /proc/meminfo\n ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 3203066,
+      "cmd": "python3 -B archive/cleanup_20260912/tools/cleanup.py inventory ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 3203069,
+      "cmd": "sudo -n /usr/bin/python3 -B /media/lingyaqi/Lenovo F510/QMF/archive/cleanup_20260912/tools/cleanup.py processes ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    },
+    {
+      "pid": 3203070,
+      "cmd": "/usr/bin/python3 -B /media/lingyaqi/Lenovo F510/QMF/archive/cleanup_20260912/tools/cleanup.py processes ",
+      "cgroup": "0::/user.slice/user-1000.slice/user@1000.service/app.slice/app-code-460967.scope",
+      "paths": [
+        "/media/lingyaqi/Lenovo F510/QMF"
+      ]
+    }
+  ],
+  "units": [
+    {
+      "command": [
+        "systemctl",
+        "--user",
+        "list-units",
+        "--all",
+        "--plain",
+        "--no-pager",
+        "--no-legend"
+      ],
+      "exit": 0,
+      "output": "qmf-four-full-20260910.service                                                                             loaded    failed   failed    /usr/bin/python3 -B /media/lingyaqi/Lenovo F510/QMF/scripts/full_eval/orchestrate.py --foreground\nqmf-paper-worker-709593-32.service                                                                         loaded    failed   failed    /usr/bin/time -f %e,%M,%F -o /var/tmp/qmf-paper-protocol-20260911/logs/gowalla_2d_4p2G_postgis_gist_timing.rusage taskset -c 0 /var/tmp/qmf-paper-protocol-20260911/qmf_postgres_full --conninfo dbname=qmf_full application_name=qmf_full_postgis_gist --method postgis_gist --table evaluation --queries /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/gowalla_2d_4p2G_queries.csv --repetitions 5 --phase timing --start-repetition 0 --index-root /var/tmp/qmf-paper-protocol-20260911/active/gowalla_2d_4p2G/indexes --source-xmin -176.30859375 --source-ymin -90.0 --source-xmax 177.4624908 --source-ymax 90.0 --correctness-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/gowalla_2d_4p2G/postgis_gist.csv --latency-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/05_performance/gowalla_2d_4p2G/postgis_gist/latency --summary-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/gowalla_2d_4p2G/postgis_gist_summary.json\nqmf-worker-688779.service                                                                                  loaded    failed   failed    /usr/bin/time -f %e,%M,%F -o /var/tmp/qmf-geolife-full-memfix-20260911/logs/geolife_2d_4p2G_postgis_gist_correctness.rusage /usr/bin/env PGOPTIONS=-c enable_hashagg=off taskset -c 0 /var/tmp/qmf-geolife-full-memfix-20260911/qmf_postgres_full --conninfo dbname=qmf_full application_name=qmf_full_postgis_gist --method postgis_gist --table evaluation --queries /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_final_20260911/geolife_2d_4p2G/evidence/02_queries/geolife_2d_4p2G/geolife_2d_4p2G_queries.csv --repetitions 5 --phase correctness --start-repetition 0 --index-root /var/tmp/qmf-geolife-full-memfix-20260911/active/geolife_2d_4p2G/indexes --source-xmin -179.9695933 --source-ymin 1.044024 --source-xmax 179.9969416 --source-ymax 64.751993 --correctness-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_final_20260911/geolife_2d_4p2G/evidence/04_correctness/geolife_2d_4p2G/postgis_gist.csv --latency-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_final_20260911/geolife_2d_4p2G/evidence/05_performance/geolife_2d_4p2G/postgis_gist/latency --summary-output /media/lingyaqi/Lenovo F510/QMF/results/four_dataset_final_20260911/geolife_2d_4p2G/evidence/04_correctness/geolife_2d_4p2G/postgis_gist_summary.json\nqmf-geolife-memfix.slice                                                                                   loaded    inactive dead      Slice /qmf/geolife/memfix\nqmf-geolife.slice                                                                                          loaded    inactive dead      Slice /qmf/geolife\nqmf-paper.slice                                                                                            loaded    inactive dead      Slice /qmf/paper\nqmf.slice                                                                                                  loaded    inactive dead      Slice /qmf"
+    },
+    {
+      "command": [
+        "systemctl",
+        "list-units",
+        "--all",
+        "--plain",
+        "--no-pager",
+        "--no-legend"
+      ],
+      "exit": 0,
+      "output": "qmf-paper.slice                                                                                            loaded    active   active    Slice /qmf/paper\nqmf.slice                                                                                                  loaded    active   active    Slice /qmf"
+    }
+  ],
+  "swap": {
+    "/sys/fs/cgroup/qmf.slice/memory.swap.current": "0",
+    "/sys/fs/cgroup/qmf.slice/qmf-paper.slice/memory.swap.current": "0"
+  },
+  "lsof_runtime": {
+    "command": [
+      "sudo",
+      "-n",
+      "lsof",
+      "+D",
+      "/var/tmp/qmf-paper-protocol-20260911"
+    ],
+    "exit": 1,
+    "output": "lsof: WARNING: can't stat() fuse.portal file system /run/user/1000/doc\n      Output information may be incomplete.\nlsof: WARNING: can't stat() fuse.gvfsd-fuse file system /run/user/1000/gvfs\n      Output information may be incomplete.\n"
+  },
+  "fuser_mount_scope_only": {
+    "command": [
+      "sudo",
+      "-n",
+      "fuser",
+      "-vm",
+      "/var/tmp/qmf-paper-protocol-20260911"
+    ],
+    "exit": 0,
+    "output": "                     \u7528\u6237     \u8fdb\u7a0b\u53f7 \u6743\u9650   \u547d\u4ee4\n/var/tmp/qmf-paper-protocol-20260911:\n                     root     kernel swap  /swapfile\n                     root     kernel mount /\n                     root          1 .rce. systemd\n                     root          2 .rc.. kthreadd\n                     root          3 .rc.. pool_workqueue_release\n                     root          4 .rc.. kworker/R-rcu_g\n                     root          5 .rc.. kworker/R-rcu_p\n                     root          6 .rc.. kworker/R-slub_\n                     root          7 .rc.. kworker/R-netns\n                     root          9 .rc.. kworker/0:0H-events_highpri\n                     root         12 .rc.. kworker/R-mm_pe\n                     root         13 .rc.. rcu_tasks_kthread\n                     root         14 .rc.. rcu_tasks_rude_kthread\n                     root         15 .rc.. rcu_tasks_trace_kthread\n                     root         16 .rc.. ksoftirqd/0\n                     root         17 .rc.. rcu_preempt\n                     root         18 .rc.. migration/0\n                     root         19 .rc.. idle_inject/0\n                     root         20 .rc.. cpuhp/0\n                     root         21 .rc.. cpuhp/1\n                     root         22 .rc.. idle_inject/1\n                     root         23 .rc.. migration/1\n                     root         24 .rc.. ksoftirqd/1\n                     root         26 .rc.. kworker/1:0H-events_highpri\n                     root         27 .rc.. cpuhp/2\n                     root         28 .rc.. idle_inject/2\n                     root         29 .rc.. migration/2\n                     root         30 .rc.. ksoftirqd/2\n                     root         32 .rc.. kworker/2:0H-events_highpri\n                     root         33 .rc.. cpuhp/3\n                     root         34 .rc.. idle_inject/3\n                     root         35 .rc.. migration/3\n                     root         36 .rc.. ksoftirqd/3\n                     root         38 .rc.. kworker/3:0H-events_highpri\n                     root         39 .rc.. cpuhp/4\n                     root         40 .rc.. idle_inject/4\n                     root         41 .rc.. migration/4\n                     root         42 .rc.. ksoftirqd/4\n                     root         44 .rc.. kworker/4:0H-events_highpri\n                     root         45 .rc.. cpuhp/5\n                     root         46 .rc.. idle_inject/5\n                     root         47 .rc.. migration/5\n                     root         48 .rc.. ksoftirqd/5\n                     root         50 .rc.. kworker/5:0H-events_highpri\n                     root         51 .rc.. cpuhp/6\n                     root         52 .rc.. idle_inject/6\n                     root         53 .rc.. migration/6\n                     root         54 .rc.. ksoftirqd/6\n                     root         56 .rc.. kworker/6:0H-events_highpri\n                     root         57 .rc.. cpuhp/7\n                     root         58 .rc.. idle_inject/7\n                     root         59 .rc.. migration/7\n                     root         60 .rc.. ksoftirqd/7\n                     root         62 .rc.. kworker/7:0H-events_highpri\n                     root         63 .rc.. cpuhp/8\n                     root         64 .rc.. idle_inject/8\n                     root         65 .rc.. migration/8\n                     root         66 .rc.. ksoftirqd/8\n                     root         68 .rc.. kworker/8:0H-events_highpri\n                     root         69 .rc.. cpuhp/9\n                     root         70 .rc.. idle_inject/9\n                     root         71 .rc.. migration/9\n                     root         72 .rc.. ksoftirqd/9\n                     root         74 .rc.. kworker/9:0H-events_highpri\n                     root         75 .rc.. cpuhp/10\n                     root         76 .rc.. idle_inject/10\n                     root         77 .rc.. migration/10\n                     root         78 .rc.. ksoftirqd/10\n                     root         80 .rc.. kworker/10:0H-events_highpri\n                     root         81 .rc.. cpuhp/11\n                     root         82 .rc.. idle_inject/11\n                     root         83 .rc.. migration/11\n                     root         84 .rc.. ksoftirqd/11\n                     root         86 .rc.. kworker/11:0H-events_highpri\n                     root         87 .rc.. cpuhp/12\n                     root         88 .rc.. idle_inject/12\n                     root         89 .rc.. migration/12\n                     root         90 .rc.. ksoftirqd/12\n                     root         92 .rc.. kworker/12:0H-events_highpri\n                     root         93 .rc.. cpuhp/13\n                     root         94 .rc.. idle_inject/13\n                     root         95 .rc.. migration/13\n                     root         96 .rc.. ksoftirqd/13\n                     root         98 .rc.. kworker/13:0H-events_highpri\n                     root         99 .rc.. cpuhp/14\n                     root        100 .rc.. idle_inject/14\n                     root        101 .rc.. migration/14\n                     root        102 .rc.. ksoftirqd/14\n                     root        104 .rc.. kworker/14:0H-events_highpri\n                     root        105 .rc.. cpuhp/15\n                     root        106 .rc.. idle_inject/15\n                     root        107 .rc.. migration/15\n                     root        108 .rc.. ksoftirqd/15\n                     root        110 .rc.. kworker/15:0H-events_highpri\n                     root        112 .rc.. kworker/R-inet_\n                     root        113 .rc.. kauditd\n                     root        114 .rc.. khungtaskd\n                     root        116 .rc.. oom_reaper\n                     root        117 .rc.. kworker/R-write\n                     root        118 .rc.. kcompactd0\n                     root        119 .rc.. ksmd\n                     root        120 .rc.. khugepaged\n                     root        121 .rc.. kworker/R-kinte\n                     root        122 .rc.. kworker/R-kbloc\n                     root        123 .rc.. kworker/R-blkcg\n                     root        125 .rc.. irq/9-acpi\n                     root        128 .rc.. kworker/R-tpm_d\n                     root        129 .rc.. kworker/R-ata_s\n                     root        130 .rc.. kworker/R-md\n                     root        131 .rc.. kworker/R-md_bi\n                     root        132 .rc.. kworker/R-edac-\n                     root        133 .rc.. kworker/R-devfr\n                     root        134 .rc.. watchdogd\n                     root        135 .rc.. kworker/R-quota\n                     root        137 .rc.. kworker/0:1H-kblockd\n                     root        140 .rc.. kswapd0\n                     root        141 .rc.. ecryptfs-kthread\n                     root        142 .rc.. kworker/R-kthro\n                     root        143 .rc.. irq/123-pciehp\n                     root        144 .rc.. irq/124-pciehp\n                     root        145 .rc.. irq/125-aerdrv\n                     root        146 .rc.. kworker/R-acpi_\n                     root        158 .rc.. kworker/R-mld\n                     root        159 .rc.. kworker/9:1H-kblockd\n                     root        160 .rc.. kworker/R-ipv6_\n                     root        167 .rc.. kworker/R-kstrp\n                     root        182 .rc.. kworker/R-charg\n                     root        202 .rc.. kworker/11:1H-kblockd\n                     root        205 .rc.. kworker/14:1H-kblockd\n                     root        217 .rc.. kworker/1:1H-kblockd\n                     root        218 .rc.. kworker/3:1H-kblockd\n                     root        219 .rc.. kworker/15:1H-kblockd\n                     root        220 .rc.. kworker/7:1H-kblockd\n                     root        221 .rc.. kworker/2:1H-kblockd\n                     root        222 .rc.. kworker/10:1H-events_highpri\n                     root        223 .rc.. kworker/4:1H-kblockd\n                     root        224 .rc.. kworker/12:1H-events_highpri\n                     root        225 .rc.. kworker/13:1H-events_highpri\n                     root        226 .rc.. kworker/5:1H-kblockd\n                     root        230 .rc.. kworker/6:1H-kblockd\n                     root        231 .rc.. kworker/8:1H-kblockd\n                     root        269 .rc.. kworker/R-nvme-\n                     root        270 .rc.. kworker/R-nvme-\n                     root        271 .rc.. kworker/R-nvme-\n                     root        272 .rc.. kworker/R-nvme-\n                     root        285 .rc.. scsi_eh_0\n                     root        286 .rc.. kworker/R-scsi_\n                     root        287 .rc.. scsi_eh_1\n                     root        288 .rc.. kworker/R-scsi_\n                     root        289 .rc.. scsi_eh_2\n                     root        290 .rc.. kworker/R-scsi_\n                     root        291 .rc.. scsi_eh_3\n                     root        292 .rc.. kworker/R-scsi_\n                     root        293 .rc.. scsi_eh_4\n                     root        294 .rc.. kworker/R-scsi_\n                     root        295 .rc.. scsi_eh_5\n                     root        296 .rc.. kworker/R-scsi_\n                     root        304 .rc.. kworker/R-uas\n                     root        306 .rc.. scsi_eh_6\n                     root        307 .rc.. kworker/R-scsi_\n                     root        345 .rc.. jbd2/nvme0n1p2-8\n                     root        346 .rc.. kworker/R-ext4-\n                     root        391 .rce. systemd-journal\n                     root        443 .rce. systemd-udevd\n                     root        504 .rc.. irq/145-mei_me\n                     root        518 .rc.. kworker/R-crypt\n                     root        578 .rc.. kworker/R-ttm\n                     systemd-resolve    615 .rce. systemd-resolve\n                     systemd-timesync    616 .rce. systemd-timesyn\n                     root        618 .rc.. card1-crtc0\n                     root        619 .rc.. card1-crtc1\n                     root        620 .rc.. card1-crtc2\n                     root        671 .rc.. nv_queue\n                     root        672 .rc.. nv_queue\n                     root        676 .rc.. nv_open_q\n                     root        721 .rce. accounts-daemon\n                     root        723 .rce. acpid\n                     avahi       727 .rce. avahi-daemon\n                     root        730 .rce. cron\n                     messagebus    732 .rce. dbus-daemon\n                     root        736 .rce. NetworkManager\n                     root        749 .rce. irqbalance\n                     root        755 .rce. networkd-dispat\n                     root        759 .rce. polkitd\n                     root        761 .rce. power-profiles-\n                     syslog      765 .rce. rsyslogd\n                     root        781 .rce. switcheroo-cont\n                     root        792 .rce. systemd-logind\n                     root        793 .rce. thermald\n                     root        796 .rce. udisksd\n                     root        798 .rce. wpa_supplicant\n                     avahi       805 .rce. avahi-daemon\n                     root        904 .rce. unattended-upgr\n                     root        912 .rce. ModemManager\n                     postgres    951 .rce. postgres\n                     root        952 .rc.. nvidia-modeset/kthread_q\n                     root        953 .rc.. nvidia-modeset/deferred_close_kthread_q\n                     root        960 .rc.. irq/148-nvidia\n                     root        961 .rc.. nvidia\n                     root        962 .rc.. nv_queue\n                     postgres    964 .rce. postgres\n                     postgres    965 .rce. postgres\n                     postgres    966 .rce. postgres\n                     postgres    967 .rce. postgres\n                     postgres    968 .rce. postgres\n                     postgres    969 .rce. postgres\n                     root       1008 .rc.. UVM global queue\n                     root       1009 .rc.. UVM deferred release queue\n                     root       1010 .rc.. UVM Tools Event Queue\n                     root       1019 .rce. gdm3\n                     rtkit      1056 ...e. rtkit-daemon\n                     root       1377 .rce. upowerd\n                     root       1382 .rce. packagekitd\n                     colord     1490 .rce. colord\n                     root       1623 .rce. clash-verge-ser\n                     root       1628 .rce. ToDesk_Service\n                     kernoops   1631 .rce. kerneloops\n                     kernoops   1651 .rce. kerneloops\n                     root       1698 .rce. gdm-session-wor\n                     lingyaqi   1722 .rce. systemd\n                     lingyaqi   1723 .rce. (sd-pam\n                     lingyaqi   1731 .rce. pipewire\n                     lingyaqi   1732 .rce. pipewire-media-\n                     lingyaqi   1733 .rce. pulseaudio\n                     lingyaqi   1746 .rce. gnome-keyring-d\n                     lingyaqi   1755 .rce. dbus-daemon\n                     lingyaqi   1772 .rce. xdg-document-po\n                     lingyaqi   1776 .rce. xdg-permission-\n                     root       1782 .rce. fusermount3\n                     lingyaqi   1801 .rce. gdm-x-session\n                     lingyaqi   1803 .rce. Xorg\n                     lingyaqi   1914 .rce. gnome-session-b\n                     lingyaqi   2015 .rce. at-spi-bus-laun\n                     lingyaqi   2021 .rce. dbus-daemon\n                     lingyaqi   2043 .rce. gnome-remote-de\n                     lingyaqi   2045 .rce. gnome-session-c\n                     lingyaqi   2054 .rce. gvfsd\n                     lingyaqi   2059 .rce. gvfsd-fuse\n                     lingyaqi   2066 .rce. gnome-session-b\n                     lingyaqi   2096 .rce. gnome-shell\n                     lingyaqi   2143 .rce. gnome-shell-cal\n                     lingyaqi   2151 .rce. evolution-sourc\n                     lingyaqi   2152 .rce. gvfs-udisks2-vo\n                     lingyaqi   2160 .rce. gvfs-goa-volume\n                     lingyaqi   2164 .rce. goa-daemon\n                     lingyaqi   2168 .rce. evolution-calen\n                     lingyaqi   2177 .rce. goa-identity-se\n                     lingyaqi   2179 .rce. gvfs-mtp-volume\n                     lingyaqi   2187 .rce. gvfs-gphoto2-vo\n                     lingyaqi   2199 .rce. dconf-service\n                     lingyaqi   2200 .rce. evolution-addre\n                     lingyaqi   2201 .rce. gvfs-afc-volume\n                     lingyaqi   2217 .rce. gvfsd-trash\n                     lingyaqi   2232 .rce. gjs\n                     lingyaqi   2234 .rce. at-spi2-registr\n                     lingyaqi   2250 .rce. xdg-desktop-por\n                     lingyaqi   2254 .rce. xdg-desktop-por\n                     lingyaqi   2256 .rce. sh\n                     lingyaqi   2257 .rce. gsd-a11y-settin\n                     lingyaqi   2259 .rce. ibus-daemon\n                     lingyaqi   2260 .rce. gsd-color\n                     lingyaqi   2263 .rce. gsd-datetime\n                     lingyaqi   2266 .rce. gsd-housekeepin\n                     lingyaqi   2267 .rce. gsd-keyboard\n                     lingyaqi   2270 .rce. gsd-media-keys\n                     lingyaqi   2273 .rce. gsd-power\n                     lingyaqi   2276 .rce. gsd-print-notif\n                     lingyaqi   2280 .rce. gsd-rfkill\n                     lingyaqi   2282 .rce. gsd-screensaver\n                     lingyaqi   2284 .rce. gsd-sharing\n                     lingyaqi   2285 .rce. gsd-smartcard\n                     lingyaqi   2288 .rce. gsd-sound\n                     lingyaqi   2293 .rce. gsd-wacom\n                     lingyaqi   2296 .rce. gsd-xsettings\n                     lingyaqi   2323 .rce. clash-verge\n                     lingyaqi   2324 .rce. evolution-alarm\n                     lingyaqi   2325 .rce. gsd-disk-utilit\n                     lingyaqi   2346 .rce. ibus-memconf\n                     lingyaqi   2347 .rce. ibus-extension-\n                     lingyaqi   2358 .rce. ibus-x11\n                     lingyaqi   2363 .rce. ibus-portal\n                     lingyaqi   2375 .rce. gsd-printer\n                     root       2407 .rc.. nvidia-drm/timeline-1d\n                     lingyaqi   2458 ..c.m snap-store\n                     lingyaqi   2489 .rce. gjs\n                     lingyaqi   2620 .rce. ibus-engine-lib\n                     lingyaqi   2626 .rce. tracker-miner-f\n                     root       2654 .rc.. vidmem lazy free\n                     root       2655 .rc.. UVM GPU1 BH\n                     lingyaqi   2730 .rce. WebKitNetworkPr\n                     lingyaqi   2732 .rce. xdg-desktop-por\n                     lingyaqi   2753 .rce. WebKitWebProces\n                     lingyaqi   2757 .rce. gvfsd-metadata\n                     root       2770 .rce. verge-mihomo\n                     root       3121 .rce. fwupd\n                     lingyaqi   3248 .rce. gjs\n                     lingyaqi   3424 ..c.. user-session-he\n                     lingyaqi   3498 ..c.m snapd-desktop-i\n                     lingyaqi   4411 .rc.. snap\n                     lingyaqi   4826 .rce. update-notifier\n                     lingyaqi   7590 .rce. flatpak-session\n                     lingyaqi   7594 .rce. p11-kit-server\n                     lingyaqi  20847 .rce. gvfsd-network\n                     lingyaqi  20929 .rce. gvfsd-dnssd\n                     lingyaqi  38317 .rce. wpscloudsvr\n                     lingyaqi  50734 .rce. nautilus\n                     lingyaqi  61423 .rce. ibus-engine-sim\n                     root      224394 .rc.. kworker/15:0-events\n                     lingyaqi  398307 .rce. speech-dispatch\n                     lingyaqi  398324 .rce. sd_espeak-ng\n                     lingyaqi  398327 .rce. sd_dummy\n                     systemd-oom  449217 .rce. systemd-oomd\n                     lingyaqi  455092 .rce. wpsoffice\n                     lingyaqi  455100 .rce. promecefpluginh\n                     lingyaqi  455101 .rce. promecefpluginh\n                     lingyaqi  455116 .rce. promecefpluginh\n                     lingyaqi  455147 .rce. promecefpluginh\n                     root      457836 .rc.. snapd\n                     lingyaqi  460967 .rce. code\n                     lingyaqi  460971 .rce. code\n                     lingyaqi  460972 ...e. code\n                     lingyaqi  460974 ...e. code\n                     lingyaqi  460989 .rce. chrome_crashpad\n                     lingyaqi  461009 .rce. code\n                     lingyaqi  461011 .rce. code\n                     lingyaqi  461045 ...e. code\n                     lingyaqi  461101 .rce. code\n                     lingyaqi  462016 .rce. gvfsd-recent\n                     lingyaqi  464960 .rce. code\n                     lingyaqi  464986 ...e. code\n                     lingyaqi  464992 .rce. code\n                     lingyaqi  465017 .rce. codex\n                     lingyaqi  465166 .r.e. code\n                     lingyaqi  465308 .rce. codex-code-mode\n                     lingyaqi  584199 .rce. code\n                     lingyaqi  584281 .rce. pet\n                     lingyaqi  584365 .r.e. bash\n                     lingyaqi  584759 .rce. code\n                     lingyaqi  596382 .r.e. code\n                     lingyaqi  596406 .r.e. code\n                     lingyaqi  621941 ...e. code\n                     lingyaqi  622016 .r.e. code\n                     lingyaqi  668919 .rce. gvfsd-http\n                     root      680933 .rc.. kworker/13:0-i915-unordered\n                     root      684042 .rc.. kworker/14:1-events\n                     root      685846 .rc.. kworker/8:2-mm_percpu_wq\n                     root      773924 .rc.. kworker/11:0-mm_percpu_wq\n                     root      774010 .rc.. kworker/0:2-events\n                     root      782024 .rc.. kworker/6:1-mm_percpu_wq\n                     root      882229 .rc.. kworker/u33:1+i915_flip\n                     root      885742 .rc.. kworker/7:1-mm_percpu_wq\n                     root      925165 .rc.. kworker/3:0-i915-unordered\n                     root      947969 .rc.. kworker/1:1-mm_percpu_wq\n                     root      1289294 .rc.. kworker/4:2-mm_percpu_wq\n                     root      1289396 .rc.. kworker/5:0-mm_percpu_wq\n                     root      1289397 .rc.. kworker/10:0-i915-unordered\n                     root      1390490 .rce. cupsd\n                     root      1390492 .rc.. kworker/12:3-mm_percpu_wq\n                     root      1390493 .rce. cups-browsed\n                     root      2251768 .rc.. kworker/13:1\n                     lingyaqi  2831094 .rce. msedge\n                     lingyaqi  2831100 .rce. cat\n                     lingyaqi  2831101 .rce. cat\n                     lingyaqi  2831109 .rce. msedge_crashpad\n                     lingyaqi  2831111 .rce. msedge_crashpad\n                     lingyaqi  2831117 .rce. msedge\n                     lingyaqi  2831118 ...e. msedge\n                     lingyaqi  2831123 ...e. msedge\n                     lingyaqi  2831153 .rce. msedge\n                     lingyaqi  2831158 .rce. msedge\n                     lingyaqi  2831171 ...e. msedge\n                     lingyaqi  2831227 ...e. msedge\n                     lingyaqi  2831228 ...e. msedge\n                     lingyaqi  2831274 ...e. msedge\n                     lingyaqi  2831711 ...e. msedge\n                     lingyaqi  2850438 ...e. code\n                     root      2908192 .rc.. kworker/9:0-i915-unordered\n                     lingyaqi  2976622 .r.e. bash\n                     lingyaqi  2980815 .r.e. bash\n                     root      2984921 .rc.. kworker/2:0-events\n                     lingyaqi  2987199 ...e. msedge\n                     root      3002069 .rc.. kworker/u33:2\n                     root      3042720 .rc.. kworker/12:1\n                     root      3113991 .rc.. kworker/1:2\n                     root      3152384 .rc.. kworker/0:1-events\n                     root      3152385 .rc.. kworker/9:1-i915-unordered\n                     root      3166109 .rc.. kworker/3:2\n                     root      3167342 .rc.. kworker/u32:1-writeback\n                     root      3179296 .rc.. kworker/5:1\n                     root      3188811 .rc.. kworker/u32:8-ext4-rsv-conversion\n                     root      3188812 .rc.. kworker/u32:9-events_power_efficient\n                     root      3188858 .rc.. kworker/6:2-cgroup_free\n                     root      3199924 .rc.. kworker/7:0\n                     root      3200457 .rc.. kworker/8:1-events\n                     root      3200512 .rc.. kworker/2:1-events\n                     root      3200513 .rc.. kworker/15:1-events\n                     root      3200515 .rc.. kworker/4:1-events\n                     root      3200516 .rc.. kworker/10:2-events\n                     root      3200521 .rc.. kworker/14:2-cgroup_free\n                     root      3201149 .rc.. kworker/11:2-cgroup_free\n                     lingyaqi  3201252 .r.e. watch\n                     lingyaqi  3203066 .r.e. python3\n                     root      3203074 .r.e. sudo\n"
+  },
+  "note": "fuser -m reports the entire mount; it is not evidence of a reference to this directory."
+}

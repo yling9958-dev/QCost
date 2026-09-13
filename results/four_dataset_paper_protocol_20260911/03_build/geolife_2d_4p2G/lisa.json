@@ -1,0 +1,10 @@
+[
+  {
+    "build_seconds": 83.774049324,
+    "serialized_bytes": 2172000008,
+    "peak_rss_kib": 8092768.0,
+    "index_path": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/lisa/rep0/lisa.idx",
+    "index_sha256": "d702ec096030abf9a56a580231b13283c9cc80ff0a59293eebb877fa84d36114",
+    "repetition": 0
+  }
+]

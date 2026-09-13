@@ -1,0 +1,125 @@
+{
+  "elapsed_seconds": 620.6101253009983,
+  "peak_rss_kib": 19837672.0,
+  "guard_aggregate_peak_rss_kib": 19922224.0,
+  "VmPeak_bytes": 28198776832,
+  "major_faults": 114,
+  "shared_ceiling_bytes": 25769803776,
+  "parent_peak_sampled_bytes": 22452334592,
+  "parent_memory_peak_bytes": 23622840320,
+  "experiment_swap_peak_bytes": 0,
+  "parent_cgroup": {
+    "unit": "qmf-paper.slice",
+    "path": "/qmf.slice/qmf-paper.slice",
+    "systemd": {
+      "ControlGroup": "/qmf.slice/qmf-paper.slice",
+      "MemoryCurrent": "22430052352",
+      "MemoryHigh": "23622320128",
+      "MemoryMax": "25769803776",
+      "MemorySwapMax": "0"
+    },
+    "kernel": {
+      "memory.current": 22432411648,
+      "memory.peak": 23622840320,
+      "memory.high": 23622320128,
+      "memory.max": 25769803776,
+      "memory.swap.current": 0,
+      "memory.swap.max": 0,
+      "memory.events": {
+        "low": 0,
+        "high": 9248,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.events.local": {
+        "low": 0,
+        "high": 9248,
+        "max": 0,
+        "oom": 0,
+        "oom_kill": 0,
+        "oom_group_kill": 0
+      },
+      "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=3.27 total=1493731247\nfull avg10=0.00 avg60=0.00 avg300=3.27 total=1493688408"
+    }
+  },
+  "phase": "correctness",
+  "timestamp": 1789193652.3004928,
+  "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+  "trigger_receipt": {
+    "timestamp": 1789193498.79122,
+    "host": {
+      "available": 3625115648,
+      "total": 33510354944,
+      "swap_used": 2147442688,
+      "swap_in": 148484,
+      "swap_out": 1264373,
+      "major_faults": 959610
+    },
+    "parent": {
+      "unit": "qmf-paper.slice",
+      "path": "/qmf.slice/qmf-paper.slice",
+      "systemd": {
+        "ControlGroup": "/qmf.slice/qmf-paper.slice",
+        "MemoryCurrent": "22430052352",
+        "MemoryHigh": "23622320128",
+        "MemoryMax": "25769803776",
+        "MemorySwapMax": "0"
+      },
+      "kernel": {
+        "memory.current": 22432411648,
+        "memory.peak": 23622840320,
+        "memory.high": 23622320128,
+        "memory.max": 25769803776,
+        "memory.swap.current": 0,
+        "memory.swap.max": 0,
+        "memory.events": {
+          "low": 0,
+          "high": 9248,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.events.local": {
+          "low": 0,
+          "high": 9248,
+          "max": 0,
+          "oom": 0,
+          "oom_kill": 0,
+          "oom_group_kill": 0
+        },
+        "memory.pressure": "some avg10=0.00 avg60=0.00 avg300=3.27 total=1493731247\nfull avg10=0.00 avg60=0.00 avg300=3.27 total=1493688408"
+      }
+    },
+    "worker": {
+      "rss": 20400357376,
+      "vm_peak": 28198776832,
+      "swap": 0,
+      "major_faults": 114,
+      "max_process_rss": 11120640
+    },
+    "postgres": {
+      "rss": 20387639296,
+      "vm_peak": 28198776832,
+      "swap": 0,
+      "major_faults": 111,
+      "max_process_rss": 20301058048
+    },
+    "phase": "correctness",
+    "reason": "HOST_SAFETY_STOP: MemAvailable below fixed 3.5 GiB emergency reserve; not proof of 24 GiB exhaustion",
+    "status": "HOST_SAFETY_STOP"
+  },
+  "systemd_exit": {
+    "Result": "success",
+    "ExecMainCode": "0",
+    "ExecMainStatus": "0",
+    "ControlGroup": "/qmf.slice/qmf-paper.slice/qmf-paper-worker-2908103-6.service",
+    "ActiveState": "active"
+  },
+  "user_journal": "",
+  "swap_pages_in": 197,
+  "swap_pages_out": 339,
+  "status": "HOST_SAFETY_STOP"
+}

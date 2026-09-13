@@ -1,0 +1,128 @@
+{
+  "at": 1789265388.9117107,
+  "attempt_id": "20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f",
+  "runtime": "qmap_uniform_qmf",
+  "formal_build_timeout_s": 43200,
+  "previous_result": {
+    "completed_at": 1789211661.9554396,
+    "payload": {
+      "Build_s": null,
+      "IndexSize_MiB": null,
+      "Mean_ms": null,
+      "P95_ms": null,
+      "P99_ms": null,
+      "QPS": null,
+      "PeakMemory_MiB": 21516.3203125,
+      "Method": "QMF",
+      "Correctness": "NOT_RUN",
+      "Status": "BUILD_FAILED",
+      "reason": "Predeclared phase timeout 14400s",
+      "BUILD_REPETITIONS": 1,
+      "failed_phase": "build"
+    },
+    "files": []
+  },
+  "previous_generation": {
+    "phase": "finished",
+    "attempt_id": "20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149",
+    "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149",
+    "moves": [
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_cgroup.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_cgroup.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_oom_evidence.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_oom_evidence.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resource_summary.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resource_summary.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resources.csv",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resources.csv"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_ownership.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_ownership.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_receipt.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_receipt.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_idle.json",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_idle.json"
+      },
+      {
+        "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/qmap_uniform_qmf_method.done",
+        "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/prior_results/checkpoints/geolife_2d_4p2G/qmap_uniform_qmf_method.done"
+      },
+      {
+        "source": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/qmap_uniform_qmf",
+        "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/active/geolife_2d_4p2G/methods/qmap_uniform_qmf"
+      },
+      {
+        "source": "/var/tmp/qmf-paper-protocol-20260911/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.log",
+        "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.log"
+      },
+      {
+        "source": "/var/tmp/qmf-paper-protocol-20260911/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.rusage",
+        "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260912T151420-5f8c52a4bb654d4c80c9fcd1b690c149/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.rusage"
+      }
+    ]
+  },
+  "superseded_legacy_receipts": {
+    "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/attempts/qmap_uniform_qmf/started.json": "b1b37a5b228a7d0e54de6fea5bac222433e9fa3d53b54273eedb7589cc6797a2",
+    "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/attempts/qmap_uniform_qmf/prebuild_host.json": "33cbad46a4d8f4072fb4ea891710077c8d6307b40cf98f24704b8f059c5df8a6",
+    "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/attempts/qmap_uniform_qmf/finished.json": "0ecce72034c6b9cbbdfb1a28ebe96d2c96f589607222abb14c535264c997f0e1"
+  },
+  "phase_policy": "Fresh retry after failed terminal attempt; resume valid phases only within this generation",
+  "moves": [
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_cgroup.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_cgroup.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_oom_evidence.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_oom_evidence.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resource_summary.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resource_summary.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resources.csv",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resources.csv"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_ownership.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_ownership.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_receipt.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_receipt.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_idle.json",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_idle.json"
+    },
+    {
+      "source": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/qmap_uniform_qmf_method.done",
+      "target": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/prior_results/checkpoints/geolife_2d_4p2G/qmap_uniform_qmf_method.done"
+    },
+    {
+      "source": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/qmap_uniform_qmf",
+      "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/active/geolife_2d_4p2G/methods/qmap_uniform_qmf"
+    },
+    {
+      "source": "/var/tmp/qmf-paper-protocol-20260911/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.log",
+      "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.log"
+    },
+    {
+      "source": "/var/tmp/qmf-paper-protocol-20260911/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.rusage",
+      "target": "/var/tmp/qmf-paper-protocol-20260911/geolife_repair/retry_history/qmap_uniform_qmf/20260913T100948-1d17c33fec6e4b11b9b10b8b3dac204f/logs/geolife_2d_4p2G_qmap_uniform_qmf_build0.rusage"
+    }
+  ]
+}

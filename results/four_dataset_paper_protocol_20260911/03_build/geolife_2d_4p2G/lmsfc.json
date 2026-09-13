@@ -1,0 +1,10 @@
+[
+  {
+    "build_seconds": 60.945422118,
+    "serialized_bytes": 5068000284,
+    "peak_rss_kib": 8522628.0,
+    "index_path": "/var/tmp/qmf-paper-protocol-20260911/active/geolife_2d_4p2G/methods/lmsfc/rep0/lmsfc.idx",
+    "index_sha256": "9e7dfc74e0cbdcafb30d46010b371c1fe280b28c7449710be25a4ceebda2de00",
+    "repetition": 0
+  }
+]

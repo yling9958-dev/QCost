@@ -1,0 +1,6 @@
+{
+  "from": "/var/tmp/qmf-geolife-full-memfix-20260911/common/pg_data",
+  "to": "/var/tmp/qmf-paper-protocol-20260911/common/pg_data",
+  "old_clean_shutdown": true,
+  "reuse": "Full GeoLife table and identity mapping only; no build/correctness/timing results reused"
+}

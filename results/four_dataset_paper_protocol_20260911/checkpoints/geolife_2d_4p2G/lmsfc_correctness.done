@@ -1,0 +1,20 @@
+{
+  "completed_at": 1789148469.018547,
+  "payload": {
+    "exact": 1000,
+    "missing": 0,
+    "extra": 0
+  },
+  "files": [
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lmsfc.csv",
+      "bytes": 43159,
+      "sha256": "29a25d04aa9a1f176880ec6e63677e662612794b127e6c0a1aba1c6ea6a22b7e"
+    },
+    {
+      "path": "/media/lingyaqi/Lenovo F510/QMF/results/four_dataset_paper_protocol_20260911/04_correctness/geolife_2d_4p2G/lmsfc_summary.json",
+      "bytes": 293,
+      "sha256": "3a6a382dbfff638b479d75654344ab8e9a2df79f42dddaa74aadb6f43ab23361"
+    }
+  ]
+}

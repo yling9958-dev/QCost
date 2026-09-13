@@ -1,0 +1,4 @@
+{
+  "at": 1789191852.1163423,
+  "phase_policy": "reuse validated build/correctness/timing; restore only deleted runtime"
+}
