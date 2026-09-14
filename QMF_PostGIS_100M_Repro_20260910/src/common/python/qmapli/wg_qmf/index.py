@@ -92,6 +92,7 @@ def _select_joint_root_action(
     node_id: int,
     context_seed: int,
     config: QWBuildConfig,
+    trace=None,
 ) -> tuple[object | None, dict]:
     """Select a joint plan but expose only its root action to the tree builder."""
 
@@ -118,6 +119,9 @@ def _select_joint_root_action(
 
     prior_before = scorer.score_seconds
     enumeration_started = time.perf_counter()
+    if trace is not None:
+        trace.emit("before_h3_candidate_generation", node_id=node_id,
+                   node_points=len(points), h=config.lookahead_depth, top_k=config.top_k)
     universe = enumerate_joint_configurations(
         points,
         train_queries,
@@ -132,7 +136,13 @@ def _select_joint_root_action(
     )
     enumeration_total = time.perf_counter() - enumeration_started
     prior_elapsed = scorer.score_seconds - prior_before
+    if trace is not None:
+        trace.emit("after_h3_candidate_generation", node_id=node_id,
+                   node_points=len(points), configurations=universe.size)
     oracle_started = time.perf_counter()
+    if trace is not None:
+        trace.emit("during_candidate_evaluation", node_id=node_id,
+                   node_points=len(points), configurations=universe.size)
     table = evaluate_subtree_costs(
         universe.configurations,
         train_queries,
@@ -141,6 +151,9 @@ def _select_joint_root_action(
         query_split="train",
     )
     oracle_seconds = time.perf_counter() - oracle_started
+    if trace is not None:
+        trace.emit("after_candidate_evaluation", node_id=node_id,
+                   node_points=len(points), configurations=universe.size)
     budget = max(1, int(math.ceil(config.budget_sqrt_factor * math.sqrt(universe.size))))
     search_started = time.perf_counter()
     if mode == "wg_qmf":
@@ -198,6 +211,7 @@ def build_qw_static_index(
     beta_leaf: float,
     beta_point: float,
     build_config: QWBuildConfig | None = None,
+    trace=None,
 ) -> dict[str, object]:
     config = build_config or QWBuildConfig()
     points = np.asarray(points, dtype=np.float64)
@@ -212,7 +226,17 @@ def build_qw_static_index(
 
     started = time.perf_counter()
     scorer = FrozenR4Prior(Path(r4_checkpoint))
-    root = _new_node(points, np.arange(len(points)), 0, 0, 0)
+    # The root membership is the identity range by definition. Materializing
+    # np.arange(N) here adds a full int64 dataset copy during the peak H3 phase;
+    # root split positions already are the required global indices.
+    root = _new_node(
+        points, np.empty(0, dtype=np.int64), 0, 0, 0, local_points=points
+    )
+    if trace is not None:
+        trace.emit("root_initialization", node_id=0, node_depth=0,
+                   node_points=len(points), planned_max_nodes=2 * config.max_leaves - 1,
+                   points_bytes=points.nbytes, ids_bytes=ids.nbytes,
+                   root_indices_bytes=root.point_indices.nbytes)
     queue = [(-len(points), root.node_id, root)]
     next_id = 1
     leaf_count = 1
@@ -229,13 +253,24 @@ def build_qw_static_index(
         "logical_quantum_operations": 0,
         "normalized_solution_gaps": [],
     }
+    processed_nodes = 0
     while queue and leaf_count < config.max_leaves:
         _priority, _identifier, node = heapq.heappop(queue)
-        if node.depth >= config.max_depth or len(node.point_indices) < 2 * config.min_leaf_size:
+        processed_nodes += 1
+        identity_root = node is root
+        node_point_count = len(points) if identity_root else len(node.point_indices)
+        if node.depth >= config.max_depth or node_point_count < 2 * config.min_leaf_size:
             continue
-        local = points[node.point_indices]
+        local = points if identity_root else points[node.point_indices]
+        if trace is not None:
+            trace.emit("recursive_build_milestone", node_id=node.node_id,
+                       node_depth=node.depth, node_points=len(local),
+                       completed_nodes=processed_nodes,
+                       planned_max_nodes=2 * config.max_leaves - 1,
+                       local_is_view=identity_root, leaf_count=leaf_count)
         local_queries = _intersecting_queries(train_queries, node.mbr)
         if not len(local_queries):
+            del local
             continue
         try:
             if len(local) >= config.minimum_lookahead_points and mode != "greedy":
@@ -249,6 +284,7 @@ def build_qw_static_index(
                     node_id=node.node_id,
                     context_seed=context_seed,
                     config=config,
+                    trace=trace,
                 )
                 metrics["lookahead_nodes"] += 1
                 metrics["configuration_count"] += int(detail["configuration_count"])
@@ -278,12 +314,17 @@ def build_qw_static_index(
             )
             metrics["fallback_nodes"] += 1
         if action is None:
+            del local
             continue
         left_local, right_local = split_positions(local, action)
         if min(len(left_local), len(right_local)) < config.min_leaf_size:
+            del local, left_local, right_local
             continue
-        left_indices = node.point_indices[left_local]
-        right_indices = node.point_indices[right_local]
+        if identity_root:
+            left_indices, right_indices = left_local, right_local
+        else:
+            left_indices = node.point_indices[left_local]
+            right_indices = node.point_indices[right_local]
         node.split_action = action
         node.threshold = action.threshold
         node.children = [
@@ -295,6 +336,21 @@ def build_qw_static_index(
         selected_actions[action.key] = selected_actions.get(action.key, 0) + 1
         for child in node.children:
             heapq.heappush(queue, (-len(child.point_indices), child.node_id, child))
+        if trace is not None:
+            trace.emit("after_split_decision", node_id=node.node_id,
+                       node_depth=node.depth, node_points=len(local),
+                       completed_nodes=processed_nodes,
+                       planned_max_nodes=2 * config.max_leaves - 1,
+                       action=action.key, threshold=float(action.threshold).hex(),
+                       left_count=len(left_indices), right_count=len(right_indices),
+                       identity_root_reuse=identity_root)
+        node.point_indices = np.empty(0, dtype=np.int64)
+        del local, left_local, right_local, left_indices, right_indices
+
+    # A deliberately unsplit root still represents every point. Defer the
+    # identity membership until layout so it never overlaps H3 evaluation.
+    if root.is_leaf and root.point_indices.size == 0:
+        root.point_indices = np.arange(len(points), dtype=np.int64)
 
     stack = [root]
     sibling_overlap = []
@@ -310,12 +366,22 @@ def build_qw_static_index(
         sibling_overlap.append(ix * iy / parent_area)
         stack.extend(node.children)
     layout_started = time.perf_counter()
-    query_index = PrefixHybridIndex().build(points, ids, root)
+    if trace is not None:
+        trace.emit("before_layout", completed_nodes=processed_nodes,
+                   planned_max_nodes=2 * config.max_leaves - 1, leaf_count=leaf_count)
+    query_index = PrefixHybridIndex().build(points, ids, root, static_export=True, trace=trace)
     layout_seconds = time.perf_counter() - layout_started
     serialization_started = time.perf_counter()
+    if trace is not None:
+        trace.emit("before_serialization", point_count=len(query_index.points),
+                   point_bytes=query_index.points.nbytes, id_bytes=query_index.ids.nbytes)
     serialized_bytes = export_static_index(_ExportableIndex(query_index), output_path)
     serialization_seconds = time.perf_counter() - serialization_started
-    leaves = np.asarray([len(node.point_indices) for node in query_index.leaves], dtype=np.int64)
+    if trace is not None:
+        trace.emit("after_serialization", serialized_bytes=serialized_bytes)
+    leaves = np.asarray([
+        node.storage_end - node.storage_start for node in query_index.leaves
+    ], dtype=np.int64)
     gaps = np.asarray(metrics.pop("normalized_solution_gaps"), dtype=np.float64)
     return {
         "method": mode,
@@ -346,4 +412,5 @@ def build_qw_static_index(
         "minimum_lookahead_points": config.minimum_lookahead_points,
         "budget_sqrt_factor": config.budget_sqrt_factor,
         "suffix_strategy": config.suffix_strategy,
+        "leaf_membership_sha256": query_index.leaf_membership_sha256,
     }

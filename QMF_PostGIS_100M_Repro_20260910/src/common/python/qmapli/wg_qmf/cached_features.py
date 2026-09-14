@@ -10,6 +10,16 @@ from ..workload_action_interaction.actions import enumerate_actions, QUANTILES
 
 from ..workload_action_interaction.spatial_maps import CHANNEL_NAMES
 
+def _density_histogram(points, lower, spans, chunk_size=1_000_000):
+    histogram = np.zeros((4, 4), dtype=np.float64)
+    for start in range(0, len(points), int(chunk_size)):
+        local = np.clip((points[start:start + int(chunk_size)] - lower) / spans, 0.0, 1.0)
+        partial, _, _ = np.histogram2d(
+            local[:, 0], local[:, 1], bins=4, range=((0.0, 1.0), (0.0, 1.0))
+        )
+        histogram += partial
+    return histogram
+
 def node_action_features(points, queries, actions):
     points=np.asarray(points,dtype=np.float64)
     lower=np.asarray((points[:,0].min(),points[:,1].min()))
@@ -30,8 +40,7 @@ def node_action_features(points, queries, actions):
         histogram,_=np.histogram(points[:,axis],bins=8,range=(lower[axis],upper[axis]))
         node.extend((histogram/max(histogram.sum(),1)).tolist())
     node=np.asarray(node,dtype=np.float32)
-    normalized=np.clip((points-lower)/spans,0.,1.)
-    histogram,_,_=np.histogram2d(normalized[:,0],normalized[:,1],bins=4,range=((0.,1.),(0.,1.)))
+    histogram=_density_histogram(points,lower,spans)
     density=(histogram.T/max(float(histogram.sum()),1.)).astype(np.float32)
     local=np.asarray(queries,dtype=np.float64).copy()
     local[:,(0,2)]=(local[:,(0,2)]-lower[0])/spans[0]

@@ -12,8 +12,8 @@ class _ExportableIndex:
     def __init__(self, query_index):
         self.query_index = query_index
 
-def _new_node(points, indices, depth, prefix_code, node_id):
-    local = points[indices]
+def _new_node(points, indices, depth, prefix_code, node_id, *, local_points=None):
+    local = points[indices] if local_points is None else np.asarray(local_points, dtype=np.float64)
     return HybridPrefixNode(
         node_id=int(node_id),
         depth=int(depth),

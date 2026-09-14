@@ -61,6 +61,26 @@ class DualAxisSuffix:
             self._build_local_sfc()
         return self
 
+    def build_static_export(self, points, storage_start):
+        """Build only the arrays persisted by compact static format version 2."""
+        if self.strategy in {"local_zorder", "local_hilbert"}:
+            return self.build(points, np.arange(
+                int(storage_start), int(storage_start) + len(points), dtype=np.int64
+            ))
+        self.points = np.asarray(points, dtype=np.float64)
+        self.storage_positions = None
+        self.x_order = None
+        self.y_order = None
+        self.x_sorted_values = None
+        self.y_sorted_values = None
+        self.x_sorted_positions = np.argsort(self.points[:, 0], kind="mergesort")
+        self.x_sorted_positions += int(storage_start)
+        self.y_sorted_positions = np.argsort(self.points[:, 1], kind="mergesort")
+        self.y_sorted_positions += int(storage_start)
+        self.segments = []
+        self.segment_positions = np.empty(0, dtype=np.int64)
+        return self
+
     def _build_local_sfc(self):
         box = _mbr(self.points)
         span = np.maximum(np.asarray([box[2] - box[0], box[3] - box[1]]), 1e-12)

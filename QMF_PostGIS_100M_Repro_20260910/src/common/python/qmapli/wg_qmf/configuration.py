@@ -180,6 +180,7 @@ def _enumerate(
         right_summary = LeafSummary(len(right_points), _bounds(right_points))
         if depth == 1:
             feasible.append((action, float(probability), None, None, (), (), left_summary, right_summary))
+            del left_positions, right_positions, left_points, right_points
             continue
         left = _enumerate(
             left_points,
@@ -204,10 +205,12 @@ def _enumerate(
             minimum_child_count=minimum_child_count,
         )
         if left is None or right is None:
+            del left_positions, right_positions, left_points, right_points
             continue
         feasible.append(
             (action, float(probability), left.greedy, right.greedy, left.plans, right.plans, left_summary, right_summary)
         )
+        del left_positions, right_positions, left_points, right_points
     if not feasible:
         return None
 

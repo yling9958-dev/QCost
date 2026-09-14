@@ -10,6 +10,7 @@ import sys
 import time
 
 from support import BASE, ROOT, RUN, OUT, SEED, atomic_json, atomic_csv, read_json, sha
+from paper_protocol import PERFORMANCE_QUERIES_PER_GROUP, QUERY_COUNTS
 
 def audit():
     import numpy as np
@@ -89,10 +90,11 @@ def queries(dataset):
     all_rows=[]; norm_rows=[]
     targets=[.0001,.001,.01]
     # Use the same generator sequence and settings for each dataset, before timing.
-    for split,n in [('train',1000),('validation',1000),('correctness',1000),('warmup',300),('performance',3000)]:
+    for split in ('train', 'validation', 'correctness', 'warmup', 'performance'):
+        n=QUERY_COUNTS[split]
         local=[]
         for i in range(n):
-            group=i//1000 if split=='performance' else i%3
+            group=i//PERFORMANCE_QUERIES_PER_GROUP if split=='performance' else i%3
             aspect=float(rng.choice([.5,1.,2.])); area=targets[group]
             size=np.array([math.sqrt(area*aspect),math.sqrt(area/aspect)])
             center=rng.random(2)
@@ -112,8 +114,12 @@ def queries(dataset):
         atomic_csv(folder/f'{split}_normalized.csv',local)
     target=folder/f'{dataset}_queries.csv'; atomic_csv(target,all_rows)
     atomic_json(folder/'query_manifest.json',{'dataset':dataset,'query_count':len(all_rows),
-        'S1_count':1000,'S2_count':1000,'S3_count':1000,'correctness_count':1000,
-        'warmup_count':300,'train_count':1000,'validation_count':1000,'seed':SEED,
+        'S1_count':PERFORMANCE_QUERIES_PER_GROUP,
+        'S2_count':PERFORMANCE_QUERIES_PER_GROUP,
+        'S3_count':PERFORMANCE_QUERIES_PER_GROUP,
+        'correctness_count':QUERY_COUNTS['correctness'],
+        'warmup_count':QUERY_COUNTS['warmup'],'train_count':QUERY_COUNTS['train'],
+        'validation_count':QUERY_COUNTS['validation'],'seed':SEED,
         'query_sha256':sha(target),'target_selectivities':{'S1':.0001,'S2':.001,'S3':.01},
         'expected_count_policy':'exact ID/reference evidence only for correctness; performance result counts are observations, not independent truth',
         'selectivity_policy':'target rectangle area fraction; actual point selectivity may differ, including zero',
@@ -143,12 +149,15 @@ def qmf(dataset, repetition):
     PrefixHybridIndex.build=audited
     import yaml
     cfg=yaml.safe_load((BASE/'config/qmf_frozen_config.yaml').read_text())
+    point_count=read_json(OUT/'01_dataset_inventory'/(dataset+'.json'))['record_count']
     args=['--mode','uniform_qmf','--r4-checkpoint',str(BASE/'config/r4.pt'),
-        '--points',str(work/'points_normalized.csv'),'--train-queries',str(OUT/'02_queries'/dataset/'train_normalized.csv'),
+        '--points',str(work/'points_normalized.csv'),'--point-count',str(point_count),
+        '--train-queries',str(OUT/'02_queries'/dataset/'train_normalized.csv'),
         '--index',str(build/'qmap_uniform_qmf.idx'),'--metadata',str(build/'metadata.json'),
         '--context-seed',str(SEED),'--beta-leaf',str(cfg['beta_leaf']),'--beta-point',str(cfg['beta_point']),
         '--max-depth',str(cfg['max_depth']),'--min-leaf-size',str(cfg['min_leaf_size']),
-        '--max-leaves',str(cfg['max_leaves']),'--budget-factor',str(cfg['budget_sqrt_factor'])]
+        '--max-leaves',str(cfg['max_leaves']),'--budget-factor',str(cfg['budget_sqrt_factor']),
+        '--memory-stage-trace',str(build/'QMF_MEMORY_STAGE_TRACE.csv')]
     main(args)
 
 if __name__=='__main__':

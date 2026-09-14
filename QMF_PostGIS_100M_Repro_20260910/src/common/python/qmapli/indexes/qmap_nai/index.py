@@ -4,6 +4,10 @@ from __future__ import annotations
 
 import time
 
+import hashlib
+
+import struct
+
 from dataclasses import dataclass, field
 
 import numpy as np
@@ -46,16 +50,20 @@ def _merge_ranges(ranges):
 class PrefixHybridIndex:
     """Static query-only kernel; controller execution is strictly build-time."""
 
-    def build(self, points, ids, root):
+    def build(self, points, ids, root, *, static_export=False, trace=None):
         self.original_points = np.asarray(points, dtype=np.float64)
         self.original_ids = np.asarray(ids, dtype=np.int64)
         self.root = root
         leaf_indices = []
+        leaf_membership = hashlib.sha256()
 
         def order(node):
             if node.is_leaf:
                 start = sum(len(value) for value in leaf_indices)
                 leaf_indices.append(np.asarray(node.point_indices, dtype=np.int64))
+                membership = np.ascontiguousarray(node.point_indices, dtype=np.dtype("<i8"))
+                leaf_membership.update(struct.pack("<QQ", int(node.node_id), len(membership)))
+                leaf_membership.update(memoryview(membership).cast("B"))
                 node.storage_start = start
                 node.storage_end = start + len(node.point_indices)
                 return node.storage_start, node.storage_end
@@ -65,10 +73,22 @@ class PrefixHybridIndex:
             return node.storage_start, node.storage_end
 
         order(root)
+        self.leaf_membership_sha256 = leaf_membership.hexdigest()
         original_positions = np.concatenate(leaf_indices) if leaf_indices else np.empty(0, dtype=np.int64)
-        self.storage_original_positions = original_positions
+        if trace is not None:
+            trace.emit("layout_permutation_ready", permutation_bytes=original_positions.nbytes,
+                       leaf_count=len(leaf_indices))
+        self.storage_original_positions = None if static_export else original_positions
         self.points = self.original_points[original_positions]
         self.ids = self.original_ids[original_positions]
+        if trace is not None:
+            trace.emit("layout_reordered_storage_ready", points_bytes=self.points.nbytes,
+                       ids_bytes=self.ids.nbytes)
+        if static_export:
+            self.original_points = None
+            self.original_ids = None
+            leaf_indices.clear()
+            del original_positions
         self.nodes = []
         self.leaves = []
         stack = [root]
@@ -77,9 +97,17 @@ class PrefixHybridIndex:
             if node.is_leaf:
                 self.leaves.append(node)
                 start, end = node.storage_start, node.storage_end
-                node.suffix = DualAxisSuffix(node.suffix_strategy).build(
-                    self.points[start:end], np.arange(start, end, dtype=np.int64)
+                suffix = DualAxisSuffix(node.suffix_strategy)
+                node.suffix = (
+                    suffix.build_static_export(self.points[start:end], start)
+                    if static_export else
+                    suffix.build(self.points[start:end], np.arange(start, end, dtype=np.int64))
                 )
+                if static_export:
+                    node.point_indices = np.empty(0, dtype=np.int64)
+                if trace is not None and (len(self.leaves) == 1 or len(self.leaves) % 16 == 0):
+                    trace.emit("layout_suffix_milestone", completed_leaves=len(self.leaves),
+                               leaf_points=end - start)
             else:
                 stack.extend(reversed(node.children))
         self._build_compact_arrays()

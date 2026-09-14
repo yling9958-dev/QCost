@@ -16,6 +16,8 @@ from .point_io import read_points
 
 from .index import QWBuildConfig, build_qw_static_index
 
+from .memory_trace import MemoryStageTrace
+
 def _queries(path: Path) -> np.ndarray:
     with Path(path).open(newline="", encoding="utf-8") as handle:
         rows = [
@@ -29,6 +31,7 @@ def main(argv=None) -> int:
     parser.add_argument("--mode", choices=sorted(("wg_qmf", "uniform_qmf", "beam16", "best_first", "greedy")), required=True)
     parser.add_argument("--r4-checkpoint", type=Path, required=True)
     parser.add_argument("--points", type=Path, required=True)
+    parser.add_argument("--point-count", type=int)
     parser.add_argument("--train-queries", type=Path, required=True)
     parser.add_argument("--index", type=Path, required=True)
     parser.add_argument("--metadata", type=Path, required=True)
@@ -39,14 +42,26 @@ def main(argv=None) -> int:
     parser.add_argument("--min-leaf-size", type=int, default=256)
     parser.add_argument("--max-leaves", type=int, default=128)
     parser.add_argument("--budget-factor", type=float, default=2.0)
+    parser.add_argument("--memory-stage-trace", type=Path)
     args = parser.parse_args(argv)
-    points, identifiers = read_points(args.points)
+    trace = MemoryStageTrace(args.memory_stage_trace) if args.memory_stage_trace else None
+    if trace is not None:
+        trace.emit("before_point_load", expected_count=args.point_count)
+    points, identifiers = read_points(args.points, expected_count=args.point_count, trace=trace)
+    if trace is not None:
+        trace.emit("after_point_load", points_bytes=points.nbytes, ids_bytes=identifiers.nbytes)
+        trace.emit("after_canonical_arrays", points_owns=points.flags.owndata,
+                   ids_owns=identifiers.flags.owndata)
+    train_queries = _queries(args.train_queries)
+    if trace is not None:
+        trace.emit("after_workload_load", query_count=len(train_queries),
+                   query_bytes=train_queries.nbytes)
     metadata = build_qw_static_index(
         mode=args.mode,
         r4_checkpoint=args.r4_checkpoint,
         points=points,
         ids=identifiers,
-        train_queries=_queries(args.train_queries),
+        train_queries=train_queries,
         output_path=args.index,
         context_seed=args.context_seed,
         beta_leaf=args.beta_leaf,
@@ -57,6 +72,7 @@ def main(argv=None) -> int:
             max_leaves=args.max_leaves,
             budget_sqrt_factor=args.budget_factor,
         ),
+        trace=trace,
     )
     args.metadata.parent.mkdir(parents=True, exist_ok=True)
     args.metadata.write_text(json.dumps(metadata, indent=2, sort_keys=True) + "\n", encoding="utf-8")
