@@ -14,31 +14,26 @@ import support as s
 import orchestrate as o
 import worker
 import report
-from phase_timeouts import TIMEOUTS_S
+from paper_protocol import (CAMPAIGN_UNIT, DATASET_SPECS, DATASETS,
+                            GEOLIFE_NORMALIZED_SHA256, PERFORMANCE_QUERIES_PER_GROUP,
+                            PERFORMANCE_REPETITIONS, POINT_COUNTS, PROTOCOL,
+                            QUERY_COUNTS, RAW_SHA256, REPAIR_UNIT, TIMEOUTS_S)
 
-UNIT='qmf-paper-benchmark-20260911'
-DATASETS=['geolife_2d_4p2G','gowalla_2d_4p2G','nyc_taxi_2d_4p2G','skewed_2d']
-RAW_SHA=['98619de96d873e54587ee8cdec9b20162e077b33305b420075494992abbe5c1a',
- 'febe5e80f15883d3d558bf00f95d73baf49dc3a67eef6374396084a224057e88',
- '9fd8ebf1bef0b5529c111ee9515081b9759be08dc4eedbbe89a1b86d0ab9694c',
- 'fd3556dda7495d3ca022ac3d9262658c72247649fb7d83790cdabcd92264e190']
-POINTS=[181000000,183000000,181000000,204986702]
-GEO_SHA='ac4d4843820c5bee637b7e2bb8dc84b039477387fa79e5edb61ba1fb5a8be589'
+UNIT=CAMPAIGN_UNIT
+RAW_SHA=RAW_SHA256
+POINTS=POINT_COUNTS
+GEO_SHA=GEOLIFE_NORMALIZED_SHA256
 OLD_UNITS=['qmf-four-dataset-final-20260911','qmf-four-dataset-campaign-guardian',
  'qmf-verification-recovery-1','qmf-worker-688779','qmf-geolife-postgres',
  'qmf-geolife-memfix-20260911','qmf-memory-clean-1','qmf-memory-equivalence-candidate1']
-PROTOCOL={'train':1000,'validation':1000,'correctness':1000,'warmup':300,'performance':3000,
- 'total':6300,'performance_repetitions':5,'build_repetitions':1,'seed':s.SEED,
- 'reference_precomputation':False,'reference_query_denominator':1000,
- 'MemoryHigh':22*s.GIB,'MemoryMax':24*s.GIB,'MemorySwapMax':0,'host_reserve':7*s.GIB//2,
- 'qmf_memory_engineering_production_change':False,'qmf_algorithm_changed':False,
- 'stage_a':'historical 37/37 attestation plus current packaged R4 and production/config SHA',
- 'performance_reference_counts':'not precomputed; observed counts remain in raw timings',
- 'correctness_semantics':'exact SQL truth/candidate counts and bidirectional EXCEPT IDs; count kernel checked too',
- 'correctness_infrastructure':'enable_hashagg=off only in correctness session to bound SetOp memory',
- 'timing_policy':'single persistent connection/worker; prepared statements; all five repetitions; no Linux cache flush',
- 'peak_memory_definition':'same original process estimator: maximum build worker RSS or query client RSS plus backend peak; shared cgroup peak is diagnostic',
- 'timeouts_s':TIMEOUTS_S}
+AUDIT_ROOT=s.ROOT/'results/qmf_build_audit_cleanup_20260914'
+
+def passing_test_xml(path,minimum=1):
+    import xml.etree.ElementTree as ET
+    if not path.exists(): return False
+    suites=list(ET.parse(path).iter('testsuite'))
+    return sum(int(v.get('tests',0)) for v in suites)>=minimum and all(
+        not int(v.get(k,0)) for v in suites for k in ('errors','failures'))
 
 def active(unit): return o.props(unit).get('ActiveState') in ('active','activating','deactivating')
 
@@ -55,42 +50,112 @@ def control_source_verified(expected):
     if expected==current: return True
     # An audited orchestration-only cleanup may extend the existing source receipt.
     # Original experiment/source manifests remain unchanged as evidence.
-    import xml.etree.ElementTree as ET
-    for receipt_name,test_name in [
-        ('build_timeout_control_source_20260913.json','build_timeout_tests_20260913.xml'),
-        ('retry_logic_control_source_20260912.json','retry_logic_tests_20260912.xml'),
-        ('cleanup_control_source_20260912.json','cleanup_tests_20260912.xml')]:
-        receipt=s.OUT/'00_environment'/receipt_name
+    candidates=[
+        (AUDIT_ROOT/'PAPER_CONTROLLER_SOURCE_20260914.json',
+         AUDIT_ROOT/'PAPER_EVAL_TESTS_20260914.xml'),
+        *[(s.OUT/'00_environment'/receipt_name,s.OUT/'00_environment'/test_name) for receipt_name,test_name in [
+          ('qmf_memory_implementation_source_20260913.json','qmf_memory_tests_20260913.xml'),
+          ('build_timeout_control_source_20260913.json','build_timeout_tests_20260913.xml'),
+          ('retry_logic_control_source_20260912.json','retry_logic_tests_20260912.xml'),
+          ('cleanup_control_source_20260912.json','cleanup_tests_20260912.xml')]],
+    ]
+    for receipt,tests in candidates:
         if not receipt.exists(): continue
-        audit=s.read_json(receipt); tests=s.OUT/'00_environment'/test_name
-        if not tests.exists() or s.sha(tests)!=audit.get('tests_sha256'): continue
-        suites=list(ET.parse(tests).iter('testsuite'))
-        if suites and all(not int(v.get(k,0)) for v in suites for k in ('errors','failures')) and \
-           expected in audit.get('prior_control_manifests',[]) and current==audit.get('current_source_manifest'):
+        audit=s.read_json(receipt)
+        if not passing_test_xml(tests) or s.sha(tests)!=audit.get('tests_sha256'): continue
+        if (expected in audit.get('prior_control_manifests',[]) and
+                current==audit.get('current_source_manifest')):
             return True
     return False
+
+def production_source_receipt(expected,current):
+    """Return the exact tested receipt authorizing current production source."""
+    if current==expected: return {'status':'FROZEN_SOURCE'}
+    receipt=s.OUT/'00_environment/qmf_memory_implementation_source_20260913.json'
+    tests=s.OUT/'00_environment/qmf_memory_tests_20260913.xml'
+    changed={path:{'before':expected.get(path),'after':current.get(path)}
+             for path in sorted(set(expected)|set(current)) if expected.get(path)!=current.get(path)}
+    if receipt.exists() and tests.exists():
+        audit=s.read_json(receipt)
+        evidence=s.OUT/'00_environment/qmf_memory_equivalence_20260913'
+        if passing_test_xml(tests) and s.sha(tests)==audit.get('tests_sha256') and \
+           s.sha(s.OUT/'00_environment/production_source_before.json')==audit.get('original_manifest_sha256') and \
+           changed==audit.get('changed_production_files') and current==audit.get('current_production_source_manifest') and \
+           audit.get('qmf_core_algorithm_changed') is False and \
+           audit.get('dataset_changed') is False and audit.get('query_protocol_changed') is False and \
+           audit.get('memory_policy_changed') is False and \
+           s.sha(evidence/'tree_decision_manifest.csv')=='a7c540d4d5f8e1b34e7508d2be921741203cc13667403fa8b7df587e03696230' and \
+           audit.get('standalone_100m_tree_sha256')=='a7c540d4d5f8e1b34e7508d2be921741203cc13667403fa8b7df587e03696230' and \
+           audit.get('standalone_100m_index_sha256')=='12bbd47ef650888b67e042002d794e75de64ec5d91c0c2476eded5d85e577282':
+            return audit
+    receipt=AUDIT_ROOT/'QMF_MEMORY_IMPLEMENTATION_SOURCE_20260914.json'
+    tests=AUDIT_ROOT/'QMF_MEMORY_TESTS_20260914.xml'
+    if not receipt.exists() or not tests.exists(): return None
+    audit=s.read_json(receipt); evidence=AUDIT_ROOT/'equivalence/100mib'
+    required={
+        'tree_decision_manifest.csv':'a7c540d4d5f8e1b34e7508d2be921741203cc13667403fa8b7df587e03696230',
+        'qmap_uniform_qmf.idx':'12bbd47ef650888b67e042002d794e75de64ec5d91c0c2476eded5d85e577282',
+    }
+    if (passing_test_xml(tests) and s.sha(tests)==audit.get('tests_sha256') and
+            s.sha(s.OUT/'00_environment/production_source_before.json')==audit.get('original_manifest_sha256') and
+            changed==audit.get('changed_production_files') and
+            current==audit.get('current_production_source_manifest') and
+            all(audit.get(name) is False for name in (
+                'qmf_core_algorithm_changed','dataset_changed',
+                'query_protocol_changed','memory_policy_changed')) and
+            all((evidence/name).is_file() and s.sha(evidence/name)==digest
+                for name,digest in required.items()) and
+            audit.get('standalone_100m_tree_sha256')==required['tree_decision_manifest.csv'] and
+            audit.get('standalone_100m_index_sha256')==required['qmap_uniform_qmf.idx'] and
+            audit.get('standalone_100m_leaf_assignment_sha256')==
+                'f114efb06770bc520743c3770fcb2ac95c710f58b6cea02748454b6eff7348fb'):
+        return audit
+    return None
+
+def production_source_verified(expected, current):
+    """Accept only frozen source or an exact, tested equivalence amendment."""
+    return production_source_receipt(expected,current) is not None
 
 def dataset_inventory():
     # The current run owns the frozen input metadata; historical result roots are not inputs.
     return [s.read_json(s.OUT/'01_dataset_inventory'/(d+'.json')) for d in DATASETS]
 
 def verify_protocol():
-    """Accept only the documented build-timeout amendment, preserving old evidence."""
+    """Accept only documented infrastructure/implementation amendments."""
     import copy
     path=s.OUT/'00_environment/protocol.json'
     frozen=s.read_json(path)
     if frozen==PROTOCOL: return
     amendment=s.OUT/'00_environment/BUILD_TIMEOUT_PROTOCOL_AMENDMENT_20260913.json'
-    old=copy.deepcopy(PROTOCOL); old['timeouts_s']['build']=14400
+    old=copy.deepcopy(PROTOCOL)
+    old['timeouts_s']['build']=14400
+    old['qmf_memory_engineering_production_change']=False
     if frozen!=old or not amendment.exists(): raise RuntimeError('Frozen paper protocol changed')
     audit=s.read_json(amendment)
     if audit.get('original_protocol_sha256')!=s.sha(path) or audit.get('effective_protocol')!=PROTOCOL or \
        (audit.get('old_build_timeout_s'),audit.get('new_build_timeout_s'))!=(14400,43200):
-        raise RuntimeError('Build timeout protocol amendment invalid')
+        # The 20260913 receipt predates the implementation provenance flag. Its
+        # scientific values must equal the current protocol after that one field
+        # is restored to false.
+        effective=copy.deepcopy(PROTOCOL)
+        effective['qmf_memory_engineering_production_change']=False
+        if audit.get('original_protocol_sha256')!=s.sha(path) or \
+           audit.get('effective_protocol')!=effective or \
+           (audit.get('old_build_timeout_s'),audit.get('new_build_timeout_s'))!=(14400,43200):
+            raise RuntimeError('Build timeout protocol amendment invalid')
+    implementation=AUDIT_ROOT/'QMF_MEMORY_IMPLEMENTATION_SOURCE_20260914.json'
+    if not implementation.exists(): raise RuntimeError('QMF memory implementation receipt missing')
+    source_audit=s.read_json(implementation)
+    if source_audit.get('qmf_core_algorithm_changed') is not False or \
+       any(source_audit.get(name) is not False for name in (
+           'dataset_changed','query_protocol_changed','memory_policy_changed','cpu_protocol_changed')):
+        raise RuntimeError('QMF implementation provenance invalid')
 
 def verify_source():
     expected=s.read_json(s.OUT/'00_environment/production_source_before.json')
-    if source_manifest()!=expected: raise RuntimeError('PRODUCTION_QMF_SOURCE_CHANGED')
+    current=source_manifest()
+    if not production_source_verified(expected,current):
+        raise RuntimeError('UNVERIFIED_PRODUCTION_QMF_SOURCE_CHANGED')
     stage=s.read_json(s.BASE/'expected/stage_a_verification.json')
     if stage['verified']!=37 or stage['failed']!=0: raise RuntimeError('Stage-A attestation invalid')
     if s.sha(s.BASE/'config/r4.pt')!='0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d':
@@ -99,21 +164,24 @@ def verify_source():
     cfg=yaml.safe_load((s.BASE/'config/qmf_frozen_config.yaml').read_text())
     if cfg['top_k']!=4 or cfg['lookahead_depth']!=3 or cfg['maximum_configurations']!=16384:
         raise RuntimeError('Frozen QMF config mismatch')
-    s.atomic_json(s.OUT/'00_environment/production_source_after.json',expected)
+    s.atomic_json(s.OUT/'00_environment/production_source_after.json',current)
 
 def query_gate(row):
     d=row['dataset_id']; folder=s.OUT/'02_queries'/d; path=folder/(d+'_queries.csv')
     manifest=s.read_json(folder/'query_manifest.json')
     if s.sha(path)!=manifest['query_sha256']: raise RuntimeError('Frozen query SHA mismatch')
     with path.open() as f: records=list(csv.DictReader(f))
-    if len(records)!=6300 or len({r['query_id'] for r in records})!=6300: raise RuntimeError('Paper query cardinality mismatch')
+    if len(records)!=QUERY_COUNTS['total'] or \
+       len({r['query_id'] for r in records})!=QUERY_COUNTS['total']:
+        raise RuntimeError('Paper query cardinality mismatch')
     for split in ['train','validation','correctness','warmup','performance']:
         subset=[r for r in records if r['split']==split]
         if len(subset)!=PROTOCOL[split]: raise RuntimeError('Paper split cardinality mismatch')
         with (folder/(split+'_normalized.csv')).open() as f: normalized=list(csv.DictReader(f))
         if [r['query_id'] for r in normalized]!=[r['query_id'] for r in subset]: raise RuntimeError('Normalized query order mismatch')
     for group in ['S1','S2','S3']:
-        if sum(r['split']=='performance' and r['selectivity_group']==group for r in records)!=1000:
+        if sum(r['split']=='performance' and r['selectivity_group']==group for r in records) \
+           !=PERFORMANCE_QUERIES_PER_GROUP:
             raise RuntimeError('Paper selectivity cardinality mismatch')
     return records
 
@@ -146,7 +214,9 @@ def initialize():
         query_gate(row)
         s.done(d,'queries',s.read_json(folder/'query_manifest.json'),list(folder.glob('*.csv')))
     s.atomic_json(s.OUT/'00_environment/preparation_gate.json',{'old_heavy_campaign_active':False,'goal_guardian_active':False,
-        'query_counts':[6300]*4,'reference_denominator':1000,'stage_a':'PASS attestation + R4 hash','QMF_ALGORITHM_CHANGED':False})
+        'query_counts':[QUERY_COUNTS['total']]*len(DATASETS),
+        'reference_denominator':QUERY_COUNTS['correctness'],
+        'stage_a':'PASS attestation + R4 hash','QMF_ALGORITHM_CHANGED':False})
     return inventory
 
 def normalized(row):
@@ -282,7 +352,7 @@ def status():
     hold=s.OUT/'debug/GEOLIFE_REPAIR_HOLD.json'
     if repair_state.exists() and hold.exists() and s.read_json(hold).get('active'):
         state=s.read_json(repair_state)
-        print('GeoLife repair service = '+o.props('qmf-paper-geolife-repair-20260912').get('ActiveState','inactive'))
+        print('GeoLife repair service = '+o.props(REPAIR_UNIT).get('ActiveState','inactive'))
     print('Campaign service = '+o.props(UNIT).get('ActiveState','not started'))
     for k in ['dataset','method','phase','elapsed_seconds','error']: print(k+' = '+str(state.get(k,'N/A')))
     d=state.get('dataset'); runtime=dict(s.METHODS).get(state.get('method'))
@@ -292,14 +362,18 @@ def status():
         if corr.exists():
             with corr.open() as f: count=max(0,sum(line.endswith('\n') for line in f)-1)
         folder=s.OUT/'05_performance'/d/runtime
-        for rep in range(5):
+        for rep in range(PERFORMANCE_REPETITIONS):
             for suffix in ['.csv','.csv.part']:
                 path=folder/f'latency.r{rep}{suffix}'
                 if path.exists():
                     repetition=rep+1
                     with path.open() as f: query=max(0,sum(line.endswith('\n') for line in f)-1)
-        if s.marker(d,runtime+'_method').exists() and s.read_json(s.marker(d,runtime+'_method'))['payload']['Status']=='PASS': repetition=5; query=3000
-    print(f'Correctness = {count} / 1000\nTiming = repetition {repetition} / 5; query {query} / 3000')
+        if s.marker(d,runtime+'_method').exists() and \
+           s.read_json(s.marker(d,runtime+'_method'))['payload']['Status']=='PASS':
+            repetition=PERFORMANCE_REPETITIONS; query=QUERY_COUNTS['performance']
+    print(f"Correctness = {count} / {QUERY_COUNTS['correctness']}\n"
+          f"Timing = repetition {repetition} / {PERFORMANCE_REPETITIONS}; "
+          f"query {query} / {QUERY_COUNTS['performance']}")
     group=o.cgroup_policy.snapshot(o.SLICE)['kernel']
     print('Memory current = '+str(group.get('memory.current','N/A'))+' bytes')
     print('Memory peak = '+str(group.get('memory.peak','N/A'))+' bytes')
@@ -339,10 +413,46 @@ def start():
         '--setenv=PYTHONDONTWRITEBYTECODE=1','--setenv=OPENBLAS_NUM_THREADS=1','--setenv=OMP_NUM_THREADS=1',
         sys.executable,'-B',str(Path(__file__).resolve()),'--foreground'],check=True)
 
+def repair(dataset, method=None, dry_run=False):
+    """Dispatch the current checkpoint-safe repair engine through the main CLI."""
+    aliases={value.lower():key for key,value,_,_ in DATASET_SPECS}
+    aliases.update({key.lower():key for key in DATASETS})
+    selected=aliases.get(str(dataset).lower())
+    if selected is None:
+        raise ValueError('Unknown paper dataset: '+str(dataset))
+    if selected!=DATASETS[0]:
+        raise RuntimeError('Targeted repair is currently required only for GeoLife; use --resume for the sequential campaign')
+    import repair_geolife
+    runtime=None
+    if method:
+        method_map={name.lower():value for name,value in s.METHODS}
+        method_map.update({value.lower():value for _,value in s.METHODS})
+        runtime=method_map.get(method.lower())
+        if runtime is None: raise ValueError('Unknown paper method: '+method)
+        if runtime not in repair_geolife.ORDER:
+            raise ValueError('Method is already scientifically valid or outside the GeoLife repair queue: '+method)
+    methods=[runtime] if runtime else list(repair_geolife.retry_queue())
+    plan={'action':'repair','dataset':selected,'methods':methods,'dry_run':bool(dry_run),
+          'formal_entrypoint':'scripts/run_paper_benchmark.sh','will_start_service':not dry_run}
+    print(json.dumps(plan,indent=2))
+    if not dry_run: repair_geolife.start(methods)
+
+def dry_run_plan():
+    print(json.dumps({'action':'campaign','datasets':list(DATASETS),
+        'methods':[name for name,_ in s.METHODS],'protocol':PROTOCOL,
+        'will_start_service':False},indent=2))
+
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(); group=parser.add_mutually_exclusive_group(required=True)
+    parser=argparse.ArgumentParser(); group=parser.add_mutually_exclusive_group(required=False)
     for flag in ['start','resume','status','foreground']: group.add_argument('--'+flag,action='store_true')
+    group.add_argument('--repair',metavar='DATASET')
+    parser.add_argument('--method',metavar='METHOD')
+    parser.add_argument('--dry-run',action='store_true')
     args=parser.parse_args()
+    if args.method and not args.repair: parser.error('--method requires --repair DATASET')
     if args.status: status()
     elif args.foreground: foreground()
-    else: start()
+    elif args.repair: repair(args.repair,args.method,args.dry_run)
+    elif args.dry_run: dry_run_plan()
+    elif args.start or args.resume: start()
+    else: parser.error('choose --start, --resume, --status, --repair DATASET, or --dry-run')

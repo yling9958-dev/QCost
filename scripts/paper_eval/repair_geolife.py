@@ -15,12 +15,18 @@ import orchestrate as o
 import run
 import report
 import diagnose
+from paper_protocol import (DATASETS, GEOLIFE_REPAIR_ORDER, HOST_EMERGENCY_RESERVE,
+                            POINT_COUNTS, POSTGRES_PORT, REPAIR_UNIT,
+                            RETRY_ELIGIBLE_STATUSES, TIMEOUTS_S)
 
-D='geolife_2d_4p2G'
-ORDER=['qmap_uniform_qmf','flood','rtree']
-KEEP=['postgis_gist','lisa','tsunami','lmsfc','bmtree']
-RETRY_MIN_AVAILABLE=24*s.GIB
-UNIT='qmf-paper-geolife-repair-20260912'
+D=DATASETS[0]
+ORDER=list(GEOLIFE_REPAIR_ORDER)
+KEEP=[runtime for _,runtime in s.METHODS if runtime not in ORDER]
+# Admission only prevents starting while the host is already below the frozen
+# emergency reserve. The shared cgroup independently enforces the 22/24 GiB
+# runtime policy.
+RETRY_MIN_AVAILABLE=HOST_EMERGENCY_RESERVE
+UNIT=REPAIR_UNIT
 DEBUG=s.OUT/'debug'
 WORK=s.RUN/'geolife_repair'
 
@@ -47,15 +53,15 @@ def protect_valid():
             files.update((s.OUT/'04_correctness'/D).glob(runtime+'*'))
             files.update((s.OUT/'05_performance'/D/runtime).rglob('*'))
             files.add(s.OUT/'03_build'/D/(runtime+'.json'))
-        for row in run.DATASETS: files.update((s.OUT/'02_queries'/row).rglob('*'))
+        for dataset in DATASETS: files.update((s.OUT/'02_queries'/dataset).rglob('*'))
         for name in ['postgis_gist_build_r0','postgis_gist_correctness']:
             cp=s.marker(D,name)
             if not s.valid(D,name): raise RuntimeError('Required PostGIS checkpoint invalid: '+name)
             files.add(cp)
             files.update(Path(e['path']) for e in s.read_json(cp)['files'])
         # Preserve Gowalla's completed phases and partial repetition exactly.
-        files.update((s.OUT/'checkpoints'/run.DATASETS[1]).glob('*.done'))
-        files.update((s.OUT/'05_performance'/run.DATASETS[1]).rglob('*'))
+        files.update((s.OUT/'checkpoints'/DATASETS[1]).glob('*.done'))
+        files.update((s.OUT/'05_performance'/DATASETS[1]).rglob('*'))
         entries=[{'path':str(p),'bytes':p.stat().st_size,'sha256':s.sha(p)} for p in sorted(files) if p.is_file()]
         s.atomic_json(path,entries)
     # The original receipt predates PostGIS timing recovery. Add a new receipt;
@@ -91,6 +97,11 @@ def retry_decision(runtime):
        (value.get('unrecoverable') is True or value.get('retryable') is False):
         return 'IMPLEMENTATION_LIMIT'
     # An attempt receipt or terminal phase failure is never scientific completion.
+    status=value.get('Status')
+    if status in RETRY_ELIGIBLE_STATUSES or status in (None, 'NOT_RUN', 'INCOMPLETE'):
+        return 'RETRY_ELIGIBLE'
+    # Unknown historical labels cannot prove scientific validity. Preserve them
+    # and retry unless the explicit unrecoverable gate above applies.
     return 'RETRY_ELIGIBLE'
 
 def retry_queue():
@@ -132,8 +143,9 @@ def stale_processes(current):
             if p.get('in_experiment'): live.append(p['pid'])
             continue
         names={Path(a).name for a in args if a}
-        postgres=p['name'].startswith('postgres') and ('/qmf' in p['cgroup'] or '55445' in args or
-                     '--port=55445' in args or '-p55445' in args)
+        port=str(POSTGRES_PORT)
+        postgres=p['name'].startswith('postgres') and ('/qmf' in p['cgroup'] or port in args or
+                     '--port='+port in args or '-p'+port in args)
         worker=bool(names & {'qmf_postgres_full','qmap_build_index','build_static_qw_index.py'})
         if postgres or worker or p.get('normalized_mappings') or p.get('in_experiment'):
             live.append(p['pid'])
@@ -142,10 +154,10 @@ def stale_processes(current):
                 '--state=active,activating,deactivating','--no-legend'],text=True)
         if workers.strip(): live.append(workers.strip())
     # Also catch a PostgreSQL listener outside the experiment cgroup.
-    tcp=subprocess.check_output(['ss','-H','-ltn','sport = :55445'],text=True)
+    tcp=subprocess.check_output(['ss','-H','-ltn',f'sport = :{POSTGRES_PORT}'],text=True)
     unix=subprocess.check_output(['ss','-H','-lx'],text=True)
-    if tcp.strip() or any('.s.PGSQL.55445' in line for line in unix.splitlines()):
-        live.append('PostgreSQL port/socket 55445 remains active')
+    if tcp.strip() or any(f'.s.PGSQL.{POSTGRES_PORT}' in line for line in unix.splitlines()):
+        live.append(f'PostgreSQL port/socket {POSTGRES_PORT} remains active')
     return live
 
 def clean_preflight(runtime='shared'):
@@ -191,7 +203,7 @@ def adopt_restoration_load():
     o.monitor([],D+'_load',14400,adopt_unit=unit)
     o.sql('CREATE OR REPLACE VIEW evaluation AS SELECT id,x,y,x AS lon,y AS lat,geom FROM points; ANALYZE points;',D+'_analyze',1800)
     count=int(o.scalar('SELECT count(*) FROM points'))
-    if count!=181000000: raise RuntimeError('Restored GeoLife point count mismatch')
+    if count!=POINT_COUNTS[0]: raise RuntimeError('Restored GeoLife point count mismatch')
     s.done(D,'load',{'points':count,'id_mapping':'source ordinal from identity START 0','adopted_restore_worker':unit})
     return True
 
@@ -218,12 +230,12 @@ def prepare_runtime():
             raise RuntimeError('Restored GiST is not valid and ready')
         if o.scalar("SELECT min(id)::text || ',' || max(id)::text FROM points")!='0,180999999':
             raise RuntimeError('Restored full GeoLife identity bounds differ')
-        if s.read_json(s.marker(D,'load'))['payload']['points']!=181000000:
+        if s.read_json(s.marker(D,'load'))['payload']['points']!=POINT_COUNTS[0]:
             raise RuntimeError('Restored full point count differs')
         definition=o.scalar("SELECT pg_get_indexdef('points_gist'::regclass)")
         if 'USING gist (geom)' not in definition: raise RuntimeError('Restored index definition differs')
-        s.atomic_json(DEBUG/'restored_runtime_acceptance.json',{'at':time.time(),'points':181000000,
-            'id_bounds':[0,180999999],'index_valid_ready':True,'index_definition':definition,
+        s.atomic_json(DEBUG/'restored_runtime_acceptance.json',{'at':time.time(),'points':POINT_COUNTS[0],
+            'id_bounds':[0,POINT_COUNTS[0]-1],'index_valid_ready':True,'index_definition':definition,
             'observed_index_bytes':observed,'original_index_bytes':receipt['original_gist_bytes'],
             'build_measurement_reused_s':receipt['original_build_s_preserved'],
             'correctness_checkpoint_reused':'same frozen data, IDs, queries, PostgreSQL/PostGIS and exact query semantics',
@@ -284,7 +296,7 @@ def retry_attempt(runtime):
         previous=s.read_json(cp) if cp.exists() else None
         legacy=DEBUG/'attempts'/runtime
         receipt={'at':time.time(),'attempt_id':attempt_id,'runtime':runtime,
-                 'formal_build_timeout_s':run.PROTOCOL['timeouts_s']['build'],
+            'formal_build_timeout_s':TIMEOUTS_S['build'],
                  'previous_result':previous,'previous_generation':state,
                  'superseded_legacy_receipts':{str(p):s.sha(p) for p in legacy.glob('*.json') if p.is_file()},
                  'phase_policy':'Fresh retry after failed terminal attempt; resume valid phases only within this generation',
@@ -303,7 +315,7 @@ def retry_attempt(runtime):
         elif src_exists or not dst_exists:
             raise RuntimeError('Ambiguous retry evidence supersession: '+str(source))
     s.atomic_json(target/'started.json',{'at':time.time(),'attempt_id':state['attempt_id'],
-                                        'formal_build_timeout_s':run.PROTOCOL['timeouts_s']['build'],
+                                        'formal_build_timeout_s':TIMEOUTS_S['build'],
                                         'runtime':runtime,'previous_evidence_preserved':True})
     s.atomic_json(pointer,{**state,'phase':'running'})
     return target
@@ -330,7 +342,7 @@ def attempt(runtime):
     verify_protected(); run.verify_source(); publish()
     return result
 
-def foreground():
+def foreground(methods=None):
     WORK.mkdir(exist_ok=True)
     lock=(s.RUN/'campaign.lock').open('a'); fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
     configure()
@@ -338,7 +350,10 @@ def foreground():
     signal.signal(signal.SIGTERM,interrupted); signal.signal(signal.SIGINT,interrupted)
     try:
         run.verify_protocol(); run.verify_source(); protect_valid()
-        queue=retry_queue()
+        requested=list(ORDER if methods is None else methods)
+        if any(runtime not in ORDER for runtime in requested):
+            raise RuntimeError('Method outside the GeoLife repair queue')
+        queue=[runtime for runtime in requested if retry_decision(runtime)=='RETRY_ELIGIBLE']
         s.atomic_json(DEBUG/'retry_queue.json',{'at':time.time(),'queue':queue,
             'preserved':KEEP,'minimum_start_memavailable_bytes':RETRY_MIN_AVAILABLE})
         if queue:
@@ -360,11 +375,14 @@ def foreground():
         # Closing the repair server preserves both datasets' disk representations.
         stop_repair_postgres()
 
-def start():
+def start(methods=None):
     if run.active(UNIT): print('Repair service already active'); return
     if run.active(run.UNIT): raise RuntimeError('Forward campaign must be paused before GeoLife repair')
     s.output_dirs(); DEBUG.mkdir(exist_ok=True)
     run.verify_protocol(); run.verify_source(); protect_valid()
+    methods=list(ORDER if methods is None else methods)
+    if any(runtime not in ORDER for runtime in methods):
+        raise RuntimeError('Method outside the GeoLife repair queue')
     if 'LoadState=loaded' in o.ctl('show',UNIT,'-p','LoadState').stdout:
         if str(Path(__file__).resolve()) not in o.ctl('show',UNIT,'-p','ExecStart').stdout:
             raise RuntimeError('Existing repair unit has an unexpected command')
@@ -373,11 +391,14 @@ def start():
         result=o.ctl('start',UNIT)
         if result.returncode==0: return
         if result.returncode!=5: raise RuntimeError(result.stderr)
-    subprocess.run(['systemd-run','--user','--unit',UNIT,'--property=TimeoutStopSec=60',
+    command=['systemd-run','--user','--unit',UNIT,'--property=TimeoutStopSec=60',
        '--property=StandardOutput=append:'+str(DEBUG/'repair.log'),'--property=StandardError=append:'+str(DEBUG/'repair.log'),
        '--setenv=PYTHONDONTWRITEBYTECODE=1','--setenv=OPENBLAS_NUM_THREADS=1','--setenv=OMP_NUM_THREADS=1',
-       sys.executable,'-B',str(Path(__file__).resolve()),'--foreground'],check=True)
+       sys.executable,'-B',str(Path(__file__).resolve()),'--foreground']
+    for runtime in methods: command.extend(['--method',runtime])
+    subprocess.run(command,check=True)
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(); p.add_argument('--foreground',action='store_true'); args=p.parse_args()
-    foreground() if args.foreground else start()
+    p=argparse.ArgumentParser(); p.add_argument('--foreground',action='store_true')
+    p.add_argument('--method',action='append',choices=ORDER); args=p.parse_args()
+    foreground(args.method) if args.foreground else start(args.method)

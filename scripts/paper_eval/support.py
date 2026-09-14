@@ -3,21 +3,15 @@ import csv
 import hashlib
 import json
 import os
-from pathlib import Path
 import time
+from pathlib import Path
+from paper_protocol import (BASE, GIB, METRICS, METHODS, PERSISTENT_METHODS,
+                            RESULT_ROOT, ROOT, RUNTIME_ROOT, SEED)
 
-ROOT = Path(__file__).resolve().parents[2]
-BASE = ROOT / 'QMF_PostGIS_100M_Repro_20260910'
 RECOVERY = False
-RUN = Path('/var/tmp/qmf-paper-protocol-20260911')
-OUT = ROOT / 'results/four_dataset_paper_protocol_20260911'
-SEED = 20260910
-GIB = 1024**3
-METHODS = [('QMF','qmap_uniform_qmf'), ('PostGIS-GiST','postgis_gist'),
-           ('LISA','lisa'), ('Flood','flood'), ('Tsunami','tsunami'),
-           ('LMSFC','lmsfc'), ('BMTree','bmtree'), ('Boost-Rstar','rtree')]
-PERSISTENT = {'qmap_uniform_qmf','postgis_gist','tsunami','lmsfc','bmtree'}
-METRICS = ['Build_s','IndexSize_MiB','Mean_ms','P95_ms','P99_ms','QPS','PeakMemory_MiB']
+RUN = RUNTIME_ROOT
+OUT = RESULT_ROOT
+PERSISTENT = PERSISTENT_METHODS
 
 def atomic_json(path, value):
     path = Path(path)

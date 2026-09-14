@@ -16,11 +16,12 @@ from support import (ROOT, BASE, RUN, OUT, GIB, METHODS, PERSISTENT, METRICS, RE
     marker, done, valid)
 import cgroup_policy
 import outcomes
-from phase_timeouts import TIMEOUTS_S
+from paper_protocol import (CAMPAIGN_UNIT, EXPERIMENT_SLICE, PERFORMANCE_REPETITIONS,
+                            POSTGRES_PORT, POSTGRES_UNIT, QUERY_COUNTS, TIMEOUTS_S)
 
-UNIT='qmf-paper-benchmark-20260911'
-SLICE='qmf-paper.slice'
-PGUNIT='qmf-paper-postgres'
+UNIT=CAMPAIGN_UNIT
+SLICE=EXPERIMENT_SLICE
+PGUNIT=POSTGRES_UNIT
 COMMON=RUN/'common'
 ACTIVE=RUN/'active'
 SCRIPT=Path(__file__).resolve().parent
@@ -32,7 +33,8 @@ PGBIN=Path('/usr/lib/postgresql/14/bin')
 ENV={**os.environ,'REPRO_ROOT':str(BASE),'QMF_RUNTIME':str(COMMON),
      'QMAP_BUILD_ROOT':str(COMMON/'build'),'QMAP_BASELINE_WORK':str(COMMON/'baselines'),
      'QMAP_PROJECT_ROOT':str(BASE),'PYTHONPATH':str(BASE/'src/common/python'),
-     'PYTHONDONTWRITEBYTECODE':'1','QMF_PGPORT':'55445','PGPORT':'55445',
+     'PYTHONDONTWRITEBYTECODE':'1','QMF_PGPORT':str(POSTGRES_PORT),
+     'PGPORT':str(POSTGRES_PORT),
      'PGHOST':str(COMMON/'pg_socket'),'PGDATABASE':'qmf_full',
      'OMP_NUM_THREADS':'1','OPENBLAS_NUM_THREADS':'1','MKL_NUM_THREADS':'1',
      'QMAP_QMF_SCALAR':'1','QMF_BUILD_JOBS':'2'}
@@ -163,7 +165,7 @@ def monitor(command,label,timeout=14400,on_tick=None,adopt_unit=None,elapsed_bef
                 # The unchanged harness creates latency.r*.csv.part only after all warmup queries return.
                 failed_phase=observed_query_phase(command,wall_started)
             if elapsed+elapsed_before>timeout:
-                reason=f'Predeclared phase timeout {timeout}s'; code=outcomes.phase_failure(failed_phase)
+                reason=f'Predeclared phase timeout {timeout}s'; code='TIMEOUT'
             if reason:
                 trigger={'timestamp':time.time(),'host':now,'parent':parent_now,'worker':s,'postgres':pg_stats,
                          'phase':failed_phase,'reason':reason,'status':code}
@@ -228,9 +230,45 @@ def scalar(text,database=None):
     return subprocess.check_output(['psql','-X','-At','-v','ON_ERROR_STOP=1','-c',text],
         env={**ENV,**({'PGDATABASE':database} if database else {})},text=True).strip()
 
+def verify_baseline_archive():
+    """Verify the pristine archive, or its one exact audited implementation delta."""
+    command=['bash',str(BASE/'scripts/00_verify_archive.sh')]
+    result=subprocess.run(command,capture_output=True,text=True,env=ENV)
+    if result.returncode==0: return 'FROZEN_ARCHIVE'
+
+    # The standalone verifier intentionally knows nothing about later amendments.
+    # Its failure can be superseded only by the paper runner's exact source gate
+    # plus a whole-package delta containing no other changed, missing, or extra file.
+    import run as paper_run
+    paper_run.verify_source()
+    expected={}
+    for line in (BASE/'MANIFEST.sha256').read_text().splitlines():
+        digest,separator,name=line.partition('  ')
+        if not separator or len(digest)!=64 or name in expected:
+            raise RuntimeError('INVALID_MANIFEST_RECORD')
+        expected[name]=digest
+    actual={}
+    for path in BASE.rglob('*'):
+        if path.is_symlink(): raise RuntimeError('SYMLINK_NOT_ALLOWED: '+str(path))
+        if path.is_file() and path.name!='MANIFEST.sha256':
+            actual[path.relative_to(BASE).as_posix()]=sha(path)
+    changed={path:{'before':expected.get(path),'after':actual.get(path)}
+             for path in sorted(set(expected)|set(actual)) if expected.get(path)!=actual.get(path)}
+    frozen=read_json(OUT/'00_environment/production_source_before.json')
+    current=paper_run.source_manifest()
+    audit=paper_run.production_source_receipt(frozen,current)
+    if not audit: raise RuntimeError('UNAUDITED_PRODUCTION_SOURCE')
+    if changed!=audit.get('changed_production_files'):
+        raise RuntimeError('UNAUDITED_ARCHIVE_MANIFEST_MISMATCH')
+    atomic_json(paper_run.AUDIT_ROOT/'QMF_MEMORY_ARCHIVE_VERIFICATION_20260914.json',{
+        'status':'AUDITED_MEMORY_IMPLEMENTATION','original_verifier_exit':result.returncode,
+        'original_verifier_output':(result.stdout+result.stderr).strip(),
+        'changed_files':changed,'all_other_archive_files_match':True})
+    return 'AUDITED_MEMORY_IMPLEMENTATION'
+
 def setup():
     update(phase='baseline_verification')
-    subprocess.run(['bash',str(BASE/'scripts/00_verify_archive.sh')],check=True,env=ENV)
+    verify_baseline_archive()
     monitor(['bash',str(BASE/'scripts/01_check_environment.sh')],'environment',600)
     manifest=sha(BASE/'MANIFEST.sha256')
     lock=OUT/'00_environment'/'baseline_lock.json'
@@ -264,7 +302,11 @@ def setup():
         'postgis':scalar('SELECT PostGIS_Lib_Version()'),'memory':memory(),
         'cpu':subprocess.check_output(['lscpu'],text=True),'python':sys.version,
         'slice':SLICE,'swap_policy':'Shared parent MemoryHigh=22GiB MemoryMax=24GiB MemorySwapMax=0; historical host swap occupancy allowed',
-        'timing_policy':'single connection/worker, prepared SQL, 300 warmup then five 3000-query repetitions; no OS cache flush'})
+        'timing_policy':(
+            f"single connection/worker, prepared SQL, {QUERY_COUNTS['warmup']} warmup then "
+            f"{PERFORMANCE_REPETITIONS} x {QUERY_COUNTS['performance']}-query repetitions; "
+            "no OS cache flush"
+        )})
 
 def ensure_pg():
     if props(PGUNIT).get('ActiveState')!='active':
@@ -276,10 +318,12 @@ def ensure_pg():
             '--property=MemoryAccounting=yes','--property=ManagedOOMPreference=omit','--property=TimeoutStopSec=30',
             '--property=KillSignal=SIGINT','--property=StandardOutput=append:'+str(RUN/'postgres.log'),
             '--property=StandardError=append:'+str(RUN/'postgres.log'),
-            str(PGBIN/'postgres'),'-D',str(COMMON/'pg_data'),'-k',str(COMMON/'pg_socket'),'-p','55445',
+            str(PGBIN/'postgres'),'-D',str(COMMON/'pg_data'),'-k',str(COMMON/'pg_socket'),
+            '-p',str(POSTGRES_PORT),
             '-c','listen_addresses='],check=True)
         for _ in range(120):
-            p=subprocess.run(['pg_isready','-h',ENV['PGHOST'],'-p','55445'],capture_output=True)
+            p=subprocess.run(['pg_isready','-h',ENV['PGHOST'],'-p',str(POSTGRES_PORT)],
+                             capture_output=True)
             if p.returncode==0:
                 cgroup_policy.validate(cgroup_policy.snapshot(SLICE),[cgroup_policy.snapshot(PGUNIT)])
                 return
@@ -394,6 +438,7 @@ def build_one(row,runtime,rep):
         diagnostic=OUT/'06_qmf_diagnostics'/dataset; diagnostic.mkdir(parents=True,exist_ok=True)
         shutil.copy2(folder/'metadata.json',diagnostic/f'build_r{rep}.json')
         shutil.copy2(folder/'tree_decision_manifest.csv',diagnostic/f'tree_r{rep}.csv')
+        shutil.copy2(folder/'QMF_MEMORY_STAGE_TRACE.csv',diagnostic/f'memory_stage_trace_r{rep}.csv')
         if rep and sha(diagnostic/'tree_r0.csv')!=sha(diagnostic/f'tree_r{rep}.csv'):
             raise Blocked('BUILD_FAILED','QMF tree changed across identical builds')
         return {'build_seconds':metadata['index_build_seconds'],'serialized_bytes':index.stat().st_size,
@@ -475,18 +520,22 @@ def run_method(row,display,runtime):
         perf=OUT/'05_performance'/dataset/runtime; perf.mkdir(parents=True,exist_ok=True)
         update(phase='correctness')
         if not valid(dataset,runtime+'_correctness'):
-            monitor(query_command(row,runtime,'correctness',corr,perf/'latency',summary,0),f'{dataset}_{runtime}_correctness',43200)
+            monitor(query_command(row,runtime,'correctness',corr,perf/'latency',summary,0),
+                    f'{dataset}_{runtime}_correctness',TIMEOUTS_S['correctness'])
             frame=pd.read_csv(corr)
-            if len(frame)!=1000 or not frame.exact.eq(1).all() or frame.missing.sum()!=0 or frame.extra.sum()!=0:
-                raise Blocked('CORRECTNESS_FAILED','Exact 1000-query gate failed')
+            if len(frame)!=QUERY_COUNTS['correctness'] or not frame.exact.eq(1).all() or \
+               frame.missing.sum()!=0 or frame.extra.sum()!=0:
+                raise Blocked('CORRECTNESS_FAILED',
+                              f"Exact {QUERY_COUNTS['correctness']}-query gate failed")
             fairness(read_json(summary))
-            done(dataset,runtime+'_correctness',{'exact':1000,'missing':0,'extra':0},[corr,summary])
-        output['Correctness']='1000/1000 exact'
+            done(dataset,runtime+'_correctness',
+                 {'exact':QUERY_COUNTS['correctness'],'missing':0,'extra':0},[corr,summary])
+        output['Correctness']=f"{QUERY_COUNTS['correctness']}/{QUERY_COUNTS['correctness']} exact"
         stats=read_json(summary)
         output['PeakMemory_MiB']=max(output['PeakMemory_MiB'],(stats['backend_peak_rss_kib']+stats['client_peak_rss_kib'])/1024)
         update(phase='timing')
         def accept_repetitions():
-            for rep in range(5):
+            for rep in range(PERFORMANCE_REPETITIONS):
                 cp=f'{runtime}_timing_r{rep+1}'
                 if marker(dataset,cp).exists(): continue
                 raw=perf/f'latency.r{rep}.csv'; ready=Path(str(raw)+'.ready')
@@ -494,27 +543,32 @@ def run_method(row,display,runtime):
                     values=read_json(ready); fairness(values)
                     with raw.open() as f:
                         n=sum(1 for _ in f)-1
-                    if n!=3000: raise RuntimeError('Incomplete repetition output')
+                    if n!=QUERY_COUNTS['performance']:
+                        raise RuntimeError('Incomplete repetition output')
                     done(dataset,cp,values,files=[raw,ready])
         accept_repetitions()
-        pending=[rep for rep in range(5) if not valid(dataset,f'{runtime}_timing_r{rep+1}')]
+        pending=[rep for rep in range(PERFORMANCE_REPETITIONS)
+                 if not valid(dataset,f'{runtime}_timing_r{rep+1}')]
         if pending:
             first=min(pending)
             # Resume only a contiguous prefix, preserving the declared query order.
-            if any(marker(dataset,f'{runtime}_timing_r{r+1}').exists() for r in range(first+1,5)):
+            if any(marker(dataset,f'{runtime}_timing_r{r+1}').exists()
+                   for r in range(first+1,PERFORMANCE_REPETITIONS)):
                 raise RuntimeError('Noncontiguous timing checkpoints')
             monitor(query_command(row,runtime,'timing',corr,perf/'latency',summary,first),
-                    f'{dataset}_{runtime}_timing',43200,on_tick=accept_repetitions)
+                    f'{dataset}_{runtime}_timing',TIMEOUTS_S['timing'],on_tick=accept_repetitions)
             accept_repetitions()
         update(phase='finalization')
         frames=[]
         compressed=perf/'query_latency_raw.csv.zst'
-        already_compressed=compressed.exists() and all(valid(dataset,f'{runtime}_timing_r{r+1}') for r in range(5)) and not (perf/'latency.r0.csv').exists()
+        already_compressed=compressed.exists() and all(
+            valid(dataset,f'{runtime}_timing_r{r+1}') for r in range(PERFORMANCE_REPETITIONS)
+        ) and not (perf/'latency.r0.csv').exists()
         if already_compressed:
             with subprocess.Popen(['zstd','-q','-d','-c',str(compressed)],stdout=subprocess.PIPE) as proc:
                 frames.append(pd.read_csv(proc.stdout))
                 if proc.wait()!=0: raise RuntimeError('Corrupt compressed timing file')
-        for rep in range(5):
+        for rep in range(PERFORMANCE_REPETITIONS):
             raw=perf/f'latency.r{rep}.csv'
             if not already_compressed: frames.append(pd.read_csv(raw))
             stats=read_json(marker(dataset,f'{runtime}_timing_r{rep+1}'))['payload']
@@ -523,7 +577,7 @@ def run_method(row,display,runtime):
         if len(frame)!=15000 or frame.repetition.nunique()!=5:
             raise RuntimeError('Incomplete paper timing evidence')
         expected=[r['query_id'] for r in csv.DictReader(query.open()) if r['split']=='performance']
-        for rep in range(5):
+        for rep in range(PERFORMANCE_REPETITIONS):
             if frame[frame.repetition==rep].query_id.tolist()!=expected:
                 raise RuntimeError('Timing repetition query order mismatch')
         v=frame.latency_ns.to_numpy(dtype=np.float64)
@@ -535,12 +589,12 @@ def run_method(row,display,runtime):
         if subprocess.run(['zstd','-q','-t',str(perf/'query_latency_raw.csv.zst')]).returncode:
             raise RuntimeError('Compressed timing verification failed')
         uncompressed.unlink()
-        for rep in range(5):
+        for rep in range(PERFORMANCE_REPETITIONS):
             raw=perf/f'latency.r{rep}.csv'
             done(dataset,f'{runtime}_timing_r{rep+1}',read_json(marker(dataset,f'{runtime}_timing_r{rep+1}'))['payload'],files=[perf/'query_latency_raw.csv.zst'])
         # Write completion before pruning the now-redundant raw repetition files.
         done(dataset,runtime+'_method',output)
-        for rep in range(5):
+        for rep in range(PERFORMANCE_REPETITIONS):
             raw=perf/f'latency.r{rep}.csv'
             raw.unlink(missing_ok=True); Path(str(raw)+'.ready').unlink(missing_ok=True)
     except Blocked as e:

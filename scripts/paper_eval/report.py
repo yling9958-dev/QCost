@@ -7,10 +7,13 @@ import subprocess
 import io
 import json
 import support as s
+from paper_protocol import (DATASET_NAMES, DATASET_RESULT_SLUGS,
+                            PERFORMANCE_REPETITIONS, QUERY_COUNTS,
+                            REPORT_METHOD_LABELS)
 
-DISPLAY=['QMF-Index','PostGIS GiST','LISA','Flood','Tsunami','LMSFC','BMTree','Boost R*-tree']
-SHORT=['geolife','gowalla','nyc_taxi','skewed_2d']
-NAMES=['GeoLife','Gowalla','NYC Taxi','Skewed 2D']
+DISPLAY=list(REPORT_METHOD_LABELS)
+SHORT=list(DATASET_RESULT_SLUGS)
+NAMES=list(DATASET_NAMES)
 FIELDS=['Method',*s.METRICS,'Correctness','Status']
 
 def text(path,value):
@@ -44,8 +47,10 @@ def rows(dataset):
         corr=s.marker(dataset,runtime+'_correctness')
         if corr.exists():
             v=s.read_json(corr)['payload']; r['Missing']=v.get('missing'); r['Extra']=v.get('extra')
-            if not cp.exists() and (v.get('exact'),v.get('missing'),v.get('extra'))==(1000,0,0) and s.valid(dataset,runtime+'_correctness'):
-                r['Correctness']='1000/1000 exact'
+            if not cp.exists() and (v.get('exact'),v.get('missing'),v.get('extra'))==(
+                    QUERY_COUNTS['correctness'],0,0) and s.valid(dataset,runtime+'_correctness'):
+                r['Correctness']=(f"{QUERY_COUNTS['correctness']}/"
+                                  f"{QUERY_COUNTS['correctness']} exact")
         else:
             r['Missing']=r['Extra']=None
             if r['Status'] in ('CORRECTNESS_INVALID','CORRECTNESS_FAILED'): r['Correctness']='INVALID'
@@ -57,7 +62,9 @@ def valid_method(dataset,runtime):
     cp=s.marker(dataset,runtime+'_method')
     if not cp.exists(): return False
     result=s.read_json(cp)['payload']
-    if result.get('Status')!='PASS' or result.get('Correctness')!='1000/1000 exact': return False
+    expected_correctness=(f"{QUERY_COUNTS['correctness']}/"
+                          f"{QUERY_COUNTS['correctness']} exact")
+    if result.get('Status')!='PASS' or result.get('Correctness')!=expected_correctness: return False
     required=[m for m in s.METRICS if m!='IndexSize_MiB' or runtime in s.PERSISTENT]
     if any(result.get(m) is None or not math.isfinite(result[m]) or result[m]<0 for m in required): return False
     build=s.marker(dataset,runtime+'_build_r0')
@@ -65,9 +72,10 @@ def valid_method(dataset,runtime):
     corr=s.marker(dataset,runtime+'_correctness')
     if not corr.exists() or not s.valid(dataset,runtime+'_correctness'): return False
     v=s.read_json(corr)['payload']
-    if (v.get('exact'),v.get('missing'),v.get('extra'))!=(1000,0,0): return False
+    if (v.get('exact'),v.get('missing'),v.get('extra'))!=(QUERY_COUNTS['correctness'],0,0):
+        return False
     seen=set()
-    for rep in range(1,6):
+    for rep in range(1,PERFORMANCE_REPETITIONS+1):
         marker=s.marker(dataset,f'{runtime}_timing_r{rep}')
         if not marker.exists(): return False
         for entry in s.read_json(marker)['files']:
@@ -81,8 +89,10 @@ def valid_method(dataset,runtime):
     records=list(csv.DictReader(io.StringIO(proc.stdout)))
     with (s.OUT/'02_queries'/dataset/(dataset+'_queries.csv')).open() as f:
         expected=[r['query_id'] for r in csv.DictReader(f) if r['split']=='performance']
-    if len(expected)!=3000 or len(records)!=15000: return False
-    return all([r['query_id'] for r in records if int(r['repetition'])==rep]==expected for rep in range(5))
+    if len(expected)!=QUERY_COUNTS['performance'] or \
+       len(records)!=QUERY_COUNTS['performance']*PERFORMANCE_REPETITIONS: return False
+    return all([r['query_id'] for r in records if int(r['repetition'])==rep]==expected
+               for rep in range(PERFORMANCE_REPETITIONS))
 
 def completion(dataset):
     def was_attempted(runtime):

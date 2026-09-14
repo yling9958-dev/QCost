@@ -3,4 +3,6 @@ data_cache/**/*.csv
 dataest/**
 dist/**
 archive/**
+**/__pycache__/**
+*.py[cod]
 QMF_PostGIS_100M_Repro_20260910/**/*.csv

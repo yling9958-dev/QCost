@@ -1,11 +1,9 @@
 """Fixed aggregate memory budget, verified against kernel cgroup files."""
-from pathlib import Path
 import subprocess
+from pathlib import Path
+from paper_protocol import GIB, MEMORY_HIGH, MEMORY_MAX, MEMORY_SWAP_MAX
 
-GIB=1024**3
-MEMORY_HIGH=22*GIB
-MEMORY_MAX=24*GIB
-SWAP_MAX=0
+SWAP_MAX=MEMORY_SWAP_MAX
 CGROUP_ROOT=Path('/sys/fs/cgroup')
 SYSTEM_MANAGER=True
 

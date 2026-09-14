@@ -1,6 +1,5 @@
 """Terminal cause and failed phase are separate experimental evidence."""
-STATUSES={'PASS','HOST_SAFETY_STOP','CGROUP_MEMORY_MAX','OOM_KILLED','SWAP_INVALID',
- 'BUILD_FAILED','CORRECTNESS_FAILED','WARMUP_FAILED','TIMING_FAILED','FINALIZATION_FAILED','REPORTING_FAILED'}
+from paper_protocol import STATUSES
 
 def phase_failure(phase):
     return {'correctness':'CORRECTNESS_FAILED','warmup':'WARMUP_FAILED','timing':'TIMING_FAILED',
