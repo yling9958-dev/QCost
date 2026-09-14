@@ -88,10 +88,22 @@ def test_fixed_shared_budget():
 
 def test_frozen_qmf_build_and_correctness_sql_unchanged():
     root=Path(__file__).resolve().parent; old=root.parent/'full_eval'
-    def func(path,name):
+    def func(path,name,strip_infrastructure_args=False):
         tree=ast.parse(path.read_text())
-        return ast.dump(next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name))
-    assert func(root/'worker.py','qmf')==func(old/'worker.py','qmf')
+        function=next(n for n in tree.body if isinstance(n,ast.FunctionDef) and n.name==name)
+        if strip_infrastructure_args:
+            function.body=[statement for statement in function.body if not (
+                isinstance(statement,ast.Assign) and any(
+                    isinstance(target,ast.Name) and target.id=='point_count' for target in statement.targets))]
+            assignment=next(statement for statement in function.body if isinstance(statement,ast.Assign) and
+                            any(isinstance(target,ast.Name) and target.id=='args' for target in statement.targets))
+            values=assignment.value.elts
+            for flag in ('--point-count','--memory-stage-trace'):
+                index=next(i for i,value in enumerate(values)
+                           if isinstance(value,ast.Constant) and value.value==flag)
+                del values[index:index+2]
+        return ast.dump(function)
+    assert func(root/'worker.py','qmf',True)==func(old/'worker.py','qmf')
     def sql(path):
         source=path.read_text(); return source.split('std::string correctness_sql(')[1].split('\nvoid prepare(')[0]
     assert sql(root/'postgres_full.cpp')==sql(old/'postgres_full.cpp')

@@ -1,0 +1,40 @@
+{
+  "amendment": "paper controller single-source configuration and unified CLI",
+  "prior_control_manifests": [
+    {
+      "support.py": "8a6d91dbed53d610e50b55d0a3668e4c9e20a99ce0ceebc24cb5d86e30d8fdf7",
+      "worker.py": "cea29a21007a2ab5422fa434a212a58297f67d8e7ab34b438fb320e139ac2722",
+      "orchestrate.py": "0dba2692aa1d569eb1fd086185756d40172713c9a1836e098cdb22aff093bc05",
+      "postgres_full.cpp": "cb8cc7ffa4bd920fec67a6672c74a05957afdf2ffcf9174363bf1cc17930a59c",
+      "cgroup_policy.py": "a0a9efea70ca9dcabb4a8cea5e786bbb3bab13ce602a3631f674140f6005c2ec",
+      "report.py": "edf276264d5ddd4ec5d45e93fbf00b85e267a02507c868a5483a9e9a1371bb0d",
+      "run.py": "1ca23bf6cc998f65524ab403e0757fefb4d9c4f1662c7f08b73afdd3882a0b26",
+      "test_paper.py": "8d9ddca85c044f374b4fc01c3a1eb7f051abe72782ca55d4c2c02ab343b26d89"
+    }
+  ],
+  "current_source_manifest": {
+    "support.py": "42161171f6c2ff000a4fef7cba2f057feebe8000330fb62805c59235550eebcd",
+    "worker.py": "9e509f1f9178a57df6456b00ca73e5795f3cf7d9d85adcd08c7f2df0c4f645ce",
+    "orchestrate.py": "ac6b657f75ef7b0d9456f2d7dae0f0f4ac3cb7f494348430b8f87100457afdaf",
+    "postgres_full.cpp": "cb8cc7ffa4bd920fec67a6672c74a05957afdf2ffcf9174363bf1cc17930a59c",
+    "cgroup_policy.py": "5c85e2774ac17d73d2984d7f38e736f053884821db0ceabfe6d773406fd208d4",
+    "report.py": "bd0fcb7952dc814765f33544d2d4a6dcfc20cf040246619a02d1bff3f171c0c0",
+    "run.py": "ce62e3a820ef99676fffef57626e864650a3c8b159db066e20f35912f3d86edb",
+    "test_paper.py": "2945fcbd675386bb8282ddce96e920ba324c8e530aa53da3b8ca4e75fe8e7cfa",
+    "diagnose.py": "561fbc8545a9ebe7a05f6cab431ec96899e526a1ca1c7d708ae812e03214c5e2",
+    "outcomes.py": "45d12452eebca151001e227cb9eb91582084bcb4b1d1f82a0760c7413908b711",
+    "repair_geolife.py": "367b4777b5800f5784c7c503bd6792b11530201db4222f52723b769a07c10c1c",
+    "test_repair.py": "ff21cfe80068ac9c3865c465a636302fc6cc3b7fff0bfe92b5ac5486ec7bc137",
+    "test_retry.py": "c5638d763fc1afc65198bba0f79005a8c5963ac5958da6e35f475d53269055c5",
+    "test_build_timeout.py": "7364d0558155e5a9c7c420ce576d405f8e28b893707c6183377ef9ab2a74297f",
+    "test_qmf_memory_optimization.py": "2b2382840156abac70964a9a7f385257b33f5dd95c173d28288bbadbe1add50c",
+    "paper_protocol.py": "7f54ddfbab8a5b1022a2e9a8a501f456ded7dbbaf1c8386759ae52a7893a90af",
+    "test_protocol_convergence.py": "7a14f4bf23d3d79055c4b2993b88c90069d452d1cb893dc436aebb42810b5163"
+  },
+  "tests_sha256": "a753d7424fca7a7488089e5e92ac6f94cab8a4432300decbab4e84c21d0e8dbb",
+  "qmf_algorithm_changed": false,
+  "dataset_changed": false,
+  "query_protocol_changed": false,
+  "memory_policy_changed": false,
+  "auto_run_started": false
+}

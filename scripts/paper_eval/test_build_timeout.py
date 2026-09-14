@@ -12,7 +12,7 @@ import support as s
 import run
 import orchestrate as o
 import repair_geolife as repair
-from phase_timeouts import TIMEOUTS_S
+from paper_protocol import TIMEOUTS_S
 from test_retry import retry_env, write_valid_method, terminal, bytes_under
 
 
@@ -81,21 +81,31 @@ def test_monitor_does_not_stop_at_four_hours_and_records_twelve_hour_timeout(ret
     monkeypatch.setattr(o.subprocess,'run',no_launch)
     with pytest.raises(o.Blocked,match='Predeclared phase timeout 43200s') as error:
         o.monitor([],'test_formal_build',TIMEOUTS_S['build'],adopt_unit='fixture',elapsed_before=prior_seconds)
-    assert error.value.status=='BUILD_FAILED'
+    assert error.value.status=='TIMEOUT'
     assert sleeps==[.1]  # First sample at 14401s did not stop; second crossed total 43200s.
     receipt=s.read_json(s.OUT/'00_environment/test_formal_build_stop_receipt.json')
     assert receipt['reason']=='Predeclared phase timeout 43200s'
+    assert receipt['status']=='TIMEOUT'
 
 
-def test_only_expected_protocol_field_can_be_amended(retry_env):
+def test_only_expected_protocol_field_can_be_amended(retry_env,monkeypatch):
+    monkeypatch.setattr(run,'AUDIT_ROOT',retry_env/'audit')
     original=copy.deepcopy(run.PROTOCOL); original['timeouts_s']['build']=14400
+    original['qmf_memory_engineering_production_change']=False
     path=s.OUT/'00_environment/protocol.json'; s.atomic_json(path,original)
     before=path.read_bytes()
     with pytest.raises(RuntimeError): run.verify_protocol()
+    historical_effective=copy.deepcopy(run.PROTOCOL)
+    historical_effective['qmf_memory_engineering_production_change']=False
     audit={'old_build_timeout_s':14400,'new_build_timeout_s':43200,
-           'original_protocol_sha256':s.sha(path),'effective_protocol':run.PROTOCOL}
+           'original_protocol_sha256':s.sha(path),'effective_protocol':historical_effective}
     amendment=path.parent/'BUILD_TIMEOUT_PROTOCOL_AMENDMENT_20260913.json'
     s.atomic_json(amendment,audit)
+    run.AUDIT_ROOT.mkdir(parents=True,exist_ok=True)
+    s.atomic_json(run.AUDIT_ROOT/'QMF_MEMORY_IMPLEMENTATION_SOURCE_20260914.json',{
+        'qmf_core_algorithm_changed':False,'dataset_changed':False,
+        'query_protocol_changed':False,'memory_policy_changed':False,
+        'cpu_protocol_changed':False})
     run.verify_protocol(); assert path.read_bytes()==before
     corrupt=copy.deepcopy(original); corrupt['performance']=2999
     s.atomic_json(path,corrupt)

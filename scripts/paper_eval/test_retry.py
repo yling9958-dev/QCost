@@ -10,6 +10,7 @@ import support as s
 import orchestrate as o
 import report
 import run
+from paper_protocol import HOST_EMERGENCY_RESERVE
 
 
 @pytest.fixture
@@ -75,7 +76,7 @@ def test_pass_label_without_correctness_evidence_is_retry_eligible(retry_env):
 
 @pytest.mark.parametrize('status',['HOST_SAFETY_STOP','OOM_KILLED','CGROUP_MEMORY_MAX',
  'BUILD_FAILED','CORRECTNESS_FAILED','WARMUP_FAILED','TIMING_FAILED','SWAP_INVALID',
- 'FINALIZATION_FAILED','REPORTING_FAILED'])
+ 'FINALIZATION_FAILED','REPORTING_FAILED','TIMEOUT'])
 def test_failed_historical_attempt_and_done_do_not_block_new_retry(retry_env,monkeypatch,status):
     runtime='qmap_uniform_qmf'; terminal(runtime,status)
     old=s.marker(repair.D,runtime+'_method').read_bytes()
@@ -167,21 +168,22 @@ def host(available=24*s.GIB,swap=0):
             'parent':{'path':'/qmf.slice/qmf-paper.slice','kernel':{'memory.swap.current':swap}}}
 
 
-def test_low_memory_waits_without_marking_failure_then_admits_at_24_gib(retry_env,monkeypatch):
+def test_low_memory_waits_without_marking_failure_then_admits_at_host_reserve(retry_env,monkeypatch):
     terminal('flood'); cp=s.marker(repair.D,'flood_method'); previous=cp.read_bytes()
-    samples=iter([host(23*s.GIB),host(24*s.GIB)])
+    reserve=HOST_EMERGENCY_RESERVE
+    samples=iter([host(reserve-1),host(reserve)])
     monkeypatch.setattr(repair.diagnose,'ownership',lambda *a:next(samples))
     monkeypatch.setattr(repair,'stale_processes',lambda current:[])
     sleeps=[]; states=[]
     monkeypatch.setattr(repair.time,'sleep',lambda seconds:sleeps.append(seconds))
     monkeypatch.setattr(o,'update',lambda **kw:states.append(kw))
-    assert repair.clean_preflight('flood')['host_meminfo']['MemAvailable']==24*s.GIB
+    assert repair.clean_preflight('flood')['host_meminfo']['MemAvailable']==reserve
     assert sleeps==[10]
     assert states[0]['status']=='WAITING' and states[0]['phase']=='waiting_for_host_memory'
     assert states[-1]['phase']=='retry_ready'
     assert cp.read_bytes()==previous
     assert not (repair.WORK/'retry_state/flood.json').exists()
-    assert run.PROTOCOL['host_reserve']==3.5*s.GIB
+    assert HOST_EMERGENCY_RESERVE==3.5*s.GIB
     assert (o.cgroup_policy.MEMORY_HIGH,o.cgroup_policy.MEMORY_MAX,o.cgroup_policy.SWAP_MAX)==(22*s.GIB,24*s.GIB,0)
 
 

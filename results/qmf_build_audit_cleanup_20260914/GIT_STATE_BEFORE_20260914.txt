@@ -1,0 +1,71 @@
+captured_at=2026-09-14T10:34:01+08:00
+branch=audit/qmf-build-rootcause-cleanup-20260914
+head=4cb969689f3e175d338256542ba975cfc3995a4a
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/final_full_scale/database_index.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/indexes/qmap_nai/index.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/indexes/qmap_nai/suffix.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/wg_qmf/build_static_qw_index.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/wg_qmf/cached_features.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/wg_qmf/configuration.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/wg_qmf/index.py
+ M QMF_PostGIS_100M_Repro_20260910/src/common/python/qmapli/wg_qmf/point_io.py
+ M results/four_dataset_paper_protocol_20260911/00_environment/environment.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/environment_cgroup.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/environment_resource_summary.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/environment_resources.csv
+ M results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_cgroup.json
+ D results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_oom_evidence.json
+ D results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resource_summary.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_resources.csv
+ D results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_ownership.json
+ D results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_build0_stop_receipt.json
+ D results/four_dataset_paper_protocol_20260911/00_environment/geolife_2d_4p2G_qmap_uniform_qmf_idle.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/postgis_extension_cgroup.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/postgis_extension_resource_summary.json
+ M results/four_dataset_paper_protocol_20260911/00_environment/postgis_extension_resources.csv
+ M results/four_dataset_paper_protocol_20260911/00_environment/production_source_after.json
+ M results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/normalize.done
+ D results/four_dataset_paper_protocol_20260911/checkpoints/geolife_2d_4p2G/qmap_uniform_qmf_method.done
+ M results/four_dataset_paper_protocol_20260911/debug/effective_repair_cgroup.json
+ M results/four_dataset_paper_protocol_20260911/debug/forward_handoff.json
+ M results/four_dataset_paper_protocol_20260911/debug/repair.log
+ M results/four_dataset_paper_protocol_20260911/debug/repair_interruption.json
+ M results/four_dataset_paper_protocol_20260911/debug/restored_runtime_acceptance.json
+ M results/four_dataset_paper_protocol_20260911/debug/retry_preflight/qmap_uniform_qmf.json
+ M results/four_dataset_paper_protocol_20260911/debug/retry_preflight/rtree.json
+ M results/four_dataset_paper_protocol_20260911/debug/retry_preflight/shared.json
+ M results/four_dataset_paper_protocol_20260911/debug/retry_queue.json
+ M scripts/paper_eval/__pycache__/orchestrate.cpython-310.pyc
+ M scripts/paper_eval/__pycache__/run.cpython-310.pyc
+ M scripts/paper_eval/__pycache__/worker.cpython-310.pyc
+ M scripts/paper_eval/orchestrate.py
+ M scripts/paper_eval/repair_geolife.py
+ M scripts/paper_eval/run.py
+ M scripts/paper_eval/test_paper.py
+ M scripts/paper_eval/test_repair.py
+ M scripts/paper_eval/test_retry.py
+ M scripts/paper_eval/worker.py
+?? results/four_dataset_paper_protocol_20260911/00_environment/QMF_EQUIVALENCE_REPORT_20260913.md
+?? results/four_dataset_paper_protocol_20260911/00_environment/QMF_MEMORY_AUDIT_20260913.md
+?? results/four_dataset_paper_protocol_20260911/00_environment/QMF_MEMORY_OPTIMIZATION_20260913.md
+?? results/four_dataset_paper_protocol_20260911/00_environment/QMF_MEMORY_PROFILE_AFTER.csv
+?? results/four_dataset_paper_protocol_20260911/00_environment/QMF_MEMORY_PROFILE_BEFORE.csv
+?? results/four_dataset_paper_protocol_20260911/00_environment/qmf_memory_archive_verification_20260913.json
+?? results/four_dataset_paper_protocol_20260911/00_environment/qmf_memory_equivalence_20260913/
+?? results/four_dataset_paper_protocol_20260911/00_environment/qmf_memory_implementation_source_20260913.json
+?? results/four_dataset_paper_protocol_20260911/00_environment/qmf_memory_tests_20260913.xml
+?? results/four_dataset_paper_protocol_20260911/debug/qmf_only_memory_opt_r1.log
+?? results/four_dataset_paper_protocol_20260911/debug/qmf_only_memory_opt_r2.log
+?? results/four_dataset_paper_protocol_20260911/debug/retry_attempts/qmap_uniform_qmf/20260913T141151-9be0096fb94a4ac4ad63c6add03546dd/
+?? results/qmf_8core_engineering_diagnostic_20260913/
+?? results/qmf_build_audit_cleanup_20260914/
+?? scripts/diagnostics/
+?? scripts/paper_eval/__pycache__/finish_repair.cpython-310.pyc
+?? scripts/paper_eval/__pycache__/phase_timeouts.cpython-310.pyc
+?? scripts/paper_eval/__pycache__/repair_geolife.cpython-310.pyc
+?? scripts/paper_eval/__pycache__/test_build_timeout.cpython-310-pytest-8.4.2.pyc
+?? scripts/paper_eval/__pycache__/test_paper.cpython-310-pytest-8.4.2.pyc
+?? scripts/paper_eval/__pycache__/test_qmf_memory_optimization.cpython-310-pytest-8.4.2.pyc
+?? scripts/paper_eval/__pycache__/test_repair.cpython-310-pytest-8.4.2.pyc
+?? scripts/paper_eval/__pycache__/test_retry.cpython-310-pytest-8.4.2.pyc
+?? scripts/paper_eval/test_qmf_memory_optimization.py

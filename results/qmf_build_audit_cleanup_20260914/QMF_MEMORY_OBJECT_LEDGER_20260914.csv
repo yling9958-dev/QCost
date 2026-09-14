@@ -1,0 +1,26 @@
+stage,object_name,owner/function,count/shape,dtype,bytes_per_element,estimated_bytes_at_181M,copy_or_view,full_dataset_copy,lifetime_start,lifetime_end,required_for_algorithm,optimization_candidate,risk
+historical CSV load,whole DataFrame,point_io.read_points,"181M x 3",float64/float64/int64,24,4344000000,owning pandas blocks,YES,whole-file parse,function return,NO,replaced by bounded chunks,LOW
+historical CSV conversion,DataFrame XY selection,point_io.read_points,"181M x 2",float64,16,2896000000,pandas selection/intermediate,YES,XY selection,contiguous conversion completes,NO,replaced by direct chunk fill,LOW
+CSV load,pandas chunk,point_io.read_points,"<=1M x 3",float64/float64/int64,24,"<=24000000",owning chunk,NO,chunk parse,chunk copied,YES,release each bounded chunk,LOW
+canonical input,points,point_io.read_points,"181M x 2",float64,16,2896000000,owning,YES,after first chunk,after query-ready reorder,YES,retain exactly once,LOW
+canonical input,identifiers,point_io.read_points,181M,int64,8,1448000000,owning,YES,after first chunk,after query-ready reorder,YES,retain exactly once,LOW
+historical root membership,root.point_indices,build_qw_static_index,181M,int64,8,1448000000,owning identity array,YES,root initialization,root split committed,NO,replaced by implicit identity root,LOW
+current root membership,root.point_indices,build_qw_static_index,0 during H3,int64,8,0,empty owning array,NO,root initialization,root split commit,YES,materialize only for unsplit-root layout fallback,LOW
+historical root evaluation,local points,build_qw_static_index,"181M x 2",float64,16,2896000000,fancy-index copy,YES,root pop,root split committed,NO,replaced by identity-root canonical view,LOW
+current root evaluation,local points,build_qw_static_index,"181M x 2",float64,16,0,canonical view,NO,root pop,root split committed,YES,no further action,LOW
+query filter,local_queries,_intersecting_queries,"<=1000 x 4",float64,8,"<=32000",boolean-index copy,NO,node evaluation,split decision,YES,keep; immaterial,LOW
+candidate actions,quantile workspace,numpy.quantile,"up to 181M scalar",float64,8,"implementation dependent",temporary,NO,action enumeration,action enumeration end,YES,do not change reduction/order,HIGH
+H3 split,left/right positions,configuration._enumerate,"aggregate node count",int64,8,"up to 1448000000 per level",owning,INDEX_EQUIVALENT,H3 action,H3 action summary complete,YES,indexed redesign only after proof,HIGH
+H3 split,left/right points,configuration._enumerate,"aggregate node count x 2",float64,16,"up to 2896000000 per level",owning subset copies,XY_EQUIVALENT,H3 action,H3 action summary complete,YES,range/index views where possible,HIGH
+feature extraction,density chunk,cached_features._density_histogram,"<=1M x 2",float64,16,"<=16000000 plus ufunc temp",temporary,NO,feature scoring,chunk accumulated,YES,reuse bounded scratch,MEDIUM
+feature extraction,corr/variance/skew workspaces,node_action_features,"O(node count)",float64,8,"numpy/scipy dependent",temporary,NO,feature scoring,score returned,YES,measure before redesign,HIGH
+candidate universe,configuration summaries,enumerate_joint_configurations,"<=16384 plans",Python dataclass/scalars,N/A,"small versus points",owning,NO,H3 combine,cost/search complete,YES,keep frozen,LOW
+cost oracle,batch bounds/hits,evaluate_subtree_costs,"<=512 x queries x leaves",float64/bool,N/A,"bounded by batch",temporary,NO,candidate evaluation,batch complete,YES,reuse batches only if exact,MEDIUM
+committed split,left/right local positions,split_positions,"aggregate node count",int64,8,"up to 1448000000",owning,INDEX_EQUIVALENT,split decision,children created,YES,reuse at identity root,LOW
+historical root commit,left/right global indices,build_qw_static_index,"aggregate 181M",int64,8,1448000000,owning duplicate of local positions,INDEX_EQUIVALENT,root split decision,leaf layout,NO,reuse identity-root local positions,LOW
+current root commit,left/right global indices,build_qw_static_index,"aggregate 181M",int64,8,0,same arrays as local positions,NO,root split decision,leaf layout,YES,no further action,LOW
+layout,leaf permutation,PrefixHybridIndex.build,181M,int64,8,1448000000,owning,YES,layout ordering,reordered storage built,YES,streaming layout is future work,HIGH
+layout,reordered points,PrefixHybridIndex.build,"181M x 2",float64,16,2896000000,owning,YES,layout,serialization/process exit,YES,required query-ready storage,HIGH
+layout,reordered identifiers,PrefixHybridIndex.build,181M,int64,8,1448000000,owning,YES,layout,serialization/process exit,YES,required query-ready storage,HIGH
+suffix,x/y sorted positions,DualAxisSuffix.build_static_export,"2 x 181M aggregate",int64,8,2896000000,owning,INDEX_EQUIVALENT,per-leaf suffix,serialization/process exit,YES,stream per leaf only with byte-equivalence proof,HIGH
+serialization,conversion chunk,qmap_static_format._write_array,"<=65536 values",float32/uint32,4,"<=262144",owning temporary,NO,chunk serialization,chunk write,YES,already bounded,LOW

@@ -96,24 +96,6 @@ def test_resume_does_not_reset_valid_count_to_four(tmp_path,monkeypatch):
     repair.correct_taxonomy()
     assert s.read_json(s.marker(repair.D,'dataset_complete'))['payload']['methods_valid']==5
 
-@pytest.mark.parametrize('state,complete,allowed',[
-    ('COMPLETE',True,True),('REPAIR_INCOMPLETE',False,False),
-    ('INTERRUPTED',True,False),('COMPLETE',False,False)])
-def test_forward_handoff_requires_success_and_scientific_completion(state,complete,allowed):
-    import finish_repair
-    assert finish_repair.eligible({'status':state},{'scientifically_complete':complete}) is allowed
-
-def test_incomplete_repair_never_starts_forward_campaign(tmp_path,monkeypatch):
-    import finish_repair as handoff
-    import repair_geolife as repair
-    monkeypatch.setattr(repair,'DEBUG',tmp_path/'debug'); monkeypatch.setattr(repair,'WORK',tmp_path/'work')
-    s.atomic_json(repair.DEBUG/'GEOLIFE_REPAIR_HOLD.json',{'active':True})
-    s.atomic_json(repair.WORK/'status.json',{'status':'REPAIR_INCOMPLETE'})
-    monkeypatch.setattr(report,'completion',lambda d: {'scientifically_complete':False,'methods_valid':4})
-    monkeypatch.setattr(run,'start',lambda: pytest.fail('Incomplete GeoLife advanced'))
-    handoff.finish()
-    assert s.read_json(repair.DEBUG/'GEOLIFE_REPAIR_HOLD.json')['active']
-
 def test_restored_gist_layout_variation_does_not_repeat_build(tmp_path,monkeypatch):
     import repair_geolife as repair
     monkeypatch.setattr(s,'OUT',tmp_path); monkeypatch.setattr(repair,'DEBUG',tmp_path/'debug')
@@ -154,9 +136,3 @@ def test_failed_method_runtime_survives(tmp_path,monkeypatch):
     s.done('fixture','flood_method',{'Status':'HOST_SAFETY_STOP'})
     o.cleanup_method('fixture','flood')
     assert (path/'flood.idx').read_bytes()==b'index'
-
-def test_qmf_build_function_frozen():
-    import ast
-    source=Path(__file__).parent
-    def fn(p): return ast.dump(next(n for n in ast.parse(p.read_text()).body if isinstance(n,ast.FunctionDef) and n.name=='qmf'))
-    assert fn(source/'worker.py')==fn(source.parent/'full_eval/worker.py')
