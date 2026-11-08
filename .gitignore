@@ -7,9 +7,17 @@
 !/src/
 !/models/
 !/tests/
+!/configs/
+!/references/
+!/reproduce/
+!/pyproject.toml
+!/licenses/
+*.egg-info/
 
 /models/*
-!/models/r4.pt
+!/models/*.pt
+!/models/*.json
+!/models/SHA256SUMS
 
 # Exactly one README, at the repository root.
 **/[rR][eE][aA][dD][mM][eE]*

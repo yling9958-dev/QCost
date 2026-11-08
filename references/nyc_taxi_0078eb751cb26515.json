@@ -1,0 +1,48 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "nyc_taxi_0078eb751cb26515",
+  "optimal_cost": 6969.929541263124,
+  "root_costs": {
+    "1:0x1.31422c0000000p-1": 6969.929541263124
+  },
+  "optimal_roots": [
+    "1:0x1.31422c0000000p-1"
+  ],
+  "actual_configurations": 64,
+  "T_exact": 0.28953648899914697,
+  "Reference_Timings": [
+    0.26870390600015526,
+    0.2933476790021814,
+    0.28953648899914697
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "nyc_taxi",
+    "NodeID": "8",
+    "NodeUID": "nyc_taxi_0078eb751cb26515",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "cost_h1",
+    "RunID": "census",
+    "NodeSize": "3558",
+    "Depth": "4",
+    "BoundingBox": "[0.43926477432250977, 0.5795824527740479, 0.5035173296928406, 0.6181056499481201]",
+    "Area": "0.0024752138594692497",
+    "Density": "1437451.550454282",
+    "QueryCount": "12",
+    "StateSHA256": "0078eb751cb26515181d3410ddaac2b06adc450136506da57c9c2bb42a155209",
+    "MembershipKey": "node_8",
+    "SourceFile": "data/traces/nyc_taxi_20000/cost_h1/seed_11/metadata.json",
+    "MembershipFile": "data/traces/nyc_taxi_20000/cost_h1/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 8
+  },
+  "Points": 3558,
+  "Queries": 12,
+  "Frozen_Before_Search": true
+}

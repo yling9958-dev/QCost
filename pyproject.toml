@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qcost-repro"
+version = "0.1.0"
+description = "QMF and Hybrid-QMF source, original controllers, and reproduction tools"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==1.26.4", "pandas==2.3.3", "scipy==1.15.3",
+  "torch==2.4.1", "PyYAML==6.0.3",
+]
+
+[project.optional-dependencies]
+test = ["pytest==8.4.2"]
+circuit = ["qiskit>=2,<3", "qiskit-aer>=0.17,<1"]
+
+[project.scripts]
+qcost-models = "qcost_repro.models:main"
+qcost-data = "qcost_repro.data:main"
+qcost-train = "qcost_repro.training:main"
+
+[tool.setuptools]
+package-dir = {"" = "src/python"}
+py-modules = ["qmf_quantum_circuit_prototype"]
+
+[tool.setuptools.packages.find]
+where = ["src/python"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

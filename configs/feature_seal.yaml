@@ -1,0 +1,72 @@
+experiment: quantum_feature_seal_20260825
+architecture: CPSR-NoEnt-733
+channels:
+- P
+- W
+- M
+- B
+- I_DQ
+- I_QB
+- I_DQB
+qubits: 8
+reupload_blocks: 1
+entangling_gates: 0
+quantum_core_parameters: 111
+classical_residual_parameters: 622
+total_parameters: 733
+observables:
+- z4
+- z5
+- z6
+- z7
+- x4
+- x5
+- x6
+- x7
+- z4z5
+- z5z6
+- z6z7
+- z5z2
+- z5z3
+- z6z2
+- z6z3
+- z7z2
+- z7z3
+- x4x5
+- x5x6
+- x6x7
+- y5y6
+- y6y7
+- z4z0
+- z7z1
+optimizer: Adam
+learning_rate: 0.003
+batch_size: 32
+epochs: 10
+early_stopping_patience: 3
+model_seeds:
+- 0
+- 1
+- 2
+- 3
+- 4
+ranking_temperature: 0.1
+lambda_gap: 0.5
+lambda_top1: 0.25
+development_seeds:
+- 90
+- 91
+- 92
+- 93
+confirmatory_seeds:
+- 100
+- 101
+- 102
+- 103
+query_splits:
+- context
+- oracle
+- validation
+- test
+old_80_83_evaluation_accessed: false
+confirmatory_accessed: false

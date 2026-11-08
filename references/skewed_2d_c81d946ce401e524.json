@@ -1,0 +1,51 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "skewed_2d_c81d946ce401e524",
+  "optimal_cost": 2526.905880381301,
+  "root_costs": {
+    "0:0x1.58d05d8000000p-2": 2694.6857380646857,
+    "0:0x1.4981568000000p-2": 2611.9087131280744,
+    "0:0x1.3b84cb0000000p-2": 2526.905880381301,
+    "0:0x1.263a128000000p-2": 2604.655649746968
+  },
+  "optimal_roots": [
+    "0:0x1.3b84cb0000000p-2"
+  ],
+  "actual_configurations": 11264,
+  "T_exact": 0.3898831019978388,
+  "Reference_Timings": [
+    0.3803385610008263,
+    0.4039616509980988,
+    0.3898831019978388
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "skewed_2d",
+    "NodeID": "4",
+    "NodeUID": "skewed_2d_c81d946ce401e524",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "cpu_qmf_h3",
+    "RunID": "census",
+    "NodeSize": "6250",
+    "Depth": "2",
+    "BoundingBox": "[0.0010675400262698531, 0.1282828450202942, 0.9983314871788025, 0.3259330093860626]",
+    "Area": "0.19710938307075307",
+    "Density": "31708.282490826638",
+    "QueryCount": "268",
+    "StateSHA256": "c81d946ce401e524899b6632a5fe34ad92a628f3e87a3bed3db1baf3b4d159ce",
+    "MembershipKey": "node_4",
+    "SourceFile": "data/traces/skewed_2d_20000/cpu_qmf_h3/seed_11/metadata.json",
+    "MembershipFile": "data/traces/skewed_2d_20000/cpu_qmf_h3/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 8
+  },
+  "Points": 6250,
+  "Queries": 268,
+  "Frozen_Before_Search": true
+}

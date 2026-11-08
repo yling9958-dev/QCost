@@ -1,0 +1,68 @@
+schema_version: 1
+seed: 20260817
+output_dir: outputs/workload_action_interaction_20260817
+
+synthetic:
+  distributions:
+    - uniform
+    - gaussian_clusters
+    - diagonal_band
+    - anti_diagonal_band
+    - horizontal_strips
+    - vertical_strips
+    - ring
+    - checkerboard
+    - center_dense
+    - corner_hotspot
+  seeds: [1, 2, 3, 4, 5]
+  points_per_root: 12000
+
+real_data:
+  geolife_enabled: true
+  sample_size: 100000
+  root_count: 5
+  points_per_root: 12000
+  seed: 20260817
+
+node_bank:
+  minimum_points: 1500
+  maximum_points: 12000
+  local_windows: 3
+  enforce_target: true
+
+queries:
+  count_per_split_per_workload: 128
+
+oracle:
+  ambiguity_fraction: 0.01
+  weights:
+    candidate: 1.0
+    visited_leaves: 0.20
+    cross_partition: 0.25
+    imbalance: 0.10
+
+stage_a:
+  variants: [R0, R1, R2, R3, R4]
+  ablations: [R4_minus_W, R4_minus_B, R4_minus_I_DQ, R4_minus_I_QB, R4_minus_I_DQB]
+  model_seeds: [101, 202, 303, 404, 505]
+  epochs: 40
+  learning_rate: 0.003
+  batch_size: 128
+  early_stopping_patience: 6
+  ranking_temperature: 0.10
+  mse_weight: 0.10
+  bootstrap_samples: 5000
+  regret_gate_relative_reduction: 0.10
+
+stage_b:
+  model_seeds: [101, 202, 303, 404, 505]
+  epochs: 20
+  learning_rate: 0.003
+  batch_size: 64
+  early_stopping_patience: 5
+  ranking_temperature: 0.10
+  mse_weight: 0.10
+  bootstrap_samples: 5000
+
+figures:
+  png_dpi: 400

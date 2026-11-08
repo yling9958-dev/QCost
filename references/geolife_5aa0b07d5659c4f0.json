@@ -1,0 +1,15 @@
+{
+  "optimal_cost": 10884.71187122004,
+  "root_costs": {
+    "1:0x1.3825cd0000000p-1": 10884.71187122004,
+    "1:0x1.3828ce0000000p-1": 10884.71187122004,
+    "1:0x1.3829890000000p-1": 10884.71187122004
+  },
+  "optimal_roots": [
+    "1:0x1.3825cd0000000p-1",
+    "1:0x1.3828ce0000000p-1",
+    "1:0x1.3829890000000p-1"
+  ],
+  "source": "/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/nodes/geolife_5aa0b07d5659c4f0/summary.json",
+  "tolerance": 1.0884711871220041e-08
+}

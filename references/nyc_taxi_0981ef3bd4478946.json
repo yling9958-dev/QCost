@@ -1,0 +1,51 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "nyc_taxi_0981ef3bd4478946",
+  "optimal_cost": 4794.142340136175,
+  "root_costs": {
+    "0:0x1.f7bda80000000p-2": 4794.142340136175,
+    "0:0x1.f562060000000p-2": 4963.66710062724,
+    "0:0x1.e8ee160000000p-2": 5058.91298745647,
+    "0:0x1.dd93fc0000000p-2": 5312.256115751797
+  },
+  "optimal_roots": [
+    "0:0x1.f7bda80000000p-2"
+  ],
+  "actual_configurations": 14336,
+  "T_exact": 0.453043711000646,
+  "Reference_Timings": [
+    0.43658433800010243,
+    0.4640186070027994,
+    0.453043711000646
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "nyc_taxi",
+    "NodeID": "3",
+    "NodeUID": "nyc_taxi_0981ef3bd4478946",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "cpu_qmf_h3",
+    "RunID": "census",
+    "NodeSize": "9373",
+    "Depth": "2",
+    "BoundingBox": "[0.4297548234462738, 0.542417049407959, 0.8805839419364929, 0.6436383724212646]",
+    "Area": "0.04563351982650232",
+    "Density": "205397.26139109908",
+    "QueryCount": "69",
+    "StateSHA256": "0981ef3bd4478946fbda7b66224154abdaa353534252538f188f51ac33c5037a",
+    "MembershipKey": "node_3",
+    "SourceFile": "data/traces/nyc_taxi_20000/cpu_qmf_h3/seed_11/metadata.json",
+    "MembershipFile": "data/traces/nyc_taxi_20000/cpu_qmf_h3/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 5
+  },
+  "Points": 9373,
+  "Queries": 69,
+  "Frozen_Before_Search": true
+}

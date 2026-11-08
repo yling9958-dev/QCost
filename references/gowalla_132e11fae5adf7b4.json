@@ -1,0 +1,51 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "gowalla_132e11fae5adf7b4",
+  "optimal_cost": 3187.1908000395783,
+  "root_costs": {
+    "1:0x1.6ef4f40000000p-1": 3187.1908000395783,
+    "1:0x1.6b830e4000000p-1": 3893.578707763771,
+    "1:0x1.6b77be0000000p-1": 3883.3775566341083,
+    "1:0x1.6b5e680000000p-1": 3936.7245600819574
+  },
+  "optimal_roots": [
+    "1:0x1.6ef4f40000000p-1"
+  ],
+  "actual_configurations": 15360,
+  "T_exact": 0.3916590640001232,
+  "Reference_Timings": [
+    0.38937226200141595,
+    0.3916590640001232,
+    0.39557395500014536
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "gowalla",
+    "NodeID": "4",
+    "NodeUID": "gowalla_132e11fae5adf7b4",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "cpu_qmf_h3",
+    "RunID": "census",
+    "NodeSize": "7500",
+    "Depth": "2",
+    "BoundingBox": "[0.06963245570659637, 0.6891547441482544, 0.23077447712421417, 0.8401039838790894]",
+    "Area": "0.02432426562167933",
+    "Density": "308334.07744550874",
+    "QueryCount": "41",
+    "StateSHA256": "132e11fae5adf7b40a5f15315eb7d6465c3b1a08d92277da3a46e38a932b2fec",
+    "MembershipKey": "node_4",
+    "SourceFile": "data/traces/gowalla_20000/cpu_qmf_h3/seed_11/metadata.json",
+    "MembershipFile": "data/traces/gowalla_20000/cpu_qmf_h3/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 9
+  },
+  "Points": 7500,
+  "Queries": 41,
+  "Frozen_Before_Search": true
+}

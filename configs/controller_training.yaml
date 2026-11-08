@@ -1,0 +1,83 @@
+schema_version: 1
+experiment: final_full_scale_20260826
+base_commit: 43494c7497c5b5b1752f43071fdc4f63c51db016
+output_dir: outputs/final_full_scale_20260826
+stage_a_frozen_manifest: docs/archive/stageA_frozen_sha256_20260818.txt
+frozen_quantum_feature_config: configs/quantum_feature_seal_preconfirm.yaml
+seed: 20260826
+
+controller:
+  models: [AQ, AQ-ZeroEnt, QF, QF-Gap, NoQ-Base, NoQ-Gap, FrozenQ, CAQF,
+    QB3, CST, Qold, C2, C4, C5, R4]
+  model_seeds: [0, 1, 2, 3, 4]
+  optimizer: Adam
+  learning_rate: 0.003
+  epochs: 10
+  early_stopping_patience: 3
+  batch_size: 32
+  ranking_temperature: 0.10
+  lambda_gap: 0.50
+  lambda_top1: 0.25
+  bootstrap_samples: 2000
+
+database_100k:
+  synthetic_distributions: [uniform, gaussian_clusters, diagonal_band, corner_hotspot]
+  synthetic_seeds: [2601, 2602, 2603]
+  real_datasets: [geolife, gowalla, brightkite]
+  points: 100000
+  correctness_queries: 1000
+  warmup_queries: 500
+  performance_queries: 10000
+  repetitions: 5
+  selectivities: {small: 0.0005, medium: 0.005, large: 0.02}
+  qmap_controllers: [AQ, QF, NoQ-Gap, CAQF, C2, C5, R4, QB3]
+  external_methods: [flood, tsunami, lisa, lmsfc, bmtree, rtree, zorder]
+
+geolife_500k:
+  points: 500000
+  seeds: [1, 2, 3]
+  train_queries_per_seed: 1200
+  validation_queries_per_seed: 1200
+  performance_queries_per_seed: 12000
+  build_repetitions: 3
+  latency_rounds: 10
+  throughput_threads: [1, 4, 8, 16]
+  throughput_warmup_seconds: 10
+  throughput_measured_seconds: 60
+  warm_cache_warmup_rounds: 3
+  warm_cache_measured_rounds: 10
+  explain_queries_per_method: 1000
+  qmap_controllers: [AQ, QF, NoQ-Gap, CAQF, C2]
+  external_methods: [flood, tsunami, lisa, lmsfc, bmtree, rtree, zorder]
+  expected_performance_query_sha256:
+    1: bc98baf9e358d538178dc7027313eced0df632f7030843926cc534946266d230
+    2: 0ee63095e6a01fdb7012d18c635fedf1f1dd4b88a243ce59d65210353c8e9847
+    3: 973d5a9a0f175b85a1fcdc77f44b5bc53e7fccb1951531720442d4753fdb859d
+
+scale_1m:
+  datasets: [geolife, gaussian_clusters, diagonal_band, corner_hotspot]
+  points: 1000000
+  synthetic_seeds:
+    gaussian_clusters: 1260826
+    diagonal_band: 2260826
+    corner_hotspot: 3260826
+  geolife_seed: 4260826
+  train_queries: 1200
+  validation_queries: 1200
+  correctness_queries: 1000
+  warmup_queries: 1000
+  performance_queries: 20000
+  latency_repetitions: 5
+  selectivities: {small: 0.0005, medium: 0.005, large: 0.02}
+  methods: [qmap_aq, qmap_noq_gap, qmap_c2, bmtree, rtree, zorder]
+
+postgresql:
+  dataset: geolife_500k_seed1
+  correctness_queries: 1000
+  timing_queries: 5000
+  warmup_queries: 5000
+  timing_repetitions: 5
+  methods: [qmap_aq, qmap_noq_gap, qmap_c2, postgis_gist]
+
+figures:
+  png_dpi: 400

@@ -1,0 +1,55 @@
+schema_version: 1
+experiment: quantum_feature_seal_20260825
+output_dir: outputs/quantum_feature_seal_20260825
+stage_a_frozen_manifest: docs/archive/stageA_frozen_sha256_20260818.txt
+preconfirm_config: configs/quantum_feature_seal_preconfirm.yaml
+seed: 20260825
+
+data:
+  distributions: [uniform, gaussian_clusters, diagonal_band, anti_diagonal_band,
+    horizontal_strips, vertical_strips, ring, checkerboard, center_dense, corner_hotspot]
+  points_per_root: 12000
+  development_seeds: [90, 91, 92, 93]
+  development_train_seeds: [90, 91, 92]
+  development_validation_seeds: [93]
+  confirmatory_seeds: [100, 101, 102, 103]
+  query_count_per_split_per_workload: 12
+  geolife:
+    enabled: true
+    sample_size: 100000
+    sample_seed: 20260818
+    points_per_root: 2000
+
+oracle:
+  ambiguity_fraction: 0.01
+  weights: {candidate: 1.0, visited_leaves: 0.20, cross_partition: 0.25, imbalance: 0.10}
+
+controller:
+  channels: full
+  qubits: 8
+  reupload_blocks: 1
+  observables: 24
+  quantum_core_parameters: 111
+  classical_residual_parameters: 622
+  total_parameters: 733
+  model_seeds: [0, 1, 2, 3, 4]
+  optimizer: Adam
+  learning_rate: 0.003
+  epochs: 10
+  early_stopping_patience: 3
+  batch_size: 32
+  ranking_temperature: 0.10
+  lambda_gap: 0.50
+  lambda_top1: 0.25
+  bootstrap_samples: 2000
+  low_data_fractions: [0.05, 0.10, 0.25, 0.50, 1.00]
+
+database_100k:
+  datasets: [uniform, gaussian_clusters, diagonal_band, corner_hotspot, geolife]
+  points: 100000
+  correctness_queries: 1000
+  warmup_queries: 500
+  performance_queries: 10000
+  timing_repetitions: 5
+
+figures: {png_dpi: 400}

@@ -1,4 +1,4 @@
-"""QMF index construction and range-query support."""
+"""Pre-registered ten-action node split space."""
 
 from __future__ import annotations
 
@@ -6,7 +6,9 @@ from dataclasses import dataclass
 
 import numpy as np
 
+
 QUANTILES = (0.25, 0.375, 0.50, 0.625, 0.75)
+
 
 @dataclass(frozen=True)
 class SplitAction:
@@ -32,6 +34,7 @@ class SplitAction:
             "valid": self.valid,
         }
 
+
 def enumerate_actions(points: np.ndarray, minimum_fraction: float = 0.05) -> list[SplitAction]:
     points = np.asarray(points, dtype=np.float64)
     count = len(points)
@@ -55,8 +58,15 @@ def enumerate_actions(points: np.ndarray, minimum_fraction: float = 0.05) -> lis
             actions.append(SplitAction(axis, quantile, threshold, left, right, valid))
     return actions
 
+
 def split_positions(points: np.ndarray, action: SplitAction) -> tuple[np.ndarray, np.ndarray]:
     if not action.valid:
         raise ValueError(f"cannot apply invalid action {action.key}")
     values = np.asarray(points)[:, action.axis]
     return np.flatnonzero(values <= action.threshold), np.flatnonzero(values > action.threshold)
+
+
+def normalized_threshold(points: np.ndarray, action: SplitAction) -> float:
+    values = np.asarray(points, dtype=np.float64)[:, action.axis]
+    span = max(float(values.max() - values.min()), 1e-12)
+    return float(np.clip((action.threshold - values.min()) / span, 0.0, 1.0))

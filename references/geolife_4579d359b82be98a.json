@@ -1,0 +1,48 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "geolife_4579d359b82be98a",
+  "optimal_cost": 7233.6195427669845,
+  "root_costs": {
+    "0:0x1.aa860c0000000p-1": 7233.6195427669845
+  },
+  "optimal_roots": [
+    "0:0x1.aa860c0000000p-1"
+  ],
+  "actual_configurations": 8,
+  "T_exact": 0.20899813500000164,
+  "Reference_Timings": [
+    0.21047014400028274,
+    0.2074580970001989,
+    0.20899813500000164
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "geolife",
+    "NodeID": "13",
+    "NodeUID": "geolife_4579d359b82be98a",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "cost_h1",
+    "RunID": "census",
+    "NodeSize": "2110",
+    "Depth": "4",
+    "BoundingBox": "[0.8325831890106201, 0.6097478270530701, 0.8353298902511597, 0.6099123358726501]",
+    "Area": "4.5185657882029773e-07",
+    "Density": "4669623280.707266",
+    "QueryCount": "3",
+    "StateSHA256": "4579d359b82be98ae6846a15ff7177de2aa7b6c9cc4271374ee7b9433f938ce6",
+    "MembershipKey": "node_13",
+    "SourceFile": "data/traces/geolife_20000/cost_h1/seed_11/metadata.json",
+    "MembershipFile": "data/traces/geolife_20000/cost_h1/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 1
+  },
+  "Points": 2110,
+  "Queries": 3,
+  "Frozen_Before_Search": true
+}

@@ -1,0 +1,11 @@
+{
+  "optimal_cost": 2811.659430940867,
+  "root_costs": {
+    "0:0x1.e6c4180000000p-2": 2811.659430940867
+  },
+  "optimal_roots": [
+    "0:0x1.e6c4180000000p-2"
+  ],
+  "source": "/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/nodes/nyc_taxi_8126bd889a7064ba/summary.json",
+  "tolerance": 2.811659430940867e-09
+}

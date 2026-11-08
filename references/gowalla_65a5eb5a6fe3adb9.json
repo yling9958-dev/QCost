@@ -1,0 +1,14 @@
+{
+  "optimal_cost": 5843.706728790866,
+  "root_costs": {
+    "1:0x1.5d7e3f0000000p-1": 5844.686230422118,
+    "1:0x1.56bafe0000000p-1": 5843.706728790866,
+    "1:0x1.5663cb0000000p-1": 5884.845797280294,
+    "1:0x1.5633760000000p-1": 5992.590976657849
+  },
+  "optimal_roots": [
+    "1:0x1.56bafe0000000p-1"
+  ],
+  "source": "/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/nodes/gowalla_65a5eb5a6fe3adb9/summary.json",
+  "tolerance": 5.843706728790866e-09
+}

@@ -1,0 +1,11 @@
+{
+  "channel_names": ["P", "W", "M", "B", "I_DQ", "I_QB", "I_DQB"],
+  "channel_mean": [0.06250000008240023, 0.06250000006156001, 0.06646224248795382, 0.551538335395356, 0.0037229456928401, 0.03752902146627099, 0.0024344230246350486],
+  "channel_std": [0.0722271364701442, 0.11927536920454589, 0.9205686812116523, 0.33736893045521366, 0.010107875650686786, 0.08307077417684093, 0.00759071080438799],
+  "global_log_norm_mean": 1.402822649910268,
+  "global_log_norm_std": 0.09681210488793104,
+  "selected_channels": [0, 1, 2, 3, 4, 5, 6],
+  "clip": 3.0,
+  "fit_split": "quantum_development_train",
+  "provenance": "Reconstructed with the original fit_cst_normalizer from the original development_prepared.pkl training split; no evaluation data used."
+}

@@ -1,0 +1,12 @@
+{
+  "optimal_cost": 1629.773252933629,
+  "root_costs": {
+    "0:0x1.2d73480000000p-1": 1629.773252933629,
+    "0:0x1.003f2e0000000p-1": 1796.0575907445016
+  },
+  "optimal_roots": [
+    "0:0x1.2d73480000000p-1"
+  ],
+  "source": "/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/nodes/skewed_2d_e4f5372bd9ff2df6/summary.json",
+  "tolerance": 1.629773252933629e-09
+}

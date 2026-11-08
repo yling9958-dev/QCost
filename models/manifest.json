@@ -1,0 +1,130 @@
+{
+  "experiment": "final_full_scale_20260826",
+  "checkpoint_count": 15,
+  "training_source": "qmapli.final_full_scale.controllers.fit_final_controller",
+  "production_qmf_checkpoint": "r4.pt",
+  "note": "Original seed-0 checkpoints, copied without retraining. QMF and Hybrid-QMF are optimizers rather than separate neural checkpoints.",
+  "cst_normalizer_sha256": "be9a37837b823e8c53d43e842efc388b1330005447f68e8bea70fb009bd272b3",
+  "models": [
+    {
+      "file": "aq.pt",
+      "model_name": "AQ",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407306,
+      "sha256": "a7232e0d84cb03d85ac4ee4e57eb6c426324bdd04f62952fe4bec70e37eda4f1"
+    },
+    {
+      "file": "aq_zeroent.pt",
+      "model_name": "AQ-ZeroEnt",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407842,
+      "sha256": "0b8897b063c2035b111217d777185676c0133dd77265e8c4262e08b8499b9eed"
+    },
+    {
+      "file": "c2.pt",
+      "model_name": "C2",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 698730,
+      "sha256": "0e93a2e047b8f559b8e2f7efbd1be265ef2206ec906526a735f9e4464edb2dc1"
+    },
+    {
+      "file": "c4.pt",
+      "model_name": "C4",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 398157,
+      "sha256": "1b71c966ff5c76466123abdbd858aeb9cfa9cb3f42775d6c837bd6674c651f06"
+    },
+    {
+      "file": "c5.pt",
+      "model_name": "C5",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 235204,
+      "sha256": "d29d932a75c171f26597f62d27510556eea4e5c693ad3aaafc40436216bff1fa"
+    },
+    {
+      "file": "caqf.pt",
+      "model_name": "CAQF",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407618,
+      "sha256": "046303aeb289a9de124ee2e76622ba8ef4a2777aeb41ac9fbf50d7a278fe7bb5"
+    },
+    {
+      "file": "cst.pt",
+      "model_name": "CST",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 4112,
+      "sha256": "e498382e0a34cd95a71e291c320d233bfc45bdc21750cb55824a55ee8d8a94ae"
+    },
+    {
+      "file": "frozenq.pt",
+      "model_name": "FrozenQ",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407730,
+      "sha256": "d1fce1d82677eef97dc17c587c524edceafae7e5ae72c258a8e3c3fd72c4e8ba"
+    },
+    {
+      "file": "noq_base.pt",
+      "model_name": "NoQ-Base",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 1858270,
+      "sha256": "fd14033578d991326ebee1cc240db5edef9827ce841dfd1f51146168d7f35764"
+    },
+    {
+      "file": "noq_gap.pt",
+      "model_name": "NoQ-Gap",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 1858264,
+      "sha256": "e461a3fe812b7e17fc52dd37046206bfe33eecf33fce6941291b8fdfec47fb5c"
+    },
+    {
+      "file": "qb3.pt",
+      "model_name": "QB3",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 22480,
+      "sha256": "b1b6c794ffe86f2fe7a5f449bdab75536d0fb9a6fcc0884f03e5f78a0bc0a023"
+    },
+    {
+      "file": "qf.pt",
+      "model_name": "QF",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407586,
+      "sha256": "6ad14393442495f222f8aa8fb00d6c32dc6a0628ebd87502049049d21684c7b8"
+    },
+    {
+      "file": "qf_gap.pt",
+      "model_name": "QF-Gap",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 407650,
+      "sha256": "ce8e5e8d776239da38c4e421f3a06057402f5e2a309cae96da6f73f262416e1b"
+    },
+    {
+      "file": "qold.pt",
+      "model_name": "Qold",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 7580,
+      "sha256": "2d06d8d7ef47b270b2367d718d66d8e3be647b9c5e4bfeaaea51cf8af765969a"
+    },
+    {
+      "file": "r4.pt",
+      "model_name": "R4",
+      "model_seed": 0,
+      "scalar_size": 46,
+      "bytes": 7026,
+      "sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "datasets": [
+    {
+      "id": "geolife_2d_4p2G",
+      "name": "GeoLife",
+      "points": 181000000,
+      "raw_sha256": "98619de96d873e54587ee8cdec9b20162e077b33305b420075494992abbe5c1a",
+      "raw_csv_included": false
+    },
+    {
+      "id": "gowalla_2d_4p2G",
+      "name": "Gowalla",
+      "points": 183000000,
+      "raw_sha256": "febe5e80f15883d3d558bf00f95d73baf49dc3a67eef6374396084a224057e88",
+      "raw_csv_included": false
+    },
+    {
+      "id": "nyc_taxi_2d_4p2G",
+      "name": "NYC Taxi",
+      "points": 181000000,
+      "raw_sha256": "9fd8ebf1bef0b5529c111ee9515081b9759be08dc4eedbbe89a1b86d0ab9694c",
+      "raw_csv_included": false
+    },
+    {
+      "id": "skewed_2d",
+      "name": "Skewed 2D",
+      "points": 204986702,
+      "raw_sha256": "fd3556dda7495d3ca022ac3d9262658c72247649fb7d83790cdabcd92264e190",
+      "raw_csv_included": false
+    }
+  ],
+  "query_seed": 20260910,
+  "query_counts": {
+    "train": 1000,
+    "validation": 1000,
+    "correctness": 1000,
+    "warmup": 300,
+    "performance": 3000,
+    "total": 6300
+  },
+  "performance_repetitions": 5,
+  "build_repetitions": 1,
+  "normalized_geolife_sha256": "ac4d4843820c5bee637b7e2bb8dc84b039477387fa79e5edb61ba1fb5a8be589"
+}

@@ -1,0 +1,51 @@
+{
+  "Status": "EXACT",
+  "Node_ID": "nyc_taxi_600e1ea17027a333",
+  "optimal_cost": 3963.474988518938,
+  "root_costs": {
+    "0:0x1.0ef62c0000000p-1": 4621.506488736382,
+    "0:0x1.06fdba0000000p-1": 4837.510797758925,
+    "1:0x1.2147980000000p-1": 3963.474988518938,
+    "0:0x1.ffda1a0000000p-2": 5091.322717371786
+  },
+  "optimal_roots": [
+    "1:0x1.2147980000000p-1"
+  ],
+  "actual_configurations": 15616,
+  "T_exact": 0.46091167999838945,
+  "Reference_Timings": [
+    0.46091167999838945,
+    0.4598865650004882,
+    0.47708609100300237
+  ],
+  "Reference_Seeds": [
+    11,
+    23,
+    37
+  ],
+  "Selection_Source": {
+    "Dataset": "nyc_taxi",
+    "NodeID": "2",
+    "NodeUID": "nyc_taxi_600e1ea17027a333",
+    "Seed": "11",
+    "SampleSeed": "20261011",
+    "Configuration": "UNMEASURED",
+    "Method": "r4_greedy",
+    "RunID": "census",
+    "NodeSize": "14669",
+    "Depth": "1",
+    "BoundingBox": "[0.4663848280906677, 0.14032819867134094, 0.8805839419364929, 1.0]",
+    "Area": "0.3560752983085749",
+    "Density": "41196.34265471525",
+    "QueryCount": "425",
+    "StateSHA256": "600e1ea17027a333b4f3f1b1a2ccf7c600b4a290d5298b38a503d7eef7817eb9",
+    "MembershipKey": "node_2",
+    "SourceFile": "data/traces/nyc_taxi_20000/r4_greedy/seed_11/metadata.json",
+    "MembershipFile": "data/traces/nyc_taxi_20000/r4_greedy/seed_11/decision_members.npz",
+    "CandidateEligible": "True",
+    "Frozen_Order": 1
+  },
+  "Points": 14669,
+  "Queries": 425,
+  "Frozen_Before_Search": true
+}
