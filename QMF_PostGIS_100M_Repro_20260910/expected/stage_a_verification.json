@@ -1,6 +1,0 @@
-{
-  "source_commit": "8b16e5ec9d1c59596c72a2bb19b37c4e3ae8aae8",
-  "verified": 37,
-  "failed": 0,
-  "scope": "Verified all original assets before export. Historical Stage-B payloads excluded; this records export-time verification, not a cryptographic signature or the omitted payloads."
-}

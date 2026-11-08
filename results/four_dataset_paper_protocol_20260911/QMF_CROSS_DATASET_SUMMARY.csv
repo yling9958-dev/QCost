@@ -1,2 +1,0 @@
-Dataset,Points,Build_s,Mean_ms,P95_ms,P99_ms,QPS,PeakMemory_MiB,Correctness,BuildRank,SizeRank,MeanRank,P95Rank,P99Rank,QPSRank,MemoryRank,Top1Count,Size_MiB
-GeoLife,181000000,,,,,,21579.59375,NOT_RUN,N/A/5,N/A/4,N/A/5,N/A/5,N/A/5,N/A/5,N/A/5,0,

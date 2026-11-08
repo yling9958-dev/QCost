@@ -1,7 +1,0 @@
-{
-  "active": true,
-  "reason": "User requested GeoLife scientific completion before forward advancement",
-  "order": ["postgis_gist", "qmap_uniform_qmf", "flood", "rtree"],
-  "preserve_pass": ["lisa", "tsunami", "lmsfc", "bmtree"],
-  "gowalla": "Existing PostgreSQL database, full normalized cache, and timing repetitions 1–3 must remain intact; no new dataset starts during repair"
-}

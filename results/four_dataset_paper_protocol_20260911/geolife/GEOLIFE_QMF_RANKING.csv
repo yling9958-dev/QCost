@@ -1,8 +1,0 @@
-Metric,QMFRank,Denominator
-Build_s,,5
-IndexSize_MiB,,4
-Mean_ms,,5
-P95_ms,,5
-P99_ms,,5
-QPS,,5
-PeakMemory_MiB,,5

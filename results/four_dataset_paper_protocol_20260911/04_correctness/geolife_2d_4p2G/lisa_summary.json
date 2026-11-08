@@ -1,1 +1,0 @@
-{"repetition":-1,"backend_peak_rss_kib":7066256,"client_peak_rss_kib":10808,"fairness":{"method":"lisa","load_count":1,"query_count":2000,"query_rebuild_count":0,"query_reload_count":0,"query_training_count":0,"query_external_process_count":0,"query_python_count":0,"query_quantum_count":0}}
