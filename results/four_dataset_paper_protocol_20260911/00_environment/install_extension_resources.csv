@@ -1,2 +1,0 @@
-elapsed_s,rss_bytes,VmPeak_bytes,VmSwap_bytes,major_faults,available_bytes,pswpin,pswpout,parent_memory_current,parent_memory_peak,parent_swap_current
-0.019,10481664,28188672,0,0,26264186880,131702,1225302,138616832,208969728,0
