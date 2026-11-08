@@ -1,28 +1,30 @@
-# QMF / Hybrid-QMF 源码
+# QMF / Hybrid-QMF Source Code
 
-本仓库只保留项目自身的索引与优化算法源码、必要模型和测试。
-不包含外部对比索引、实验记录、日志、绘图目录、论文、数据集或重复发布快照。
-本文件是项目唯一的 README。
+This repository contains the project's own indexing and optimization source code,
+required model parameters, and tests. It excludes external comparison indexes,
+experiment records, logs, plotting directories, papers, datasets, and duplicate
+release snapshots. This is the project's only README.
 
-## 目录
+## Repository Layout
 
 ```text
 src/
   python/
-    qmapli/                         # R4 评分、QMF 构建、静态索引和查询支持
-    hybrid_qmf/                     # 共享缓存、递归求值、QMF 调度与 incumbent feedback
-    qmf_quantum_circuit_prototype.py # 可选的小规模门级原型
-  cpp/                              # C++17 查询核心、C API 和查询命令行
-  postgres/                         # 可选的 PostgreSQL 扩展
-models/r4.pt                        # 原有 R4 参数，非数据集
-tests/                              # 使用临时合成输入的源码测试
+    qmapli/                         # R4 scoring, QMF construction, static indexes and queries
+    hybrid_qmf/                     # Shared caching, recursive evaluation, QMF scheduling and incumbent feedback
+    qmf_quantum_circuit_prototype.py # Optional small-scale gate-level prototype
+  cpp/                              # C++17 query core, C API and query CLI
+  postgres/                         # Optional PostgreSQL extension
+models/r4.pt                        # Original R4 parameters, not a dataset
+tests/                              # Source tests using temporary synthetic inputs
 requirements.txt
-requirements-circuit.txt             # 仅门级原型需要
+requirements-circuit.txt             # Required only for the gate-level prototype
 ```
 
-## 环境
+## Environment
 
-使用 Python 3.10、C++17 编译器和 CMake 3.20 或更新版本。Python 依赖沿用原项目版本：
+Use Python 3.10, a C++17 compiler, and CMake 3.20 or later. Python dependencies
+retain the original project's versions:
 
 ```bash
 python3 -m venv .venv
@@ -31,10 +33,11 @@ python -m pip install -r requirements.txt
 export PYTHONPATH="$PWD/src/python"
 ```
 
-## 构建与查询
+## Building and Querying
 
-输入坐标须采用一致的归一化口径。点 CSV 的列名为 `x,y,id`；训练查询需包含
-`xmin,ymin,xmax,ymax`。ID 须在 uint32 范围内。
+Normalize input coordinates consistently. Point CSV files use the column names
+`x,y,id`; training query files must include `xmin,ymin,xmax,ymax`. IDs must fit
+within the uint32 range.
 
 ```bash
 python -m qmapli.wg_qmf.build_static_qw_index \
@@ -52,39 +55,52 @@ build/bin/qmf_query --method qmap_uniform_qmf \
   --output /path/to/output/query_ids.csv
 ```
 
-C++ 查询 CSV 的列顺序为
-`query_id,selectivity_group,split,xmin,ymin,xmax,ymax`。
-也可使用构建模式 `wg_qmf`，对应查询方法 `qmap_qw`。
+The C++ query CSV column order is
+`query_id,selectivity_group,split,xmin,ymin,xmax,ymax`.
+The alternative build mode `wg_qmf` uses the query method `qmap_qw`.
 
-Hybrid-QMF 通过 `from hybrid_qmf import optimize` 调用，输入为 N×2 点数组、
-Q×4 查询数组及提供 `score_actions(points, queries, actions)` 的 R4 scorer。
-默认 H=3、K=4，保留完整 Hybrid-QMF，不包含外部对比实现。
+Import Hybrid-QMF with `from hybrid_qmf import optimize`. It takes an N-by-2
+point array, a Q-by-4 query array, and an R4 scorer implementing
+`score_actions(points, queries, actions)`. The defaults are H=3 and K=4.
+The full Hybrid-QMF implementation is retained without external comparison methods.
 
-## 测试
+## Testing
 
 ```bash
 PYTHONPATH=src/python python -m pytest -q -p no:cacheprovider tests
 ```
 
-测试在临时目录生成小规模输入并编译原生查询核心，不依赖原工作站的实验目录。
-门级测试仅在安装 `requirements-circuit.txt` 后执行，否则自动跳过。
-生产 QMF 和 Hybrid-QMF 的调度在 CPU 上执行；门级原型仅验证小规模量子电路，
-不代表端到端量子加速。
+Tests generate small inputs in temporary directories and compile the native query
+core without depending on experiment directories from the original workstation.
+Gate-level tests run only when the dependencies in `requirements-circuit.txt` are
+installed; otherwise, they are skipped automatically. Production QMF and
+Hybrid-QMF scheduling runs on the CPU. The gate-level prototype validates only
+small quantum circuits and does not demonstrate end-to-end quantum speedup.
 
-PostgreSQL 扩展为可选组件，需要 PostgreSQL 服务端开发头文件。
-先完成上述 C++ 构建，再运行 `make -C src/postgres with_llvm=no`，仅构建共享库，
-不要求额外的 LLVM C++ 工具链，也不自动安装到数据库。
+The optional PostgreSQL extension requires PostgreSQL server development headers.
+After building the C++ core above, run `make -C src/postgres with_llvm=no` to build
+the shared library without requiring an additional LLVM C++ toolchain.
+This command does not install the extension into a database.
 
-## 数据集
+## Datasets
 
-数据集、预处理文件和查询工作负载不进入 Git 仓库，只通过外部下载获取。
+Dataset files, preprocessed copies, and query workloads are not tracked in Git.
+Use the following original sources and synthetic-data reference:
 
-统一下载链接：**待项目作者提供**。
+- GeoLife: [Microsoft GeoLife GPS Trajectories](https://www.microsoft.com/en-us/download/details.aspx?id=52367).
+- Gowalla: [SNAP check-in data (.txt.gz)](https://snap.stanford.edu/data/loc-gowalla_totalCheckins.txt.gz).
+- NYC Taxi: [NYC TLC Trip Record Data](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page).
+- Skewed 2D (synthetic): [Qi et al., *Theoretically Optimal and Empirically Efficient R-trees with Strong Parallelizability*, PVLDB 2018](https://www.vldb.org/pvldb/vol11/p621-qi.pdf).
+  Section 6.1 describes synthetic skewed-data generation; this is a reference
+  paper, not a downloadable dataset archive.
 
-源码中沿用的 GeoLife、Gowalla、NYC Taxi 和 Skewed 2D 预处理数据未发现统一的
-公开下载地址，因此这里不以其他原始数据链接冒充论文实验所用的数据。
+These sources do not include this project's normalized datasets or query
+workloads. Prepare inputs using the coordinate normalization and CSV schemas
+described above before building an index.
 
-## 许可
+## Licensing
 
-此整理不为研究源码新增授权。未附明确许可时，公开再分发前需取得项目作者许可；
-NumPy、PyTorch、PostgreSQL 等外部依赖仍遵循各自的许可证。
+This source-only cleanup does not grant a new license for the research code.
+Without an explicit license, obtain permission from the project author before
+public redistribution. External dependencies, including NumPy, PyTorch, and
+PostgreSQL, remain subject to their respective licenses.
