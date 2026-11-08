@@ -1,0 +1,4 @@
+-r requirements-analysis.txt
+# The recorded runs used 2.4.1+cu118, on CPU. A CPU Torch wheel is sufficient.
+torch==2.4.1
+

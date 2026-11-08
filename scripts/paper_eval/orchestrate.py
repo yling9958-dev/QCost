@@ -132,7 +132,8 @@ def monitor(command,label,timeout=14400,on_tick=None,adopt_unit=None,elapsed_bef
         w=csv.writer(handle); w.writerow(['elapsed_s','rss_bytes','VmPeak_bytes','VmSwap_bytes','major_faults','available_bytes','pswpin','pswpout','parent_memory_current','parent_memory_peak','parent_swap_current'])
         while True:
             info=props(unit); group=info.get('ControlGroup','')
-            s=cgroup_stats(group) if group else {k:0 for k in maximum}
+            worker_stats=cgroup_stats(group) if group else {k:0 for k in maximum}
+            s=dict(worker_stats)
             pg_group=props(PGUNIT).get('ControlGroup','')
             pg_stats=cgroup_stats(pg_group) if pg_group else {k:0 for k in maximum}
             measured_peak=max(measured_peak,s['rss']+(pg_stats.get('max_process_rss',pg_stats['rss']) if pg_phase else 0))
@@ -167,7 +168,8 @@ def monitor(command,label,timeout=14400,on_tick=None,adopt_unit=None,elapsed_bef
             if elapsed+elapsed_before>timeout:
                 reason=f'Predeclared phase timeout {timeout}s'; code='TIMEOUT'
             if reason:
-                trigger={'timestamp':time.time(),'host':now,'parent':parent_now,'worker':s,'postgres':pg_stats,
+                trigger={'timestamp':time.time(),'host':now,'parent':parent_now,
+                         'worker':worker_stats,'postgres':pg_stats,'aggregate':dict(s),
                          'phase':failed_phase,'reason':reason,'status':code}
                 atomic_json(OUT/'00_environment'/(label+'_stop_receipt.json'),trigger)
                 import diagnose
@@ -240,7 +242,7 @@ def verify_baseline_archive():
     # Its failure can be superseded only by the paper runner's exact source gate
     # plus a whole-package delta containing no other changed, missing, or extra file.
     import run as paper_run
-    paper_run.verify_source()
+    paper_run.verify_source(persist=False)
     expected={}
     for line in (BASE/'MANIFEST.sha256').read_text().splitlines():
         digest,separator,name=line.partition('  ')
@@ -260,7 +262,9 @@ def verify_baseline_archive():
     if not audit: raise RuntimeError('UNAUDITED_PRODUCTION_SOURCE')
     if changed!=audit.get('changed_production_files'):
         raise RuntimeError('UNAUDITED_ARCHIVE_MANIFEST_MISMATCH')
-    atomic_json(paper_run.AUDIT_ROOT/'QMF_MEMORY_ARCHIVE_VERIFICATION_20260914.json',{
+    receipt_path=Path(audit.get('archive_verification_path',
+        paper_run.AUDIT_ROOT/'QMF_MEMORY_ARCHIVE_VERIFICATION_20260914.json'))
+    atomic_json(receipt_path,{
         'status':'AUDITED_MEMORY_IMPLEMENTATION','original_verifier_exit':result.returncode,
         'original_verifier_output':(result.stdout+result.stderr).strip(),
         'changed_files':changed,'all_other_archive_files_match':True})

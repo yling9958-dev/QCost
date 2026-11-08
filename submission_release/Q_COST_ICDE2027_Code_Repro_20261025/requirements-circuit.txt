@@ -1,0 +1,6 @@
+# Optional, separate gate-level proof of concept; not needed by Hybrid-QMF.
+qiskit==2.5.2
+qiskit-aer==0.17.2
+pytest==9.1.1
+matplotlib==3.10.9
+

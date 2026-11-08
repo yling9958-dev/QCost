@@ -1,0 +1,79 @@
+{
+  "H": 3,
+  "K": 4,
+  "N_max": 16384,
+  "max_depth": 8,
+  "max_leaves": 128,
+  "min_leaf_size": 256,
+  "minimum_lookahead_points": 4096,
+  "minimum_fraction": 0.05,
+  "budget_factor": 2.0,
+  "beta_leaf": 1.2779084295340111e-09,
+  "beta_point": 3.428255707467659,
+  "threads": 4,
+  "rss_limit_gib": 8,
+  "build_timeout_seconds": 14400,
+  "process_timeout_seconds": 14520,
+  "methods": [
+    "r4_greedy",
+    "cost_h1",
+    "recursive_exact_h3",
+    "cpu_qmf_h3"
+  ],
+  "seeds": [
+    11
+  ],
+  "queries": {
+    "train": 1000,
+    "validation": 1000,
+    "correctness": 1000,
+    "warmup": 300,
+    "performance": 3000
+  },
+  "timing_repetitions": 5,
+  "fallback": "All methods use the original R4 decision below the common 4096-point optimization threshold. Above it, infeasible full-depth plans use R4. Technical/resource errors terminate the build; no algorithm substitution.",
+  "root_commit": "only the actually selected root, then largest-node-first priority queue",
+  "depth_semantics": "Original receding horizon: planning H is independent of remaining final depth; committed nodes obey depth<=8.",
+  "timing": "R4 model load through layout and compact serialization; point/query input loading excluded. PostgreSQL COPY, CREATE INDEX and ANALYZE separate.",
+  "CPU_QMF": "Original uniform_qmf CPU analytic sampler; full cost table and sorting included; no Qiskit or hardware quantum execution.",
+  "control_note": "Cost-H1 changes the planning horizon to 1 and minimizes the identical two-term leaf cost; all other construction settings are shared.",
+  "sampling": {
+    "seed": 20261019,
+    "sizes": [
+      100000,
+      1000000,
+      5000000
+    ],
+    "method": "NumPy PCG64 uniform without replacement from all source row ordinals; nested prefixes of random draw, sorted for streaming extraction"
+  },
+  "cpu_affinity": [
+    4,
+    5,
+    6,
+    7
+  ],
+  "query_order_seed": 20261019,
+  "runtime_root": "/var/tmp/qcost-fair-gist-20261019",
+  "port": 55729,
+  "precision": "Frozen full-data affine transform; points cast once to float32 and exactly promoted to float64 identically for both systems; query bounds remain float64, never rounded to float32 or adjusted after results.",
+  "construction_timing": "R4 model load through layout and compact serialization; point/query input loading excluded. PostgreSQL COPY, CREATE INDEX and ANALYZE separate.",
+  "tuning": {
+    "validation_queries": 150,
+    "per_area_group": 50,
+    "selection": "Fixed hashed validation IDs, three rounds; select lowest aggregate mean completed client latency; all candidates reported; no formal query latency used."
+  },
+  "timeouts": {
+    "statement_seconds": 300,
+    "unit_seconds": 21600,
+    "max_failed_attempts_per_unit": 2,
+    "censored_observations_preserved": true
+  },
+  "resources": {
+    "memory_high_gib": 7,
+    "memory_max_gib": 8,
+    "swap_max_bytes": 0,
+    "host_available_min_gib": 4,
+    "nvme_free_min_gib": 12
+  },
+  "client_timing": "Monotonic steady_clock from bound formatting through PQexecPrepared response; scalar parsing/checking and logging excluded for both systems. One client, one query at a time."
+}

@@ -19,10 +19,27 @@
 #include <filesystem>
 #include <fcntl.h>
 #include <unistd.h>
+#include "flood_memory_trace.hpp"
 
 namespace {
 
 using Clock = std::chrono::steady_clock;
+
+bool flood_session_bindings = false;
+std::string bound_sql(std::string sql) {
+    if (!flood_session_bindings) return sql;
+    // PostgreSQL does not search temporary schemas for unqualified functions.
+    // Bind only this Flood session to the isolated implementation explicitly.
+    for (const std::string name : {"qmap_range_query", "qmap_range_count",
+             "qmap_reset_index_cache", "qmap_preload_index", "qmap_fairness_counters"}) {
+        std::size_t pos = 0;
+        while ((pos = sql.find(name + "(", pos)) != std::string::npos) {
+            if (!pos || sql[pos - 1] != '.') { sql.insert(pos, "pg_temp."); pos += 8; }
+            pos += name.size();
+        }
+    }
+    return sql;
+}
 
 struct Query {
     std::string id;
@@ -190,7 +207,7 @@ std::string correctness_sql(const std::string& method, const std::string& table)
 }
 
 void prepare(PGconn* connection, const char* name, const std::string& sql) {
-    Result result(PQprepare(connection, name, sql.c_str(), 4, nullptr));
+    Result result(PQprepare(connection, name, bound_sql(sql).c_str(), 4, nullptr));
     require_status(connection, result.get(), PGRES_COMMAND_OK);
 }
 
@@ -202,7 +219,7 @@ void commit_file(const std::string& path) {
 
 std::string fairness_json(PGconn* connection, const std::string& method) {
     if (method == "postgis_gist") return "NATIVE_POSTGIS";
-    Result counters(PQexec(connection, ("SELECT qmap_fairness_counters(" + literal(method) + ")").c_str()));
+    Result counters(PQexec(connection, bound_sql("SELECT qmap_fairness_counters(" + literal(method) + ")").c_str()));
     require_status(connection, counters.get(), PGRES_TUPLES_OK);
     return PQgetvalue(counters.get(), 0, 0);
 }
@@ -243,6 +260,18 @@ int main(int argc, char** argv) {
             throw std::runtime_error(message);
         }
         try {
+            FloodMemoryTrace flood_trace(
+                method == "flood" && phase == "correctness" && args.count("--memory-trace")
+                    ? args.at("--memory-trace") : "", PQbackendPID(connection));
+            flood_trace.emit("after_PostgreSQL_connection");
+            if (args.count("--flood-session-setup")) {
+                if (method != "flood") throw std::runtime_error("Flood binding cannot be used by another method");
+                std::ifstream setup(args.at("--flood-session-setup"));
+                if (!setup) throw std::runtime_error("cannot read Flood session bindings");
+                const std::string sql((std::istreambuf_iterator<char>(setup)),{});
+                execute(connection,sql);
+                flood_session_bindings = true;
+            }
             execute(connection, "SET jit=off; SET max_parallel_workers_per_gather=0;");
             RssSampler sampler(PQbackendPID(connection));
             std::uint64_t preload_ns = 0;
@@ -253,11 +282,14 @@ int main(int argc, char** argv) {
                 execute(connection, "SET qmap_benchmark.source_xmax=" + args.at("--source-xmax") + ";");
                 execute(connection, "SET qmap_benchmark.source_ymin=" + args.at("--source-ymin") + ";");
                 execute(connection, "SET qmap_benchmark.source_ymax=" + args.at("--source-ymax") + ";");
-                Result reset(PQexec(connection, "SELECT qmap_reset_index_cache()"));
+                Result reset(PQexec(connection, bound_sql("SELECT qmap_reset_index_cache()").c_str()));
                 require_status(connection, reset.get(), PGRES_TUPLES_OK);
                 const auto preload_started = Clock::now();
-                Result preload(PQexec(connection, ("SELECT qmap_preload_index(" + literal(method) + ")").c_str()));
+                flood_trace.emit("before_index_load");
+                Result preload(PQexec(connection, bound_sql("SELECT qmap_preload_index(" + literal(method) + ")").c_str()));
                 require_status(connection, preload.get(), PGRES_TUPLES_OK);
+                flood_trace.emit("after_index_load");
+                flood_trace.emit("after_point_data_load"); // Flood load already owns the points.
                 preload_ns = static_cast<std::uint64_t>(std::chrono::duration_cast<std::chrono::nanoseconds>(
                     Clock::now() - preload_started).count());
             }
@@ -282,13 +314,21 @@ int main(int argc, char** argv) {
             correctness_output << "method,query_id,selectivity_group,truth_count,result_count,missing,extra,exact,count_result,count_exact\n";
             std::uint64_t total_missing = 0;
             std::uint64_t total_extra = 0;
+            std::size_t completed_correctness = 0;
             for (const auto& query : correctness) {
+                flood_trace.emit("before_correctness_query",completed_correctness);
                 auto result = execute_prepared(connection, "pilot_correctness", query);
+                flood_trace.emit("after_ID_query",completed_correctness+1);
                 const auto truth_count = std::stoull(PQgetvalue(result.get(), 0, 0));
                 const auto result_count = std::stoull(PQgetvalue(result.get(), 0, 1));
                 const auto missing = std::stoull(PQgetvalue(result.get(), 0, 2));
                 const auto extra = std::stoull(PQgetvalue(result.get(), 0, 3));
                 auto counted = execute_prepared(connection, "pilot_count", query);
+                ++completed_correctness;
+                flood_trace.emit("after_count_query",completed_correctness);
+                if (completed_correctness == 1 || completed_correctness == 100 ||
+                    completed_correctness == 500 || completed_correctness == 1000)
+                    flood_trace.emit("after_"+std::to_string(completed_correctness)+"_queries",completed_correctness);
                 const auto count_result = std::stoull(PQgetvalue(counted.get(),0,0));
                 total_missing += missing;
                 total_extra += extra;

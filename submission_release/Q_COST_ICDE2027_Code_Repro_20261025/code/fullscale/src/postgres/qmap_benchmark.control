@@ -1,0 +1,4 @@
+comment = 'Common GeoLife range-index benchmark wrapper'
+default_version = '1.0'
+relocatable = true
+module_pathname = '$libdir/qmap_benchmark'

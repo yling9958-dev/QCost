@@ -1,0 +1,9 @@
+benchmark_order: fixed original method/query order
+bmtree_export: 1
+bootstrap: 20260902
+data_selection: 'NOT_APPLICABLE: source-order byte prefix'
+other_baselines: deterministic frozen implementations; see source_inventory
+qmf_context: 20260902
+qmf_node_seed: SHA256(context_seed|node_id|uniform_qmf), little-endian first 8 bytes
+queries: FROZEN FILE; NO GENERATION
+stage_a_initialization: 0

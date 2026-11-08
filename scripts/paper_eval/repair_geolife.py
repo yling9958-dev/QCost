@@ -376,6 +376,9 @@ def foreground(methods=None):
         stop_repair_postgres()
 
 def start(methods=None):
+    if methods == ['flood']:
+        import flood_resume
+        return flood_resume.start()
     if run.active(UNIT): print('Repair service already active'); return
     if run.active(run.UNIT): raise RuntimeError('Forward campaign must be paused before GeoLife repair')
     s.output_dirs(); DEBUG.mkdir(exist_ok=True)

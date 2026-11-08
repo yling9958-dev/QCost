@@ -71,6 +71,27 @@ def control_source_verified(expected):
 def production_source_receipt(expected,current):
     """Return the exact tested receipt authorizing current production source."""
     if current==expected: return {'status':'FROZEN_SOURCE'}
+    import baseline_campaign
+    if baseline_campaign.RECEIPT.exists():
+        receipt=s.read_json(baseline_campaign.RECEIPT)
+        if (receipt.get('original_production_manifest')==expected and
+                receipt.get('current_production_source_manifest')==current):
+            return baseline_campaign.verify_receipt()
+    import qmf_only
+    if qmf_only.RECEIPT.exists():
+        receipt=s.read_json(qmf_only.RECEIPT)
+        if (receipt.get('original_production_manifest')==expected and
+                receipt.get('current_production_source_manifest')==current):
+            return qmf_only.verify_receipt()
+    # This Flood-only amendment composes with the prior QMF ownership receipt;
+    # it never changes that receipt or any historical formal result.
+    import flood_resume
+    flood_receipt=flood_resume.AUDIT/'acceptance.json'
+    if flood_receipt.exists():
+        evidence=s.read_json(flood_receipt)
+        if (evidence.get('original_production_manifest')==expected and
+                evidence.get('current_production_source_manifest')==current):
+            return flood_resume.verify_gate(require_safe=False)
     receipt=s.OUT/'00_environment/qmf_memory_implementation_source_20260913.json'
     tests=s.OUT/'00_environment/qmf_memory_tests_20260913.xml'
     changed={path:{'before':expected.get(path),'after':current.get(path)}
@@ -151,7 +172,7 @@ def verify_protocol():
            'dataset_changed','query_protocol_changed','memory_policy_changed','cpu_protocol_changed')):
         raise RuntimeError('QMF implementation provenance invalid')
 
-def verify_source():
+def verify_source(persist=True):
     expected=s.read_json(s.OUT/'00_environment/production_source_before.json')
     current=source_manifest()
     if not production_source_verified(expected,current):
@@ -164,7 +185,7 @@ def verify_source():
     cfg=yaml.safe_load((s.BASE/'config/qmf_frozen_config.yaml').read_text())
     if cfg['top_k']!=4 or cfg['lookahead_depth']!=3 or cfg['maximum_configurations']!=16384:
         raise RuntimeError('Frozen QMF config mismatch')
-    s.atomic_json(s.OUT/'00_environment/production_source_after.json',current)
+    if persist:s.atomic_json(s.OUT/'00_environment/production_source_after.json',current)
 
 def query_gate(row):
     d=row['dataset_id']; folder=s.OUT/'02_queries'/d; path=folder/(d+'_queries.csv')
@@ -442,15 +463,33 @@ def dry_run_plan():
         'methods':[name for name,_ in s.METHODS],'protocol':PROTOCOL,
         'will_start_service':False},indent=2))
 
+def qmf_only_dispatch(action,method,dry_run=False):
+    aliases={name.lower():value for name,value in s.METHODS}
+    aliases.update({value.lower():value for _,value in s.METHODS})
+    if aliases.get(method.lower())!='qmap_uniform_qmf':
+        raise ValueError('Method-filtered campaign currently supports only the official QMF token')
+    import qmf_only
+    if dry_run:
+        print(json.dumps({'action':'QMF-only','plan':qmf_only.plan(),'will_start_service':False},indent=2))
+    elif action=='status':qmf_only.status()
+    elif action=='foreground':qmf_only.foreground()
+    else:qmf_only.start()
+
 if __name__=='__main__':
     parser=argparse.ArgumentParser(); group=parser.add_mutually_exclusive_group(required=False)
     for flag in ['start','resume','status','foreground']: group.add_argument('--'+flag,action='store_true')
     group.add_argument('--repair',metavar='DATASET')
     parser.add_argument('--method',metavar='METHOD')
     parser.add_argument('--dry-run',action='store_true')
+    parser.add_argument('--baselines',action='store_true',help='Bounded sequential baseline campaign; never reruns QMF/PASS')
     args=parser.parse_args()
-    if args.method and not args.repair: parser.error('--method requires --repair DATASET')
-    if args.status: status()
+    if args.baselines:
+        if args.method or args.repair:parser.error('--baselines cannot be combined with --method or --repair')
+        import baseline_campaign
+        baseline_campaign.dispatch('status' if args.status else 'foreground' if args.foreground else 'start',args.dry_run)
+    elif args.method and not args.repair:
+        qmf_only_dispatch('status' if args.status else 'foreground' if args.foreground else 'start',args.method,args.dry_run)
+    elif args.status: status()
     elif args.foreground: foreground()
     elif args.repair: repair(args.repair,args.method,args.dry_run)
     elif args.dry_run: dry_run_plan()

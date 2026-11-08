@@ -16,6 +16,17 @@ SHORT=list(DATASET_RESULT_SLUGS)
 NAMES=list(DATASET_NAMES)
 FIELDS=['Method',*s.METRICS,'Correctness','Status']
 
+def method_result_root(dataset,runtime):
+    if runtime!='flood':return s.OUT
+    pointer=s.OUT/'debug/flood_correctness_memfix_20260915/published.json'
+    if not pointer.exists():return s.OUT
+    receipt=s.read_json(pointer)
+    if receipt.get('dataset')!=dataset:return s.OUT
+    target=Path(receipt['attempt'])
+    marker=target/'checkpoints'/dataset/'flood_method.done'
+    if s.sha(marker)!=receipt['method_sha256']:raise RuntimeError('Published Flood result SHA mismatch')
+    return target
+
 def text(path,value):
     import os
     path=Path(path); path.parent.mkdir(parents=True,exist_ok=True)
@@ -32,7 +43,8 @@ def fmt(v):
 def rows(dataset):
     result=[]
     for label,(display,runtime) in zip(DISPLAY,s.METHODS):
-        cp=s.marker(dataset,runtime+'_method')
+        method_root=method_result_root(dataset,runtime)
+        cp=method_root/'checkpoints'/dataset/(runtime+'_method.done')
         r=s.read_json(cp)['payload'] if cp.exists() else {}
         r={**{m:None for m in s.METRICS},'Correctness':'NOT_RUN','Status':'NOT_RUN',**r,'Method':label}
         if not cp.exists():
@@ -44,7 +56,7 @@ def rows(dataset):
                 if runtime in s.PERSISTENT and value.get('serialized_bytes') is not None:
                     r['IndexSize_MiB']=value['serialized_bytes']/2**20
                 if value.get('peak_rss_kib') is not None: r['PeakMemory_MiB']=value['peak_rss_kib']/1024
-        corr=s.marker(dataset,runtime+'_correctness')
+        corr=method_root/'checkpoints'/dataset/(runtime+'_correctness.done')
         if corr.exists():
             v=s.read_json(corr)['payload']; r['Missing']=v.get('missing'); r['Extra']=v.get('extra')
             if not cp.exists() and (v.get('exact'),v.get('missing'),v.get('extra'))==(
@@ -59,6 +71,13 @@ def rows(dataset):
 
 def valid_method(dataset,runtime):
     """Validate retained numeric evidence; a deleted completed index need not be rebuilt."""
+    root=method_result_root(dataset,runtime)
+    if root!=s.OUT:
+        previous=s.OUT
+        try:
+            s.OUT=root
+            return valid_method(dataset,runtime)
+        finally:s.OUT=previous
     cp=s.marker(dataset,runtime+'_method')
     if not cp.exists(): return False
     result=s.read_json(cp)['payload']
@@ -120,6 +139,53 @@ def table(data):
     labels=['Method','Build(s)','Size(MiB)','Mean(ms)','P95(ms)','P99(ms)','QPS','PeakMem(MiB)','Correctness','Status']
     return '| '+' | '.join(labels)+' |\n|'+ '|'.join(['---']+['---:']*7+['---','---'])+'|\n'+''.join(
         '| '+' | '.join(fmt(r.get(k)) for k in FIELDS)+' |\n' for r in data)
+
+def publish_flood_attempt(formal,attempt,dataset):
+    """Publish measured Flood PASS only, preserving every other method row.
+
+    Old method/checkpoint/resource receipts remain at their original paths.
+    This downstream operation never runs a benchmark or recomputes metrics.
+    """
+    previous=s.OUT
+    try:
+        s.OUT=attempt
+        if not valid_method(dataset,'flood'):raise RuntimeError('Flood is not scientifically PASS; publication forbidden')
+        result=s.read_json(s.marker(dataset,'flood_method'))['payload']
+    finally:s.OUT=previous
+    primary=formal/'geolife/GEOLIFE_8_METHODS_7_METRICS.csv'
+    original=primary.read_bytes();lines=original.splitlines(keepends=True)
+    fields=next(csv.reader([lines[0].decode()]))
+    positions=[i for i,line in enumerate(lines[1:],1) if next(csv.reader([line.decode()]))[0]=='Flood']
+    if len(positions)!=1:raise RuntimeError('Ambiguous Flood row')
+    i=positions[0];newline='\r\n' if lines[i].endswith(b'\r\n') else '\n'
+    buffer=io.StringIO();writer=csv.DictWriter(buffer,fieldnames=fields,lineterminator=newline)
+    writer.writerow({k:result.get(k) if result.get(k) is not None else 'N/A' for k in fields})
+    lines[i]=buffer.getvalue().encode();new_csv=b''.join(lines)
+    md=primary.with_suffix('.md');old_md=md.read_bytes();mdlines=old_md.splitlines(keepends=True)
+    locations=[j for j,line in enumerate(mdlines) if line.startswith(b'| Flood |')]
+    if len(locations)!=1:raise RuntimeError('Ambiguous Flood Markdown row')
+    mdlines[locations[0]]=table([{**result,'Method':'Flood'}]).splitlines(keepends=True)[2].encode()
+    # Retain the complete old table bytes beside the new evidence before the
+    # explicitly allowed post-PASS publication. Never rewrite old hash manifests.
+    for name,data in [('primary_before.csv',original),('primary_before.md',old_md)]:
+        destination=attempt/name
+        if not destination.exists():destination.write_bytes(data)
+    for path,data in [(primary,new_csv),(md,b''.join(mdlines))]:
+        if path.read_bytes()==data:continue
+        import uuid
+        temp=path.with_name(path.name+'.flood-publish.'+uuid.uuid4().hex+'.part')
+        with temp.open('xb') as handle:
+            handle.write(data);handle.flush()
+            import os
+            os.fsync(handle.fileno())
+        temp.replace(path)
+    receipt={'dataset':dataset,'attempt':str(attempt),
+        'method_sha256':s.sha(attempt/'checkpoints'/dataset/'flood_method.done'),
+        'primary_csv_sha256':s.sha(primary),'primary_md_sha256':s.sha(md),
+        'historical_checkpoints_retained':True,'other_method_rows_unchanged':True}
+    s.atomic_json(formal/'debug/flood_correctness_memfix_20260915/published.json',receipt)
+    s.atomic_json(attempt/'publication.json',receipt)
+    print(table([{**result,'Method':'Flood'}]),flush=True)
 
 def dataset_report(row,index):
     dataset=row['dataset_id']; data=rows(dataset); ranking=ranks(data)
