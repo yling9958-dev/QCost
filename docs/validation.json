@@ -1,0 +1,3030 @@
+{
+  "status": "PASS_WITH_DOCUMENTED_FULL_SCOPE_LIMITATIONS",
+  "date": "2026-11-09",
+  "executed_from": "/media/lingyaqi/Lenovo F510/QMF/QCost-reproducible",
+  "external_validation_root": "/tmp/qcost-release-validation.OXBGBo",
+  "classical_environment": {
+    "status": "PASS",
+    "python": "3.10.12",
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "packages": {
+      "numpy": "1.26.4",
+      "pandas": "2.3.3",
+      "scipy": "1.15.3",
+      "torch": "2.4.1+cu118",
+      "pytest": "8.4.2",
+      "PyYAML": "6.0.3",
+      "qiskit": "1.2.4",
+      "qiskit-aer": null,
+      "psycopg2-binary": null,
+      "matplotlib": "3.10.7"
+    },
+    "commands": {
+      "cmake": "/usr/bin/cmake",
+      "g++": "/usr/bin/g++",
+      "make": "/usr/bin/make",
+      "git": "/usr/bin/git",
+      "patch": "/usr/bin/patch",
+      "pg_config": "/usr/bin/pg_config",
+      "psql": "/usr/bin/psql"
+    },
+    "native_versions": {
+      "cmake": "cmake version 3.22.1",
+      "g++": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+      "pg_config": "PostgreSQL 14.24 (Ubuntu 14.24-0ubuntu0.22.04.1)"
+    },
+    "cpu_only_supported": true,
+    "quantum": "OPTIONAL_DEPENDENCY_MISSING"
+  },
+  "dependency_installation": {
+    "quantum": "Fresh venv; pip install -r requirements-circuit.txt succeeded; 22 tests plus N4 stage passed without Torch",
+    "combined": "Isolated system-site-packages venv for full gate stages, all tests, psycopg2 and SQL; host packages were not modified",
+    "classical": "Existing pinned host packages used; no fresh full Torch installation attempted"
+  },
+  "pytest": [
+    {
+      "environment": "classical NumPy1.26.4",
+      "passed": 53,
+      "skipped_modules": 4,
+      "exit_code": 0,
+      "seconds": 11.72
+    },
+    {
+      "environment": "combined NumPy2.2.6 Qiskit2.5.2 Aer0.17.2",
+      "passed": 82,
+      "failed": 0,
+      "exit_code": 0,
+      "seconds": 23.02
+    },
+    {
+      "environment": "clean quantum-only venv",
+      "passed": 22,
+      "failed": 0,
+      "exit_code": 0,
+      "seconds": 7.77
+    }
+  ],
+  "acceptance_cases": [
+    {
+      "name": "classical_QUICK",
+      "status": "PASS",
+      "evidence": {
+        "file": "acceptance-final/workflow.json",
+        "sha256": "01d2c421e0868fc21b57836e1a438999ac11d7164daa7c9363bd24ec632530c0"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "mode": "QUICK",
+        "historical_paper_measurements": false,
+        "quantum_entry": "reproduce/run_quantum.py"
+      }
+    },
+    {
+      "name": "original_models_training_and_indexes",
+      "status": "PASS",
+      "evidence": {
+        "file": "acceptance-final/smoke/SMOKE_RESULT.json",
+        "sha256": "1ea6719708c56e0a585685b8da3c6f52cf5318188672a3bea6cd41f8957a4a63"
+      },
+      "result": {
+        "status": "PASS",
+        "smoke_only": true,
+        "verified_original_models": 15,
+        "training": "R4, one epoch, isolated generated inputs",
+        "index_methods": [
+          "qmap_uniform_qmf",
+          "qmap_qw"
+        ],
+        "ablation_costs": {
+          "Full": 1663.8467700257947,
+          "Random": 1663.8467700257947,
+          "NoCache": 1663.8467700257947,
+          "NoFeedback": 1663.8467700257947,
+          "Enumeration": 1663.8467700257947
+        },
+        "selection_variants": [
+          "QF",
+          "RF",
+          "QN",
+          "RN"
+        ],
+        "historical_paper_measurements": false
+      }
+    },
+    {
+      "name": "QUICK_search",
+      "status": "PASS",
+      "evidence": {
+        "file": "acceptance-final/search/manifest.json",
+        "sha256": "62845fd90e2a17cd3d31b82dd83aa47f6796c9295ac5545889c6a9738b24c424"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "search",
+        "mode": "QUICK",
+        "nodes": [
+          {
+            "node": "synthetic_quick",
+            "rows": 24,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 1,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "QUICK_efficiency",
+      "status": "PASS",
+      "evidence": {
+        "file": "acceptance-final/efficiency/manifest.json",
+        "sha256": "99d100d8ebde6f4da39eac7b547e0bb8c3fd2db468f2a2bf8c54d519d04fe05e"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "efficiency",
+        "mode": "QUICK",
+        "nodes": [
+          {
+            "node": "synthetic_quick",
+            "rows": 7,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 1,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "QUICK_sensitivity",
+      "status": "PASS",
+      "evidence": {
+        "file": "acceptance-final/sensitivity/manifest.json",
+        "sha256": "f12451e7c0034b74a55c8e7f372e0acadacc529031bce1a0447fc48b5f89d226"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "sensitivity",
+        "mode": "QUICK",
+        "nodes": [
+          {
+            "node": "synthetic_quick",
+            "rows": 9,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 1,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "real_search_partial",
+      "status": "PASS",
+      "evidence": {
+        "file": "real-search-complete-final/manifest.json",
+        "sha256": "0118b1b64abe3e1834ba7f8b8f5ddc0343080645d766c496a8e699837fd18d90"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "search",
+        "mode": "FULL",
+        "nodes": [
+          {
+            "node": "geolife_05d648fb4ec86485",
+            "rows": 24,
+            "completed": true
+          },
+          {
+            "node": "geolife_3c04af2e4a9a8b9f",
+            "rows": 24,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 4,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "real_efficiency_partial",
+      "status": "PASS",
+      "evidence": {
+        "file": "real-efficiency-final/manifest.json",
+        "sha256": "c08a295d2e16b7f6086ad17bda0ce0429404781d9e360abcdd60498aad97b351"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "efficiency",
+        "mode": "FULL",
+        "nodes": [
+          {
+            "node": "geolife_05d648fb4ec86485",
+            "rows": 7,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 4,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "real_sensitivity_partial",
+      "status": "PASS",
+      "evidence": {
+        "file": "real-hk-final/manifest.json",
+        "sha256": "9bdc96fabfb913283b484f28d5eb1cda7b914a23a8a7eee788635e2d3e7bdf25"
+      },
+      "result": {
+        "status": "COMPLETE",
+        "task": "sensitivity",
+        "mode": "FULL",
+        "nodes": [
+          {
+            "node": "geolife_05d648fb4ec86485",
+            "rows": 15,
+            "completed": true
+          }
+        ],
+        "seeds": [
+          2026101100,
+          2026101101,
+          2026101102,
+          2026101103,
+          2026101104,
+          2026101105,
+          2026101106,
+          2026101107,
+          2026101108,
+          2026101109,
+          2026101110,
+          2026101111,
+          2026101112,
+          2026101113,
+          2026101114,
+          2026101115,
+          2026101116,
+          2026101117,
+          2026101118,
+          2026101119,
+          2026101120,
+          2026101121,
+          2026101122,
+          2026101123,
+          2026101124,
+          2026101125,
+          2026101126,
+          2026101127,
+          2026101128,
+          2026101129
+        ],
+        "partial": true,
+        "historical_paper_measurements": false,
+        "model_sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d",
+        "threads": 4,
+        "timing_scope": "Fresh portable whole-pipeline/selection timing; never replaces historical phase sums",
+        "beam": "Deterministic; repeated seeds are repeated measurements, not independent random decisions"
+      }
+    },
+    {
+      "name": "original_CPP_SQL_PostGIS",
+      "status": "PASS",
+      "evidence": {
+        "file": "paper-sql/sql_validation.json",
+        "sha256": "e1ec507aef4df5cbfb016c44e98b506895dddc4cff16e180a972a48647b139cb"
+      },
+      "result": {
+        "status": "PASS",
+        "method": "postgis_gist",
+        "correctness_queries": 1000,
+        "performance_queries": 3000,
+        "repetitions": 5,
+        "timed_samples": 15000,
+        "original_client_source": "src/postgres/client/postgres_full.cpp",
+        "timing_scope": "Original C++ libpq prepared count statement, one persistent connection per phase; jit off, no parallel gather",
+        "historical_full_dataset_identity_verified": false,
+        "note": "Original SQL client and fixed query counts; historical datasets, server settings and index artifacts must still match"
+      }
+    },
+    {
+      "name": "original_CPP_SQL_QMF_extension",
+      "status": "PASS",
+      "evidence": {
+        "file": "paper-sql-qmf/sql_validation.json",
+        "sha256": "adab14f39cb0b94ee8c2917f3e728ef313ba3027d3336eb1ddcfe66f1dc022c2"
+      },
+      "result": {
+        "status": "PASS",
+        "method": "qmap_uniform_qmf",
+        "correctness_queries": 1000,
+        "performance_queries": 3000,
+        "repetitions": 5,
+        "timed_samples": 15000,
+        "original_client_source": "src/postgres/client/postgres_full.cpp",
+        "timing_scope": "Original C++ libpq prepared count statement, one persistent connection per phase; jit off, no parallel gather",
+        "historical_full_dataset_identity_verified": false,
+        "note": "Original SQL client and fixed query counts; historical datasets, server settings and index artifacts must still match"
+      }
+    },
+    {
+      "name": "PostGIS_python_client",
+      "status": "PASS",
+      "evidence": {
+        "file": "postgis-verified/postgis_metrics.json",
+        "sha256": "5a332638773be846371bc0e77e59e2a9aafa99648c3ce3b3aa46697eee6f3e3b"
+      },
+      "result": {
+        "status": "PASS",
+        "method": "PostGIS GiST",
+        "postgis": "3.2 USE_GEOS=1 USE_PROJ=1 USE_STATS=1",
+        "build_seconds": 0.059817133005708456,
+        "correctness_queries": 1000,
+        "repetitions": 1,
+        "mean_ms": 0.076171086,
+        "p95_ms": 0.08613710000000001,
+        "p99_ms": 0.1236809399999991,
+        "qps": 13128.341113582128,
+        "timing_scope": "Single psycopg2 client, execute through fetch; COPY excluded from build time",
+        "historical_paper_measurements": false
+      }
+    },
+    {
+      "name": "BMTree_official_training",
+      "status": "PASS",
+      "evidence": {
+        "file": "bmtree-real-8192.json",
+        "sha256": "d1e1dacfaff5ac310879c832212e78204f2d1fc08f8fd14daaa288926b32fcdb"
+      },
+      "result": {
+        "source_revision": "230ead0d82489b2f199baf165b0efa5f0c99b8c7",
+        "implementation": "official Tree/BMTEnv/MCTS",
+        "training_points": 2000,
+        "training_queries": 1000,
+        "depth": 4,
+        "rollouts_per_depth": 2,
+        "seed": 1,
+        "base_scan_range": 22.467,
+        "rollout_costs": [
+          20.81400000000002,
+          22.466999999999985,
+          17.024,
+          17.024,
+          15.461000000000013,
+          15.461000000000013,
+          14.519000000000005,
+          15.461000000000013
+        ],
+        "action_stream": "011101010101010101010101010101",
+        "schedule_prefix": "010000000000000",
+        "point_count": 8192
+      }
+    },
+    {
+      "name": "quantum_QUICK",
+      "status": "PASS",
+      "evidence": {
+        "file": "quantum-quick-final/quantum_validation.json",
+        "sha256": "0f3a012280d5f094cd7c10a35177c2c92ab88cfbbda676c30fcf6ca57a64b39a"
+      },
+      "result": {
+        "status": "PASS",
+        "mode": "QUICK",
+        "synthetic_demonstration": true,
+        "original_paper_figure_reproduced": false,
+        "costs": [
+          7,
+          4,
+          5,
+          3,
+          6,
+          2,
+          1,
+          0
+        ],
+        "threshold": 1,
+        "cost_bits": 3,
+        "seed": 42,
+        "qiskit": "2.5.2",
+        "aer": "0.17.2",
+        "classical_precomputation": "Costs supplied classically; reversible table QROM synthesis is O(N)",
+        "quantum_speedup_claimed": false
+      }
+    },
+    {
+      "name": "quantum_FULL_all_original_stages",
+      "status": "PASS",
+      "evidence": {
+        "file": "quantum-formal-complete/quantum_validation.json",
+        "sha256": "d3cf595273025520e6a16ca1386114e5963e50bc55d577abd67fcf625e385d81"
+      },
+      "result": {
+        "status": "PASS",
+        "mode": "FULL",
+        "partial": false,
+        "stages": [
+          {
+            "N": 4,
+            "status": "PASS",
+            "tests_passed": 10
+          },
+          {
+            "N": 8,
+            "status": "PASS",
+            "tests_passed": 10
+          },
+          {
+            "N": 16,
+            "status": "PASS",
+            "tests_passed": 10
+          },
+          {
+            "N": 32,
+            "status": "PASS",
+            "tests_passed": 10
+          },
+          {
+            "N": 64,
+            "status": "PASS",
+            "tests_passed": 10
+          }
+        ],
+        "original_protocol": true,
+        "synthetic_gate_validation_tables": true,
+        "qiskit": "2.5.2",
+        "aer": "0.17.2",
+        "quantum_speedup_claimed": false
+      }
+    },
+    {
+      "name": "quantum_clean_environment",
+      "status": "PASS",
+      "evidence": {
+        "file": "quantum-clean-environment/quantum_validation.json",
+        "sha256": "38966d3eae1439b116d3d4464d0eda8af1f5924503798c0b263d094bcbf0ed69"
+      },
+      "result": {
+        "status": "PASS",
+        "mode": "FULL",
+        "partial": true,
+        "stages": [
+          {
+            "N": 4,
+            "status": "PASS",
+            "tests_passed": 10
+          }
+        ],
+        "original_protocol": true,
+        "synthetic_gate_validation_tables": true,
+        "qiskit": "2.5.2",
+        "aer": "0.17.2",
+        "quantum_speedup_claimed": false
+      }
+    },
+    {
+      "name": "documented_entrypoints",
+      "status": "PASS",
+      "evidence": {
+        "file": "entrypoints.json",
+        "sha256": "c143b100d9ef3b0f121b0b74b39f97081abf9b3a6147f52a45c0711657a69f1e"
+      },
+      "result": {
+        "status": "PASS",
+        "scope": "Existing README CLI scripts and argument parsers; external data/deployment are not supplied by --help"
+      }
+    },
+    {
+      "name": "original_node_census",
+      "status": "PASS",
+      "evidence": {
+        "file": "node-census/census_summary.json",
+        "sha256": "77daf00f4736adc5188afc284a63a9c3b05d316fe7dee88e2a2d4d1aa461d5e6"
+      },
+      "result": {
+        "all_saved_nodes": 4361,
+        "unique_eligible_nodes": 166,
+        "per_dataset": {
+          "geolife": 54,
+          "gowalla": 33,
+          "nyc_taxi": 40,
+          "skewed_2d": 39
+        },
+        "ordered_attempts": 64,
+        "candidate_census_sha256": "ef05e49209012e77e1dfea0f938d3ac48af32e427078bc22e0bac4beea7dff71",
+        "selection_frozen_before_cost_analysis": true
+      }
+    },
+    {
+      "name": "core-real-ablation",
+      "status": "PASS",
+      "runs": 20,
+      "nodes": [
+        "geolife_05d648fb4ec86485",
+        "geolife_3c04af2e4a9a8b9f"
+      ],
+      "seeds": [
+        2026101100
+      ],
+      "numpy": "1.26.4",
+      "partial": true,
+      "all_plan_reference_checks": "PASS",
+      "protocol": "both",
+      "evidence": {
+        "file": "core-real-ablation/manifest.json",
+        "sha256": "5383d2cbb3add3afb02d6d42f8ac5b3b4d35fa9b21be470f99827a846c8f7f96"
+      }
+    },
+    {
+      "name": "core-real-selection",
+      "status": "PASS",
+      "runs": 8,
+      "nodes": [
+        "geolife_edf26bb2d95de39e",
+        "geolife_4579d359b82be98a"
+      ],
+      "seeds": [
+        2026101100
+      ],
+      "numpy": "1.26.4",
+      "partial": true,
+      "all_plan_reference_checks": "PASS",
+      "protocol": "both",
+      "evidence": {
+        "file": "core-real-selection/manifest.json",
+        "sha256": "f2c76454ec6545be2f2331516477c73a4c603211fd9c9ca2b95fc95e6036ca29"
+      }
+    },
+    {
+      "name": "four_construction_strategies_real_prefix",
+      "status": "PASS",
+      "points": 8192,
+      "queries_per_method": 1000,
+      "performance_queries": 3000,
+      "repetitions": 1,
+      "methods": [
+        "r4_greedy",
+        "cost_h1",
+        "recursive_exact_h3",
+        "cpu_qmf_h3"
+      ],
+      "historical_sample": false,
+      "evidence": {
+        "file": "core-strategies-real/strategy_results.json",
+        "sha256": "28cb1907ba9a451d1c80815b81cc01ca51a16d4ee1fae00e30b2a6731fed2b85"
+      }
+    },
+    {
+      "name": "six_native_baselines_real_prefix",
+      "status": "PASS",
+      "points": 8192,
+      "correctness_queries_per_method": 1000,
+      "performance_queries": 3000,
+      "repetitions": 1,
+      "methods": [
+        "rtree",
+        "lisa",
+        "flood",
+        "tsunami",
+        "lmsfc",
+        "bmtree"
+      ],
+      "evidence": {
+        "file": "core-baselines-verified/baseline_results.json",
+        "sha256": "2adea3d92081b9acd3ed89707823bd8d0b4cf00fc3ce617c3e4bbcd81e5f2fc1"
+      }
+    },
+    {
+      "name": "FULL_workload_copy_and_identity",
+      "status": "PASS",
+      "datasets": [
+        "geolife",
+        "gowalla",
+        "nyc_taxi",
+        "skewed_2d"
+      ],
+      "files": 20,
+      "note": "Actual original CSV byte identities checked at source and destination; no FULL point conversion was performed"
+    },
+    {
+      "name": "optional_PostgreSQL_extension",
+      "status": "PASS",
+      "shared_library_sha256": "fac6faf9a221ee5e1f0444e355d5edc4d8de33ffbeaf63f5185d8d15e513a02d",
+      "compiler": "PGXS/GCC, with_llvm=no; no optional bitcode required",
+      "execution": "Loaded into owned temporary PostgreSQL cluster; QMF exact SQL correctness and 15000 timing queries passed"
+    },
+    {
+      "name": "all_four_default_plot_groups",
+      "status": "PASS",
+      "groups": [
+        {
+          "group": "plots-performance",
+          "pdf_outputs": [
+            "figures/fig7_grouped_bar.pdf",
+            "figures/fig8_construction_storage.pdf",
+            "figures/fig9_latency_reduction.pdf",
+            "figures/fig9_relative_latency_zoom.pdf"
+          ]
+        },
+        {
+          "group": "plots-search",
+          "pdf_outputs": [
+            "figures/fig10_decision_ablation.pdf",
+            "figures/fig11_budgeted_search_quality.pdf"
+          ]
+        },
+        {
+          "group": "plots-quantum-hk",
+          "pdf_outputs": [
+            "figures/fig14_gate_validation.pdf",
+            "figures/fig15_parameter_sensitivity.pdf"
+          ]
+        },
+        {
+          "group": "plots-revised",
+          "pdf_outputs": [
+            "03_figures/fig12_configuration_efficiency.pdf",
+            "03_figures/fig13_hybrid_effectiveness.pdf",
+            "03_figures/fig16_index_scalability.pdf"
+          ]
+        }
+      ],
+      "scope": "Historical scalar exports and actual original plotting code; no new paper measurements"
+    }
+  ],
+  "quantum_stages": [
+    {
+      "N": 4,
+      "tests_passed": 10,
+      "measurements": 20,
+      "finite_budget_QMF_runs": 20,
+      "elapsed_seconds": 0.7487583759939298,
+      "measurements_actual": [
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 4,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.25,
+          "statevector_probability": 0.2499999999999999,
+          "measured_probability": 0.25
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 4,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.25,
+          "statevector_probability": 0.2499999999999999,
+          "measured_probability": 0.244140625
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 4,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.25,
+          "statevector_probability": 0.2499999999999999,
+          "measured_probability": 0.2509765625
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 4,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.25,
+          "statevector_probability": 0.2499999999999999,
+          "measured_probability": 0.2431640625
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 4,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.25,
+          "statevector_probability": 0.2499999999999999,
+          "measured_probability": 0.2421875
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999871,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999871,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999871,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999871,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999871,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999771,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999771,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999771,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999771,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999771,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999156,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999156,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999156,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999156,
+          "measured_probability": 1.0
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 4,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 1.0,
+          "statevector_probability": 0.9999999999999156,
+          "measured_probability": 1.0
+        }
+      ],
+      "resources_actual": [
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 0,
+          "qrom_logical_controlled_x": 6,
+          "synthesis_seconds": 0.0012955639977008104,
+          "transpilation_seconds": 0.025230128958355635,
+          "simulation_seconds": 0.00181332795182243,
+          "resources": {
+            "address_qubits": 2,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 7,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 7,
+            "transpiled_depth": 2,
+            "single_qubit_gates": 2,
+            "two_qubit_gates": 0,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 2
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 4,
+          "bits": 4,
+          "j": 1,
+          "qrom_logical_controlled_x": 6,
+          "synthesis_seconds": 0.0015614400035701692,
+          "transpilation_seconds": 0.004812755039893091,
+          "simulation_seconds": 0.007989574980456382,
+          "resources": {
+            "address_qubits": 2,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 7,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 7,
+            "transpiled_depth": 229,
+            "single_qubit_gates": 169,
+            "two_qubit_gates": 125,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 169,
+              "cx": 125
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 4,
+          "bits": 6,
+          "j": 1,
+          "qrom_logical_controlled_x": 6,
+          "synthesis_seconds": 0.0015427659964188933,
+          "transpilation_seconds": 0.007302424986846745,
+          "simulation_seconds": 0.011179051012732089,
+          "resources": {
+            "address_qubits": 2,
+            "cost_qubits": 6,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 9,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 9,
+            "transpiled_depth": 308,
+            "single_qubit_gates": 248,
+            "two_qubit_gates": 181,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 248,
+              "cx": 181
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 4,
+          "bits": 8,
+          "j": 1,
+          "qrom_logical_controlled_x": 6,
+          "synthesis_seconds": 0.0015449849888682365,
+          "transpilation_seconds": 0.006905533955432475,
+          "simulation_seconds": 0.015700309013482183,
+          "resources": {
+            "address_qubits": 2,
+            "cost_qubits": 8,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 11,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 11,
+            "transpiled_depth": 316,
+            "single_qubit_gates": 318,
+            "two_qubit_gates": 229,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 318,
+              "cx": 229
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        }
+      ],
+      "finite_budget_hit_rate": 0.45
+    },
+    {
+      "N": 8,
+      "tests_passed": 10,
+      "measurements": 20,
+      "finite_budget_QMF_runs": 20,
+      "elapsed_seconds": 2.510168430977501,
+      "measurements_actual": [
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 8,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.12500000000000003,
+          "statevector_probability": 0.12499999999999994,
+          "measured_probability": 0.1328125
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 8,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.12500000000000003,
+          "statevector_probability": 0.12499999999999994,
+          "measured_probability": 0.12548828125
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 8,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.12500000000000003,
+          "statevector_probability": 0.12499999999999994,
+          "measured_probability": 0.1259765625
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 8,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.12500000000000003,
+          "statevector_probability": 0.12499999999999994,
+          "measured_probability": 0.1259765625
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 8,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.12500000000000003,
+          "statevector_probability": 0.12499999999999994,
+          "measured_probability": 0.126953125
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999808,
+          "measured_probability": 0.78271484375
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999808,
+          "measured_probability": 0.791015625
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999808,
+          "measured_probability": 0.7919921875
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999808,
+          "measured_probability": 0.77490234375
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999808,
+          "measured_probability": 0.7900390625
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.78124999999997,
+          "measured_probability": 0.767578125
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.78124999999997,
+          "measured_probability": 0.7958984375
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.78124999999997,
+          "measured_probability": 0.76806640625
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.78124999999997,
+          "measured_probability": 0.79638671875
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.78124999999997,
+          "measured_probability": 0.7802734375
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999202,
+          "measured_probability": 0.775390625
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999202,
+          "measured_probability": 0.78857421875
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999202,
+          "measured_probability": 0.7734375
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999202,
+          "measured_probability": 0.7861328125
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 8,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.7812500000000001,
+          "statevector_probability": 0.7812499999999202,
+          "measured_probability": 0.7734375
+        }
+      ],
+      "resources_actual": [
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 0,
+          "qrom_logical_controlled_x": 14,
+          "synthesis_seconds": 0.002818973967805505,
+          "transpilation_seconds": 0.026839310012292117,
+          "simulation_seconds": 0.0021809160243719816,
+          "resources": {
+            "address_qubits": 3,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 8,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 8,
+            "transpiled_depth": 2,
+            "single_qubit_gates": 3,
+            "two_qubit_gates": 0,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 3
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 8,
+          "bits": 4,
+          "j": 1,
+          "qrom_logical_controlled_x": 14,
+          "synthesis_seconds": 0.0032416479662060738,
+          "transpilation_seconds": 0.009900712000671774,
+          "simulation_seconds": 0.02333625196479261,
+          "resources": {
+            "address_qubits": 3,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 8,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 8,
+            "transpiled_depth": 767,
+            "single_qubit_gates": 506,
+            "two_qubit_gates": 422,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 506,
+              "cx": 422
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 8,
+          "bits": 6,
+          "j": 1,
+          "qrom_logical_controlled_x": 17,
+          "synthesis_seconds": 0.003745611000340432,
+          "transpilation_seconds": 0.013691846979781985,
+          "simulation_seconds": 0.03249408502597362,
+          "resources": {
+            "address_qubits": 3,
+            "cost_qubits": 6,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 10,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 10,
+            "transpiled_depth": 982,
+            "single_qubit_gates": 672,
+            "two_qubit_gates": 556,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 672,
+              "cx": 556
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 8,
+          "bits": 8,
+          "j": 1,
+          "qrom_logical_controlled_x": 21,
+          "synthesis_seconds": 0.004227633005939424,
+          "transpilation_seconds": 0.019343277963344008,
+          "simulation_seconds": 0.05256545898737386,
+          "resources": {
+            "address_qubits": 3,
+            "cost_qubits": 8,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 12,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 12,
+            "transpiled_depth": 1177,
+            "single_qubit_gates": 858,
+            "two_qubit_gates": 708,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 858,
+              "cx": 708
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        }
+      ],
+      "finite_budget_hit_rate": 0.5
+    },
+    {
+      "N": 16,
+      "tests_passed": 10,
+      "measurements": 25,
+      "finite_budget_QMF_runs": 20,
+      "elapsed_seconds": 12.727134605054744,
+      "measurements_actual": [
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 16,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.0625,
+          "statevector_probability": 0.06249999999999996,
+          "measured_probability": 0.07275390625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 16,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.0625,
+          "statevector_probability": 0.06249999999999996,
+          "measured_probability": 0.056640625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 16,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.0625,
+          "statevector_probability": 0.06249999999999996,
+          "measured_probability": 0.064453125
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 16,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.0625,
+          "statevector_probability": 0.06249999999999996,
+          "measured_probability": 0.06201171875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 16,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.0625,
+          "statevector_probability": 0.06249999999999996,
+          "measured_probability": 0.06396484375
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499998313,
+          "measured_probability": 0.48046875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499998313,
+          "measured_probability": 0.49169921875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499998313,
+          "measured_probability": 0.466796875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499998313,
+          "measured_probability": 0.4697265625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499998313,
+          "measured_probability": 0.462890625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "M": 1,
+          "space": 16,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.908447265625,
+          "statevector_probability": 0.9084472656243454,
+          "measured_probability": 0.90966796875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "M": 1,
+          "space": 16,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.908447265625,
+          "statevector_probability": 0.9084472656243454,
+          "measured_probability": 0.91357421875
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "M": 1,
+          "space": 16,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.908447265625,
+          "statevector_probability": 0.9084472656243454,
+          "measured_probability": 0.91259765625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "M": 1,
+          "space": 16,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.908447265625,
+          "statevector_probability": 0.9084472656243454,
+          "measured_probability": 0.90478515625
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "M": 1,
+          "space": 16,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.908447265625,
+          "statevector_probability": 0.9084472656243454,
+          "measured_probability": 0.91650390625
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499997547,
+          "measured_probability": 0.48095703125
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499997547,
+          "measured_probability": 0.48291015625
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499997547,
+          "measured_probability": 0.482421875
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499997547,
+          "measured_probability": 0.45849609375
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.4726562499997547,
+          "measured_probability": 0.46142578125
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.47265624999966416,
+          "measured_probability": 0.45458984375
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.47265624999966416,
+          "measured_probability": 0.4873046875
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.47265624999966416,
+          "measured_probability": 0.451171875
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.47265624999966416,
+          "measured_probability": 0.46533203125
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 16,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.47265625,
+          "statevector_probability": 0.47265624999966416,
+          "measured_probability": 0.47705078125
+        }
+      ],
+      "resources_actual": [
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 0,
+          "qrom_logical_controlled_x": 29,
+          "synthesis_seconds": 0.004600134969223291,
+          "transpilation_seconds": 0.02468098304234445,
+          "simulation_seconds": 0.0026058240327984095,
+          "resources": {
+            "address_qubits": 4,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 9,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 9,
+            "transpiled_depth": 2,
+            "single_qubit_gates": 4,
+            "two_qubit_gates": 0,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 4
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 1,
+          "qrom_logical_controlled_x": 29,
+          "synthesis_seconds": 0.004772815969772637,
+          "transpilation_seconds": 0.018464682972989976,
+          "simulation_seconds": 0.06781370798125863,
+          "resources": {
+            "address_qubits": 4,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 9,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 9,
+            "transpiled_depth": 2546,
+            "single_qubit_gates": 1690,
+            "two_qubit_gates": 1342,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 1690,
+              "cx": 1342
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 16,
+          "bits": 4,
+          "j": 2,
+          "qrom_logical_controlled_x": 29,
+          "synthesis_seconds": 0.005063289019744843,
+          "transpilation_seconds": 0.026724748022388667,
+          "simulation_seconds": 0.14566803199704736,
+          "resources": {
+            "address_qubits": 4,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 9,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 9,
+            "transpiled_depth": 5483,
+            "single_qubit_gates": 3614,
+            "two_qubit_gates": 2916,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 3614,
+              "cx": 2916
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 16,
+          "bits": 6,
+          "j": 1,
+          "qrom_logical_controlled_x": 42,
+          "synthesis_seconds": 0.006161095981951803,
+          "transpilation_seconds": 0.02166674000909552,
+          "simulation_seconds": 0.10877877502935007,
+          "resources": {
+            "address_qubits": 4,
+            "cost_qubits": 6,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 11,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 11,
+            "transpiled_depth": 3696,
+            "single_qubit_gates": 2403,
+            "two_qubit_gates": 1946,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 2403,
+              "cx": 1946
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 16,
+          "bits": 8,
+          "j": 1,
+          "qrom_logical_controlled_x": 53,
+          "synthesis_seconds": 0.007216198020614684,
+          "transpilation_seconds": 0.029522516997531056,
+          "simulation_seconds": 0.2195525369606912,
+          "resources": {
+            "address_qubits": 4,
+            "cost_qubits": 8,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 13,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 13,
+            "transpiled_depth": 4661,
+            "single_qubit_gates": 3086,
+            "two_qubit_gates": 2502,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 3086,
+              "cx": 2502
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        }
+      ],
+      "finite_budget_hit_rate": 0.65
+    },
+    {
+      "N": 32,
+      "tests_passed": 10,
+      "measurements": 25,
+      "finite_budget_QMF_runs": 20,
+      "elapsed_seconds": 112.50766770000337,
+      "measurements_actual": [
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 32,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.03125000000000001,
+          "statevector_probability": 0.031249999999999976,
+          "measured_probability": 0.0380859375
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 32,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.03125000000000001,
+          "statevector_probability": 0.031249999999999976,
+          "measured_probability": 0.0322265625
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 32,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.03125000000000001,
+          "statevector_probability": 0.031249999999999976,
+          "measured_probability": 0.033203125
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 32,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.03125000000000001,
+          "statevector_probability": 0.031249999999999976,
+          "measured_probability": 0.02587890625
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 32,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.03125000000000001,
+          "statevector_probability": 0.031249999999999976,
+          "measured_probability": 0.033203125
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812497178,
+          "measured_probability": 0.263671875
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812497178,
+          "measured_probability": 0.25048828125
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812497178,
+          "measured_probability": 0.26611328125
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812497178,
+          "measured_probability": 0.27294921875
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812497178,
+          "measured_probability": 0.24169921875
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "M": 1,
+          "space": 32,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.8969365358352662,
+          "statevector_probability": 0.8969365358323181,
+          "measured_probability": 0.90576171875
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "M": 1,
+          "space": 32,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.8969365358352662,
+          "statevector_probability": 0.8969365358323181,
+          "measured_probability": 0.896484375
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "M": 1,
+          "space": 32,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.8969365358352662,
+          "statevector_probability": 0.8969365358323181,
+          "measured_probability": 0.8984375
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "M": 1,
+          "space": 32,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.8969365358352662,
+          "statevector_probability": 0.8969365358323181,
+          "measured_probability": 0.884765625
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "M": 1,
+          "space": 32,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.8969365358352662,
+          "statevector_probability": 0.8969365358323181,
+          "measured_probability": 0.89208984375
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.25830078124959194,
+          "measured_probability": 0.2509765625
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.25830078124959194,
+          "measured_probability": 0.25341796875
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.25830078124959194,
+          "measured_probability": 0.24658203125
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.25830078124959194,
+          "measured_probability": 0.259765625
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.25830078124959194,
+          "measured_probability": 0.275390625
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812494555,
+          "measured_probability": 0.2607421875
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812494555,
+          "measured_probability": 0.25927734375
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812494555,
+          "measured_probability": 0.27001953125
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812494555,
+          "measured_probability": 0.279296875
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 32,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.2583007812500001,
+          "statevector_probability": 0.2583007812494555,
+          "measured_probability": 0.263671875
+        }
+      ],
+      "resources_actual": [
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 0,
+          "qrom_logical_controlled_x": 62,
+          "synthesis_seconds": 0.010471201036125422,
+          "transpilation_seconds": 0.028548256028443575,
+          "simulation_seconds": 0.0028397940332069993,
+          "resources": {
+            "address_qubits": 5,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 10,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 10,
+            "transpiled_depth": 2,
+            "single_qubit_gates": 5,
+            "two_qubit_gates": 0,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 5
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 1,
+          "qrom_logical_controlled_x": 62,
+          "synthesis_seconds": 0.009779145009815693,
+          "transpilation_seconds": 0.037089643999934196,
+          "simulation_seconds": 0.1966261769994162,
+          "resources": {
+            "address_qubits": 5,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 10,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 10,
+            "transpiled_depth": 7122,
+            "single_qubit_gates": 4569,
+            "two_qubit_gates": 3674,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 4569,
+              "cx": 3674
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 32,
+          "bits": 4,
+          "j": 3,
+          "qrom_logical_controlled_x": 62,
+          "synthesis_seconds": 0.009892496978864074,
+          "transpilation_seconds": 0.08146444003796205,
+          "simulation_seconds": 0.6663894910016097,
+          "resources": {
+            "address_qubits": 5,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 10,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 10,
+            "transpiled_depth": 23620,
+            "single_qubit_gates": 14761,
+            "two_qubit_gates": 12262,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 14761,
+              "cx": 12262
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 32,
+          "bits": 6,
+          "j": 1,
+          "qrom_logical_controlled_x": 90,
+          "synthesis_seconds": 0.011951617954764515,
+          "transpilation_seconds": 0.04764352896017954,
+          "simulation_seconds": 0.3495736510376446,
+          "resources": {
+            "address_qubits": 5,
+            "cost_qubits": 6,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 12,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 12,
+            "transpiled_depth": 10229,
+            "single_qubit_gates": 6510,
+            "two_qubit_gates": 5330,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 6510,
+              "cx": 5330
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 32,
+          "bits": 8,
+          "j": 1,
+          "qrom_logical_controlled_x": 117,
+          "synthesis_seconds": 0.029532565036788583,
+          "transpilation_seconds": 0.10876653698505834,
+          "simulation_seconds": 0.9314509970135987,
+          "resources": {
+            "address_qubits": 5,
+            "cost_qubits": 8,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 14,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 14,
+            "transpiled_depth": 13184,
+            "single_qubit_gates": 8455,
+            "two_qubit_gates": 6968,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 8455,
+              "cx": 6968
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        }
+      ],
+      "finite_budget_hit_rate": 0.45
+    },
+    {
+      "N": 64,
+      "tests_passed": 10,
+      "measurements": 25,
+      "finite_budget_QMF_runs": 20,
+      "elapsed_seconds": 635.1640325969784,
+      "measurements_actual": [
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 64,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.015625,
+          "statevector_probability": 0.015624999999999986,
+          "measured_probability": 0.02099609375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 64,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.015625,
+          "statevector_probability": 0.015624999999999986,
+          "measured_probability": 0.01708984375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 64,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.015625,
+          "statevector_probability": 0.015624999999999986,
+          "measured_probability": 0.01318359375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 64,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.015625,
+          "statevector_probability": 0.015624999999999986,
+          "measured_probability": 0.0126953125
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "M": 1,
+          "space": 64,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.015625,
+          "statevector_probability": 0.015624999999999986,
+          "measured_probability": 0.0185546875
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.1348266601558932,
+          "measured_probability": 0.12841796875
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.1348266601558932,
+          "measured_probability": 0.12939453125
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.1348266601558932,
+          "measured_probability": 0.12890625
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.1348266601558932,
+          "measured_probability": 0.12841796875
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.1348266601558932,
+          "measured_probability": 0.146484375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "M": 1,
+          "space": 64,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.9635154816192113,
+          "statevector_probability": 0.9635154816064408,
+          "measured_probability": 0.96484375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "M": 1,
+          "space": 64,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.9635154816192113,
+          "statevector_probability": 0.9635154816064408,
+          "measured_probability": 0.958984375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "M": 1,
+          "space": 64,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.9635154816192113,
+          "statevector_probability": 0.9635154816064408,
+          "measured_probability": 0.96630859375
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "M": 1,
+          "space": 64,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.9635154816192113,
+          "statevector_probability": 0.9635154816064408,
+          "measured_probability": 0.95703125
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "M": 1,
+          "space": 64,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.9635154816192113,
+          "statevector_probability": 0.9635154816064408,
+          "measured_probability": 0.9609375
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015572248,
+          "measured_probability": 0.134765625
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015572248,
+          "measured_probability": 0.13427734375
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015572248,
+          "measured_probability": 0.13623046875
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015572248,
+          "measured_probability": 0.1318359375
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015572248,
+          "measured_probability": 0.13671875
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261009,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015554415,
+          "measured_probability": 0.14697265625
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261010,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015554415,
+          "measured_probability": 0.1357421875
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261011,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015554415,
+          "measured_probability": 0.146484375
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261012,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015554415,
+          "measured_probability": 0.1298828125
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "M": 1,
+          "space": 64,
+          "seed": 20261013,
+          "shots": 2048,
+          "theory": 0.13482666015625,
+          "statevector_probability": 0.13482666015554415,
+          "measured_probability": 0.13134765625
+        }
+      ],
+      "resources_actual": [
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 0,
+          "qrom_logical_controlled_x": 126,
+          "synthesis_seconds": 0.01937301701400429,
+          "transpilation_seconds": 0.03003052796702832,
+          "simulation_seconds": 0.0027296640328131616,
+          "resources": {
+            "address_qubits": 6,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 11,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 11,
+            "transpiled_depth": 2,
+            "single_qubit_gates": 6,
+            "two_qubit_gates": 0,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 6
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 1,
+          "qrom_logical_controlled_x": 126,
+          "synthesis_seconds": 0.017548734962474555,
+          "transpilation_seconds": 0.133508697967045,
+          "simulation_seconds": 0.5137276040040888,
+          "resources": {
+            "address_qubits": 6,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 11,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 11,
+            "transpiled_depth": 17407,
+            "single_qubit_gates": 11307,
+            "two_qubit_gates": 9158,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 11307,
+              "cx": 9158
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 64,
+          "bits": 4,
+          "j": 5,
+          "qrom_logical_controlled_x": 126,
+          "synthesis_seconds": 0.017757421999704093,
+          "transpilation_seconds": 0.31267392198788,
+          "simulation_seconds": 2.99115402699681,
+          "resources": {
+            "address_qubits": 6,
+            "cost_qubits": 4,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 11,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 11,
+            "transpiled_depth": 100643,
+            "single_qubit_gates": 60999,
+            "two_qubit_gates": 51838,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 60999,
+              "cx": 51838
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 64,
+          "bits": 6,
+          "j": 1,
+          "qrom_logical_controlled_x": 186,
+          "synthesis_seconds": 0.024581102014053613,
+          "transpilation_seconds": 0.11928472301224247,
+          "simulation_seconds": 1.1783245590049773,
+          "resources": {
+            "address_qubits": 6,
+            "cost_qubits": 6,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 13,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 13,
+            "transpiled_depth": 25490,
+            "single_qubit_gates": 16367,
+            "two_qubit_gates": 13510,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 16367,
+              "cx": 13510
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        },
+        {
+          "N": 64,
+          "bits": 8,
+          "j": 1,
+          "qrom_logical_controlled_x": 247,
+          "synthesis_seconds": 0.058337956957984716,
+          "transpilation_seconds": 0.1690317820175551,
+          "simulation_seconds": 2.318448784004431,
+          "resources": {
+            "address_qubits": 6,
+            "cost_qubits": 8,
+            "flag_qubits": 1,
+            "ancilla_qubits": 0,
+            "total_circuit_qubits": 15,
+            "fault_tolerant_physical_qubits": "NOT_ESTIMATED",
+            "register_order_little_endian": [
+              "address",
+              "cost",
+              "flag"
+            ],
+            "transpiled_qubits": 15,
+            "transpiled_depth": 33773,
+            "single_qubit_gates": 21498,
+            "two_qubit_gates": 17934,
+            "residual_multi_qubit_gates": 0,
+            "gate_counts": {
+              "u": 21498,
+              "cx": 17934
+            },
+            "basis": [
+              "u",
+              "cx"
+            ],
+            "hardware_coupling_map": null,
+            "optimization_level": 1
+          }
+        }
+      ],
+      "finite_budget_hit_rate": 0.5
+    }
+  ],
+  "full_raw_data": {
+    "status": "PASS",
+    "datasets": 4,
+    "all_local_raw_file_bytes_and_sha256_matched": true,
+    "remote": "Supplied metadata followed to actual download URLs; HTTP HEAD 200 and sizes matched, full remote bodies not redownloaded",
+    "hashes": "configs/dataset_downloads.json"
+  },
+  "corrected_attempts": [
+    {
+      "issue": "Initial host had Qiskit1.2.4 without Aer",
+      "resolution": "Created isolated validation environments; selected original gate Qiskit2.5.2/Aer0.17.2 with NumPy2.2.6"
+    },
+    {
+      "issue": "Unified classical and quantum requirements conflict on NumPy",
+      "resolution": "Independent requirement files and separate environments; original versions retained"
+    },
+    {
+      "issue": "First direct pytest lacked source import path",
+      "resolution": "Set pytest pythonpath in pyproject.toml; final rerun passed"
+    },
+    {
+      "issue": "NumPy bool_ from strict spacing-tolerance comparison could not be JSON encoded",
+      "resolution": "Wrapper converts output booleans to Python bool; algorithm/tolerance unchanged; QUICK and real search rerun passed"
+    },
+    {
+      "issue": "psycopg2 adapted NumPy scalars as np.float64(...) SQL expressions",
+      "resolution": "Convert query parameters to Python float; 1000 exact-ID checks passed"
+    },
+    {
+      "issue": "An intermediate manual PostGIS command used an incorrect smoke input subdirectory",
+      "resolution": "Corrected validation invocation; no source algorithm modification"
+    },
+    {
+      "issue": "Optional PGXS LLVM bitcode compilation could not find C++ array headers",
+      "resolution": "Build wrapper disables optional LLVM bitcode; shared extension compiled and ran actual QMF SQL queries"
+    }
+  ],
+  "not_executed": [
+    "Full hundred-million-point normalization/index/baseline campaigns; existing raw hashes were checked, but full indexes were not rebuilt",
+    "Complete 40 Original nodes x30 seed studies and complete 40 Validation-node diagnostics; only declared partial subsets executed",
+    "Exact historical 20k controlled sample, workload-area/scalability campaign reconstruction and original SQL service/cgroup deployment",
+    "Recovery/retraining of missing historical seeds1-4 and exact historical training roots",
+    "Real-node quantum configuration-table gate campaign; synthetic formal gate stages were all executed",
+    "Figure6 plot requiring the excluded original per-query latency export; default Figures7-16 plotting groups passed"
+  ],
+  "original_preservation": {
+    "status": "PASS",
+    "checked_files": 51195,
+    "checked_content_hashes": 1316,
+    "changed": [],
+    "changed_hashes": []
+  },
+  "secrets": "Release scanner checks high-confidence token patterns and literal secret assignments; no matching credential found. This is a pattern scan, not a guarantee of all possible encodings.",
+  "database": "Only a temporary private PostgreSQL cluster was used; its test schemas were cleaned and the owned server was stopped",
+  "source_algorithms": "Canonical source/model/reference groups compared byte-for-byte; ported function AST differences listed in provenance.json",
+  "zip": "Subsequent final ZIP/extraction receipts are adjacent to the archive and in workspace RELEASE_AUDIT.md; they cannot contain their own archive hash"
+}

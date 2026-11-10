@@ -1,0 +1,5 @@
+method,records,hits,finite_regret,rate
+Cost-H1,26,15,26,57.69230769230769
+Original Analytic QMF,142,138,142,97.1830985915493
+R4 Greedy,27,14,26,51.851851851851855
+Original Recursive Exact,29,29,29,100.0

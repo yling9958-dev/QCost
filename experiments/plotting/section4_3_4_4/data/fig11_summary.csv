@@ -1,0 +1,73 @@
+method,BudgetLabel,metric,mean,ci_low,ci_high,nodes,runs,seeds,ci_method,bootstrap_draws,bootstrap_seed
+Random Search,32,OptimalConfiguration,47.833333333333336,33.416666666666664,61.83333333333334,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,32,OptimalRoot,82.41666666666667,73.5,90.41666666666669,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,32,ConfigurationGap,219.937140556099,122.66605394158543,331.30427310302974,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,32,RootRegret,37.80027522960137,15.351329726941856,68.77485164623366,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,32,OptimalConfiguration,50.0,35.0,65.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,32,OptimalRoot,72.5,57.49999999999999,85.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,32,ConfigurationGap,373.68436417065124,153.58401877454565,682.199329461965,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,32,RootRegret,135.9292923363886,41.77568355762945,268.0832368249114,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,32,OptimalConfiguration,52.08333333333333,37.99791666666667,65.66666666666666,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,32,OptimalRoot,87.25,79.58124999999998,93.91666666666667,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,32,ConfigurationGap,149.3972601021654,82.45804021520917,227.93295321168534,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,32,RootRegret,17.56844066958523,5.769861597939596,32.61273977283733,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,2sqrtN,OptimalConfiguration,46.916666666666664,34.0,59.58333333333334,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,2sqrtN,OptimalRoot,89.33333333333333,82.33333333333334,95.25,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,2sqrtN,ConfigurationGap,118.63474064105587,71.34572703203779,174.45960712201946,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,2sqrtN,RootRegret,11.78764715005726,5.004439161522823,20.757889966207717,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,2sqrtN,OptimalConfiguration,45.0,30.0,60.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,2sqrtN,OptimalRoot,77.5,65.0,90.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,2sqrtN,ConfigurationGap,225.84519709784166,100.00926079253993,409.7668741723511,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,2sqrtN,RootRegret,64.15950674375418,17.92482022700107,122.82666456072069,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,2sqrtN,OptimalConfiguration,65.41666666666667,55.41666666666666,75.25,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,2sqrtN,OptimalRoot,95.08333333333333,89.91666666666667,98.91666666666666,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,2sqrtN,ConfigurationGap,32.301412511152265,19.78447157231116,46.8938897503806,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,2sqrtN,RootRegret,3.471326566578545,0.5394852004778385,8.284025580510857,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,64,OptimalConfiguration,51.16666666666667,36.666666666666664,65.16666666666666,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,64,OptimalRoot,83.91666666666666,75.25,91.41666666666666,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,64,ConfigurationGap,162.44969170470532,90.1002135348679,245.2435761384841,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,64,RootRegret,29.066822123556506,12.791229603643897,49.77254995724385,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,64,OptimalConfiguration,50.0,35.0,65.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,64,OptimalRoot,75.0,60.0,87.5,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,64,ConfigurationGap,315.5328496089076,127.19686791336025,596.0925319705018,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,64,RootRegret,113.81704302320941,27.68762618089056,240.16956147622903,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,64,OptimalConfiguration,59.916666666666664,46.24791666666667,72.83333333333333,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,64,OptimalRoot,93.0,86.75,97.66666666666669,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,64,ConfigurationGap,85.65277244880056,43.8721186147433,135.1006477226351,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,64,RootRegret,6.8272248131492335,1.6469873239641017,15.46789694401582,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,128,OptimalConfiguration,55.49999999999999,40.99791666666667,69.41874999999999,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,128,OptimalRoot,88.00000000000001,80.58333333333334,94.25000000000001,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,128,ConfigurationGap,128.08285725284173,69.04322299993038,197.27852366487264,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,128,RootRegret,21.75915441370704,7.462771837699006,40.916375144824194,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,128,OptimalConfiguration,55.00000000000001,40.0,70.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,128,OptimalRoot,85.0,72.5,95.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,128,ConfigurationGap,279.83487924595966,97.81172805148347,560.8872770118722,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,128,RootRegret,95.51357775347539,15.775678239853539,219.73982037987722,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,128,OptimalConfiguration,68.58333333333334,56.50000000000001,79.75,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,128,OptimalRoot,95.91666666666667,91.33333333333333,99.25,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,128,ConfigurationGap,45.02084119309493,22.49359832351849,72.0296629606182,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,128,RootRegret,3.602399706594384,0.34554838212980676,8.940576000857625,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,256,OptimalConfiguration,58.58333333333333,44.49791666666666,72.16875,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,256,OptimalRoot,91.66666666666667,85.33333333333334,96.49999999999999,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,256,ConfigurationGap,95.58232498498644,50.0067671663654,149.182398018775,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,256,RootRegret,9.6785431968511,3.317368577821562,18.40742028613866,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,256,OptimalConfiguration,57.49999999999999,42.5,72.5,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,256,OptimalRoot,85.0,72.5,95.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,256,ConfigurationGap,181.6297788492556,60.980089806756624,366.04586415903356,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,256,RootRegret,58.174343654464224,12.587742118549103,116.88384840500775,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,256,OptimalConfiguration,80.83333333333333,71.74791666666667,89.08541666666669,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,256,OptimalRoot,97.5,93.33333333333333,100.0,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,256,ConfigurationGap,17.92869298034547,7.8993664568669,30.018378851852077,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,256,RootRegret,2.7693837138182102,0.0,7.755706118473983,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,512,OptimalConfiguration,63.416666666666664,49.91458333333333,76.00208333333333,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,512,OptimalRoot,94.33333333333334,89.49791666666665,98.08333333333333,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,512,ConfigurationGap,63.78806381092031,33.20741068131231,100.48760179831041,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Random Search,512,RootRegret,5.984527779023286,1.2037839520836462,13.87072532816903,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,512,OptimalConfiguration,65.0,50.0,80.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,512,OptimalRoot,95.0,87.5,100.0,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,512,ConfigurationGap,125.96315366974679,39.86727597702972,266.50306306160456,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Beam Search,512,RootRegret,0.6287718537731962,0.0,1.8618280205382916,40,40,1,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,512,OptimalConfiguration,94.75,91.66666666666666,97.41666666666667,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,512,OptimalRoot,99.66666666666667,99.0,100.0,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,512,ConfigurationGap,4.054638438011742,1.485919156947768,7.152378997389545,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015
+Original Analytic QMF,512,RootRegret,0.3526836140586973,0.0,1.058050842176092,40,1200,30,seeds averaged within node; percentile node bootstrap,4000,20261015

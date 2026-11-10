@@ -1,0 +1,12 @@
+{
+  "H": 3, "K": 4, "N_max": 16384,
+  "max_depth": 8, "max_leaves": 128, "min_leaf_size": 256,
+  "minimum_lookahead_points": 4096, "minimum_fraction": 0.05,
+  "budget_factor": 2.0,
+  "beta_leaf": 1.2779084295340111e-09,
+  "beta_point": 3.428255707467659,
+  "build_timeout_seconds": 14400,
+  "timing": "R4 model load through layout and compact serialization; input loading excluded",
+  "source": "hybrid_qmf_ablation/02_code/vendor/protocol.json and vendor/build_index.py",
+  "note": "Portable wrapper sets one Torch thread; historical timings used separately recorded environments."
+}

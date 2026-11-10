@@ -12,7 +12,11 @@ for variable in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS"):
 
 @pytest.fixture(scope="session", autouse=True)
 def single_threaded_torch():
-    import torch
+    try:
+        import torch
+    except ImportError:
+        # The independent gate-validation environment does not require Torch.
+        return
 
     torch.set_num_threads(1)
 

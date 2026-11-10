@@ -1,0 +1,39 @@
+{
+  "scope": "Source inspection plus executed small-scale acceptance; a found implementation is not a complete paper-campaign reproduction.",
+  "status_definitions": {
+    "FOUND_VERIFIED_SMALL": "Actual retained code executed on declared small inputs, including synthetic or real-prefix data.",
+    "FOUND_VERIFIED_IDENTITY": "Retained artifacts checked against original hashes or bytes.",
+    "FOUND_EXTERNAL_REQUIRED": "Implementation found; full execution additionally requires external inputs/deployment.",
+    "MISSING_HISTORICAL_RESOURCE": "No matching redistributable historical artifact/download was established. No substitute is fabricated."
+  },
+  "A_spatial_index": [
+    {"features": ["2D CSV reading", "affine preprocessing", "source row IDs"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qcost_repro/data.py", "evidence": "Unit converters and real GeoLife prefix 8192; all four raw FULL hashes verified; FULL conversion not rerun."},
+    {"features": ["spatial node state", "candidate partitions", "legality", "pretrained workload scorer", "Top-K"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qmapli/workload_action_interaction; src/python/qmapli/wg_qmf", "evidence": "15 strict model loads/inference, H3/K4 synthetic and real-node runs."},
+    {"features": ["root commitment", "child replanning", "serialization", "loading", "range IDs and counts"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qmapli/wg_qmf/index.py; src/cpp", "evidence": "Two index modes in smoke and four construction strategies on real 8192-point prefix; 1000 exact-ID/count queries per strategy."}
+  ],
+  "B_joint_subtrees": [
+    {"features": ["joint configurations", "leaf visits", "candidate scans", "unified two-term cost"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qmapli/wg_qmf/configuration.py; src/python/qmapli/wg_qmf/cost_oracle.py", "evidence": "Plan geometry/cost recomputation after optimizer returns; constants preserved."},
+    {"features": ["recursive exact", "conditional-state cost cache", "optimal root selection"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qcost_repro/recursive_exact.py; src/python/qcost_experiments/ablation", "evidence": "Unit/optimizer tests, original real-node Protocol B exact references, H/K grid."}
+  ],
+  "C_search": [
+    {"features": ["threshold updates", "Analytic QMF", "finite budget search"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qmapli/wg_qmf/search.py; src/python/qcost_experiments/comparison/standalone_search.py", "evidence": "Actual cost arrays, requested 32-512 and 2sqrtN entry, deterministic seeds; no fixed results."},
+    {"features": ["Hybrid-QMF", "shared cache", "incumbent feedback", "frontier maintenance"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/hybrid_qmf; src/python/qcost_experiments/ablation; src/python/qcost_experiments/selection", "evidence": "Five ablations, four selector/feedback variants, real frozen-node traces and exact completion."}
+  ],
+  "D_comparisons": [
+    {"features": ["R4 Greedy", "Cost-H1", "Recursive Exact", "Analytic QMF construction"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qcost_experiments/comparison/four_strategies.py", "evidence": "Four original builders on real-prefix points and 1000 correctness queries each."},
+    {"features": ["Random Search", "Beam Search", "Cached Anytime", "Hybrid-QMF", "cache/feedback ablations"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qcost_experiments/comparison; src/python/qcost_experiments/ablation", "evidence": "Original formal exact-threshold Beam trie retained; actual search, seven optimizer variants and real ablations executed."},
+    {"features": ["Boost R*-tree", "Flood", "LISA", "Tsunami", "LMSFC", "BMTree", "PostGIS GiST"], "status": "FOUND_VERIFIED_SMALL", "code": "src/baselines; reproduce/run_postgis.py; src/postgres/client", "evidence": "Native adapters built/reloaded and checked; official BMTree training executed; real PostGIS and original C++ SQL client executed. Tsunami/LMSFC are local reproductions."}
+  ],
+  "E_gate_validation": [
+    {"features": ["Aer entry", "QROM lookup", "reversible threshold", "phase oracle", "Grover diffusion", "inverse computation", "measured success", "depth/gates/qubits"], "status": "FOUND_VERIFIED_SMALL", "code": "src/python/qmf_quantum; reproduce/run_quantum.py", "evidence": "22 formal quantum tests, actual shot experiments and staged original protocol; precise executed stages are recorded in validation.json."},
+    {"features": ["real-node configuration address mapping"], "status": "FOUND_EXTERNAL_REQUIRED", "code": "src/python/qmf_quantum/configuration_adapter.py", "evidence": "Mapping/quantization unit tests pass; full real-node gate table exports are external."}
+  ],
+  "external_or_missing": [
+    {"resource": "Four full raw datasets and normalized caches", "status": "FOUND_EXTERNAL_REQUIRED", "resolution": "Real external URLs, identities and converter provided. Complete raw local hashes checked; no full raw points packaged."},
+    {"resource": "40 Original + 40 Validation node point/query NPZ payloads", "status": "FOUND_EXTERNAL_REQUIRED", "resolution": "Existing author workspace copies used for partial tests. Public link and redistribution rights not established; file/hash/schema manifests included."},
+    {"resource": "Historical controlled 20k membership, workload-area and scale campaign sample identities", "status": "MISSING_HISTORICAL_RESOURCE", "resolution": "Original algorithms and scalar plotting exports kept; author inputs needed for exact campaign reconstruction."},
+    {"resource": "Historical model seeds 1-4, exact GeoLife training roots, Stage-A freeze documents", "status": "MISSING_HISTORICAL_RESOURCE", "resolution": "All 15 found seed-0 checkpoints kept; existing training/GeoLife recovery entry points kept. New training is identified as new."},
+    {"resource": "Original multi-baseline PostgreSQL server deployment and cgroup campaign", "status": "FOUND_EXTERNAL_REQUIRED", "resolution": "Native adapters, QMF extension and unchanged SQL client retained; full service orchestration is not recreated by portable wrappers."},
+    {"resource": "Project-wide license, model/metadata distribution permission and approved citation", "status": "MISSING_HISTORICAL_RESOURCE", "resolution": "Author confirmation before publication; no license or bibliographic metadata invented."}
+  ]
+}

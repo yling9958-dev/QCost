@@ -1,0 +1,11 @@
+Q-COST release licensing status
+
+No new license is assigned by this reproduction packaging.
+The Q-COST authors must confirm the license and redistribution permission for
+their research source, original model weights and experimental metadata before
+public GitHub publication. Until then, no project-wide grant is implied.
+
+The existing QMap-LI notice is preserved in licenses/QMap-LI.LICENSE and applies
+only to the corresponding upstream material. External baseline dependencies
+retain their own licenses and are fetched separately at recorded revisions.
+Dataset downloads are subject to the upstream providers' terms.

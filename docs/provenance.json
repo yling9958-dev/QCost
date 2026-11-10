@@ -1,0 +1,1267 @@
+{
+  "status": "PASS",
+  "source_root": "/media/lingyaqi/Lenovo F510/QMF",
+  "canonical_byte_identical_groups": [
+    {
+      "original": "src/python/qmapli",
+      "released": "src/python/qmapli",
+      "files": 55,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/python/qmapli/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/scorer.py",
+          "sha256": "ac9954ad98ca9e6c3d25ddc4d10eca614b67758db1975d907b4986c171c3c5fc"
+        },
+        {
+          "path": "src/python/qmapli/static_format.py",
+          "sha256": "5cfe0ab5da054e7596859989673a3a49c0082e218aa7b6a7c9488a332faf56d8"
+        },
+        {
+          "path": "src/python/qmapli/tree.py",
+          "sha256": "860ebf65ea5ebf1db0cf513c5c16ae727a3e8b207e6597dae3117769a244c7aa"
+        },
+        {
+          "path": "src/python/qmapli/core/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/core/geometry.py",
+          "sha256": "7b3b137d4432f0bd659c1b718ea3c556f8154b6b758ce0576bae31f544cf7314"
+        },
+        {
+          "path": "src/python/qmapli/core/morton.py",
+          "sha256": "4c63cacf73b42ddcae276b6c4fd71aa2261545df39118434ae64dfa791e974c4"
+        },
+        {
+          "path": "src/python/qmapli/indexes/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/indexes/qmap_nai/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/indexes/qmap_nai/index.py",
+          "sha256": "32f5c4ed3f2ab87aac6ade8a36e07f204cd72b599f4f2e990024873a331079c8"
+        },
+        {
+          "path": "src/python/qmapli/indexes/qmap_nai/suffix.py",
+          "sha256": "2b04a59a6062695e49c00f25fb2727f2eb4a5ace6a398722d6420fd43a666dad"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/build_static_qw_index.py",
+          "sha256": "1824c53995d300fd51d6435cd3e4883ef196f3987c20a559a42e6df26f894334"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/cached_features.py",
+          "sha256": "8092eaf0d419aa22059a139a5a2720be8f6d471ff610e96d5bb73fdcf27884b4"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/index.py",
+          "sha256": "75b1f8ed2aa4ede1f9ebb53fe157120d01630617493b509d5613cbfe81a34f83"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/cost_oracle.py",
+          "sha256": "0c719c8b630d0ccb42978218fdde9674891b059dfc644524789bf7c9a9bb1e28"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/memory_trace.py",
+          "sha256": "7237e03f71479165afbc1a2ad0d5f675e72f0c0d7055f68143a138156419994d"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/cached_oracle.py",
+          "sha256": "d04a5993ad5099636fa7291b1a17aad9775cfb2ad73e4df1e64f35b118ce8c46"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/configuration.py",
+          "sha256": "c47215e2023cbeb2637600764a22da6cdcfdce17f5cc365811cbc764d8219b15"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/point_io.py",
+          "sha256": "5968eb95e6d87eae1e3a33ef11b1e0d63bb3d00005894341c4a734ee1e5104bb"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/search.py",
+          "sha256": "daaaa88113ae80491f1b19dac676728483327153c137533632caa7e664852629"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/quantum.py",
+          "sha256": "f0ba3f233432f6c9f8055910f04d22825c5553419cb38276f7b5a2e662ff9f97"
+        },
+        {
+          "path": "src/python/qmapli/wg_qmf/prior.py",
+          "sha256": "d3323f083dda829e7d266c44470e806580fd356d4b7362a83b9cb2c0c820acdc"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/actions.py",
+          "sha256": "73b0f75bdaafed6a9e2a4eaac3ccd396f6233011511281baa92ca9dba0a8b817"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/__init__.py",
+          "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/spatial_maps.py",
+          "sha256": "d60777730af268446fe8f4e5e59ae5847a3dca41e6343c05a27ae9b9fd228ab3"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/controller.py",
+          "sha256": "8005158eec274251a3e5e7bab62c99bffa25a65264f26132be3e1325e24a6daf"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/metrics.py",
+          "sha256": "5071f036e7b4c3ecccb617520a407e78f9cad646ba9e242667ce108cc75b2bac"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/statistics.py",
+          "sha256": "c8011646e69408f791be9e392a82365914b181488568429bbc19426454ac1ed4"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/scalar_features.py",
+          "sha256": "0dd9059744e7af95afdb2b11df48ca8f36357aac866af66e4d774d62fca52689"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/queries.py",
+          "sha256": "4900dc6f88b04681dd1ec16a31e31044f27909b221a097483e45540668f58f67"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/oracle.py",
+          "sha256": "4ec9e17f11974db2e7eb9a44698548fea5af770e52823bd453d6873443a34348"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/data.py",
+          "sha256": "a456536b9c33081c840be010e994db57964b4ad959b4205b360467de1434dbea"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/node_bank.py",
+          "sha256": "afd47281343f0e1832951afc7af21d3334fe1fefd5b201efb78424fc984274b6"
+        },
+        {
+          "path": "src/python/qmapli/workload_action_interaction/distributions.py",
+          "sha256": "df7e650520e487acadb69293eacd90cc45c5bdd48869a664d1c0d93a47ee1540"
+        },
+        {
+          "path": "src/python/qmapli/quantum/gates.py",
+          "sha256": "9df205f658eb16b63c469bf638307b26057b36861f5c47a2e13ba25ca0c5ff54"
+        },
+        {
+          "path": "src/python/qmapli/quantum/channel_tensor_encoding.py",
+          "sha256": "5fc726c9b44995952b806a047bfd9d871da57f84deaa14606ed26733fabe19f0"
+        },
+        {
+          "path": "src/python/qmapli/quantum/cst_qvqc.py",
+          "sha256": "b3380e0ea220a46e7e6193122286488d455763cf94304e05a633c99220f7d9f2"
+        },
+        {
+          "path": "src/python/qmapli/quantum/old_additive_phase_encoder.py",
+          "sha256": "e5efe54aaa91aa4f3acb3e84da9acaf3d01b5ceadea39cf338518b14a24fd180"
+        },
+        {
+          "path": "src/python/qmapli/quantum/old_additive_phase_vqc.py",
+          "sha256": "1357c333bede72c7bbfaf7d5828ae7ef44e63d66d619e745523192cae24e9868"
+        },
+        {
+          "path": "src/python/qmapli/quantum/__init__.py",
+          "sha256": "f9478dab7206049500fae5f4cd9fa0be559c65676b4d7629fc93fca9f9219145"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_vqc/model.py",
+          "sha256": "4cef7d0cb4d6f6d366e77238c63142be8acea90328713a2b70500d5b9a79c83c"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_vqc/controls.py",
+          "sha256": "7287b8763b0813bc16ee71d859d23e396eb4238d1a530e52ce1954e7d636f9d6"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_vqc/training.py",
+          "sha256": "c9ee41f6167615b3c8d79803e7924d6c8fd0533dd541ecf6aa35278fb9f35742"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_vqc/__init__.py",
+          "sha256": "f9478dab7206049500fae5f4cd9fa0be559c65676b4d7629fc93fca9f9219145"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_aq/model.py",
+          "sha256": "0d3e5fcf663c3d15fb2d35d0f0e3707e803dafea37aa9b302aeeb3e86e64eaf8"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_aq/losses.py",
+          "sha256": "649d8720f58762b4656f4f51d270a1dcfa47eed6df47bd9cd1bbcd200b65bade"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_aq/training.py",
+          "sha256": "ccc66fd6d2473fe4d900aa4059664fceeefeae75d41b19d81f41e5df80a4d341"
+        },
+        {
+          "path": "src/python/qmapli/cpsr_aq/__init__.py",
+          "sha256": "f9478dab7206049500fae5f4cd9fa0be559c65676b4d7629fc93fca9f9219145"
+        },
+        {
+          "path": "src/python/qmapli/quantum_feature_seal/models.py",
+          "sha256": "46b97fcb8548fdb9f855c32d9b1dac53e4297bd0683abf66530f5706e1d82923"
+        },
+        {
+          "path": "src/python/qmapli/quantum_feature_seal/seed_audit.py",
+          "sha256": "6547a1013fe08361f2bf3db21bf1b7b466cbdb0f2d61a053458041d7b6876966"
+        },
+        {
+          "path": "src/python/qmapli/quantum_feature_seal/__init__.py",
+          "sha256": "f9478dab7206049500fae5f4cd9fa0be559c65676b4d7629fc93fca9f9219145"
+        },
+        {
+          "path": "src/python/qmapli/final_full_scale/models.py",
+          "sha256": "df2ca2579c49646a05aa87b065bb20366892250aa292e406d09beef7fec0380e"
+        },
+        {
+          "path": "src/python/qmapli/final_full_scale/controllers.py",
+          "sha256": "82b4c38ac7317d9b3fca06e497d0302390447d4a2301b8624692ff5ebeac788a"
+        },
+        {
+          "path": "src/python/qmapli/final_full_scale/__init__.py",
+          "sha256": "f9478dab7206049500fae5f4cd9fa0be559c65676b4d7629fc93fca9f9219145"
+        }
+      ]
+    },
+    {
+      "original": "src/python/hybrid_qmf",
+      "released": "src/python/hybrid_qmf",
+      "files": 7,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/python/hybrid_qmf/recursive_anytime.py",
+          "sha256": "ebdc6236d4f01216310457241ff96c44f1a322a40fc3cb22be37c12eed17d2db"
+        },
+        {
+          "path": "src/python/hybrid_qmf/conditional_state.py",
+          "sha256": "1d4663cce0578b3d45327b76f8d6580f325cc67541e8f54414ef630a2f693f63"
+        },
+        {
+          "path": "src/python/hybrid_qmf/instrumentation.py",
+          "sha256": "654bb3b600c19bb257de45586103bbae79d43deca1875e3bed48a70416374c26"
+        },
+        {
+          "path": "src/python/hybrid_qmf/qmf_frontier_operator.py",
+          "sha256": "39b83f028064afa3324cb0ee966edf9981db171bae6366a1d4e037668d4d5740"
+        },
+        {
+          "path": "src/python/hybrid_qmf/shared_cache.py",
+          "sha256": "9e92f2b7bfe2402eebc21bec7baede59a38f9fde25ea319da0a7632c6ee4bf5c"
+        },
+        {
+          "path": "src/python/hybrid_qmf/hybrid_optimizer.py",
+          "sha256": "e38c523c1867b0a365a920b271c6db690b473deea078e1570043d964fe95bf90"
+        },
+        {
+          "path": "src/python/hybrid_qmf/__init__.py",
+          "sha256": "c85343ef423ac81ed5ac4cc247dc37dc141424a8db91f853576b56ca14cccd95"
+        }
+      ]
+    },
+    {
+      "original": "src/python/qcost_experiments/ablation",
+      "released": "src/python/qcost_experiments/ablation",
+      "files": 9,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/python/qcost_experiments/ablation/__init__.py",
+          "sha256": "56b5e91c3bb77ab933c25fd65eba883419bdc5691cc94cb9dc840e8f4e3674eb"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/conditional_state.py",
+          "sha256": "0da94b8e5cd7cc7146b5c3c5aaf69aced42a6262cf259e79947077a3724b7418"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/hybrid_optimizer.py",
+          "sha256": "91a23ea3d32e7cdd10188be482e0ab1f03f5932f58db23d4878fb6d695883256"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/instrumentation.py",
+          "sha256": "654bb3b600c19bb257de45586103bbae79d43deca1875e3bed48a70416374c26"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/shared_cache.py",
+          "sha256": "9e92f2b7bfe2402eebc21bec7baede59a38f9fde25ea319da0a7632c6ee4bf5c"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/recursive_anytime.py",
+          "sha256": "cffb0a22f3030b5b14146965f044221a46e16792a10e86c961efb17b6f6ff467"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/qmf_frontier_operator.py",
+          "sha256": "39b83f028064afa3324cb0ee966edf9981db171bae6366a1d4e037668d4d5740"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/classical_search.py",
+          "sha256": "4a32069d2d7228f3f8d9d851296ccc28552c9c55c57eb10a1041868dfb6a0fb4"
+        },
+        {
+          "path": "src/python/qcost_experiments/ablation/direct_enumeration.py",
+          "sha256": "14640f26092e3b3592b2e4d628fdf14c4531119b077c47608613e1ae92146a71"
+        }
+      ]
+    },
+    {
+      "original": "src/python/qcost_experiments/selection",
+      "released": "src/python/qcost_experiments/selection",
+      "files": 10,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/python/qcost_experiments/selection/__init__.py",
+          "sha256": "56b5e91c3bb77ab933c25fd65eba883419bdc5691cc94cb9dc840e8f4e3674eb"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/conditional_state.py",
+          "sha256": "0da94b8e5cd7cc7146b5c3c5aaf69aced42a6262cf259e79947077a3724b7418"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/hybrid_optimizer.py",
+          "sha256": "0dcd41290700e0352af9156c8f28aab0e1af2e8c5f8694e8a6dbfb29fd8d7028"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/instrumentation.py",
+          "sha256": "654bb3b600c19bb257de45586103bbae79d43deca1875e3bed48a70416374c26"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/shared_cache.py",
+          "sha256": "9e92f2b7bfe2402eebc21bec7baede59a38f9fde25ea319da0a7632c6ee4bf5c"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/recursive_anytime.py",
+          "sha256": "cffb0a22f3030b5b14146965f044221a46e16792a10e86c961efb17b6f6ff467"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/qmf_frontier_operator.py",
+          "sha256": "39b83f028064afa3324cb0ee966edf9981db171bae6366a1d4e037668d4d5740"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/classical_search.py",
+          "sha256": "4a32069d2d7228f3f8d9d851296ccc28552c9c55c57eb10a1041868dfb6a0fb4"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/direct_enumeration.py",
+          "sha256": "14640f26092e3b3592b2e4d628fdf14c4531119b077c47608613e1ae92146a71"
+        },
+        {
+          "path": "src/python/qcost_experiments/selection/selection_observer.py",
+          "sha256": "fd86ae66cbc01578f617848b35be7b90b0ee0904d228f5d08a6ae48339ace5b8"
+        }
+      ]
+    },
+    {
+      "original": "src/cpp",
+      "released": "src/cpp",
+      "files": 10,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/cpp/CMakeLists.txt",
+          "sha256": "09d7bea6d8b6bbe89997ed27fdbd96c4a41d8e84f6425b186259ec2a7942f0ca"
+        },
+        {
+          "path": "src/cpp/include/qmapli/geometry.hpp",
+          "sha256": "16fe9188c05370920be35fc75c62472330c62bf4cafe5759e1a9651813e9e2d8"
+        },
+        {
+          "path": "src/cpp/include/qmapli/query_result.hpp",
+          "sha256": "911397e6252f243b61512d026b225e76fb2e3dbe51d2d0825cc220c12ef80018"
+        },
+        {
+          "path": "src/cpp/include/qmapli/range_index.hpp",
+          "sha256": "ad3d0f82e9b05e65b6ef99b50004558a761f863b30ec486e7252292e2448933e"
+        },
+        {
+          "path": "src/cpp/include/qmapli/runtime_c_api.h",
+          "sha256": "810e4ac8fc181ead06bbb140e3f94479f56c1b97b0080ac84ae719f40e282354"
+        },
+        {
+          "path": "src/cpp/include/qmapli/static_qmap_index.hpp",
+          "sha256": "e73862db66429a0ef1d5e291c41d9374ccf2f24c2deb291cbbd82d0cf792816a"
+        },
+        {
+          "path": "src/cpp/src/geometry.cpp",
+          "sha256": "b74d117a03110a6a842fafda2dbffb8f4a4924928cf82a2f7958f0be9a4e458b"
+        },
+        {
+          "path": "src/cpp/src/static_qmap_index.cpp",
+          "sha256": "917d32e56d14d064fdce356ba952d5b5a41d5122f9f279ae92480a5e35029418"
+        },
+        {
+          "path": "src/cpp/src/runtime_c_api.cpp",
+          "sha256": "57122452fccde8598e159d14c9722cbf69033081d3d79a0bcf16218ba8cfd89d"
+        },
+        {
+          "path": "src/cpp/tools/query_index.cpp",
+          "sha256": "9f6a31b7b7e4d342afe6c98b03914b142452d2040890902a91c1d39d9442792d"
+        }
+      ]
+    },
+    {
+      "original": "src/postgres",
+      "released": "src/postgres",
+      "files": 4,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "src/postgres/Makefile",
+          "sha256": "dfe5418c0648f0d48b502fcfa0679fd4653d18f287ccdc9d9cc8fb7cdd30302b"
+        },
+        {
+          "path": "src/postgres/qmap_benchmark--1.0.sql",
+          "sha256": "fa24ba6c043bbfac2e0e3898aaa30a77f108549210cc0fc8759ebc40bc9d5d1b"
+        },
+        {
+          "path": "src/postgres/qmap_benchmark.control",
+          "sha256": "92d56d5ed593f3f89ca137a3e480ea06f9c1879acf37cf46229525b54258d92d"
+        },
+        {
+          "path": "src/postgres/qmap_benchmark.cpp",
+          "sha256": "f0776b98e334be8f70d0e1324eb1d3ec4d9f1fd27427fb85f05f6731056cc057"
+        }
+      ]
+    },
+    {
+      "original": "models",
+      "released": "models",
+      "files": 17,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "models/r4.pt",
+          "sha256": "0d10709b1440549e2aec605b1b68754aff0e8fbb9d793e0f31a64df9da213b5d"
+        },
+        {
+          "path": "models/aq.pt",
+          "sha256": "a7232e0d84cb03d85ac4ee4e57eb6c426324bdd04f62952fe4bec70e37eda4f1"
+        },
+        {
+          "path": "models/aq_zeroent.pt",
+          "sha256": "0b8897b063c2035b111217d777185676c0133dd77265e8c4262e08b8499b9eed"
+        },
+        {
+          "path": "models/c2.pt",
+          "sha256": "0e93a2e047b8f559b8e2f7efbd1be265ef2206ec906526a735f9e4464edb2dc1"
+        },
+        {
+          "path": "models/c4.pt",
+          "sha256": "1b71c966ff5c76466123abdbd858aeb9cfa9cb3f42775d6c837bd6674c651f06"
+        },
+        {
+          "path": "models/c5.pt",
+          "sha256": "d29d932a75c171f26597f62d27510556eea4e5c693ad3aaafc40436216bff1fa"
+        },
+        {
+          "path": "models/caqf.pt",
+          "sha256": "046303aeb289a9de124ee2e76622ba8ef4a2777aeb41ac9fbf50d7a278fe7bb5"
+        },
+        {
+          "path": "models/cst.pt",
+          "sha256": "e498382e0a34cd95a71e291c320d233bfc45bdc21750cb55824a55ee8d8a94ae"
+        },
+        {
+          "path": "models/frozenq.pt",
+          "sha256": "d1fce1d82677eef97dc17c587c524edceafae7e5ae72c258a8e3c3fd72c4e8ba"
+        },
+        {
+          "path": "models/noq_base.pt",
+          "sha256": "fd14033578d991326ebee1cc240db5edef9827ce841dfd1f51146168d7f35764"
+        },
+        {
+          "path": "models/noq_gap.pt",
+          "sha256": "e461a3fe812b7e17fc52dd37046206bfe33eecf33fce6941291b8fdfec47fb5c"
+        },
+        {
+          "path": "models/qb3.pt",
+          "sha256": "b1b6c794ffe86f2fe7a5f449bdab75536d0fb9a6fcc0884f03e5f78a0bc0a023"
+        },
+        {
+          "path": "models/qf.pt",
+          "sha256": "6ad14393442495f222f8aa8fb00d6c32dc6a0628ebd87502049049d21684c7b8"
+        },
+        {
+          "path": "models/qf_gap.pt",
+          "sha256": "ce8e5e8d776239da38c4e421f3a06057402f5e2a309cae96da6f73f262416e1b"
+        },
+        {
+          "path": "models/qold.pt",
+          "sha256": "2d06d8d7ef47b270b2367d718d66d8e3be647b9c5e4bfeaaea51cf8af765969a"
+        },
+        {
+          "path": "models/cst_normalizer.json",
+          "sha256": "be9a37837b823e8c53d43e842efc388b1330005447f68e8bea70fb009bd272b3"
+        },
+        {
+          "path": "models/manifest.json",
+          "sha256": "f81e7119f5b7aaf74f053ed6162d833240072e4ae8e686ea976d8ac44f55f2d2"
+        }
+      ]
+    },
+    {
+      "original": "references",
+      "released": "references",
+      "files": 80,
+      "byte_identical": true,
+      "identities": [
+        {
+          "path": "references/nyc_taxi_c3d8bbf061e57200.json",
+          "sha256": "cc0889af07960b728bd4aec9af23a25309696caca747b5311ea912f7fa15e09e"
+        },
+        {
+          "path": "references/nyc_taxi_b49ed4334fe4a57f.json",
+          "sha256": "f11d1147afabc5485d1271915c5a46122873ce9447e89ff6c2d2a85a839aa1fc"
+        },
+        {
+          "path": "references/nyc_taxi_8e9f5f518209acfc.json",
+          "sha256": "fba815c0bb57fa493a81d10620cea71c1fb076be9e551b2c97ee5e888ee3f224"
+        },
+        {
+          "path": "references/nyc_taxi_8e3cb6c7664cab17.json",
+          "sha256": "e19314a08d982d68420dd6950f644429b25e179f4775f281faedf28a7c451784"
+        },
+        {
+          "path": "references/nyc_taxi_8159cd5dcced6ea8.json",
+          "sha256": "338d200c4958e71f8a59e27c30d86972df8cf1883eec91c21135a62ff35d08a4"
+        },
+        {
+          "path": "references/nyc_taxi_600e1ea17027a333.json",
+          "sha256": "8694d174aa506a91749f2c5f763e6ff5cc6055249ffe18b803161fd24533490f"
+        },
+        {
+          "path": "references/nyc_taxi_568905d1050ef070.json",
+          "sha256": "2d4214a89e6f7eb8a3369b458466675592dfd15286c86d8d72d096c2ce838bb3"
+        },
+        {
+          "path": "references/nyc_taxi_4dcbb9919650e511.json",
+          "sha256": "41e15bd76ffce88a045fe8362b9368920cce62476654d789d6c899254d75b641"
+        },
+        {
+          "path": "references/nyc_taxi_1ba3938fce4f062f.json",
+          "sha256": "e8f71534f120272eff518588bd41c969a8b0654f3ab748b444eac10fd16505b8"
+        },
+        {
+          "path": "references/nyc_taxi_0078eb751cb26515.json",
+          "sha256": "a14caee176675f0b5dc9c0fef04d0f35d92fc39a437aaf03bfccab09a802d810"
+        },
+        {
+          "path": "references/gowalla_e47376569b0b036a.json",
+          "sha256": "643ec196e1283863f5ad55fb03583f812597065d4bef3a3eef3792e2f9f7640f"
+        },
+        {
+          "path": "references/gowalla_d7993f0d32566782.json",
+          "sha256": "c525dc1f99703e475060f30e972c72ed0d85cc63891052b56933a7218467228c"
+        },
+        {
+          "path": "references/gowalla_b49ed4334fe4a57f.json",
+          "sha256": "8d2efd9cf4074089f2bf645d1a55762d61e876a5090b9cace7294e3d0bd1c46e"
+        },
+        {
+          "path": "references/gowalla_a899c69eb7a65b84.json",
+          "sha256": "8b9e974763f440e292d8f1f608fbca5dd88ea0722e7856582ac9e69dc602e4d5"
+        },
+        {
+          "path": "references/gowalla_69706ae099dfad23.json",
+          "sha256": "9ce5626fde9605c030d136676797a2b7a50b9786b651c7fd50bf84d5fff61c5b"
+        },
+        {
+          "path": "references/gowalla_5eae33c8e5110d9d.json",
+          "sha256": "a6b935ff741d9d06db3f5307166e7a1c8d172edf31d191bebf50484ebe99249f"
+        },
+        {
+          "path": "references/gowalla_5085422fdb828134.json",
+          "sha256": "c72372ccf97c82bdddb14ef6cebd266aebbbebefae03e165a014b5aaaa65e24f"
+        },
+        {
+          "path": "references/gowalla_3a2a70ebcde58bbd.json",
+          "sha256": "0734f0b65d454fe113acd50b214b7316843098235ecf13c7cc56d74e5efad0a6"
+        },
+        {
+          "path": "references/gowalla_35a69f6865095bba.json",
+          "sha256": "8ee7cddfb25c260c93a6c683821284ee5549c5ff2d78d87a0a6eeee5834f06a8"
+        },
+        {
+          "path": "references/geolife_e054832523bd5b49.json",
+          "sha256": "adb80948baa522df07773cfd6c49c37d4d2065083af31b111129871fe259ba8f"
+        },
+        {
+          "path": "references/geolife_bb5e5c3d9ddff08c.json",
+          "sha256": "9db846582c4c863e3f689af804f5baafcde09c2303d71aed6f73273422908fd8"
+        },
+        {
+          "path": "references/geolife_b49ed4334fe4a57f.json",
+          "sha256": "ff34bc7bc7fa419756ea14eea7df1182772a160748a011aaafd85e9587f2c893"
+        },
+        {
+          "path": "references/geolife_8d5fb017e9e3b2f5.json",
+          "sha256": "8e68d4a00c1a166ff6a3b65b6dabfaae1706783e04bb5d963b3e5f3d66188ebc"
+        },
+        {
+          "path": "references/geolife_87b692a361992318.json",
+          "sha256": "55f199f5f513b26c2a51666b7b60edf7502f4602b2ebeefb6d4e18b534389518"
+        },
+        {
+          "path": "references/geolife_5aa9d7f8b448b466.json",
+          "sha256": "3bd2e4b758ada613b0ecf87f06649aa7450f54faadc9bc45a286c128d7d16575"
+        },
+        {
+          "path": "references/geolife_5aa0b07d5659c4f0.json",
+          "sha256": "ddbe3799c3557a9ffe9e272207276fe0360aafd981b5db8915e883794058d050"
+        },
+        {
+          "path": "references/geolife_46d6547fd729ed12.json",
+          "sha256": "89022f85f064547573217e44c2a9f5f92def2e89ef11508d1f0d3f1210de0a22"
+        },
+        {
+          "path": "references/geolife_4579d359b82be98a.json",
+          "sha256": "1bdbeaffe58175bb0adf44f98562a7d8818448a2d9a343d223f74b64c0607b6d"
+        },
+        {
+          "path": "references/gowalla_deeb21fbd4520e1f.json",
+          "sha256": "5254124079de420a85646232d3972fa15f4987566cb9eae3347adf6e3b76a086"
+        },
+        {
+          "path": "references/gowalla_0cbdf061476fbcba.json",
+          "sha256": "48d54f3cb79a26fae8cab1e59520e8bf42c3a26c8e5170d414d369d990ea60fd"
+        },
+        {
+          "path": "references/gowalla_132e11fae5adf7b4.json",
+          "sha256": "e9d3d3da4a1e1101212a5cb1cd802eb8437a744b26bf3801f0a2efa3e37d4226"
+        },
+        {
+          "path": "references/gowalla_324ff0c2d5618c77.json",
+          "sha256": "9de365030c2907b39c91b63621894be7696da178253c9712217addbf95b87b2a"
+        },
+        {
+          "path": "references/gowalla_9b94e47cd71c30ff.json",
+          "sha256": "0d61ab06dd7e85e328be80dc6bcd00ed3760f426da8aaae96e9656c634e3319b"
+        },
+        {
+          "path": "references/geolife_195066098f8cef60.json",
+          "sha256": "07f14c438081d998e29483a5d44c952c8ac2fd4146f56c8274c88c466bf58043"
+        },
+        {
+          "path": "references/geolife_edf26bb2d95de39e.json",
+          "sha256": "5c1cc4a850585942357ab7a6840494646a73303d78e4f6c568577d621939ed12"
+        },
+        {
+          "path": "references/geolife_7cfbc670af0d4333.json",
+          "sha256": "70fcfa8cf34eb79e769119a63576eca9ae3922f30045b8edfdc524182f19a7db"
+        },
+        {
+          "path": "references/geolife_a77dcb9caef68215.json",
+          "sha256": "7ff7a8bcf5d5f11cadeae33c275552b4d58fa6e959a1981bdd621127a4aee840"
+        },
+        {
+          "path": "references/geolife_17e07615ad7f1d2c.json",
+          "sha256": "a1e6c7a60e220cd780e6846e10e7725ccaee1e024f5c0349f729d7cc8997e26e"
+        },
+        {
+          "path": "references/geolife_2229978f9b32deeb.json",
+          "sha256": "fa4507eba1f96c2f3d04242366e9b01b2b1f15766001e3e5297c7fde5d9c744c"
+        },
+        {
+          "path": "references/geolife_c50412734ff1bda0.json",
+          "sha256": "41cf64fd05ff35bc35c37bac79c23cc5adace9cbe184413a89169bc156f11965"
+        },
+        {
+          "path": "references/geolife_3c04af2e4a9a8b9f.json",
+          "sha256": "375198f7e898f3580f118c4d239242b2c28d1dfff74dfa2062aee1a301e4e84d"
+        },
+        {
+          "path": "references/geolife_46160448e210d473.json",
+          "sha256": "c9fba1741296a154f5cf158538fba5a9102f9086d7801f17ef3bf52fae868fd3"
+        },
+        {
+          "path": "references/gowalla_04669a3b03587b61.json",
+          "sha256": "601a38cbd6fba946db74f5cf3c56299742ff8b8cef1ee4bfb2b3b499bfdf43bb"
+        },
+        {
+          "path": "references/skewed_2d_fb5e4864141fb9d1.json",
+          "sha256": "45ac531c0edc74d9177c2dcfa219c75e27ccbac34aadc2e1f17b7b9ce2a0a794"
+        },
+        {
+          "path": "references/skewed_2d_b4c68135b4a85559.json",
+          "sha256": "478f525005e3b586169ab5d4f93488ae00723662f7510ab58a52cc474fcef37b"
+        },
+        {
+          "path": "references/skewed_2d_b49ed4334fe4a57f.json",
+          "sha256": "b4d9390a7dd77c8402f747efc2ab5547a9ca14b355f26325669a4200163d2ade"
+        },
+        {
+          "path": "references/skewed_2d_a46489fba266cf00.json",
+          "sha256": "96f3c1222a09d266cbfe53889758899554cd32b3faa7aaaad8f4015a89e92384"
+        },
+        {
+          "path": "references/skewed_2d_8a48bf9594845f77.json",
+          "sha256": "91a9d63af82113e00b7bca003ed4331c7ce245b24c3503a0af95757d3f99b5e1"
+        },
+        {
+          "path": "references/skewed_2d_5bf8d4486005034d.json",
+          "sha256": "5392b4ee062f0232d8a85f668543586d28686095281f67a670f290031b410904"
+        },
+        {
+          "path": "references/skewed_2d_44f41639e354d59c.json",
+          "sha256": "c191c15a4a787cbd0831aa3ac7d4ec0a273e4dcab13d4059746f05e8f813bba8"
+        },
+        {
+          "path": "references/skewed_2d_41b7482b76625061.json",
+          "sha256": "e99571f8cd66a5800054c2e827984c4b7470654d706547b26c4804f94ad0d8cf"
+        },
+        {
+          "path": "references/skewed_2d_3ffef8e45ad53778.json",
+          "sha256": "cb38ed383594c94d86d92762dc344c33776ee304aed1787309a36a9df5172972"
+        },
+        {
+          "path": "references/skewed_2d_1581b4451411ccb8.json",
+          "sha256": "5ddc4feaa7d62178d94ff81e0e5bc6582a367624c0de8e6fc59af6e6d4405a8a"
+        },
+        {
+          "path": "references/nyc_taxi_8126bd889a7064ba.json",
+          "sha256": "06b57d8626931d747c6334618b77d3d41f9ce9fc1497cd89e886c32b07ecf207"
+        },
+        {
+          "path": "references/nyc_taxi_def3f51f4e6c76db.json",
+          "sha256": "db208597c60a567c747b03a20eaa8dd5227a864fd42c3c629b48e6334b2c06c2"
+        },
+        {
+          "path": "references/nyc_taxi_e99f93eb5ddc3bb0.json",
+          "sha256": "7e720952b3eea9e71f406ff631c3711bcde3f725b2f648ed2d2a102c04686bf8"
+        },
+        {
+          "path": "references/nyc_taxi_0981ef3bd4478946.json",
+          "sha256": "53269a81dd59c780e00ab0f5073efb066214da6a4717fad8374d3db878f94f09"
+        },
+        {
+          "path": "references/nyc_taxi_ab1e90ad2ef51e80.json",
+          "sha256": "90e061df70fcc46994a640e497c6d22fc9f489ab99c38faf05393b2637a9bb77"
+        },
+        {
+          "path": "references/nyc_taxi_0ddb51824beacfd3.json",
+          "sha256": "18e41facb61c7522622c64e60e1d1d58d1a81411c5679b4026e6264129e2eef2"
+        },
+        {
+          "path": "references/nyc_taxi_3e7a776dc2574b4d.json",
+          "sha256": "89640d57084049eff4b7f36af77e4f8e6e869023ba070e4284b5dc9711690602"
+        },
+        {
+          "path": "references/nyc_taxi_75d99458ccf27390.json",
+          "sha256": "a0a0044d5e1f09493b04e0a50270c5493b2170a7a9574fb9964f6e53d0ba1c31"
+        },
+        {
+          "path": "references/gowalla_65a5eb5a6fe3adb9.json",
+          "sha256": "65325e93847339c7881730bd906ec57b5dd218ee0967bb94292b4227bcce3e36"
+        },
+        {
+          "path": "references/gowalla_16185b8bce4444cc.json",
+          "sha256": "390d776df7c9464675e73d4b0227f3ff8117f5b6a1788a3835172e1655646a16"
+        },
+        {
+          "path": "references/gowalla_1db231ce3c1b988e.json",
+          "sha256": "36f7c3fade637fe6493fda9f4c0acca8b5236e0b07a55a60b1f19c129a1cb67f"
+        },
+        {
+          "path": "references/gowalla_0f5a36735ddfef70.json",
+          "sha256": "f5d8ae223fc230bf8cad402791ddca3ef5d0e039abfbc8271023db25960e0771"
+        },
+        {
+          "path": "references/gowalla_fbcce0e02f730adc.json",
+          "sha256": "b5b6785691daefda05ff7e9382d5e361dd24c9e53d874d6b3d51a9da67914dcb"
+        },
+        {
+          "path": "references/skewed_2d_9910d7d90456a36f.json",
+          "sha256": "51cea68ddab0e2dc2c18be44b615ed64f3132f68241636c71932328abea283d6"
+        },
+        {
+          "path": "references/skewed_2d_d4dc1d3903c90e10.json",
+          "sha256": "dfb7643f907a727a34cd95718c87f2dcaf2c50d5f5762c75d8864ff38132ef5e"
+        },
+        {
+          "path": "references/skewed_2d_9b282795fd9afcda.json",
+          "sha256": "bfe3ecbcb38722aed987365f5a91ed0919d17064f1deca212728d622d079f8d2"
+        },
+        {
+          "path": "references/nyc_taxi_43b2c3aea0eb19d3.json",
+          "sha256": "ffbc80ac342093c27b779b5e70083bab53779c67cd785d299f0db7ccff482cd6"
+        },
+        {
+          "path": "references/nyc_taxi_5a1f19f23ea5626f.json",
+          "sha256": "0bdea314345989cea72296cc0eb0bf1ba34b68766aebe0c26919489bc5e33991"
+        },
+        {
+          "path": "references/skewed_2d_c81d946ce401e524.json",
+          "sha256": "5262b1509561e408051121fdd816f452865369dc034c2aa1678b104c787b917d"
+        },
+        {
+          "path": "references/skewed_2d_e4f5372bd9ff2df6.json",
+          "sha256": "5f0eb217a31b306a5b85dc3ae6f65052333417291b4298316515a7d5b14d079c"
+        },
+        {
+          "path": "references/skewed_2d_09ad27448d28b3fc.json",
+          "sha256": "c907479f4c00da4a0d972c527f7c233d8eecbd65b8d9c2efbbd6f90fa6163d3e"
+        },
+        {
+          "path": "references/skewed_2d_6b690f2bba827e6e.json",
+          "sha256": "26f3a957ed0da5bd5f3ab5129307634a3e20a8192bd1a93f31ab18781b1b420c"
+        },
+        {
+          "path": "references/skewed_2d_ce7baa73331152a6.json",
+          "sha256": "459912f551169c517d69230e563266ddf81e5f979493d288e3917dcb87738617"
+        },
+        {
+          "path": "references/skewed_2d_dbff1fd498d99786.json",
+          "sha256": "73ff2ad4de65b2c62e365ae98f323fc6ba3637abf8d7d16e5bdd38c302b358b9"
+        },
+        {
+          "path": "references/geolife_05d648fb4ec86485.json",
+          "sha256": "fede7e9cec4c9509fe79c3b460369b9d852fea2c4b6d29b7601ddbbcc075339f"
+        },
+        {
+          "path": "references/geolife_168244e291fcee36.json",
+          "sha256": "3e0e18d9017632146cd6edf36d131d7f65171dfd1b09f0982519dd1b76392a81"
+        },
+        {
+          "path": "references/skewed_2d_0012ebc11ab2c1cc.json",
+          "sha256": "c9f4a8b533a9ac879c0ebb29426c347dd485b6812dc1cdac8caf2385c959212f"
+        }
+      ]
+    }
+  ],
+  "restored_sources": [
+    {
+      "source": "../QMF-Motivation-Study/experiments/census.py",
+      "released": "reproduce/select_frozen_nodes.py",
+      "source_sha256": "5137a6183df540b237773bdc83220f6fe08e2ce95bd64e068e0effa342d04327",
+      "released_sha256": "286ff676be9072ff10b2157a4e12e9ccc20d60edae01844fcb3546522aacdd43",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "main": false
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/src/comparison_adapter.py",
+      "released": "src/python/qcost_experiments/comparison/comparison_adapter.py",
+      "source_sha256": "0fea873cadfbdab42bbb3ea79959205da4ad407b785979bc79981609e69a4695",
+      "released_sha256": "ba5b0b8bc668a8078370bc922448553fcb3f2233bcddc8b4336f7aad4c174bf8",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "CandidateTimer": true,
+        "candidate_timer": true,
+        "observed_module": false,
+        "run": true
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/src/controlled_builder.py",
+      "released": "src/python/qcost_experiments/comparison/controlled_builder.py",
+      "source_sha256": "be7d84f1d1b37ca02db3837d31dc494d4d9671b0b1dd471134a98fd22457230b",
+      "released_sha256": "8f16bc426bb70d825509f539ff95027202a5667b73ea66e31c7a2ef8dc6fa4ad",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "build": false
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/vendor/build_index.py",
+      "released": "src/python/qcost_experiments/comparison/four_strategies.py",
+      "source_sha256": "90a5b1438b7101059ad031d752e9cc64d1e89a57814ff48715cd25282d94fdcd",
+      "released_sha256": "341385edd02ee2fc72dbb7566db289008d799e814b2e36ac2509f34500ec5076",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "ObservedR4": true,
+        "build_index": false,
+        "choose": true,
+        "universe": true
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/vendor/python/qmapli/wg_qmf/search.py",
+      "released": "src/python/qcost_experiments/comparison/standalone_search.py",
+      "source_sha256": "1e4fec40257044cf84f6dc8a2f13faea1a55dd095ff9f9887836abc4cce4701e",
+      "released_sha256": "2d0916ab3727fba76bf440db542fd6a07e127af46db10b9cb517555259c3a242",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "AbstractPhaseCostOracle": true,
+        "AmplitudeBackend": true,
+        "OracleAccounting": true,
+        "SearchResult": true,
+        "_classical_result": true,
+        "_qmf": true,
+        "beam_search": true,
+        "exhaustive_search": true,
+        "prior_best_first": true,
+        "uniform_qmf": true,
+        "workload_guided_qmf": true
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/src/work_observer.py",
+      "released": "src/python/qcost_experiments/comparison/work_observer.py",
+      "source_sha256": "1b64ddd6f1cdf2a930146c896019375f96078a065aeeca019ef51a400f7ce517",
+      "released_sha256": "7e17e3f79276d594f6dc40e6655026e55d8ba689d412e27070967254014c989a",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "Observer": true,
+        "observe": true,
+        "observe_original_root": true,
+        "snapshot": true
+      }
+    },
+    {
+      "source": "hybrid_qmf_ablation/02_code/src/memory_metrics.py",
+      "released": "src/python/qcost_experiments/comparison/memory_metrics.py",
+      "source_sha256": "8847a8ff83a19b21e4960f0dec25a352d283d0b04134258618f82a76ff8fd04a",
+      "released_sha256": "8847a8ff83a19b21e4960f0dec25a352d283d0b04134258618f82a76ff8fd04a",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "memory": true,
+        "reset_peak": true
+      }
+    },
+    {
+      "source": "../QMF-Motivation-Study/experiments/search_worker.py",
+      "released": "src/python/qcost_experiments/comparison/formal_beam.py",
+      "source_sha256": "982b4baeceb5a35aa9d9467d61837eea79739df4648d40b7ab239d1a1d9b3fd2",
+      "released_sha256": "cf1af353f6b77e26691c06ecfe88f3a3c6e9ed1eacc0a94752c409e473cb89b3",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "act": true,
+        "beam": true,
+        "make_trie": true
+      }
+    },
+    {
+      "source": "submission_release/Q_COST_ICDE2027_Code_Repro_20261025/code/fullscale/original_paper_controller/postgres_full.cpp",
+      "released": "src/postgres/client/postgres_full.cpp",
+      "source_sha256": "3c3a33e42d6008c838adaf475fd418f4dc8871a2467c4038d010b9059b3fe4ac",
+      "released_sha256": "3c3a33e42d6008c838adaf475fd418f4dc8871a2467c4038d010b9059b3fe4ac",
+      "byte_identical": true
+    },
+    {
+      "source": "submission_release/Q_COST_ICDE2027_Code_Repro_20261025/code/fullscale/original_paper_controller/flood_memory_trace.hpp",
+      "released": "src/postgres/client/flood_memory_trace.hpp",
+      "source_sha256": "6fb821f4d869d69a55d4b5028dd2bb4784a351147d3b2f02969a9f23034b7090",
+      "released_sha256": "6fb821f4d869d69a55d4b5028dd2bb4784a351147d3b2f02969a9f23034b7090",
+      "byte_identical": true
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/__init__.py",
+      "released": "src/python/qmf_quantum/__init__.py",
+      "source_sha256": "7277d6a21c1268938fd35383e52a5e9b035923c991bb4fc44e734ee9091c33d8",
+      "released_sha256": "7277d6a21c1268938fd35383e52a5e9b035923c991bb4fc44e734ee9091c33d8",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {}
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/classical_controller.py",
+      "released": "src/python/qmf_quantum/classical_controller.py",
+      "source_sha256": "4b96a82535642809a0252e35681ec4022a3efc539b40ef62024bd8753e4a345b",
+      "released_sha256": "4b96a82535642809a0252e35681ec4022a3efc539b40ef62024bd8753e4a345b",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "QueryAccounting": true,
+        "maximum_iterations": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/configuration_adapter.py",
+      "released": "src/python/qmf_quantum/configuration_adapter.py",
+      "source_sha256": "a3573ba8a6951a76742aece5b38078071d4c42b61ff21f3059fddf20cc47c169",
+      "released_sha256": "a3573ba8a6951a76742aece5b38078071d4c42b61ff21f3059fddf20cc47c169",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "ConfigurationRecord": true,
+        "ConfigurationTable": true,
+        "load_table": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/cost_quantization.py",
+      "released": "src/python/qmf_quantum/cost_quantization.py",
+      "source_sha256": "80fb6d52d28b399f5244418e1a6dcb415f9ad802e73504d004f54087a69c1513",
+      "released_sha256": "80fb6d52d28b399f5244418e1a6dcb415f9ad802e73504d004f54087a69c1513",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "Quantization": true,
+        "quantize_costs": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/grover_diffusion.py",
+      "released": "src/python/qmf_quantum/grover_diffusion.py",
+      "source_sha256": "39b580820797a938fd8f24c6e7759ce3fd9c465148dc467c5ebfc7bfb4e80de3",
+      "released_sha256": "39b580820797a938fd8f24c6e7759ce3fd9c465148dc467c5ebfc7bfb4e80de3",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "build_grover_circuit": true,
+        "diffusion_gate": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/phase_oracle.py",
+      "released": "src/python/qmf_quantum/phase_oracle.py",
+      "source_sha256": "045eb3dc4cae4da8980137959c7fc629f2b74ab65ac87d8630d473a126d07dc5",
+      "released_sha256": "045eb3dc4cae4da8980137959c7fc629f2b74ab65ac87d8630d473a126d07dc5",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "oracle_circuit": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/qrom_oracle.py",
+      "released": "src/python/qmf_quantum/qrom_oracle.py",
+      "source_sha256": "72a211c6ca24dd8db8f2c47710cbcde45f4b4c004f36db6cc733b56efd353794",
+      "released_sha256": "72a211c6ca24dd8db8f2c47710cbcde45f4b4c004f36db6cc733b56efd353794",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "RegisterLayout": true,
+        "controlled_x": true,
+        "padded_table": true,
+        "qrom_gate": true,
+        "qrom_logical_controls": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/quantum_backend.py",
+      "released": "src/python/qmf_quantum/quantum_backend.py",
+      "source_sha256": "0a6ce3e322ce6d97759be4f03bf5680b98eb3990f2383235d7471e2babc91ab4",
+      "released_sha256": "0a6ce3e322ce6d97759be4f03bf5680b98eb3990f2383235d7471e2babc91ab4",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "CircuitExecution": true,
+        "GateBackend": true,
+        "evolve_circuit_state": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/quantum_minimum_finding.py",
+      "released": "src/python/qmf_quantum/quantum_minimum_finding.py",
+      "source_sha256": "b8831bc7f1ae161cca9074b6a47ac0dbfdeb3e0150478f0479433c941b0e5347",
+      "released_sha256": "b8831bc7f1ae161cca9074b6a47ac0dbfdeb3e0150478f0479433c941b0e5347",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "gate_level_qmf": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/recursive_exact_reference.py",
+      "released": "src/python/qmf_quantum/recursive_exact_reference.py",
+      "source_sha256": "a6e41e99cb3ef08e07a070854ea8f2501ba073b0f18452dc63c53861b9facb55",
+      "released_sha256": "a6e41e99cb3ef08e07a070854ea8f2501ba073b0f18452dc63c53861b9facb55",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "Solution": true,
+        "solve_conditional_problem": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/resource_profiler.py",
+      "released": "src/python/qmf_quantum/resource_profiler.py",
+      "source_sha256": "291076398a08915ac615420087d5337d5d0d2d0d13cfecd9988304162dfa7601",
+      "released_sha256": "291076398a08915ac615420087d5337d5d0d2d0d13cfecd9988304162dfa7601",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "circuit_resources": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/src/qmf_quantum/reversible_comparator.py",
+      "released": "src/python/qmf_quantum/reversible_comparator.py",
+      "source_sha256": "54e8ece6340fcc6d087742e45657110a11f668bce3b4525694763dd38b7b4a92",
+      "released_sha256": "54e8ece6340fcc6d087742e45657110a11f668bce3b4525694763dd38b7b4a92",
+      "byte_identical": true,
+      "common_function_or_class_AST_identity": {
+        "comparator_gate": true
+      }
+    },
+    {
+      "source": "../QMF-Quantum-Circuit/experiments/run_stage.py",
+      "released": "src/python/qmf_quantum/stage_validation.py",
+      "source_sha256": "9858bc66671e8ececb7b8916c30bfd74b2141e577661045120059631b4477ac6",
+      "released_sha256": "b1a6444a003bfa206851961d780e6ea632480e238e47f6e5f5bfeffd5b323637",
+      "byte_identical": false,
+      "common_function_or_class_AST_identity": {
+        "encode": true,
+        "main": false
+      }
+    }
+  ],
+  "historical_plot_inputs": [
+    {
+      "source": "submission_release/Q_COST_ICDE2027_Code_Repro_20261025/plots/section4_2",
+      "released": "experiments/plotting/section4_2",
+      "files": [
+        {
+          "file": "experiments/plotting/section4_2/data/construction_results.csv",
+          "sha256": "42853285f320af61257c4e4e95d7a447051a2e274094a154cbb0360d5211a753"
+        },
+        {
+          "file": "experiments/plotting/section4_2/data/fig6_ecdf_statistics.csv",
+          "sha256": "037e41d66e02bd2b3f2b4726208572659ad5b503cb82c9acd7abaa08f9d10aa3"
+        },
+        {
+          "file": "experiments/plotting/section4_2/data/fullscale_results.csv",
+          "sha256": "05d055a6d6e41b2c70291a9d86e86192718c4ec7edf4c708370752961993cb1e"
+        },
+        {
+          "file": "experiments/plotting/section4_2/data/storage_results.csv",
+          "sha256": "c6459bf0dcd4ea841308f3252e50b938b6d319e4388265a75d4b081fcf90b8df"
+        },
+        {
+          "file": "experiments/plotting/section4_2/data/workload_area_results.csv",
+          "sha256": "25b9c901fc0f7e23c255a07a0a465b6963c781e1b62b0f9240af87ab6f3e99b0"
+        },
+        {
+          "file": "experiments/plotting/section4_2/data/workload_build_pairs.csv",
+          "sha256": "b00cd37bdc4dd258f4e8dc2635e3062f0437ea1c5ad36e3a7496da6175f08a0c"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/layout_tools.py",
+          "sha256": "f3c646991258455d4f5c455b1d544dd9cd5d6d2e4f58a504b5dbbf83ab53d6eb"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/plot_fig6.py",
+          "sha256": "e1e6b5013e232febe5ce6cab56f2aa174098a274bf6bc3032fab2b0af4c5c2cc"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/plot_fig7.py",
+          "sha256": "1ca5efa436177a375787f5ed05a449f3f80ac0202a1b47d08ae3978bd7653607"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/plot_fig8.py",
+          "sha256": "9cef84c48de27b2f144ba73d116e3065f4f8ada1cf4bd363402b63161bb1dcdb"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/plot_fig9.py",
+          "sha256": "02eb0b8e9e1b67fe310dba08e481c047851f2977708ff517a52ce26054e860f6"
+        },
+        {
+          "file": "experiments/plotting/section4_2/scripts/plot_style.py",
+          "sha256": "10705a4467d763fbc23c9c613cc00af3d497dd1b134bcb44370e85769520f17c"
+        }
+      ]
+    },
+    {
+      "source": "submission_release/Q_COST_ICDE2027_Code_Repro_20261025/plots/section4_3_4_4",
+      "released": "experiments/plotting/section4_3_4_4",
+      "files": [
+        {
+          "file": "experiments/plotting/section4_3_4_4/data/fig10_latency_summary.csv",
+          "sha256": "8c28e2ac459d075ca0a7d90a6deba4287418110a343b8300faf0225260be263d"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/data/fig10_root_summary.csv",
+          "sha256": "dcb2692cc6923d1e81394ff9665cc709780763459e4a6051b0c0cad532a859f3"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/data/fig11_summary.csv",
+          "sha256": "3b5e843a8734e49716f11bbdc75bd3207153b64e1fbc594eb528def93bccc181"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/scripts/layout_tools.py",
+          "sha256": "f3c646991258455d4f5c455b1d544dd9cd5d6d2e4f58a504b5dbbf83ab53d6eb"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/scripts/plot_fig10.py",
+          "sha256": "ca4fd2cc6307e650a12e5ed86cbcc7e4276ad33e172fa142dcd42d4ec653629a"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/scripts/plot_fig11.py",
+          "sha256": "0f073927e2eba8564ed78c360e0d7d0302a93c4b388d6c14064d1fa50c5cab9b"
+        },
+        {
+          "file": "experiments/plotting/section4_3_4_4/scripts/plot_style.py",
+          "sha256": "2a0712caacbb932781d8712777e8329331a0038e5d405fc0c4b53a5d393b333d"
+        }
+      ]
+    },
+    {
+      "source": "submission_release/Q_COST_ICDE2027_Code_Repro_20261025/plots/section4_5_4_6",
+      "released": "experiments/plotting/section4_5_4_6",
+      "files": [
+        {
+          "file": "experiments/plotting/section4_5_4_6/data/circuit_complexity.csv",
+          "sha256": "491621991b847743d3bb1378bfd822b9f75ea621bbe2908b04041590b5e47a2a"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/data/gate_validation_results.csv",
+          "sha256": "f3b2108a681bfe6334513182be81d4a7d4034a9082706f8bde85aca0687d8e1f"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/data/parameter_sensitivity.csv",
+          "sha256": "3a394d1c32e654ab5f8089befa88b31afd5a297ea5b6a09a0bc9b25c93d898d0"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/scripts/layout_tools.py",
+          "sha256": "f3c646991258455d4f5c455b1d544dd9cd5d6d2e4f58a504b5dbbf83ab53d6eb"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/scripts/plot_fig14.py",
+          "sha256": "0accc0aa9ebf3cf094704aef3e025d931291a241550bea7ab1587b08e33a74b9"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/scripts/plot_fig15.py",
+          "sha256": "528890a0d70856e4746fabc74f89286e5d4ddfae1a0e464fa0d22c91e54a13ac"
+        },
+        {
+          "file": "experiments/plotting/section4_5_4_6/scripts/plot_style.py",
+          "sha256": "bfd18f9d78d18d0e09fbf58629df3b3b6fa3bb6480506e196228c5f5155f508a"
+        }
+      ]
+    },
+    {
+      "source": "bestfirst_removal_revision",
+      "released": "experiments/plotting/revised",
+      "files": [
+        {
+          "file": "experiments/plotting/revised/02_plot_data/FIG12_REVISED_DATA.csv",
+          "sha256": "bf1d590532c76e79e82a3e82093d4d55c11bcc89c1023b6dc7767e01943fb07e"
+        },
+        {
+          "file": "experiments/plotting/revised/02_plot_data/FIG13_REVISED_DATA.csv",
+          "sha256": "dc4ca8fa88f2b571e7d1f4c39cf0a34f7bec82d943964b95260abe2c5b4bb105"
+        },
+        {
+          "file": "experiments/plotting/revised/02_plot_data/FIG16_REVISED_DATA.csv",
+          "sha256": "f4507ef45046bd151a80436d87716a6c57bcab021f51bee9214333f1cf7dc7d5"
+        },
+        {
+          "file": "experiments/plotting/revised/02_plot_data/ORIGINAL_AXIS_LIMITS.json",
+          "sha256": "1f2bb79fdc88ff778921948e0e969fa1b31fb5431e0d8c6cad8a59ea249679ab"
+        },
+        {
+          "file": "experiments/plotting/revised/08_reproduce/layout_tools.py",
+          "sha256": "b2b2671a79d80df0b3428c6c4ccb4056c77a7d11ccbcd24896851037bb4df16e"
+        },
+        {
+          "file": "experiments/plotting/revised/08_reproduce/plot_style.py",
+          "sha256": "421e6275b65f70db53e2a1921683b9f5db07660566894c7efb460401a3fd75d6"
+        },
+        {
+          "file": "experiments/plotting/revised/08_reproduce/regenerate_fig12.py",
+          "sha256": "24e37b9643863f4a4ae3d0d107978b0caed44145cfcbed3fab793d3a7a912a1c"
+        },
+        {
+          "file": "experiments/plotting/revised/08_reproduce/regenerate_fig13.py",
+          "sha256": "cd9e4accee9d35a84079a7832655e5088b1c8bc8e903bd0ee14bd7c6840d9f21"
+        },
+        {
+          "file": "experiments/plotting/revised/08_reproduce/regenerate_fig16.py",
+          "sha256": "0c4b952c2e00d25b0ce6eef7ea80aed73ec10d69933983eafbf1d175e9feebaa"
+        }
+      ]
+    }
+  ],
+  "ports": "Imports and project-relative model paths replace historical machine paths. Stage gate wrapper removes old guard-receipt deployment paths; scientific loops remain original. AST results identify any edited function bodies for review.",
+  "readme_consolidation": "Original root, fullscale/data/recovery/baseline, quantum, plotting and current ablation/selection instructions consolidated into the sole root README. Superseded reports, unrelated dependencies and presentation documents are excluded.",
+  "source_selection": "Current source plus final 2026-10-25 submission/BestFirst-removal exports. Removed BestFirst is not relabelled Random. Sibling motivation and quantum projects are followed original dependencies, now restored locally.",
+  "exclusions": "Original files remain in place. Copies exclude full raw data, derived node payloads without established redistribution rights, duplicate outputs, logs, images, caches, binaries, archives, editor settings, secrets and Git history."
+}

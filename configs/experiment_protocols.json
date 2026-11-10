@@ -1,0 +1,16 @@
+{
+  "main_nodes": 40, "validation_nodes": 40,
+  "h": 3, "k": 4, "minimum_child_count": 256,
+  "configuration_limit": 16384,
+  "search_budgets": [32, 64, 128, 256, 512],
+  "search_seed_file": "configs/seeds.json",
+  "hk_depths": [1, 2, 3], "hk_widths": [2, 3, 4],
+  "hk_repetitions": 3,
+  "hk_other_repetitions": 1,
+  "controlled_points": 20000,
+  "controlled_seeds": [11, 23, 37, 51, 73],
+  "controlled_seed_status": "Verified from figures_sec4_3_4_4/data/ablation_results.csv; exact original sample identities are still external",
+  "query_seed": 20260910,
+  "performance_repetitions": 5,
+  "note": "Search/candidate/cost implementations are retained. Exact frozen node NPZ inputs and real-node quantum table exports are external resources. The synthetic gate-validation tables use the original included formula. QUICK never substitutes for paper measurements."
+}

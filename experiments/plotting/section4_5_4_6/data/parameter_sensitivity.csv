@@ -1,0 +1,10 @@
+H,K,cost_reduction_pct,optimization_seconds,common_nodes,feasible_nodes,evaluated_nodes,method,cost_baseline,time_statistic,source_file,theoretical_upper_bound
+1,2,-2.5489313642687232,0.007553088441491084,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,2
+1,3,-0.6665852815226998,0.007966939839534424,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,3
+1,4,0.0,0.008239090682472984,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,4
+2,2,31.288131217106375,0.03279569376027206,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,8
+2,3,33.2666966314076,0.04667162079596888,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,27
+2,4,34.431827559640844,0.061643680951092336,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,64
+3,2,45.407118096016866,0.11549676027847448,25,25,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,128
+3,3,46.940936878245076,0.23802295192144807,25,36,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,2187
+3,4,48.48137556299494,0.4006253576814197,25,40,40,Recursive Exact,per-node H1/K4,mean of per-node repeat medians,/media/lingyaqi/Lenovo F510/QMF-Motivation-Study/results/raw/motivation2_runtime.csv,16384

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "python": "3.10.12",
+  "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+  "packages": {
+    "numpy": "2.2.6",
+    "pandas": "2.3.3",
+    "scipy": "1.15.3",
+    "torch": "2.4.1+cu118",
+    "pytest": "9.1.1",
+    "PyYAML": "6.0.3",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "psycopg2-binary": "2.9.13",
+    "matplotlib": "3.10.7"
+  },
+  "commands": {
+    "cmake": "/usr/bin/cmake",
+    "g++": "/usr/bin/g++",
+    "make": "/usr/bin/make",
+    "git": "/usr/bin/git",
+    "patch": "/usr/bin/patch",
+    "pg_config": "/usr/bin/pg_config",
+    "psql": "/usr/bin/psql"
+  },
+  "native_versions": {
+    "cmake": "cmake version 3.22.1",
+    "g++": "g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "pg_config": "PostgreSQL 14.24 (Ubuntu 14.24-0ubuntu0.22.04.1)"
+  },
+  "cpu_only_supported": true,
+  "quantum": "AVAILABLE"
+}

@@ -1,0 +1,209 @@
+{
+  "datasets": [
+    {
+      "id": "geolife",
+      "original_id": "geolife_2d_4p2G",
+      "points": 181000000,
+      "raw_sha256": "98619de96d873e54587ee8cdec9b20162e077b33305b420075494992abbe5c1a",
+      "normalized_sha256": "ac4d4843820c5bee637b7e2bb8dc84b039477387fa79e5edb61ba1fb5a8be589",
+      "normalized_bytes": 8899322212,
+      "bounds": [
+        -179.9695933,
+        1.044024,
+        179.9969416,
+        64.751993
+      ],
+      "query_seed": 20260910,
+      "query_splits": {
+        "train": {
+          "file": "experiments/workloads/geolife_2d_4p2G/train.csv",
+          "count": 1000,
+          "bytes": 98644,
+          "sha256": "966806d8fdfb7ed604b51bf89e53cd0cff1521c60ca7944b70b85a596c2886cc"
+        },
+        "validation": {
+          "file": "experiments/workloads/geolife_2d_4p2G/validation.csv",
+          "count": 1000,
+          "bytes": 108881,
+          "sha256": "08ea23b3bda61f8ea1d9cd1b7228419bf542d08fdc2cddbc4a9675b76f5bacfd"
+        },
+        "correctness": {
+          "file": "experiments/workloads/geolife_2d_4p2G/correctness.csv",
+          "count": 1000,
+          "bytes": 110579,
+          "sha256": "213c3a4bc78174a339f789f00503fa994e9f4fadfda81808a60231d2a7514d5f"
+        },
+        "warmup": {
+          "file": "experiments/workloads/geolife_2d_4p2G/warmup.csv",
+          "count": 300,
+          "bytes": 30060,
+          "sha256": "5767312b0b7e0eba9a50ab5dd2556c6bfce5894f30a12d87d44758c36e07dc87"
+        },
+        "performance": {
+          "file": "experiments/workloads/geolife_2d_4p2G/performance.csv",
+          "count": 3000,
+          "bytes": 331431,
+          "sha256": "cefc9122b53ce63be7f4123e9f7b8595ca0889662246d216aa30c6616ef6470e"
+        }
+      },
+      "provenance": {
+        "normalized_manifest": "data_cache/full/geolife_2d_4p2G/normalized_manifest.json",
+        "query_manifest": "results/four_dataset_paper_protocol_20260911/02_queries/geolife_2d_4p2G/query_manifest.json"
+      }
+    },
+    {
+      "id": "gowalla",
+      "original_id": "gowalla_2d_4p2G",
+      "points": 183000000,
+      "raw_sha256": "febe5e80f15883d3d558bf00f95d73baf49dc3a67eef6374396084a224057e88",
+      "normalized_sha256": "a03cc44349e311451581c23e7fc05d4673c1a198fff8c7503998e70795c4d5ad",
+      "normalized_bytes": 8992316040,
+      "bounds": [
+        -176.30859375,
+        -90.0,
+        177.4624908,
+        90.0
+      ],
+      "query_seed": 20260910,
+      "query_splits": {
+        "train": {
+          "file": "experiments/workloads/gowalla_2d_4p2G/train.csv",
+          "count": 1000,
+          "bytes": 98647,
+          "sha256": "8812543046258bfa1e5ba41ff834682e63d2915a9c3447243e358985735f9ed1"
+        },
+        "validation": {
+          "file": "experiments/workloads/gowalla_2d_4p2G/validation.csv",
+          "count": 1000,
+          "bytes": 108908,
+          "sha256": "637be0650a898b645df709d90761760607d9cc88080a8b74fbccfccd9da8d9b1"
+        },
+        "correctness": {
+          "file": "experiments/workloads/gowalla_2d_4p2G/correctness.csv",
+          "count": 1000,
+          "bytes": 110548,
+          "sha256": "1c96e91272dc75825d1699efd5f265fbcfe026274a542b4188c082b2e7f00330"
+        },
+        "warmup": {
+          "file": "experiments/workloads/gowalla_2d_4p2G/warmup.csv",
+          "count": 300,
+          "bytes": 30069,
+          "sha256": "4ddd0baf789fc883b268df311ed44eeabffb18b1de04270e12e1605d6262c0e1"
+        },
+        "performance": {
+          "file": "experiments/workloads/gowalla_2d_4p2G/performance.csv",
+          "count": 3000,
+          "bytes": 331426,
+          "sha256": "c8db624e23c4570b0ae944053de7ce850f7aedbb07a1b012625eb175ac6fd463"
+        }
+      },
+      "provenance": {
+        "normalized_manifest": "data_cache/full/gowalla_2d_4p2G/normalized_manifest.json",
+        "query_manifest": "results/four_dataset_paper_protocol_20260911/02_queries/gowalla_2d_4p2G/query_manifest.json"
+      }
+    },
+    {
+      "id": "nyc_taxi",
+      "original_id": "nyc_taxi_2d_4p2G",
+      "points": 181000000,
+      "raw_sha256": "9fd8ebf1bef0b5529c111ee9515081b9759be08dc4eedbbe89a1b86d0ab9694c",
+      "normalized_sha256": "0ece92a36dcd5cc73dc31161f4c6cd6b22d43d66b5d4ef4e186d037d547c3036",
+      "normalized_bytes": 8910436714,
+      "bounds": [
+        -74.23353421,
+        40.52549437,
+        -73.71102618,
+        40.89952868
+      ],
+      "query_seed": 20260910,
+      "query_splits": {
+        "train": {
+          "file": "experiments/workloads/nyc_taxi_2d_4p2G/train.csv",
+          "count": 1000,
+          "bytes": 98663,
+          "sha256": "512e2ae9f12ba8e7890bf96b32c51b65314c6e43405551d073c87e88175adacd"
+        },
+        "validation": {
+          "file": "experiments/workloads/nyc_taxi_2d_4p2G/validation.csv",
+          "count": 1000,
+          "bytes": 108906,
+          "sha256": "3593578a65abaddea5a1fc27ffc45eeb87b4bbf9c167a1af6201847e2df5d9ca"
+        },
+        "correctness": {
+          "file": "experiments/workloads/nyc_taxi_2d_4p2G/correctness.csv",
+          "count": 1000,
+          "bytes": 110519,
+          "sha256": "321aeb94bd78b45c06a10c587cb27d095146a7b2f107a83a54dc6a9fbbf1aa51"
+        },
+        "warmup": {
+          "file": "experiments/workloads/nyc_taxi_2d_4p2G/warmup.csv",
+          "count": 300,
+          "bytes": 30124,
+          "sha256": "c293d56ed1ce638eca4a8df4fefe84536e9fd937c536edbd199a6bead51d9a19"
+        },
+        "performance": {
+          "file": "experiments/workloads/nyc_taxi_2d_4p2G/performance.csv",
+          "count": 3000,
+          "bytes": 331326,
+          "sha256": "f9b15b506acbe63d3437bca156815c86655c733cc5eea4b5eb6e9027076cf614"
+        }
+      },
+      "provenance": {
+        "normalized_manifest": "data_cache/full/nyc_taxi_2d_4p2G/normalized_manifest.json",
+        "query_manifest": "results/four_dataset_paper_protocol_20260911/02_queries/nyc_taxi_2d_4p2G/query_manifest.json"
+      }
+    },
+    {
+      "id": "skewed_2d",
+      "original_id": "skewed_2d",
+      "points": 204986702,
+      "raw_sha256": "fd3556dda7495d3ca022ac3d9262658c72247649fb7d83790cdabcd92264e190",
+      "normalized_sha256": "72645e966b1baddf3e6021b68c228e7eb0d11a0f1fbf9669681556f326ee6b02",
+      "normalized_bytes": 10156400766,
+      "bounds": [
+        0.0,
+        0.0,
+        0.99999999,
+        0.99999991
+      ],
+      "query_seed": 20260910,
+      "query_splits": {
+        "train": {
+          "file": "experiments/workloads/skewed_2d/train.csv",
+          "count": 1000,
+          "bytes": 98650,
+          "sha256": "55258b9c4eb61a52046ce7611582b73549a16a94721defe87c3fbfcc7bba6d80"
+        },
+        "validation": {
+          "file": "experiments/workloads/skewed_2d/validation.csv",
+          "count": 1000,
+          "bytes": 108891,
+          "sha256": "a0074df001e0dfcc3b4c49dd784a95942171bf71cc8ec38e75eb66ffe6f5aad6"
+        },
+        "correctness": {
+          "file": "experiments/workloads/skewed_2d/correctness.csv",
+          "count": 1000,
+          "bytes": 110579,
+          "sha256": "0ed61de27668228e6280ac2eff3260f412c86da2be82506b24a853842ebd43c6"
+        },
+        "warmup": {
+          "file": "experiments/workloads/skewed_2d/warmup.csv",
+          "count": 300,
+          "bytes": 30060,
+          "sha256": "194ed04bd9d2bc2557eee508844f3c7ea1d90e0be0bbcf96770eeefa387d5ec1"
+        },
+        "performance": {
+          "file": "experiments/workloads/skewed_2d/performance.csv",
+          "count": 3000,
+          "bytes": 331396,
+          "sha256": "487732548cd434d991ba57a00fd29809f3035205ce3e640e8926786101e0eeb3"
+        }
+      },
+      "provenance": {
+        "normalized_manifest": "data_cache/full/skewed_2d/normalized_manifest.json",
+        "query_manifest": "results/four_dataset_paper_protocol_20260911/02_queries/skewed_2d/query_manifest.json"
+      }
+    }
+  ],
+  "policy": "Identities copied from original manifests; included workload CSVs compared byte for byte"
+}
